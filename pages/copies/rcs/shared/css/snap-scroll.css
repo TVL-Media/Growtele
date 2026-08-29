@@ -1,0 +1,51 @@
+/**
+ * Smooth scroll helpers + word reveal (section snap removed)
+ */
+
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+html.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth iframe {
+	pointer-events: none;
+}
+
+/* Word-by-word scroll reveal */
+.gt-words,
+[data-animate-words] {
+	opacity: 1 !important;
+	transform: none !important;
+	text-align: left;
+}
+
+.gt-words .gt-word,
+[data-animate-words] .gt-word {
+	display: inline;
+	vertical-align: baseline;
+	opacity: 0;
+	transform: translate3d(0, 0.85em, 0);
+	transition:
+		opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+	will-change: opacity, transform;
+}
+
+.gt-words.is-visible .gt-word,
+[data-animate-words].is-visible .gt-word {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gt-words .gt-word,
+	[data-animate-words] .gt-word {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}

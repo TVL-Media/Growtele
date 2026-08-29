@@ -1,0 +1,113 @@
+/**
+ * Responsive — SCALE the desktop design. Do not redesign it.
+ *
+ * Desktop (>1024px) is the SOURCE OF TRUTH and is left untouched
+ * by layout-changing rules below.
+ *
+ * Strategy: lock a desktop canvas width and zoom the whole #page
+ * so tablet/phone show the same composition, proportionally smaller.
+ */
+
+:root {
+	--gt-design-width: 1280px;
+	--gt-ui-scale: 1;
+}
+
+/* -------------------------------------------------------------------------
+   ≤1024px — tablet + phone: same desktop site, scaled to fit
+   ------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+	:root {
+		--gt-ui-scale: calc(100vw / 1280);
+		/* Keep gutters proportional to the scaled canvas, not “mobile redesigned” */
+		--gt-page-gutter: 56px;
+		--gt-container-padding: 32px;
+		--gt-section-gap: 150px;
+	}
+
+	html,
+	body {
+		overflow-x: hidden;
+		max-width: 100%;
+	}
+
+	/*
+	 * Zoom scales layout + paint together (Chrome/Edge/Safari/modern Firefox).
+	 * The page stays a 1280px-wide desktop composition.
+	 */
+	#page.site {
+		width: var(--gt-design-width);
+		max-width: var(--gt-design-width);
+		margin-left: auto;
+		margin-right: auto;
+		zoom: var(--gt-ui-scale);
+	}
+
+	/* Fallback when zoom is unavailable — transform + height compensation via JS */
+	@supports not (zoom: 1) {
+		#page.site {
+			zoom: unset;
+			transform: scale(var(--gt-ui-scale));
+			transform-origin: top center;
+			margin-bottom: calc((var(--gt-ui-scale) - 1) * var(--gt-page-height, 100vh));
+		}
+	}
+
+	/*
+	 * Channels already used a local scale; with page zoom that would double-shrink.
+	 * Reset to identity so cards match desktop proportions under page zoom.
+	 */
+	.gt-channels .cards-wrapper {
+		transform: none;
+		transform-origin: top center;
+		margin-bottom: 0;
+	}
+}
+
+/* -------------------------------------------------------------------------
+   ≤768px — continue same scaled desktop (no layout redesign)
+   ------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+	:root {
+		--gt-ui-scale: calc(100vw / 1280);
+	}
+
+	#page.site {
+		zoom: var(--gt-ui-scale);
+	}
+
+	@supports not (zoom: 1) {
+		#page.site {
+			zoom: unset;
+			transform: scale(var(--gt-ui-scale));
+			transform-origin: top center;
+			margin-bottom: calc((var(--gt-ui-scale) - 1) * var(--gt-page-height, 100vh));
+		}
+	}
+}
+
+/* -------------------------------------------------------------------------
+   ≤480px — still the same design; only scale factor changes via --gt-ui-scale
+   ------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+	:root {
+		--gt-ui-scale: calc(100vw / 1280);
+	}
+}
+
+/* -------------------------------------------------------------------------
+   Safety: never let media force horizontal scroll from full-bleed heroes
+   ------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+	.gt-hero,
+	.gt-hero__bg,
+	.gt-hero__bg-video,
+	.gt-hero__overlay {
+		max-width: 100%;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
