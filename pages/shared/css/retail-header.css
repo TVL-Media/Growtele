@@ -1,0 +1,149 @@
+/**
+ * Retail-style header for company pages (blogs, career, contact).
+ */
+.gt-retail-header.header {
+  padding: 47px 0 0;
+}
+
+.gt-retail-header .container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.gt-retail-header .header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px;
+  gap: 24px;
+}
+
+.gt-retail-header .header__logo img {
+  width: 165px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.gt-retail-header .header__nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  position: static;
+  left: auto;
+  transform: none;
+  gap: 0;
+}
+
+.gt-retail-header .sms-nav-menu > .menu-item.company-parent > a {
+  font-weight: 700;
+}
+
+.gt-retail-header .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.gt-retail-header .btn:hover {
+  opacity: 0.9;
+}
+
+.gt-retail-header .btn--cta,
+.gt-retail-header .header__cta {
+  background: linear-gradient(to right, #f93a3a, #fe8d03);
+  color: #fff;
+  height: 38px;
+  padding: 4px 6px 4px 14px;
+  border-radius: 18.5px;
+  min-width: 180px;
+  width: auto;
+  justify-content: space-between;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* blog.css paints a full-size ::before layer that hides retail CTA content */
+.gt-retail-header .header__cta::before {
+  content: none;
+  display: none;
+}
+
+.gt-retail-header .header__cta > span:first-child {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.gt-retail-header .btn--cta .btn__icon-wrap,
+.gt-retail-header .header__cta .btn__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.gt-retail-header .btn--cta .btn__icon,
+.gt-retail-header .header__cta .btn__icon {
+  width: 14px;
+  height: 10px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1440px) {
+  .gt-retail-header .container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gt-retail-header .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  /* Mobile drawer handled by mobile-nav.css */
+}
+
+@media (max-width: 768px) {
+  .gt-retail-header {
+    padding-top: 24px;
+  }
+
+  .gt-retail-header .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .gt-retail-header .header__logo img {
+    width: 132px;
+    height: 34px;
+  }
+
+  .gt-retail-header .btn--cta {
+    display: none;
+  }
+}

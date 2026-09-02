@@ -1,0 +1,226 @@
+/**
+ * Company pages — shared mobile/tablet overrides only.
+ * Desktop (>1024px) remains in each page's own CSS.
+ */
+
+@media (max-width: 1024px) {
+  .page,
+  .page-wrapper {
+    overflow-x: clip;
+  }
+
+  .hero,
+  .contact-intro .hero {
+    padding-top: 24px;
+    padding-bottom: 40px;
+    min-height: auto;
+  }
+
+  .hero__title,
+  .contact-intro .hero__title {
+    font-size: clamp(28px, 7vw, 40px);
+    line-height: 1.15;
+    max-width: 100%;
+  }
+
+  .hero__subtitle,
+  .hero__desc,
+  .section-desc {
+    font-size: clamp(15px, 4vw, 18px);
+    max-width: 100%;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 6vw, 34px);
+    line-height: 1.2;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .locations__header,
+  .success__header,
+  .most-read__header,
+  .driven__header,
+  .partners__header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .locations__title,
+  .locations__subtitle,
+  .locations__desc,
+  .success__title,
+  .success__desc {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .success__cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .featured__top {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .featured__side-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .most-read__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-split__inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-split__image {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    order: -1;
+  }
+
+  .contact-split__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .locations__card,
+  .locations__card-inner {
+    flex-direction: column;
+  }
+
+  .locations__map,
+  .locations__image-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .team__layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .team__carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+
+  .team__card {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  .contact-page .page {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  .page-content-x {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .gt-footer__inner,
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gt-footer__links,
+  .footer__links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .gt-footer__legal,
+  .footer__legal {
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .culture__grid,
+  .values__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .driven__cards,
+  .partners__logos {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__search {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero__search-input,
+  .hero__search-btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .contact-form__row--two {
+    flex-direction: column;
+  }
+
+  .contact-form__submit {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .hero__photos {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-height: none;
+  }
+
+  .hero__photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .section-title {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .success__card {
+    min-height: 240px;
+  }
+}

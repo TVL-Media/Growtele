@@ -1,0 +1,382 @@
+/**
+ * Industry pages — mobile/tablet composition overrides only.
+ * Desktop (>1024px) styles remain in each page's style.css.
+ */
+
+@media (max-width: 1024px) {
+  .page {
+    overflow-x: clip;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .hero {
+    padding-top: 24px;
+    padding-bottom: 48px;
+    min-height: auto;
+  }
+
+  .hero__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .hero__desc {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 36ch;
+  }
+
+  .hero__actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero__visual {
+    width: min(100%, 420px);
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero__sms-card,
+  .hero__sms2-card,
+  .hero__floating-ui,
+  .hero__icon-badge {
+    display: none;
+  }
+
+  .industry-nav {
+    position: relative;
+    z-index: 5;
+    padding: 0 20px 16px;
+  }
+
+  .industry-nav__bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    min-height: 0;
+    padding: 10px 12px;
+    gap: 8px;
+    border-radius: 20px;
+  }
+
+  .industry-nav__item {
+    font-size: 13px;
+    padding: 8px 12px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .channels,
+  .growth,
+  .touchpoint,
+  .usecases,
+  .testimonial,
+  .faq,
+  .trust {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .channels__header,
+  .growth__header,
+  .usecases__header,
+  .touchpoint__title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 6vw, 34px);
+    line-height: 1.15;
+  }
+
+  .channels__subtitle,
+  .growth__subtitle,
+  .usecases__subtitle,
+  .touchpoint__intro,
+  .faq__intro {
+    font-size: clamp(16px, 4vw, 18px);
+    max-width: 100%;
+  }
+
+  .channels__panel {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .channels__tabs {
+    width: 100%;
+    border-radius: 24px;
+  }
+
+  .channels__phone {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    min-height: 280px;
+    margin: 16px auto 0;
+  }
+
+  .growth__cards {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 16px;
+  }
+
+  .touchpoint__grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .touchpoint__visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .testimonial__block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .testimonial__stats {
+    width: 100%;
+    margin: 0;
+  }
+
+  .faq__inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .faq__book {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .trust__banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .trust__stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  :root {
+    --container-padding: 20px;
+  }
+
+  .container {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+
+  .channels__content {
+    min-height: auto;
+    border-radius: 30px;
+  }
+
+  .channels__detail {
+    min-height: auto;
+    padding: 24px 20px;
+  }
+
+  .channels__features {
+    gap: 16px;
+  }
+
+  .channels__phone-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .usecases__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .usecase-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 48px 20px 32px !important;
+    overflow: hidden;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .footer__glow {
+    width: min(100%, 400px);
+    height: auto;
+    opacity: 0.4;
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer__brand {
+    max-width: 100%;
+  }
+
+  .footer__about {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .footer__logo {
+    width: 132px;
+    height: auto;
+  }
+
+  .footer__links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .footer__social {
+    grid-column: 1 / -1;
+  }
+
+  .footer__social-icons {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .footer__legal {
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .footer__line {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer__copy {
+    font-size: 13px;
+  }
+
+  .dark-section,
+  .testimonial__wrap,
+  .faq__wrap {
+    border-radius: 24px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: auto;
+    max-width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 20px;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn--primary,
+  .btn--outline {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .touchpoint__item h3 {
+    font-size: clamp(22px, 5.5vw, 28px);
+  }
+
+  .testimonial-stat__num {
+    font-size: clamp(36px, 10vw, 48px);
+  }
+
+  .testimonial__stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .usecases__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: clamp(24px, 7.5vw, 30px);
+  }
+
+  .section-title {
+    font-size: clamp(22px, 6.5vw, 28px);
+  }
+
+  .industry-nav__item {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  .channels__tab {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .footer__links {
+    grid-template-columns: 1fr;
+  }
+}

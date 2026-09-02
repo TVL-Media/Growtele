@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Growtele</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/tomato-grotesk" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=team-text-center-1">
+  <link rel="stylesheet" href="../sms/css/sms-nav.css">
+  <link rel="stylesheet" href="css/about-us-nav.css">
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/about.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css?v=3">
+  <link rel="stylesheet" href="../shared/css/landing-footer.css?v=4">
+  <link rel="stylesheet" href="../../assets/css/snap-scroll.css">
+  <link rel="stylesheet" href="../shared/css/mobile-nav.css?v=2">
+  <link rel="stylesheet" href="../shared/css/mobile-company.css?v=2">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css">
+</head>
+<body class="about-us-page gt-smooth-scroll">
+  <div class="page-wrapper">
+
+    <!-- HEADER (SMS navbar) -->
+    <header class="header" data-sms-header>
+      <a class="logo" href="../index.html" aria-label="Growtele">
+        <img src="https://www.figma.com/api/mcp/asset/dc8a31a2-7dbd-45eb-8ce8-2e3ea3f6f80b.png" alt="growtele" width="165" height="42">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" aria-label="Primary" data-sms-nav>
+        <ul class="gt-header__menu sms-nav-menu" data-nav-menu>
+          <li class="menu-item" data-nav-item>
+            <a class="nav__link" href="../index.html">Home</a>
+          </li>
+          <li class="menu-item menu-item-has-children gt-mega-parent" data-nav-item data-mega-parent>
+            <a href="#" class="nav__link gt-mega-trigger" data-mega-trigger aria-expanded="false" aria-controls="gt-mega-products" aria-haspopup="true">
+              Products
+              <img class="nav__chevron gt-menu-arrow" src="../../assets/images/icons/down-arrow.png" alt="" width="12" height="12">
+            </a>
+            <div class="gt-mega-menu sms-dropdown" id="gt-mega-products" data-mega-menu hidden>
+              <div class="gt-mega-menu__panel">
+                <div class="gt-mega-menu__links">
+                  <a class="gt-mega-menu__item gt-mega-menu__item--sms" href="../sms/index.html" data-mega-link>
+                    <span class="gt-mega-menu__icon gt-mega-menu__icon--sms">
+                      <img class="gt-mega-menu__img gt-mega-menu__img--sms" src="../../assets/smsnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="gt-mega-menu__copy">
+                      <span class="gt-mega-menu__title">SMS</span>
+                      <span class="gt-mega-menu__desc">Powerful SMS solutions that connect businesses with customers</span>
+                    </span>
+                  </a>
+                  <a class="gt-mega-menu__item gt-mega-menu__item--email" href="../email/index.html" data-mega-link>
+                    <span class="gt-mega-menu__icon gt-mega-menu__icon--email">
+                      <img class="gt-mega-menu__img gt-mega-menu__img--email" src="../../assets/emailnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="gt-mega-menu__copy">
+                      <span class="gt-mega-menu__title">E-Mail</span>
+                      <span class="gt-mega-menu__desc">Engage customers with personalized, reliable emails that drive conversations</span>
+                    </span>
+                  </a>
+                  <a class="gt-mega-menu__item gt-mega-menu__item--cloud" href="../cloud-telephony/index.html" data-mega-link>
+                    <span class="gt-mega-menu__icon gt-mega-menu__icon--cloud">
+                      <img class="gt-mega-menu__img gt-mega-menu__img--cloud" src="../../assets/cloudnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="gt-mega-menu__copy">
+                      <span class="gt-mega-menu__title">Cloud Telephony</span>
+                      <span class="gt-mega-menu__desc">Connect, engage, and support customers with powerful cloud-based calling</span>
+                    </span>
+                  </a>
+                  <a class="gt-mega-menu__item gt-mega-menu__item--whatsapp" href="../whatsapp/index.html" data-mega-link>
+                    <span class="gt-mega-menu__icon gt-mega-menu__icon--whatsapp">
+                      <img class="gt-mega-menu__img gt-mega-menu__img--whatsapp" src="../../assets/whatsappnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="gt-mega-menu__copy">
+                      <span class="gt-mega-menu__title">WhatsApp</span>
+                      <span class="gt-mega-menu__desc">Connect with customers on WhatsApp through engaging conversations</span>
+                    </span>
+                  </a>
+                  <a class="gt-mega-menu__item gt-mega-menu__item--rcs" href="../rcs/index.html" data-mega-link>
+                    <span class="gt-mega-menu__icon gt-mega-menu__icon--rcs">
+                      <img class="gt-mega-menu__img gt-mega-menu__img--rcs" src="../../assets/rcsnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="gt-mega-menu__copy">
+                      <span class="gt-mega-menu__title">RCS</span>
+                      <span class="gt-mega-menu__desc">RCS is the next generation of business messaging that transforms.</span>
+                    </span>
+                  </a>
+                </div>
+                <aside class="gt-mega-menu__feature">
+                  <img class="gt-mega-menu__feature-img" src="../../assets/navpr.png" alt="" width="320" height="180" loading="lazy">
+                  <h3 class="gt-mega-menu__feature-title">True Market Leaders for CPass</h3>
+                  <p class="gt-mega-menu__feature-desc">True Market Leaders in CPaaS — empowering businesses with seamless, scalable, and intelligent customer communications.</p>
+                </aside>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item menu-item-has-children industry-solutions-parent" data-nav-item data-industry-solutions-parent>
+            <a href="#" class="nav__link industry-solutions-trigger" data-industry-solutions-trigger aria-expanded="false" aria-controls="industry-solutions-dropdown" aria-haspopup="true">
+              Industry Solution
+              <img class="nav__chevron gt-menu-arrow" src="../../assets/images/icons/down-arrow.png" alt="" width="12" height="12">
+            </a>
+            <div class="industry-solutions-dropdown sms-dropdown" id="industry-solutions-dropdown" data-industry-solutions-dropdown hidden>
+              <div class="industry-solutions-dropdown-panel">
+                <div class="industry-solutions-dropdown-links">
+                  <a class="industry-solutions-dropdown-item" href="../retail/index.html" data-industry-solutions-link>
+                    <span class="industry-solutions-dropdown-icon">
+                      <img class="industry-solutions-dropdown-img" src="../../assets/retailnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="industry-solutions-dropdown-content">
+                      <span class="industry-solutions-dropdown-title">Retail</span>
+                      <span class="industry-solutions-dropdown-desc">Build stronger customer connections, drive engagement, and grow your business.</span>
+                    </span>
+                  </a>
+                  <a class="industry-solutions-dropdown-item" href="../banking/index.html" data-industry-solutions-link>
+                    <span class="industry-solutions-dropdown-icon">
+                      <img class="industry-solutions-dropdown-img" src="../../assets/banknic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="industry-solutions-dropdown-content">
+                      <span class="industry-solutions-dropdown-title">Banking</span>
+                      <span class="industry-solutions-dropdown-desc">Build secure customer connections, streamline engagement, and drive growth.</span>
+                    </span>
+                  </a>
+                  <a class="industry-solutions-dropdown-item" href="../health/index.html" data-industry-solutions-link>
+                    <span class="industry-solutions-dropdown-icon">
+                      <img class="industry-solutions-dropdown-img" src="../../assets/healthnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="industry-solutions-dropdown-content">
+                      <span class="industry-solutions-dropdown-title">Healthcare</span>
+                      <span class="industry-solutions-dropdown-desc">Connect patients, simplify communication, and deliver better care experiences.</span>
+                    </span>
+                  </a>
+                  <a class="industry-solutions-dropdown-item" href="../travelling/index.html" data-industry-solutions-link>
+                    <span class="industry-solutions-dropdown-icon">
+                      <img class="industry-solutions-dropdown-img" src="../../assets/travelnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="industry-solutions-dropdown-content">
+                      <span class="industry-solutions-dropdown-title">Travelling</span>
+                      <span class="industry-solutions-dropdown-desc">Connect travelers, simplify journeys, and deliver seamless experiences.</span>
+                    </span>
+                  </a>
+                  <a class="industry-solutions-dropdown-item" href="../ecommerce/index.html" data-industry-solutions-link>
+                    <span class="industry-solutions-dropdown-icon">
+                      <img class="industry-solutions-dropdown-img" src="../../assets/ecomnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="industry-solutions-dropdown-content">
+                      <span class="industry-solutions-dropdown-title">E-Commerce</span>
+                      <span class="industry-solutions-dropdown-desc">Connect shoppers, boost engagement, and drive seamless sales.</span>
+                    </span>
+                  </a>
+                  <a class="industry-solutions-dropdown-item" href="../education/index.html" data-industry-solutions-link>
+                    <span class="industry-solutions-dropdown-icon">
+                      <img class="industry-solutions-dropdown-img" src="../../assets/edunic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="industry-solutions-dropdown-content">
+                      <span class="industry-solutions-dropdown-title">Education</span>
+                      <span class="industry-solutions-dropdown-desc">Connect learners, simplify communication, and empower better outcomes.</span>
+                    </span>
+                  </a>
+                  <a class="industry-solutions-dropdown-item" href="../logistic/index.html" data-industry-solutions-link>
+                    <span class="industry-solutions-dropdown-icon">
+                      <img class="industry-solutions-dropdown-img" src="../../assets/loginic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="industry-solutions-dropdown-content">
+                      <span class="industry-solutions-dropdown-title">Logistic &amp; Transport</span>
+                      <span class="industry-solutions-dropdown-desc">Connect operations, streamline journeys, and keep deliveries moving.</span>
+                    </span>
+                  </a>
+                </div>
+                <aside class="industry-solutions-dropdown-feature">
+                  <img class="industry-solutions-dropdown-feature-img" src="../../assets/navpr.png" alt="" width="320" height="180" loading="lazy">
+                  <h3 class="industry-solutions-dropdown-feature-title">True Market Leaders for CPass</h3>
+                  <p class="industry-solutions-dropdown-feature-desc">True Market Leaders in CPaaS — empowering businesses with seamless, scalable, and intelligent customer communications.</p>
+                </aside>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item menu-item-has-children company-parent" data-nav-item data-company-parent>
+            <a href="#" class="nav__link company-trigger" data-company-trigger aria-expanded="false" aria-controls="company-dropdown" aria-haspopup="true">
+              Company
+              <img class="nav__chevron nav__chevron--sm gt-menu-arrow" src="../../assets/images/icons/down-arrow.png" alt="" width="10" height="10">
+            </a>
+            <div class="company-dropdown sms-dropdown" id="company-dropdown" data-company-dropdown hidden>
+              <div class="company-dropdown-panel">
+                <div class="company-dropdown-links">
+                  <a class="company-dropdown-item is-active" href="../about-us/index.html" data-company-link>
+                    <span class="company-dropdown-icon">
+                      <img class="company-dropdown-img" src="../../assets/aboutnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="company-dropdown-content">
+                      <span class="company-dropdown-title">About us</span>
+                      <span class="company-dropdown-desc">Where innovation, technology, and communication come together to help businesses connect, engage, and grow.</span>
+                    </span>
+                  </a>
+                  <a class="company-dropdown-item" href="../blogs/index.html" data-company-link>
+                    <span class="company-dropdown-icon">
+                      <img class="company-dropdown-img" src="../../assets/blognic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="company-dropdown-content">
+                      <span class="company-dropdown-title">Blogs &amp; Insights</span>
+                      <span class="company-dropdown-desc">Explore fresh ideas, industry trends, and expert perspectives shaping the future of digital communication.</span>
+                    </span>
+                  </a>
+                  <a class="company-dropdown-item" href="../career/index.html" data-company-link>
+                    <span class="company-dropdown-icon">
+                      <img class="company-dropdown-img" src="../../assets/careersnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="company-dropdown-content">
+                      <span class="company-dropdown-title">Careers</span>
+                      <span class="company-dropdown-desc">Join a forward-thinking team where your ideas, skills, and ambition help shape the future of communication.</span>
+                    </span>
+                  </a>
+                  <a class="company-dropdown-item" href="../contact/index.html" data-company-link>
+                    <span class="company-dropdown-icon">
+                      <img class="company-dropdown-img" src="../../assets/contactnic.png" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                    <span class="company-dropdown-content">
+                      <span class="company-dropdown-title">Contact us</span>
+                      <span class="company-dropdown-desc">Let's connect, explore opportunities, and build smarter communication solutions together.</span>
+                    </span>
+                  </a>
+                </div>
+                <aside class="company-dropdown-feature">
+                  <img class="company-dropdown-feature-img" src="../../assets/navpr.png" alt="" width="320" height="180" loading="lazy">
+                  <h3 class="company-dropdown-feature-title">True Market Leaders for CPass</h3>
+                  <p class="company-dropdown-feature-desc">True Market Leaders in CPaaS — empowering businesses with seamless, scalable, and intelligent customer communications.</p>
+                </aside>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <a class="btn-cta btn-cta--header" href="#">
+        <span>Let's Get Started</span>
+        <span class="btn-cta__orb"><img src="https://www.figma.com/api/mcp/asset/d82974a8-2623-4c65-8982-de9e67749b75.png" alt=""></span>
+      </a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <img src="https://www.figma.com/api/mcp/asset/340e25b5-c70d-4635-bd7c-639e2fe5f724.png" alt="" width="15" height="15">
+            <span>About Growtele</span>
+          </div>
+          <h1 class="hero__title">Building the Future of Business Communication</h1>
+          <div class="hero__divider"></div>
+          <p class="hero__desc">Empowering businesses with intelligent, secure, and scalable communication solutions that connect brands with customers across every touchpoint.</p>
+          <div class="hero__tags">
+            <div class="hero__tag hero__tag--sms"><img src="https://www.figma.com/api/mcp/asset/0f27b002-9124-4905-b2b7-f4b10955769c.png" alt="" width="20" height="20"><span>SMS</span></div>
+            <div class="hero__tag hero__tag--whatsapp"><img src="https://www.figma.com/api/mcp/asset/3229002c-8ca3-4e68-961b-0ed9093a32ed.png" alt="" width="20" height="20"><span>Whatsapp Business</span></div>
+            <div class="hero__tag hero__tag--email"><img src="https://www.figma.com/api/mcp/asset/b2f30e0a-6c77-4bb9-bd77-8ca75e43ecc7.png" alt="" width="20" height="20"><span>E-Mail</span></div>
+            <div class="hero__tag hero__tag--rcs"><img src="https://www.figma.com/api/mcp/asset/a0a3f31d-729e-4ffd-a34b-566abe11a6a8.png" alt="" width="20" height="20"><span>RCS</span></div>
+            <div class="hero__tag hero__tag--telephony"><img src="https://www.figma.com/api/mcp/asset/e8d9291a-94b6-4737-b16c-12014ed64025.png" alt="" width="20" height="20"><span>Cloud Telephony</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/Hero-Section-Image-About-Us.png" alt="Growtele team collaborating" class="hero__image" width="611" height="567">
+          <div class="hero__support-badge">
+            <!-- <img src="https://www.figma.com/api/mcp/asset/7acdb31b-b2c0-42e7-9669-b99374bb7678.svg" alt="" class="hero__support-bg"> -->
+            <!-- <div class="hero__support-content">
+              <span class="hero__support-number">24/7</span>
+              <span class="hero__support-label">Experts Support</span>
+              <div class="hero__support-avatars">
+                <img src="assets/Ellipse%20105.png" alt="" width="58" height="58">
+                <img src="assets/Ellipse%20104.png" alt="" width="57" height="58">
+                <img src="assets/Ellipse%20103.png" alt="" width="57" height="58">
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-bg-deco" aria-hidden="true"></div>
+
+    <!-- CONNECTING BUSINESSES -->
+    <section class="connecting">
+      <div class="connecting__bg-deco"></div>
+      <div class="page-section">
+        <h2 class="section-title connecting__title">Connecting Businesses Through Smarter Communication</h2>
+        <div class="connecting__card">
+          <p class="connecting__desc">Growtele is a cloud communication platform built to simplify customer engagement. We help businesses deliver meaningful conversations through messaging, voice, email, and automation—all from one powerful platform.</p>
+          <!-- <div class="connecting__global">
+            <span class="connecting__global-title">Global Reach</span>
+            <p class="connecting__global-desc">Growtele helps businesses reach customers<br>anywhere in the world with fast, reliable,<br>and scalable messaging solutions.</p>
+          </div> -->
+          <div class="connecting__stats">
+            <div class="connecting__stat">
+              <span class="connecting__stat-number">12B+</span>
+              <span class="connecting__stat-label">Messages Delivered Globally</span>
+            </div>
+            <div class="connecting__stat-divider"></div>
+            <div class="connecting__stat">
+              <span class="connecting__stat-number">300+</span>
+              <span class="connecting__stat-label">Enterprise Clients Served</span>
+            </div>
+          </div>
+          <div class="connecting__mockup">
+            <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/f9b29d19afe7942b3a58f7fa269af1d67566ce5d.png" alt="Communication channels interface" class="connecting__mockup-img" width="482" height="347">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE VALUES -->
+    <section class="core-values">
+      <div class="page-section">
+        <div class="core-values__grid">
+          <div class="core-values__text">
+            <h2 class="section-title core-values__title">The Core Values<br>That Power Every Customer Interaction</h2>
+            <p class="core-values__desc">At Growtele, our values shape every product, every innovation, and every customer interaction. We are committed to building secure, scalable, and intelligent communication solutions that empower businesses to connect with customers more effectively. By combining reliability, innovation, and a customer-first approach, we help organizations create meaningful conversations</p>
+          </div>
+          <div class="core-values__image">
+            <video autoplay muted loop playsinline src="https://listings.selectvia.com/wp-content/uploads/2026/09/273925.mp4" class="core-values__video"></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRIVEN BY PEOPLE -->
+    <section class="driven">
+      <div class="page-section">
+        <div class="driven__header">
+          <h2 class="section-title driven__title">Driven by People.<br>Powered by Purpose.</h2>
+          <p class="driven__subtitle">Every innovation at Growtele begins with people who are passionate about building better communication experiences.</p>
+        </div>
+        <div class="driven__bento">
+          <div class="driven__bento-col driven__bento-col--left">
+            <div class="bento-card bento-card--trusted-infra">
+              <h3>Trusted Infra.</h3>
+              <p>Enterprise-grade reliability, security,<br>and performance that businesses<br>can depend on every day.</p>
+            </div>
+            <div class="bento-card bento-card--photo bento-card--photo-mid">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/4c8abeb3434e28473938cf7440dd421d203f8385.png" alt="Team collaboration" class="bento-card__img bento-card__img--photo-mid" width="387" height="260">
+            </div>
+          </div>
+          <div class="driven__bento-col driven__bento-col--center">
+            <div class="bento-card bento-card--customer-first">
+              <h3>Customer First</h3>
+              <p>Every solution we build starts with understanding customer needs and delivering exceptional experiences.</p>
+            </div>
+            <div class="bento-card bento-card--innovation">
+              <h3>Continous<br>Innovation</h3>
+              <p>We constantly evolve our platform<br>to help businesses communicate<br>smarter and faster.</p>
+            </div>
+          </div>
+          <div class="driven__bento-col driven__bento-col--right">
+            <div class="bento-card bento-card--photo bento-card--photo-top">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/4c8abeb3434e28473938cf7440dd421d203f8385.png" alt="Team member working" class="bento-card__img bento-card__img--photo-top" width="387" height="260">
+            </div>
+            <div class="bento-card bento-card--trusted-infra-bottom">
+              <h3>Trusted Infra.</h3>
+              <p>Enterprise-grade reliability, security,<br>and performance that businesses<br>can depend on every day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUSTED BY PARTNERS -->
+    <section class="partners">
+      <div class="page-section">
+        <div class="partners__header">
+          <h2 class="section-title partners__title">Trusted by Partners Who Power Better Communication</h2>
+          <p class="partners__subtitle">We collaborate with leading technology providers and industry partners to deliver secure, scalable, and reliable</p>
+        </div>
+        <div class="partners__grid-wrap">
+          <div class="partners__logos">
+            <div class="partners__logo-cell partners__logo-cell--active">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/d8175e56efb37b25c23363c9ca509f41cf603e17.png" alt="MoEngage" width="246" height="67">
+            </div>
+            <div class="partners__logo-cell">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/4c03b82a6a7950e1cb726d0843f8faecdf1fe375.png" alt="Shopify" width="208" height="57">
+            </div>
+            <div class="partners__logo-cell">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/713b8c457d429ebbe4cc58f543996b9c60c1d711.png" alt="WebEngage" width="240" height="63">
+            </div>
+            <div class="partners__logo-cell">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/83618abaf8dd00ee4fbfcac5b63d8368e3d544e7.png" alt="CleverTap" width="208" height="77">
+            </div>
+            <div class="partners__logo-cell">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/053186e38f0906c1a559c206ade7b61213f63cf4-scaled.png" alt="LeadSquared" width="174" height="72">
+            </div>
+            <div class="partners__logo-cell">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/7510fe76e882620e536311b1be14573f3dcefd72.png" alt="Zoho CRM" width="216" height="57">
+            </div>
+          </div>
+          <div class="partners__featured">
+            <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/Rectangle-355.png">
+            <div class="partners__featured-overlay">
+              <span class="partners__featured-number">100+</span>
+              <span class="partners__featured-label">Partner Accredited</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section class="locations">
+      <div class="page-section">
+        <div class="locations__header">
+          <h2 class="section-title locations__title">We're Here to Help Your Business Grow</h2>
+          <p class="locations__subtitle">Have questions or need expert guidance? Reach out to Growtele and discover how our communication solutions can help your business grow.</p>
+        </div>
+        <div class="locations__tabs" id="locationTabs">
+          <button class="locations__tab" data-city="kolkata">Kolkata</button>
+          <button class="locations__tab locations__tab--active" data-city="delhi">Delhi NCR</button>
+          <button class="locations__tab" data-city="bengaluru">Bengaluru</button>
+          <button class="locations__tab" data-city="mumbai">Mumbai</button>
+        </div>
+        <div class="locations__card">
+          <div class="locations__info" id="locationInfo">
+            <div class="locations__city-row">
+              <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16.png" alt="" width="50" height="50" class="locations__city-icon">
+              <h3 class="locations__city-name" id="locationCity">Delhi NCR</h3>
+            </div>
+            <p class="locations__address" id="locationAddress">Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309</p>
+            <p class="locations__support-title">Get support from our team</p>
+            <div class="locations__contact">
+              <div class="locations__contact-item">
+                <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/5bc196e75f4ae168eb8a94b3ac10e6bf75160353.png" alt="" width="20" height="20">
+                <span id="locationPhone">+91 9999-564-564</span>
+              </div>
+              <div class="locations__contact-item">
+                <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/b0ef2a979a3b834e37bc58f6f066c7e78981b130.png" alt="" width="20" height="20">
+                <span id="locationEmail1">info@growtele.com</span>
+              </div>
+              <div class="locations__contact-item">
+                <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/35e04fe46a932ee5d24057f8db2c62aebeb863b9.png" alt="" width="20" height="20">
+                <span id="locationEmail2">support@growtele.com</span>
+              </div>
+            </div>
+          </div>
+          <div class="locations__image-wrap">
+            <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png" alt="Delhi NCR office location" class="locations__image" id="locationImage" width="677" height="531">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team">
+      <div class="page-section">
+        <div class="team__layout">
+          <div class="team__content">
+            <h2 class="section-title team__title">The Minds Building Better Customer Communication</h2>
+            <p class="team__desc">Behind every reliable communication is a passionate team of innovators, problem-solvers, and experts dedicated to building solutions that help businesses connect, engage, and grow.</p>
+          </div>
+          <div class="team__nav">
+            <button class="team__nav-btn team__nav-btn--prev" id="teamPrev" aria-label="Previous">
+              <img src="https://www.figma.com/api/mcp/asset/e2999267-4144-4c7e-bdad-874c109e47eb.png" alt="" width="58" height="58">
+            </button>
+            <button class="team__nav-btn team__nav-btn--next" id="teamNext" aria-label="Next">
+              <img src="https://www.figma.com/api/mcp/asset/e2999267-4144-4c7e-bdad-874c109e47eb.png" alt="" width="58" height="58">
+            </button>
+          </div>
+          <div class="team__carousel" id="teamCarousel">
+              <div class="team__card">
+                <div class="team__card-photo">
+                  <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/AHmad.png" alt="Md Ahmad" class="team__card-img team__card-img--1" width="257" height="239">
+                </div>
+                <div class="team__card-info">
+                  <h3 class="team__card-name">Md Ahmad</h3>
+                  <p class="team__card-role">Founder & Managing Director</p>
+                </div>
+              </div>
+              <div class="team__card team__card--featured">
+                <div class="team__card-photo">
+                  <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/AHmad.png" alt="Md Ahmad" class="team__card-img team__card-img--featured" width="332" height="267">
+                </div>
+                <div class="team__card-info">
+                  <h3 class="team__card-name">Md Ahmad</h3>
+                  <p class="team__card-role">Founder & Managing Director</p>
+                </div>
+              </div>
+              <div class="team__card">
+                <div class="team__card-photo">
+                  <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/AHmad.png" alt="Md Ahmad" class="team__card-img team__card-img--3" width="257" height="239">
+                </div>
+                <div class="team__card-info">
+                  <h3 class="team__card-name">Md Ahmad</h3>
+                  <p class="team__card-role">Founder & Managing Director</p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gt-cta gt-section" id="cta">
+        <div class="gt-container gt-cta__inner">
+          <div class="gt-cta__visual">
+            <div class="gt-cta__visual-media">
+              <img src="../../assets/images/sections/group-525.png" alt="WhatsApp interface" class="gt-cta__visual-img" loading="lazy" decoding="async" width="438" height="351">
+            </div>
+          </div>
+          <div class="gt-cta__content">
+            <h2>
+              Power Smarter Customer<br>
+              Conversations at Scale
+            </h2>
+            <p>Engage customers across SMS, WhatsApp, RCS, Email, and Voice through one unified communication platform built for reliability, performance, and growth</p>
+            <a href="#" class="gt-btn gt-btn--navy">Get Started</a>
+          </div>
+        </div>
+      </section>
+
+  </div><!-- /.page-wrapper -->
+
+    <footer id="colophon" class="gt-footer">
+      <div class="gt-footer__glow"></div>
+      <div class="gt-container gt-footer__inner">
+        <div class="gt-footer__brand">
+          <a href="../index.html" class="gt-footer__logo">
+            <img src="../../assets/images/icons/logo.png" alt="Growtele" width="163" height="42" loading="lazy" decoding="async">
+          </a>
+          <p>Growtele's global network solutions enable every business sector to optimize their business across the globe.</p>
+          <a href="mailto:hello@growtele.com" class="gt-footer__cta">
+            <img src="../../assets/images/icons/get-in-touch.png" alt="Get In Touch" width="165" height="35" loading="lazy">
+          </a>
+        </div>
+        <div class="gt-footer__nav">
+          <div class="gt-footer__col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="../whatsapp/index.html">Whatsapp API</a></li>
+              <li><a href="../sms/index.html">SMS API</a></li>
+              <li><a href="../rcs/index.html">RCS API</a></li>
+              <li><a href="../email/index.html">E-Mail API</a></li>
+              <li><a href="../cloud-telephony/index.html">Cloud Telephony</a></li>
+            </ul>
+          </div>
+          <div class="gt-footer__col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="../about-us/index.html">About Us</a></li>
+              <li><a href="../career/index.html">Careers</a></li>
+              <li><a href="../contact/index.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="gt-footer__col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="../contact/index.html">Pricing</a></li>
+              <li><a href="../contact/index.html">API Documentation</a></li>
+              <li><a href="../blogs/index.html">Blog</a></li>
+            </ul>
+          </div>
+          <div class="gt-footer__col gt-footer__col--social">
+            <h4>Follow Us</h4>
+            <div class="gt-footer__socials">
+
+          <a class="gt-footer__social-link" href="https://www.facebook.com/Growtele" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.0781 10.5469H13.0469L13.9062 7.73438H11.0781V6.17188C11.0781 5.50781 11.0781 4.88281 12.2656 4.88281H13.8672V2.38281C13.6328 2.35156 12.7344 2.26562 11.7812 2.26562C9.78125 2.26562 8.35938 3.51562 8.35938 5.89844V7.73438H5.85938V10.5469H8.35938V17.7344H11.0781V10.5469Z" fill="currentColor"/></svg>
+          </a>
+          <span class="gt-footer__social-link gt-footer__social-link--pending" aria-label="X">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.9033 8.46875L15.8096 4H14.875L11.4668 7.88281L8.76367 4H4.5L8.66016 10.5156L4.5 16H5.43457L9.09668 12.1016L12.002 16H16.2656L11.9033 8.46875ZM10.5488 11.2969L10.1445 10.7266L6.24023 4.70312H7.89062L11.0039 9.51562L11.4082 10.0859L15.502 15.3516H13.8516L10.5488 11.2969Z" fill="currentColor"/></svg>
+          </span>
+          <a class="gt-footer__social-link" href="https://www.instagram.com/growtele/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 4.10156C11.8555 4.10156 12.0781 4.10938 12.8047 4.14062C13.5234 4.17188 13.9453 4.28906 14.2656 4.41406C14.6719 4.57031 14.9688 4.75781 15.2812 5.07031C15.6016 5.39062 15.7812 5.67969 15.9375 6.08594C16.0625 6.40625 16.1797 6.83594 16.2109 7.54688C16.2422 8.28125 16.25 8.50391 16.25 10.3516C16.25 12.207 16.2422 12.4297 16.2109 13.1562C16.1797 13.875 16.0625 14.2969 15.9375 14.6172C15.7812 15.0234 15.5938 15.3203 15.2812 15.6328C14.9609 15.9531 14.6719 16.1328 14.2656 16.2891C13.9453 16.4141 13.5156 16.5312 12.8047 16.5625C12.0781 16.5938 11.8555 16.6016 10 16.6016C8.14453 16.6016 7.92188 16.5938 7.19531 16.5625C6.47656 16.5312 6.05469 16.4141 5.73438 16.2891C5.32812 16.1328 5.03125 15.9531 4.71875 15.6328C4.39844 15.3203 4.21875 15.0234 4.0625 14.6172C3.9375 14.2969 3.82031 13.875 3.78906 13.1562C3.75781 12.4297 3.75 12.207 3.75 10.3516C3.75 8.50391 3.75781 8.28125 3.78906 7.54688C3.82031 6.83594 3.9375 6.40625 4.0625 6.08594C4.21875 5.67969 4.40625 5.39062 4.71875 5.07031C5.03906 4.75781 5.32812 4.57031 5.73438 4.41406C6.05469 4.28906 6.48438 4.17188 7.19531 4.14062C7.92188 4.10938 8.14453 4.10156 10 4.10156ZM10 2.85156C8.11719 2.85156 7.87891 2.85938 7.14062 2.89062C6.41016 2.92188 5.89844 3.04688 5.45312 3.21875C4.99219 3.39844 4.60156 3.63281 4.21094 4.02344C3.82031 4.41406 3.58594 4.80469 3.40625 5.26562C3.23438 5.71094 3.10938 6.22266 3.07812 6.95312C3.04688 7.69922 3.03906 7.9375 3.03906 9.82031V10.8828C3.03906 12.7656 3.04688 13.0039 3.07812 13.7422C3.10938 14.4727 3.23438 14.9844 3.40625 15.4297C3.58594 15.8906 3.82031 16.2812 4.21094 16.6719C4.60156 17.0625 4.99219 17.2969 5.45312 17.4766C5.89844 17.6484 6.41016 17.7734 7.14062 17.8047C7.87891 17.8359 8.11719 17.8438 10 17.8438C11.8828 17.8438 12.1211 17.8359 12.8594 17.8047C13.5898 17.7734 14.1016 17.6484 14.5469 17.4766C15.0078 17.2969 15.3984 17.0625 15.7891 16.6719C16.1797 16.2812 16.4141 15.8906 16.5938 15.4297C16.7656 14.9844 16.8906 14.4727 16.9219 13.7422C16.9531 13.0039 16.9609 12.7656 16.9609 10.8828V9.82031C16.9609 7.9375 16.9531 7.69922 16.9219 6.95312C16.8906 6.22266 16.7656 5.71094 16.5938 5.26562C16.4141 4.80469 16.1797 4.41406 15.7891 4.02344C15.3984 3.63281 15.0078 3.39844 14.5469 3.21875C14.1016 3.04688 13.5898 2.92188 12.8594 2.89062C12.1211 2.85938 11.8828 2.85156 10 2.85156ZM10 6.47656C7.82812 6.47656 6.0625 8.24219 6.0625 10.4141C6.0625 12.5859 7.82812 14.3516 10 14.3516C12.1719 14.3516 13.9375 12.5859 13.9375 10.4141C13.9375 8.24219 12.1719 6.47656 10 6.47656ZM10 13.1016C8.58594 13.1016 7.4375 11.9531 7.4375 10.5391C7.4375 9.125 8.58594 7.97656 10 7.97656C11.4141 7.97656 12.5625 9.125 12.5625 10.5391C12.5625 11.9531 11.4141 13.1016 10 13.1016ZM14.6875 6.32031C14.6875 5.82031 14.2812 5.41406 13.7812 5.41406C13.2812 5.41406 12.875 5.82031 12.875 6.32031C12.875 6.82031 13.2812 7.22656 13.7812 7.22656C14.2812 7.22656 14.6875 6.82031 14.6875 6.32031Z" fill="currentColor"/></svg>
+          </a>
+          <a class="gt-footer__social-link" href="https://youtube.com/@growtele4803?si=Vr9f6acJRg7sklSa" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.3828 5.75C17.2109 5.11719 16.7109 4.61719 16.0781 4.44531C14.8828 4.125 10 4.125 10 4.125C10 4.125 5.11719 4.125 3.92188 4.44531C3.28906 4.61719 2.78906 5.11719 2.61719 5.75C2.29688 6.94531 2.29688 9.5 2.29688 9.5C2.29688 9.5 2.29688 12.0547 2.61719 13.25C2.78906 13.8828 3.28906 14.3828 3.92188 14.5547C5.11719 14.875 10 14.875 10 14.875C10 14.875 14.8828 14.875 16.0781 14.5547C16.7109 14.3828 17.2109 13.8828 17.3828 13.25C17.7031 12.0547 17.7031 9.5 17.7031 9.5C17.7031 9.5 17.7031 6.94531 17.3828 5.75ZM8.75 11.875V7.125L12.875 9.5L8.75 11.875Z" fill="currentColor"/></svg>
+          </a>
+          <a class="gt-footer__social-link" href="https://www.linkedin.com/company/growtele/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.375 6.25H2.1875V17.1875H4.375V6.25ZM3.28125 2.8125C2.57812 2.8125 2 3.39844 2 4.10938C2 4.82031 2.57812 5.40625 3.28125 5.40625C3.98438 5.40625 4.5625 4.82031 4.5625 4.10938C4.5625 3.39844 3.98438 2.8125 3.28125 2.8125ZM7.1875 6.25H9.29688V7.42188H9.32812C9.64844 6.82812 10.3984 6.20312 11.5312 6.20312C13.9062 6.20312 14.375 7.73438 14.375 9.80469V17.1875H12.1875V10.3281C12.1875 8.85938 12.1562 6.97656 10.1562 6.97656C8.125 6.97656 7.8125 8.61719 7.8125 10.2344V17.1875H5.625V6.25H7.1875Z" fill="currentColor"/></svg>
+          </a>
+            </div>
+            <h4 class="gt-footer__contact-heading">Contact Us</h4>
+            <a href="mailto:hello@growtele.com" class="gt-footer__email">hello@growtele.com</a>
+          </div>
+        </div>
+        <div class="gt-footer__bottom">
+          <p class="gt-footer__legal">
+            <a href="#">Privacy Policy</a>
+            <span>|</span>
+            <a href="#">Terms &amp; Condition</a>
+            <span>|</span>
+            <a href="#">Security</a>
+            <span>|</span>
+            <a href="#">Partners Term of Use</a>
+          </p>
+          <p class="gt-footer__copy">Growtele &copy; 2026. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  <script src="../../assets/js/sms-nav-dropdowns.js"></script>
+  <script src="../../assets/js/mobile-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="../../assets/js/smooth-scroll.js?v=mobile-1"></script>
+  <script src="../../assets/js/animations.js?v=mobile-1"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

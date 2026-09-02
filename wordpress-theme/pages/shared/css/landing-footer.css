@@ -1,0 +1,61 @@
+/**
+ * Landing page footer + CTA on company pages.
+ */
+.gt-cta.gt-section {
+  position: relative;
+  z-index: 10;
+  margin-top: 100px !important;
+  margin-bottom: -170px !important;
+  padding: 0;
+  overflow: visible;
+}
+
+/* Keep the 100px gap on the CTA margin only */
+section:has(+ .gt-cta.gt-section) {
+  padding-bottom: 0 !important;
+}
+
+.gt-cta .gt-container.gt-cta__inner {
+  width: min(92vw, 1280px);
+  max-width: min(92vw, 1280px);
+}
+
+body > .gt-footer,
+.page > .gt-footer,
+.page-wrapper + .gt-footer {
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 100%;
+  max-width: 100%;
+  z-index: 1;
+}
+
+.page-wrapper,
+main {
+  overflow: visible;
+}
+
+/* Contact decorative layers extend far below content — keep page clipped */
+body.contact-page .page {
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .gt-cta .gt-container.gt-cta__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gt-cta__content {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .gt-cta.gt-section {
+    margin-top: 48px;
+    margin-bottom: -80px !important;
+  }
+}
