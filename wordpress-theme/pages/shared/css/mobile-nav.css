@@ -1,0 +1,256 @@
+/**
+ * Shared mobile navigation — industry + company pages only.
+ * Desktop (>1024px) is untouched; rules apply inside max-width breakpoints.
+ */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 120;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 0 auto;
+  background: #121348;
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Dark hero headers (about-us) */
+.about-us-page .nav-toggle span {
+  background: #fff;
+}
+
+@media (max-width: 1024px) {
+  .header .header__inner,
+  .gt-retail-header .header__inner {
+    position: relative;
+    min-height: 42px;
+    z-index: 10001;
+  }
+
+  .nav-toggle {
+    display: flex;
+    margin-left: auto;
+    position: relative;
+    z-index: 10002;
+  }
+
+  .header .header__nav,
+  .gt-retail-header .header__nav,
+  .about-us-page .nav[data-sms-nav] {
+    position: fixed !important;
+    top: 72px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: calc(100dvh - 72px) !important;
+    margin: 0 !important;
+    flex: none !important;
+    transform: none !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: none !important;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start !important;
+    gap: 4px;
+    padding: 12px 20px 24px;
+    background: #fff !important;
+    box-shadow: 0 16px 40px rgba(18, 19, 72, 0.12);
+    z-index: 10000 !important;
+  }
+
+  .header .header__nav.is-open,
+  .gt-retail-header .header__nav.is-open,
+  .about-us-page .nav[data-sms-nav].is-open {
+    display: flex !important;
+  }
+
+  .header .header__cta,
+  .gt-retail-header .header__cta,
+  .gt-retail-header .btn--cta {
+    display: none !important;
+  }
+
+  .header,
+  .gt-retail-header.header {
+    position: sticky;
+    top: 0;
+    z-index: 10001;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .about-us-page .header {
+    background: rgba(18, 19, 72, 0.96);
+  }
+
+  .about-us-page .nav-toggle {
+    margin-left: auto;
+  }
+
+  /* Prevent page overflow from clipping fixed nav */
+  body.gt-nav-open .page,
+  body.gt-nav-open .page-wrapper,
+  .contact-page .page,
+  .blogs-page .page,
+  .career-page .page {
+    overflow: visible !important;
+    overflow-x: clip !important;
+  }
+
+  body.gt-nav-open::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.45);
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .about-us-page.gt-nav-open::before {
+    background: rgba(18, 19, 72, 0.55);
+  }
+
+  .sms-nav-menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+
+  .sms-nav-menu > .menu-item {
+    width: 100%;
+    border-bottom: 1px solid rgba(18, 19, 72, 0.08);
+  }
+
+  .sms-nav-menu > .menu-item > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 4px;
+    font-size: 17px;
+    white-space: normal;
+    color: #121348 !important;
+  }
+
+  .nav.is-open .sms-nav-menu > .menu-item > a,
+  .header__nav.is-open .sms-nav-menu > .menu-item > a {
+    color: #121348 !important;
+  }
+
+  /* Inline dropdown panels inside mobile drawer */
+  .sms-dropdown,
+  .gt-mega-menu,
+  .industry-solutions-dropdown,
+  .company-dropdown {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    box-shadow: none !important;
+  }
+
+  .sms-dropdown[hidden],
+  .gt-mega-menu[hidden],
+  .industry-solutions-dropdown[hidden],
+  .company-dropdown[hidden] {
+    display: none !important;
+  }
+
+  .sms-dropdown.is-open,
+  .gt-mega-menu.is-open,
+  .industry-solutions-dropdown.is-open,
+  .company-dropdown.is-open,
+  .menu-item.is-open > .sms-dropdown,
+  .menu-item.is-open > .gt-mega-menu,
+  .menu-item.is-open > .industry-solutions-dropdown,
+  .menu-item.is-open > .company-dropdown {
+    display: block !important;
+  }
+
+  .sms-dropdown__panel,
+  .gt-mega-menu__panel,
+  .industry-solutions-dropdown-panel,
+  .company-dropdown-panel {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 0 8px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .sms-dropdown__links,
+  .gt-mega-menu__links,
+  .industry-solutions-dropdown-links,
+  .company-dropdown-links {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .sms-dropdown__feature,
+  .gt-mega-menu__feature,
+  .industry-solutions-dropdown-feature,
+  .company-dropdown-feature {
+    display: none;
+  }
+
+  body.gt-nav-open {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .header__logo img,
+  .gt-retail-header .header__logo img {
+    width: 132px;
+    height: auto;
+  }
+
+  .gt-retail-header .container,
+  .header .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

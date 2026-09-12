@@ -1,0 +1,27 @@
+/*
+Theme Name: Growtele
+Theme URI: https://growtele.com
+Author: Growtele
+Author URI: https://growtele.com
+Description: Production-ready custom WordPress theme for Growtele — customer engagement and communication platform. Fully compatible with Elementor. Built from Figma design system.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: growtele
+Tags: custom-background, custom-logo, custom-menu, featured-images, theme-options, translation-ready, elementor
+
+Growtele WordPress Theme — Elementor-ready, performance optimized.
+*/
+
+@import url('assets/css/global.css');
+@import url('assets/css/header.css');
+@import url('assets/css/hero.css');
+@import url('assets/css/services.css');
+@import url('assets/css/about.css');
+@import url('assets/css/footer.css');
+@import url('assets/css/responsive.css');
+@import url('assets/css/snap-scroll.css');
+@import url('assets/css/responsive-mobile.css');
