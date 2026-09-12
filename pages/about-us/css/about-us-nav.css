@@ -1,0 +1,106 @@
+/**
+ * SMS-style navbar for About Us (dark hero).
+ */
+.about-us-page {
+  --sms-max: 1440px;
+  --sms-inset: max(calc((100vw - var(--sms-max)) / 2), 0px);
+  --cta-from: #fe8d03;
+  --cta-to: #f93a3a;
+}
+
+.about-us-page .header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 130px;
+  z-index: 100;
+  padding: 0;
+}
+
+.about-us-page .logo {
+  position: absolute;
+  left: calc(var(--sms-inset) + 129px);
+  top: 48px;
+  width: 164.55px;
+  height: 42px;
+}
+
+.about-us-page .logo img {
+  width: 164.55px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.about-us-page .nav-toggle {
+  display: none;
+}
+
+.about-us-page .nav {
+  position: absolute;
+  left: calc(var(--sms-inset) + 432px);
+  top: 55px;
+  display: flex;
+  align-items: center;
+  height: 31px;
+  z-index: 30;
+}
+
+.about-us-page .sms-nav-menu > .menu-item > a,
+.about-us-page .sms-nav-menu > .menu-item > a:hover,
+.about-us-page .sms-nav-menu > .menu-item.is-open > a,
+.about-us-page .sms-nav-menu > .menu-item > a[aria-expanded="true"],
+.about-us-page .sms-nav-menu > .menu-item.company-parent > a {
+  color: #fff;
+}
+
+.about-us-page .sms-nav-menu > .menu-item.company-parent > a {
+  font-weight: 700;
+}
+
+.about-us-page .sms-nav-menu .gt-menu-arrow,
+.about-us-page .sms-nav-menu .nav__chevron {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+.about-us-page .btn-cta {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background: linear-gradient(90deg, var(--cta-from) 0%, var(--cta-to) 100%);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.about-us-page .btn-cta--header {
+  position: absolute;
+  right: calc(var(--sms-inset) + 130px);
+  top: 49.38px;
+  width: 180px;
+  height: 38px;
+  border-radius: 18.5px;
+  padding: 0 10px 0 16px;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.about-us-page .btn-cta__orb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  flex-shrink: 0;
+  width: 29.06px;
+  height: 25.14px;
+  border-radius: 12.22px;
+}
+
+.about-us-page .btn-cta__orb img {
+  width: 21px;
+  height: 21px;
+  transform: rotate(45deg);
+}
+

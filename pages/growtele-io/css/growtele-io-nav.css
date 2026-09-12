@@ -1,0 +1,141 @@
+/**
+ * Shared SMS/retail navbar over the light Growtele.io hero.
+ */
+.growtele-io-page .hero-shell {
+  position: relative;
+}
+
+.growtele-io-page .gt-retail-header.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: transparent;
+}
+
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item > a,
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item > a:hover {
+  color: #121348;
+}
+
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.gt-mega-parent > a,
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.company-parent > a {
+  font-weight: 400;
+}
+
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.gt-mega-parent > a:hover,
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.gt-mega-parent.is-open > a,
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.gt-mega-parent > a[aria-expanded="true"],
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.company-parent > a:hover,
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.company-parent.is-open > a,
+.growtele-io-page .gt-retail-header .sms-nav-menu > .menu-item.company-parent > a[aria-expanded="true"] {
+  font-weight: 700;
+}
+
+.growtele-io-page .hero__actions .btn-gradient {
+  color: #fff;
+  padding: 4px 6px 4px 18px;
+  justify-content: space-between;
+}
+
+.growtele-io-page .hero__actions .btn-gradient > span:first-child {
+  color: #fff;
+}
+
+.growtele-io-page .hero__actions .btn-gradient__icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.growtele-io-page .hero__actions .btn-gradient__arrow {
+  display: block;
+  width: 14px;
+  height: 10px;
+}
+
+.growtele-io-page .cta-mid__actions .btn-blue,
+.growtele-io-page .cta-mid__actions .btn-outline-white {
+  color: #fff;
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  /* Match SMS / industry pages — override absolute transparent hero header */
+  .growtele-io-page .gt-retail-header.header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: none;
+    z-index: 10001 !important;
+  }
+
+  body.gt-nav-open .growtele-io-page .gt-retail-header.header {
+    box-shadow: 0 2px 12px rgba(18, 19, 72, 0.08);
+  }
+
+  .growtele-io-page .gt-retail-header .header__nav {
+    top: var(--sms-mobile-header-h, 72px) !important;
+    max-height: calc(100dvh - var(--sms-mobile-header-h, 72px)) !important;
+    border-radius: 0 !important;
+  }
+
+  /* Keep menu inline inside the retail drawer (not landing-page fixed glass panel). */
+  .growtele-io-page .gt-retail-header .header__nav .gt-header__menu {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    z-index: auto !important;
+    overflow: visible !important;
+  }
+
+  .growtele-io-page .sms-nav-menu > .menu-item > a,
+  .growtele-io-page .nav__link,
+  .growtele-io-page .header__nav.is-open .sms-nav-menu > .menu-item > a {
+    color: #121348 !important;
+    opacity: 1 !important;
+  }
+
+  .growtele-io-page .company-dropdown-item,
+  .growtele-io-page .gt-mega-menu__item,
+  .growtele-io-page .industry-solutions-dropdown-item,
+  .growtele-io-page .company-dropdown-title,
+  .growtele-io-page .gt-mega-menu__title,
+  .growtele-io-page .industry-solutions-dropdown-title {
+    color: #121348 !important;
+  }
+
+  /* Keep growtele.io hero layout — mobile-industry.css also targets .hero */
+  .growtele-io-page .hero-shell .hero {
+    padding-top: 0;
+    min-height: 0;
+    margin-top: 0;
+  }
+
+  .growtele-io-page .hero-shell .hero__content {
+    padding-top: var(--header-height);
+  }
+}

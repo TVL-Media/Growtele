@@ -1,0 +1,23 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="620" height="657" viewBox="0 0 620 657" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mask group">
+<mask id="mask0_0_16" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="620" height="657">
+<rect id="Rectangle 417" width="620" height="657" rx="27" transform="matrix(1 0 0 -1 0 657)" fill="#090A2C"/>
+</mask>
+<g mask="url(#mask0_0_16)">
+<g id="Ellipse 26" opacity="0.21" filter="url(#filter0_f_0_16)">
+<ellipse cx="344.274" cy="364.608" rx="344.274" ry="364.608" transform="matrix(-0.999528 0.030724 -0.407323 0.913284 613.224 153.845)" fill="url(#paint0_linear_0_16)"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_16" x="-354.289" y="64.2513" width="949.776" height="866.324" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_0_16"/>
+</filter>
+<linearGradient id="paint0_linear_0_16" x1="99.7341" y1="52.1352" x2="519.127" y2="413.173" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF850A" stop-opacity="0.04"/>
+<stop offset="1" stop-color="#F9363D"/>
+</linearGradient>
+</defs>
+</svg>

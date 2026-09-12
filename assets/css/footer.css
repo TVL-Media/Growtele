@@ -1,0 +1,268 @@
+/**
+ * Footer Styles — Figma-aligned spacing
+ */
+
+#colophon{
+	border-radius: 30px 30px 0 0;
+}
+
+.gt-footer {
+	position: relative;
+	background-color: #0d0b34;
+	background-image: url('https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-1.png');
+	background-position: center top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: var(--gt-white, #ffffff);
+	padding: 248px 0 32px;
+	overflow: hidden;
+}
+
+/*
+ * Product pages (SMS, WhatsApp, etc.) use a 1440px absolutely positioned canvas.
+ * Without this, .gt-footer sits at the top of .page and overlaps the hero.
+ */
+.page > .gt-footer {
+	position: relative;
+	left: auto;
+	top: auto;
+	width: 100%;
+	max-width: 100%;
+	z-index: 5;
+}
+
+/* SMS uses flow layout — stats card overlaps footer gradient */
+.sms-page .page > .gt-footer {
+	padding-top: 248px;
+}
+
+.sms-page .stats {
+	position: relative;
+	z-index: 6;
+}
+
+.gt-footer__glow {
+	display: none;
+}
+
+.gt-footer .gt-container.gt-footer__inner,
+.gt-footer__inner {
+	position: relative;
+	z-index: 1;
+	width: min(92%, 1240px);
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 0;
+	display: grid;
+	grid-template-columns: 300px minmax(0, 1fr);
+	column-gap: 72px;
+	align-items: start;
+	text-align: left;
+}
+
+.gt-footer__brand {
+	max-width: 300px;
+	margin-bottom: 0;
+	justify-self: start;
+	text-align: left;
+}
+
+.gt-footer__logo img {
+	height: 62px;
+	width: auto;
+	margin-bottom: 20px;
+	display: block;
+}
+
+.gt-footer__brand p {
+	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.7;
+	margin: 0 0 24px;
+	color: rgba(255, 255, 255, 0.72);
+	max-width: 300px;
+}
+
+.gt-footer__cta {
+	display: inline-block;
+	transition: transform 0.3s ease;
+}
+
+.gt-footer__cta img {
+	height: 35px;
+	width: auto;
+	display: block;
+	transition: opacity 0.3s ease;
+}
+
+.gt-footer__cta:hover {
+	transform: translateY(-2px);
+}
+
+.gt-footer__cta:hover img {
+	opacity: 0.92;
+}
+
+.gt-footer__nav {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	column-gap: 48px;
+	margin-bottom: 0;
+	align-items: start;
+	justify-items: start;
+	text-align: left;
+}
+
+.gt-footer__col {
+	text-align: left;
+	justify-self: start;
+	width: 100%;
+}
+
+.gt-footer__col h4 {
+	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.2;
+	margin: 0 0 16px;
+	color: var(--gt-white, #ffffff);
+}
+
+.gt-footer__col ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.gt-footer__col ul li {
+	margin: 0 0 12px;
+}
+
+.gt-footer__col ul li:last-child {
+	margin-bottom: 0;
+}
+
+.gt-footer__col a {
+	display: inline-block;
+	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.4;
+	color: rgba(255, 255, 255, 0.75);
+	transition: color 0.25s ease;
+}
+
+.gt-footer__col a:hover {
+	color: var(--gt-white, #ffffff);
+}
+
+.gt-footer__col--social .gt-footer__contact-heading {
+	margin-top: 32px;
+}
+
+.gt-footer__socials {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	border-radius: 0;
+}
+
+.gt-footer__social-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	color: rgba(255, 255, 255, 0.92);
+	transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.gt-footer__social-link svg {
+	width: 24px;
+	height: 24px;
+}
+
+.gt-footer__social-link:hover {
+	color: var(--gt-white, #ffffff);
+	transform: translateY(-2px);
+}
+
+.gt-footer__social-link--pending {
+	opacity: 0.92;
+	cursor: default;
+}
+
+.gt-footer__email {
+	display: inline-block;
+	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.4;
+	color: rgba(255, 255, 255, 0.92);
+	transition: color 0.25s ease;
+}
+
+.gt-footer__email:hover {
+	color: var(--gt-white, #ffffff);
+}
+
+.gt-footer__bottom {
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 56px;
+	padding-top: 24px;
+}
+
+.gt-footer__legal {
+	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.4;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.gt-footer__legal a {
+	display: inline-block;
+	transition: color 0.25s ease;
+}
+
+.gt-footer__legal a:hover {
+	color: var(--gt-white, #ffffff);
+}
+
+.gt-footer__legal span {
+	opacity: 0.35;
+}
+
+.gt-footer__copy {
+	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.4;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 1024px) {
+	.gt-footer,
+	.sms-page .page > .gt-footer,
+	.page > .gt-footer {
+		padding-top: 32px !important;
+		padding-bottom: 32px !important;
+	}
+}
+

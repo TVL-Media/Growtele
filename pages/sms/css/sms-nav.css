@@ -1,0 +1,508 @@
+/**
+ * SMS page navbar + mega dropdowns only.
+ * Does not touch landing header.css — safe to edit freely.
+ */
+
+/* ---------- Nav tabs ---------- */
+.sms-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.sms-nav-menu > .menu-item {
+  position: relative;
+  margin: 0;
+}
+
+.sms-nav-menu > .menu-item > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  color: #121348;
+  white-space: nowrap;
+  text-decoration: none;
+  background: transparent;
+  transition: font-weight 0.2s ease;
+}
+
+.sms-nav-menu > .menu-item > a:hover,
+.sms-nav-menu > .menu-item.is-open > a,
+.sms-nav-menu > .menu-item > a[aria-expanded="true"] {
+  font-weight: 700;
+  color: #121348;
+}
+
+.sms-nav-menu .gt-menu-arrow,
+.sms-nav-menu .nav__chevron {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.25s ease;
+  filter: brightness(0) saturate(100%);
+  opacity: 0.85;
+  /* asset already points right */
+  transform: rotate(0deg);
+}
+
+.sms-nav-menu .nav__chevron--sm {
+  width: 10px;
+  height: 10px;
+}
+
+/* click / open → rotate 90° to point downwards */
+.sms-nav-menu > .menu-item.is-open > a .gt-menu-arrow,
+.sms-nav-menu > .menu-item.is-open > a .nav__chevron,
+.sms-nav-menu > .menu-item > a[aria-expanded="true"] .gt-menu-arrow,
+.sms-nav-menu > .menu-item > a[aria-expanded="true"] .nav__chevron {
+  transform: rotate(90deg);
+}
+
+/* ---------- Shared SMS dropdown shell (portaled to body) ---------- */
+.sms-dropdown {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  right: auto;
+  z-index: 1100;
+  width: min(1060px, calc(100vw - 64px));
+  margin-inline: 0;
+  transform: translateX(-50%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0.2s ease;
+}
+
+.sms-dropdown.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sms-dropdown[hidden] {
+  display: block;
+}
+
+.sms-dropdown__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
+  gap: 70px;
+  padding: 28px 30px;
+  border-radius: 24px 24px 30px 30px;
+  background: #ffffff;
+  border: 1px solid rgba(18, 19, 72, 0.08);
+  box-shadow: none;
+  color: #121348;
+}
+
+.sms-dropdown__links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 28px;
+  align-content: start;
+  font-family: "Roboto", sans-serif;
+}
+
+.sms-dropdown__item {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  text-decoration: none;
+  color: #121348;
+  border-radius: 14px;
+  padding: 6px;
+  margin: -6px;
+  transition: background 0.2s ease;
+}
+
+.sms-dropdown__item:hover {
+  background: rgba(18, 19, 72, 0.04);
+}
+
+.sms-dropdown__item:hover .sms-dropdown__title,
+.sms-dropdown__item.is-active .sms-dropdown__title {
+  font-weight: 700;
+}
+
+.sms-dropdown__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.sms-dropdown__icon img {
+  max-width: 40px;
+  max-height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+.sms-dropdown__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sms-dropdown__title {
+  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #121348;
+}
+
+.sms-dropdown__desc {
+  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(18, 19, 72, 0.72);
+}
+
+.sms-dropdown__feature {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+}
+
+.sms-dropdown__feature-img {
+  width: 286px;
+  height: 176px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.sms-dropdown__feature-title {
+  margin: 20px 0 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #121348;
+}
+
+.sms-dropdown__feature-desc {
+  margin: 4px 0 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(18, 19, 72, 0.72);
+}
+
+/* Map existing landing classnames used in SMS HTML → SMS shell */
+.sms-dropdown.gt-mega-menu .gt-mega-menu__panel,
+.sms-dropdown.industry-solutions-dropdown .industry-solutions-dropdown-panel,
+.sms-dropdown.company-dropdown .company-dropdown-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
+  gap: 70px;
+  padding: 28px 30px;
+  border-radius: 24px 24px 30px 30px;
+  background: #ffffff;
+  border: 1px solid rgba(18, 19, 72, 0.08);
+  box-shadow: none;
+  color: #121348;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.sms-dropdown .gt-mega-menu__links,
+.sms-dropdown .industry-solutions-dropdown-links,
+.sms-dropdown .company-dropdown-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 28px;
+  align-content: start;
+}
+
+.sms-dropdown .gt-mega-menu__item,
+.sms-dropdown .industry-solutions-dropdown-item,
+.sms-dropdown .company-dropdown-item {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  text-decoration: none;
+  color: #121348;
+  border-radius: 14px;
+  padding: 6px;
+  margin: -6px;
+  transition: background 0.2s ease;
+}
+
+.sms-dropdown .gt-mega-menu__item:hover,
+.sms-dropdown .industry-solutions-dropdown-item:hover,
+.sms-dropdown .company-dropdown-item:hover {
+  background: rgba(18, 19, 72, 0.04);
+}
+
+.sms-dropdown .gt-mega-menu__title,
+.sms-dropdown .industry-solutions-dropdown-title,
+.sms-dropdown .company-dropdown-title {
+  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #121348;
+}
+
+.sms-dropdown .gt-mega-menu__item:hover .gt-mega-menu__title,
+.sms-dropdown .gt-mega-menu__item.is-active .gt-mega-menu__title,
+.sms-dropdown .industry-solutions-dropdown-item:hover .industry-solutions-dropdown-title,
+.sms-dropdown .industry-solutions-dropdown-item.is-active .industry-solutions-dropdown-title,
+.sms-dropdown .company-dropdown-item:hover .company-dropdown-title,
+.sms-dropdown .company-dropdown-item.is-active .company-dropdown-title {
+  font-weight: 700;
+}
+
+.sms-dropdown .gt-mega-menu__desc,
+.sms-dropdown .industry-solutions-dropdown-desc,
+.sms-dropdown .company-dropdown-desc {
+  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(18, 19, 72, 0.72);
+}
+
+.sms-dropdown .gt-mega-menu__copy,
+.sms-dropdown .industry-solutions-dropdown-content,
+.sms-dropdown .company-dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sms-dropdown .gt-mega-menu__feature-title,
+.sms-dropdown .industry-solutions-dropdown-feature-title,
+.sms-dropdown .company-dropdown-feature-title {
+  margin: 20px 0 0;
+  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #121348;
+}
+
+.sms-dropdown .gt-mega-menu__feature-desc,
+.sms-dropdown .industry-solutions-dropdown-feature-desc,
+.sms-dropdown .company-dropdown-feature-desc {
+  margin: 4px 0 0;
+  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(18, 19, 72, 0.72);
+}
+
+.sms-dropdown .gt-mega-menu__feature-img,
+.sms-dropdown .industry-solutions-dropdown-feature-img,
+.sms-dropdown .company-dropdown-feature-img {
+  width: 286px;
+  height: 176px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.sms-dropdown .gt-mega-menu__icon,
+.sms-dropdown .industry-solutions-dropdown-icon,
+.sms-dropdown .company-dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.sms-dropdown .industry-solutions-dropdown-img {
+  object-fit: contain;
+  display: block;
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  max-height: 36px;
+}
+
+.sms-dropdown .gt-mega-menu__img {
+  object-fit: contain;
+  display: block;
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  max-height: 36px;
+}
+
+.sms-dropdown .company-dropdown-img {
+  object-fit: contain;
+  display: block;
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  max-height: 36px;
+}
+
+/* Mobile — white rounded dropdown box + 2-col grid (matches product pages) */
+/* Desktop hover — smooth dropdown reveal */
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+  .sms-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 0;
+    right: 0;
+    height: 18px;
+  }
+
+  .sms-dropdown {
+    transition: visibility 0s linear 0.32s;
+  }
+
+  .sms-dropdown.is-open {
+    transition: visibility 0s linear 0s;
+  }
+
+  .sms-dropdown__panel,
+  .sms-dropdown .gt-mega-menu__panel,
+  .sms-dropdown .industry-solutions-dropdown-panel,
+  .sms-dropdown .company-dropdown-panel {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sms-dropdown.is-open .sms-dropdown__panel,
+  .sms-dropdown.is-open .gt-mega-menu__panel,
+  .sms-dropdown.is-open .industry-solutions-dropdown-panel,
+  .sms-dropdown.is-open .company-dropdown-panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .sms-dropdown__panel,
+  .sms-dropdown .gt-mega-menu__panel,
+  .sms-dropdown .industry-solutions-dropdown-panel,
+  .sms-dropdown .company-dropdown-panel {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .menu-item:not(.is-open) > .sms-dropdown,
+  .menu-item:not(.is-open) > .gt-mega-menu,
+  .menu-item:not(.is-open) > .industry-solutions-dropdown,
+  .menu-item:not(.is-open) > .company-dropdown {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .menu-item:not(.is-open) > .sms-dropdown .gt-mega-menu__panel,
+  .menu-item:not(.is-open) > .sms-dropdown .industry-solutions-dropdown-panel,
+  .menu-item:not(.is-open) > .sms-dropdown .company-dropdown-panel,
+  .sms-dropdown:not(.is-open) .gt-mega-menu__panel,
+  .sms-dropdown:not(.is-open) .industry-solutions-dropdown-panel,
+  .sms-dropdown:not(.is-open) .company-dropdown-panel {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-height: 0 !important;
+  }
+
+  .menu-item.is-open > .sms-dropdown.gt-mega-menu .gt-mega-menu__panel,
+  .menu-item.is-open > .sms-dropdown.industry-solutions-dropdown .industry-solutions-dropdown-panel,
+  .menu-item.is-open > .sms-dropdown.company-dropdown .company-dropdown-panel,
+  .sms-dropdown.is-open.gt-mega-menu .gt-mega-menu__panel,
+  .sms-dropdown.is-open.industry-solutions-dropdown .industry-solutions-dropdown-panel,
+  .sms-dropdown.is-open.company-dropdown .company-dropdown-panel {
+    display: block !important;
+    grid-template-columns: unset !important;
+    gap: 0 !important;
+    padding: 12px !important;
+    margin: 4px 0 8px !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(18, 19, 72, 0.08) !important;
+    background: #fff !important;
+    box-shadow: 0 1px 4px rgba(18, 19, 72, 0.06) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .sms-dropdown .gt-mega-menu__links,
+  .sms-dropdown .industry-solutions-dropdown-links,
+  .sms-dropdown .company-dropdown-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px 12px !important;
+  }
+
+  .sms-dropdown .gt-mega-menu__item,
+  .sms-dropdown .industry-solutions-dropdown-item,
+  .sms-dropdown .company-dropdown-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    grid-template-columns: unset !important;
+    gap: 8px !important;
+    padding: 8px 4px !important;
+    margin: 0 !important;
+    border-radius: 8px !important;
+    color: #121348 !important;
+  }
+
+  .sms-dropdown .gt-mega-menu__icon,
+  .sms-dropdown .industry-solutions-dropdown-icon,
+  .sms-dropdown .company-dropdown-icon {
+    width: 32px !important;
+    height: 32px !important;
+    flex-shrink: 0;
+  }
+
+  .sms-dropdown .gt-mega-menu__img,
+  .sms-dropdown .industry-solutions-dropdown-img,
+  .sms-dropdown .company-dropdown-img {
+    max-width: 32px !important;
+    max-height: 32px !important;
+  }
+
+  .sms-dropdown .gt-mega-menu__title,
+  .sms-dropdown .industry-solutions-dropdown-title,
+  .sms-dropdown .company-dropdown-title {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    color: #121348 !important;
+  }
+
+  .sms-dropdown .gt-mega-menu__desc,
+  .sms-dropdown .industry-solutions-dropdown-desc,
+  .sms-dropdown .company-dropdown-desc,
+  .sms-dropdown .gt-mega-menu__feature,
+  .sms-dropdown .industry-solutions-dropdown-feature,
+  .sms-dropdown .company-dropdown-feature {
+    display: none !important;
+  }
+}

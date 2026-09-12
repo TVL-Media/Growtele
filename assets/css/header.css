@@ -1,0 +1,695 @@
+/**
+ * Header Styles
+ */
+
+.gt-header {
+	position: fixed;
+	top: 32px;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	/* No idle transform/will-change — they break backdrop-filter on mega menu */
+	transition:
+		top var(--gt-duration) var(--gt-ease),
+		transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gt-header.is-scrolled {
+	top: 16px;
+}
+
+.gt-header.is-hidden {
+	transform: translate3d(0, calc(-100% - 48px), 0);
+	pointer-events: none;
+}
+
+.gt-header .gt-container {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.gt-header__inner {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: var(--gt-header-height);
+	background: var(--gt-header-glass);
+	backdrop-filter: blur(var(--gt-glass-blur));
+	-webkit-backdrop-filter: blur(var(--gt-glass-blur));
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: var(--gt-radius-xl);
+	padding: 0 40px;
+	overflow: visible;
+	box-shadow:
+		inset 0 1px 2px rgba(255, 255, 255, 0.35),
+		inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.gt-header.is-scrolled .gt-header__inner,
+.gt-header.is-solid .gt-header__inner {
+	background: rgba(9, 10, 44, 0.92);
+}
+
+.gt-header__logo img,
+.gt-header__logo-img {
+	height: 42px;
+	width: auto;
+}
+
+.gt-header__nav {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
+
+.gt-header__menu {
+	display: flex;
+	align-items: center;
+	gap: 36px;
+}
+
+.gt-header__menu > .menu-item > a {
+	font-family: var(--gt-font-body);
+	font-size: 20px;
+	font-weight: 400;
+	color: var(--gt-white);
+	padding: 4px 6px;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	transition:
+		color var(--gt-duration) var(--gt-ease),
+		font-weight var(--gt-duration) var(--gt-ease);
+}
+
+.gt-header__menu > .menu-item > a::after {
+	display: none;
+}
+
+.gt-header__menu > .menu-item.is-active > a,
+.gt-header__menu > .menu-item.current-menu-item > a,
+.gt-header__menu > .menu-item.is-open > a {
+	font-weight: 700;
+}
+
+.gt-header__menu .menu-item-has-children {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.gt-mega-parent {
+	position: static;
+}
+
+.gt-menu-arrow {
+	width: 12px;
+	height: 12px;
+	opacity: 0.8;
+	transition: transform 0.25s ease;
+}
+
+.gt-mega-parent.is-open .gt-menu-arrow {
+	transform: rotate(90deg);
+}
+
+/*
+ * Products mega menu — portaled to <body> (see main.js).
+ * Keep this layer free of opacity/transform so backdrop-filter matches the navbar.
+ */
+.gt-mega-menu {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1100;
+	width: min(1060px, calc(100vw - 64px));
+	margin-inline: auto;
+	visibility: hidden;
+	pointer-events: none;
+	transition: visibility 0.2s ease;
+}
+
+.gt-mega-menu.is-open {
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.gt-mega-menu[hidden] {
+	display: block;
+}
+
+.gt-mega-menu__panel {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
+	gap: 70px;
+	padding: 28px 30px;
+	border-radius: 0 0 30px 30px;
+	/* Identical glass recipe as .gt-header__inner */
+	background: var(--gt-header-glass);
+	backdrop-filter: blur(var(--gt-glass-blur));
+	-webkit-backdrop-filter: blur(var(--gt-glass-blur));
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	/* Side-only inset highlight — 0 blur so it can't bleed onto top/bottom */
+	box-shadow:
+		inset 1px 0 0 rgba(255, 255, 255, 0.35),
+		inset -1px 0 0 rgba(255, 255, 255, 0.35);
+}
+
+.gt-mega-menu__links {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px 28px;
+	align-content: start;
+	font-family: var(--gt-font-body); /* Roboto */
+}
+
+.gt-mega-menu__item {
+	display: grid;
+	grid-template-columns: 40px minmax(0, 1fr);
+	gap: 12px;
+	align-items: start;
+	text-decoration: none;
+	color: inherit;
+	border-radius: 14px;
+	padding: 6px;
+	margin: -6px;
+	transition: background 0.2s ease;
+}
+
+.gt-mega-menu__item:hover {
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.gt-mega-menu__item.is-active .gt-mega-menu__title {
+	font-weight: 700;
+}
+
+.gt-mega-menu__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	overflow: visible;
+}
+
+.gt-mega-menu__icon img,
+.gt-mega-menu__img {
+	width: 36px;
+	height: 36px;
+	max-width: 36px;
+	max-height: 36px;
+	object-fit: contain;
+	display: block;
+	position: relative;
+	top: 0;
+	transform: none;
+}
+
+.gt-mega-menu__copy {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.gt-mega-menu__title {
+	font-family: var(--gt-font-heading);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--gt-white);
+}
+
+.gt-mega-menu__desc {
+	font-family: var(--gt-font-heading);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.45;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.gt-mega-menu__feature {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	min-width: 0;
+	font-family: var(--gt-font-heading); /* Tomato Grotesk */
+}
+
+.gt-mega-menu__feature-img {
+	width: 286px;
+	height: 176px;
+	object-fit: cover;
+	border-radius: 18px;
+	display: block;
+}
+
+.gt-mega-menu__feature-title {
+	margin: 20px 0 0;
+	font-family: var(--gt-font-heading);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: var(--gt-white);
+}
+
+.gt-mega-menu__feature-desc {
+	margin: 4px 0 0;
+	font-family: var(--gt-font-heading);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+/* -------------------------------------------------------------------------
+   Industry Solutions dropdown — values mirrored from Products (.gt-mega-menu*)
+   Unique classnames only; do not reuse Products selectors.
+   ------------------------------------------------------------------------- */
+.industry-solutions-parent {
+	position: static;
+}
+
+.industry-solutions-parent.is-open .gt-menu-arrow {
+	transform: rotate(90deg);
+}
+
+.industry-solutions-dropdown {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1100;
+	width: min(1060px, calc(100vw - 64px));
+	margin-inline: auto;
+	visibility: hidden;
+	pointer-events: none;
+	transition: visibility 0.2s ease;
+}
+
+.industry-solutions-dropdown.is-open {
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.industry-solutions-dropdown[hidden] {
+	display: block;
+}
+
+.industry-solutions-dropdown-panel {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
+	gap: 70px;
+	padding: 28px 30px;
+	border-radius: 0 0 30px 30px;
+	background: var(--gt-header-glass);
+	backdrop-filter: blur(var(--gt-glass-blur));
+	-webkit-backdrop-filter: blur(var(--gt-glass-blur));
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow:
+		inset 1px 0 0 rgba(255, 255, 255, 0.35),
+		inset -1px 0 0 rgba(255, 255, 255, 0.35);
+}
+
+.industry-solutions-dropdown-links {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px 28px;
+	align-content: start;
+	font-family: var(--gt-font-body);
+}
+
+.industry-solutions-dropdown-item {
+	display: grid;
+	grid-template-columns: 40px minmax(0, 1fr);
+	gap: 12px;
+	align-items: start;
+	text-decoration: none;
+	color: inherit;
+	border-radius: 14px;
+	padding: 6px;
+	margin: -6px;
+	transition: background 0.2s ease;
+}
+
+.industry-solutions-dropdown-item:hover {
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.industry-solutions-dropdown-item.is-active .industry-solutions-dropdown-title {
+	font-weight: 700;
+}
+
+.industry-solutions-dropdown-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	overflow: visible;
+}
+
+.industry-solutions-dropdown-icon img,
+.industry-solutions-dropdown-img {
+	object-fit: contain;
+	display: block;
+	width: 36px;
+	height: 36px;
+	max-width: 36px;
+	max-height: 36px;
+}
+
+.industry-solutions-dropdown-content {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.industry-solutions-dropdown-title {
+	font-family: var(--gt-font-heading);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--gt-white);
+}
+
+.industry-solutions-dropdown-desc {
+	font-family: var(--gt-font-heading);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.45;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.industry-solutions-dropdown-feature {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	min-width: 0;
+	font-family: var(--gt-font-heading);
+}
+
+.industry-solutions-dropdown-feature-img {
+	width: 286px;
+	height: 176px;
+	object-fit: cover;
+	border-radius: 18px;
+	display: block;
+}
+
+.industry-solutions-dropdown-feature-title {
+	margin: 20px 0 0;
+	font-family: var(--gt-font-heading);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: var(--gt-white);
+}
+
+.industry-solutions-dropdown-feature-desc {
+	margin: 4px 0 0;
+	font-family: var(--gt-font-heading);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+/* -------------------------------------------------------------------------
+   Company dropdown — values mirrored from Products (.gt-mega-menu*)
+   Unique classnames only; do not reuse Products selectors.
+   ------------------------------------------------------------------------- */
+.company-parent {
+	position: static;
+}
+
+.company-parent.is-open .gt-menu-arrow {
+	transform: rotate(90deg);
+}
+
+.company-dropdown {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1100;
+	width: min(1060px, calc(100vw - 64px));
+	margin-inline: auto;
+	visibility: hidden;
+	pointer-events: none;
+	transition: visibility 0.2s ease;
+}
+
+.company-dropdown.is-open {
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.company-dropdown[hidden] {
+	display: block;
+}
+
+.company-dropdown-panel {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
+	gap: 70px;
+	padding: 28px 30px;
+	border-radius: 0 0 30px 30px;
+	background: var(--gt-header-glass);
+	backdrop-filter: blur(var(--gt-glass-blur));
+	-webkit-backdrop-filter: blur(var(--gt-glass-blur));
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow:
+		inset 1px 0 0 rgba(255, 255, 255, 0.35),
+		inset -1px 0 0 rgba(255, 255, 255, 0.35);
+}
+
+.company-dropdown-links {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px 28px;
+	align-content: start;
+	font-family: var(--gt-font-body);
+}
+
+.company-dropdown-item {
+	display: grid;
+	grid-template-columns: 40px minmax(0, 1fr);
+	gap: 12px;
+	align-items: start;
+	text-decoration: none;
+	color: inherit;
+	border-radius: 14px;
+	padding: 6px;
+	margin: -6px;
+	transition: background 0.2s ease;
+}
+
+.company-dropdown-item:hover {
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.company-dropdown-item.is-active .company-dropdown-title {
+	font-weight: 700;
+}
+
+.company-dropdown-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	overflow: visible;
+}
+
+.company-dropdown-icon img,
+.company-dropdown-img {
+	width: 36px;
+	height: 36px;
+	max-width: 36px;
+	max-height: 36px;
+	object-fit: contain;
+	display: block;
+	position: relative;
+	top: 0;
+	transform: none;
+}
+
+.company-dropdown-content {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.company-dropdown-title {
+	font-family: var(--gt-font-heading);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--gt-white);
+}
+
+.company-dropdown-desc {
+	font-family: var(--gt-font-heading);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.45;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.company-dropdown-feature {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	min-width: 0;
+	font-family: var(--gt-font-heading);
+}
+
+.company-dropdown-feature-img {
+	width: 286px;
+	height: 176px;
+	object-fit: cover;
+	border-radius: 18px;
+	display: block;
+}
+
+.company-dropdown-feature-title {
+	margin: 20px 0 0;
+	font-family: var(--gt-font-heading);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: var(--gt-white);
+}
+
+.company-dropdown-feature-desc {
+	margin: 4px 0 0;
+	font-family: var(--gt-font-heading);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.gt-header__cta .gt-btn {
+	height: 30px;
+	min-width: 148px;
+	font-size: 13px;
+	padding: 2px 4px 2px 18px;
+	border-radius: 14px;
+}
+
+.gt-header__cta .gt-btn__icon {
+	width: 22px;
+	height: 20px;
+	border-radius: 10px;
+}
+
+.gt-header__cta .gt-btn__icon img {
+	width: 14px;
+	height: 14px;
+}
+
+.gt-header__toggle {
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+}
+
+.gt-header__toggle-bar {
+	display: block;
+	width: 24px;
+	height: 2px;
+	background: var(--gt-white);
+	transition: transform var(--gt-duration) var(--gt-ease), opacity var(--gt-duration) var(--gt-ease);
+}
+
+.gt-header__toggle.is-active .gt-header__toggle-bar:nth-child(1),
+.gt-header__toggle.is-active .gt-header__toggle-bar:nth-child(2),
+.gt-header__toggle.is-active .gt-header__toggle-bar:nth-child(3) {
+	transform: none;
+	opacity: 1;
+}
+
+/* ─── Dropdown bg: solid #121348 after scrolling past hero ─── */
+body.is-past-hero .gt-mega-menu__panel {
+	background: #121348;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.is-past-hero .industry-solutions-dropdown-panel {
+	background: #121348;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.is-past-hero .company-dropdown-panel {
+	background: #121348;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Desktop hover — animate inner panel; outer shell stays transform-free for glass blur */
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+	.gt-mega-menu::before,
+	.industry-solutions-dropdown::before,
+	.company-dropdown::before {
+		content: '';
+		position: absolute;
+		top: -18px;
+		left: 0;
+		right: 0;
+		height: 18px;
+	}
+
+	.gt-mega-menu,
+	.industry-solutions-dropdown,
+	.company-dropdown {
+		transition: visibility 0s linear 0.32s;
+	}
+
+	.gt-mega-menu.is-open,
+	.industry-solutions-dropdown.is-open,
+	.company-dropdown.is-open {
+		transition: visibility 0s linear 0s;
+	}
+
+	.gt-mega-menu__panel,
+	.industry-solutions-dropdown-panel,
+	.company-dropdown-panel {
+		opacity: 0;
+		transform: translateY(-10px);
+		transition:
+			opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.gt-mega-menu.is-open .gt-mega-menu__panel,
+	.industry-solutions-dropdown.is-open .industry-solutions-dropdown-panel,
+	.company-dropdown.is-open .company-dropdown-panel {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+	.gt-mega-menu__panel,
+	.industry-solutions-dropdown-panel,
+	.company-dropdown-panel {
+		transition: none;
+		opacity: 1;
+		transform: none;
+	}
+}

@@ -1,0 +1,180 @@
+/**
+ * WhatsApp page — mobile scroll stability + compact funnel layout.
+ * Loaded after mobile-product.css.
+ */
+@media (max-width: 1024px) {
+  /* Desktop accordion/carousel leftovers can cause repaint jank while scrolling */
+  .journey-card,
+  .scale-card,
+  .scale-card.is-active,
+  .scale-card__media,
+  .scale-card__media img,
+  .scale-card__copy,
+  .why__cards,
+  .why-card {
+    will-change: auto !important;
+    transition: none !important;
+  }
+
+  /* Word reveal spans — no transform animation on touch devices */
+  .gt-words .gt-word,
+  [data-animate-words] .gt-word {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  /* Funnel — desktop flex:1 visual area causes layout jump during mobile scroll */
+  .sms-page .funnel {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .sms-page .funnel__panel {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .sms-page .funnel__list {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    padding: 16px 16px 8px !important;
+    gap: 14px !important;
+  }
+
+  .sms-page .funnel__visual {
+    flex: 0 0 auto !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-height: 200px !important;
+    padding: 4px 12px 12px !important;
+    overflow: hidden !important;
+  }
+
+  .sms-page .funnel__visual img {
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 188px !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  /* Why section — bottom-aligned images in colored inner bands */
+  .sms-page .why-card--peach .why-card__media {
+    background-color: var(--peach-card, #faebe6) !important;
+  }
+
+  .sms-page .why-card--green .why-card__media {
+    background-color: var(--green-card, #e8fae6) !important;
+  }
+
+  .sms-page .why-card--blue .why-card__media {
+    background-color: var(--blue-card, #e6f0fa) !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media,
+  .sms-page .why-card:nth-child(2) .why-card__media,
+  .sms-page .why-card:nth-child(3) .why-card__media,
+  .sms-page .why-card:nth-child(4) .why-card__media {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: calc(100% - 20px) !important;
+    height: 148px !important;
+    min-height: 148px !important;
+    max-height: 148px !important;
+    padding: 0 !important;
+    margin: 8px auto 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box;
+    line-height: 0;
+    border-radius: 12px;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media img,
+  .sms-page .why-card:nth-child(2) .why-card__media img,
+  .sms-page .why-card:nth-child(3) .why-card__media img,
+  .sms-page .why-card:nth-child(4) .why-card__media img {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 0 !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: block !important;
+    transform: translateX(-50%) !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media img,
+  .sms-page .why-card:nth-child(3) .why-card__media img {
+    max-width: 112% !important;
+    max-height: 148px !important;
+  }
+
+  .sms-page .why-card:nth-child(2) .why-card__media img {
+    max-width: 118% !important;
+    max-height: 148px !important;
+  }
+
+  .sms-page .why-card:nth-child(4) .why-card__media img {
+    max-width: 104% !important;
+    max-height: 148px !important;
+  }
+
+  .sms-page .why-card {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /*
+   * Fixed 100dvh hero height jumps when the mobile browser chrome shows/hides,
+   * which feels like the page shaking during scroll.
+   */
+  .sms-page .hero {
+    min-height: 100svh;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .sms-page .funnel__visual {
+    max-height: 168px !important;
+  }
+
+  .sms-page .funnel__visual img {
+    max-height: 156px !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media,
+  .sms-page .why-card:nth-child(2) .why-card__media,
+  .sms-page .why-card:nth-child(3) .why-card__media,
+  .sms-page .why-card:nth-child(4) .why-card__media {
+    height: 132px !important;
+    min-height: 132px !important;
+    max-height: 132px !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media img,
+  .sms-page .why-card:nth-child(2) .why-card__media img,
+  .sms-page .why-card:nth-child(3) .why-card__media img,
+  .sms-page .why-card:nth-child(4) .why-card__media img {
+    max-height: 132px !important;
+  }
+}

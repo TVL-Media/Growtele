@@ -1,0 +1,86 @@
+/**
+ * Industry pages — force section headings visible (loaded last in cascade).
+ * Fixes invisible growth/channels/usecases headers from font load or word-reveal.
+ */
+
+.growth__header,
+.channels__header,
+.usecases__header {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.growth__header :is(.section-title, .growth__subtitle, h2, p),
+.channels__header :is(.section-title, .channels__subtitle, h2, p),
+.usecases__header :is(.section-title, .usecases__subtitle, h2, p),
+.growth__header .gt-word,
+.channels__header .gt-word,
+.usecases__header .gt-word {
+  font-family: 'Roboto', sans-serif !important;
+  color: #121348 !important;
+  -webkit-text-fill-color: #121348 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.growth__header .section-title,
+.channels__header .section-title,
+.usecases__header .section-title {
+  font-size: clamp(28px, 2.8vw, 40px) !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+.growth__header .growth__subtitle,
+.channels__header .channels__subtitle,
+.usecases__header .usecases__subtitle {
+  font-size: clamp(16px, 1.5vw, 22px) !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  color: #121348 !important;
+}
+
+@media (min-width: 1025px) {
+  .growth__header,
+  .channels__header,
+  .usecases__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+}
+
+/* Dark sections — touchpoint + testimonial share growtele-io bgo-1 grid background */
+.touchpoint,
+.testimonial {
+  background-color: #090a2c !important;
+}
+
+.touchpoint__bg,
+.testimonial__bg {
+  background-image: url('https://listings.selectvia.com/wp-content/uploads/2026/09/bgo-1.png');
+  background-repeat: no-repeat;
+  background-position: center 28%;
+  background-size: cover;
+}
+
+.touchpoint__mask,
+.touchpoint__deco,
+.touchpoint__dots,
+.testimonial__mask,
+.testimonial__deco,
+.testimonial__dots {
+  display: none !important;
+}
+
+/* Channels section — remove side background pattern/gradient */
+.channels__bg-pattern {
+  display: none !important;
+}

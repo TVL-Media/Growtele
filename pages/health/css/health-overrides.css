@@ -1,0 +1,21 @@
+.health-page .channels__header .section-title--two-line {
+  max-width: none;
+}
+
+.health-page .channels__header .section-title--two-line .section-title__line {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .health-page .channels__header .section-title--two-line .section-title__line {
+    white-space: normal;
+  }
+
+  .health-page .growth-card:nth-child(1) .growth-card__img {
+    top: 48px;
+    left: 4px;
+    right: auto;
+    max-width: 58%;
+  }
+}

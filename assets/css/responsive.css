@@ -1,0 +1,18 @@
+/**
+ * Responsive tokens — desktop (>1024px) is source of truth.
+ * All mobile/tablet layout lives in responsive-mobile.css only.
+ */
+
+:root {
+	--gt-design-width: 1280px;
+	--gt-ui-scale: 1;
+}
+
+@media (min-width: 1025px) {
+	.gt-hero,
+	.gt-hero__bg,
+	.gt-hero__bg-video,
+	.gt-hero__overlay {
+		max-width: none;
+	}
+}
