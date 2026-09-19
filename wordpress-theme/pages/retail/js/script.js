@@ -11,7 +11,7 @@
     whatsapp: {
       title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
       desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
-      image: 'assets/sassd.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-695.png'
     },
     telephony: {
       title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
@@ -30,98 +30,8 @@
     }
   };
 
+  var industryChannels = window.growteleInitIndustryChannels(channelData);
   var tabs = document.querySelectorAll('.channels__tab');
-  var channelTitle = document.getElementById('channel-title');
-  var channelTabDesc = document.getElementById('channel-tab-desc');
-  var channelPhoneImg = document.getElementById('channel-phone-img');
-  var tabsContainer = document.querySelector('.channels__tabs');
-
-  function placeTabDesc(activeTab) {
-    if (!channelTabDesc || !activeTab || !tabsContainer) return;
-    activeTab.insertAdjacentElement('afterend', channelTabDesc);
-    channelTabDesc.hidden = false;
-  }
-
-  var channelPanel = document.getElementById('channel-panel');
-  var channelsContent = document.querySelector('.channels__content');
-  var channelActiveIndex = 0;
-  var channelSwitchTimer = null;
-
-  function updateIndicator(activeTab) {
-    if (!tabsContainer || !activeTab) return;
-    var height = activeTab.offsetHeight;
-    if (channelTabDesc && channelTabDesc.parentElement === tabsContainer) {
-      height += channelTabDesc.offsetHeight + 8;
-    }
-    tabsContainer.style.setProperty('--tab-indicator-top', activeTab.offsetTop + 'px');
-    tabsContainer.style.setProperty('--tab-indicator-height', height + 'px');
-  }
-
-  function setChannelContent(tab) {
-    var key = tab.getAttribute('data-tab');
-    var data = channelData[key];
-    if (data) {
-      if (channelTitle) channelTitle.textContent = data.title;
-      if (channelTabDesc) channelTabDesc.textContent = data.desc;
-      if (channelPhoneImg && data.image) {
-        channelPhoneImg.src = data.image;
-        channelPhoneImg.className = 'channels__phone-img channels__phone-img--' + key;
-        channelPhoneImg.alt = '';
-      }
-    }
-    if (channelsContent) {
-      channelsContent.classList.toggle('channels__content--box-bg', key === 'whatsapp' || key === 'rcs');
-    }
-  }
-
-  function activateChannelTab(tab, options) {
-    options = options || {};
-    var nextIndex = Array.prototype.indexOf.call(tabs, tab);
-    if (nextIndex < 0) nextIndex = 0;
-    if (nextIndex === channelActiveIndex && !options.force) return;
-
-    if (channelSwitchTimer) {
-      window.clearTimeout(channelSwitchTimer);
-      channelSwitchTimer = null;
-    }
-
-    function applyState() {
-      tabs.forEach(function (t) {
-        t.classList.remove('channels__tab--active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('channels__tab--active');
-      tab.setAttribute('aria-selected', 'true');
-      setChannelContent(tab);
-      channelActiveIndex = nextIndex;
-      placeTabDesc(tab);
-      requestAnimationFrame(function () {
-        updateIndicator(tab);
-        if (channelPanel) channelPanel.classList.remove('is-switching');
-      });
-    }
-
-    if (options.animate && channelPanel && !options.immediate) {
-      channelPanel.classList.add('is-switching');
-      channelSwitchTimer = window.setTimeout(function () {
-        applyState();
-        channelSwitchTimer = null;
-      }, 180);
-      return;
-    }
-
-    if (channelPanel) channelPanel.classList.remove('is-switching');
-    applyState();
-  }
-
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      activateChannelTab(tab, { animate: true });
-    });
-  });
-
-  var initialTab = document.querySelector('.channels__tab--active') || tabs[0];
-  if (initialTab) activateChannelTab(initialTab, { force: true });
 
   /* Channels — tabs follow scroll through sticky stage (no scroll blocking) */
   (function initChannelsScroll() {
@@ -172,8 +82,8 @@
 
     function applyTab(index) {
       var next = Math.min(maxProgress, Math.max(0, Math.round(index)));
-      if (next === channelActiveIndex) return;
-      activateChannelTab(tabs[next], { immediate: true });
+      if (!industryChannels || next === industryChannels.getActiveIndex()) return;
+      industryChannels.activateChannelTab(tabs[next], { animate: true, immediate: true });
     }
 
     function syncTabFromScroll() {
@@ -185,7 +95,7 @@
       var stageRect = stage.getBoundingClientRect();
 
       if (stageRect.top > stickyTop + 8) {
-        if (channelActiveIndex !== 0) applyTab(0);
+        if (industryChannels && industryChannels.getActiveIndex() !== 0) applyTab(0);
         return;
       }
 
@@ -246,33 +156,6 @@
     }
   })();
 
-  /* FAQ accordion */
-  var faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(function (item) {
-    var btn = item.querySelector('.faq-item__question');
-    if (!btn) return;
-
-    btn.addEventListener('click', function () {
-      var isOpen = item.classList.contains('faq-item--open');
-
-      faqItems.forEach(function (other) {
-        other.classList.remove('faq-item--open');
-        var otherBtn = other.querySelector('.faq-item__question');
-        var toggle = other.querySelector('.faq-item__toggle');
-        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-        if (toggle) toggle.textContent = '+';
-      });
-
-      if (!isOpen) {
-        item.classList.add('faq-item--open');
-        btn.setAttribute('aria-expanded', 'true');
-        var toggleEl = item.querySelector('.faq-item__toggle');
-        if (toggleEl) toggleEl.textContent = '_';
-      }
-    });
-  });
-
   /* Use cases — horizontal carousel driven by vertical scroll (retail layout) */
   (function initUsecasesCarousel() {
     var section = document.querySelector('.usecases');
@@ -283,6 +166,10 @@
 
     var cards = Array.prototype.slice.call(track.querySelectorAll('.usecase-card'));
     if (cards.length < 2) return;
+
+    if (window.growteleInitUsecasesMobile && window.growteleInitUsecasesMobile(viewport, track, dots, cards)) {
+      return;
+    }
 
     var GAP = 21;
     var CARD_W = 438;

@@ -5,60 +5,33 @@
  * @package Growtele
  */
 
-$channels = array(
-	array(
-		'slug'  => 'cltele',
-		'class' => 'card-1',
-		'label' => __( 'Cloud Telephony', 'growtele' ),
-		'desc'  => __( 'Engage customers with voice alerts and reminders.', 'growtele' ),
-		'image' => 'cltele.png',
-	),
-	array(
-		'slug'  => 'rcs',
-		'class' => 'card-2',
-		'label' => __( 'RCS', 'growtele' ),
-		'desc'  => __( 'Create smarter customer conversations.', 'growtele' ),
-		'image' => 'rcs.png',
-	),
-	array(
-		'slug'  => 'sms',
-		'class' => 'active',
-		'label' => __( 'SMS', 'growtele' ),
-		'desc'  => __( 'Engage customers with real-time alerts.', 'growtele' ),
-		'image' => 'sms.png',
-	),
-	array(
-		'slug'  => 'whatsapp',
-		'class' => 'card-4',
-		'label' => __( 'WhatsApp', 'growtele' ),
-		'desc'  => __( 'Build meaningful customer engagement.', 'growtele' ),
-		'image' => 'whatsapp.png',
-	),
-	array(
-		'slug'  => 'email',
-		'class' => 'card-5',
-		'label' => __( 'Email', 'growtele' ),
-		'desc'  => __( 'Personalized email campaigns engage customers with reminders.', 'growtele' ),
-		'image' => 'email.png',
-	),
-);
+$section  = growtele_home_get_section( 'channels' );
+$channels = $section['items'] ?? array();
 ?>
 <section class="gt-channels gt-section" id="channels">
 	<div class="gt-container">
 		<?php
-		growtele_section_heading(
-			__( 'One Platform for Every Customer Interaction', 'growtele' ),
-			__( 'Deliver meaningful customer experiences through intelligent communication solutions built for performance and scale.', 'growtele' )
+		growtele_home_section_heading(
+			$section['heading_title'] ?? '',
+			$section['heading_desc'] ?? ''
 		);
 		?>
 
 		<div class="cards-wrapper">
 			<?php foreach ( $channels as $channel ) : ?>
+				<?php
+				$channel_image = $channel['image'] ?? '';
+				if ( is_string( $channel_image ) && preg_match( '#^https?://#i', $channel_image ) ) {
+					$channel_image_url = $channel_image;
+				} else {
+					$channel_image_url = growtele_get_image( 'channels/' . ltrim( (string) $channel_image, '/' ) );
+				}
+				?>
 				<article class="card <?php echo esc_attr( $channel['class'] ); ?>">
 					<div class="img img-<?php echo esc_attr( $channel['slug'] ); ?>">
 						<img
 							class="img-<?php echo esc_attr( $channel['slug'] ); ?>-pic"
-							src="<?php echo esc_url( growtele_get_image( 'channels/' . $channel['image'] ) ); ?>"
+							src="<?php echo esc_url( $channel_image_url ); ?>"
 							alt="<?php echo esc_attr( $channel['label'] ); ?>"
 							loading="lazy"
 						/>

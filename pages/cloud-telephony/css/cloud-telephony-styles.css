@@ -125,6 +125,8 @@ main {
   width: 100%;
   height: 130px;
   z-index: 20;
+  padding-left: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
+  padding-right: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
 }
 
 .sms-page .sms-nav-menu > .menu-item > a,
@@ -142,16 +144,22 @@ main {
 
 .logo {
   position: absolute;
-  left: calc(var(--sms-inset) + 129px);
-  top: 48px;
-  width: 164.55px;
-  height: 42px;
+  left: calc(var(--sms-inset) + 120px);
+  top: auto;
+  bottom: 38px;
+  width: 174.55px;
+  height: 52px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .logo img {
-  width: 164.55px;
+  width: 174.55px;
   height: 52px;
+  max-height: 100%;
   object-fit: contain;
+  object-position: left bottom;
+  transform: translateY(4px);
 }
 
 .nav-toggle {
@@ -232,7 +240,7 @@ main {
   width: 100%;
   min-height: max(683px, 100svh);
   z-index: 2;
-  background: url("https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-3.png") no-repeat center / 107% 107%;
+  background: var(--gt-cms-product-hero-bg, url("https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-3.png")) no-repeat center / 107% 107%;
   overflow: hidden;
 }
 
@@ -382,7 +390,7 @@ main {
 .journey {
   position: relative;
   width: 100%;
-  min-height: 1000px;
+  min-height: 1100px;
   margin-top: 100px;
   z-index: 3;
 }
@@ -460,7 +468,7 @@ main {
   left: calc(var(--sms-inset) + 189px);
   top: 180px;
   width: 1068px;
-  height: 640px;
+  height: 724px;
 }
 
 .journey__phone {
@@ -501,12 +509,20 @@ main {
   height: 551px;
 }
 
+/* Left phone — card 4 (Miss Call) */
+.journey__phone--d {
+  left: -54px;
+  top: -7px;
+  width: 402px;
+  height: 551px;
+}
+
 .journey__cards {
   position: absolute;
   left: 423px;
   top: 0;
   width: 645px;
-  height: 540px;
+  height: 724px;
   display: block;
 }
 
@@ -516,7 +532,7 @@ main {
   width: 645px;
   height: 172px;
   background-color: var(--navy-card);
-  background-image: url("../assets/cloud-telephony-Group%20450.png");
+  background-image: var(--gt-cms-product-journey-card-bg, url("../assets/cloud-telephony-Group%20450.png"));
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -573,6 +589,15 @@ main {
   filter: brightness(0) invert(1);
 }
 
+.journey-card__icond {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  /* Keep white glyph visible on orange circle */
+  filter: brightness(0) invert(1);
+}
+
 .journey-card h3 {
   position: absolute;
   left: 104px;
@@ -584,7 +609,8 @@ main {
 }
 
 .journey-card:nth-child(2) h3,
-.journey-card:nth-child(3) h3 {
+.journey-card:nth-child(3) h3,
+.journey-card:nth-child(4) h3 {
   font-weight: 700;
 }
 
@@ -605,6 +631,11 @@ main {
 }
 
 .journey-card:nth-child(3) p {
+  top: 100px;
+  width: 594px;
+}
+
+.journey-card:nth-child(4) p {
   top: 100px;
   width: 594px;
 }
@@ -828,7 +859,7 @@ main {
   z-index: 3;
   color: #fff;
   overflow: hidden;
-  background: url("../assets/cloud-telephony-Group%20591.png") no-repeat left top / 100% 100%;
+  background: var(--gt-cms-product-benefits-bg, url("../assets/cloud-telephony-Group%20591.png")) no-repeat left top / 100% 100%;
 }
 
 .benefits__title {
@@ -927,24 +958,24 @@ main {
   width: 605px;
   height: 440px;
   background: none;
-  border-radius: 15px;
+  border-radius: 30px;
   overflow: hidden;
 }
 
 .benefits__visual-frame,
 #benefitsVisual {
   position: absolute;
-  left: 39px;
-  top: 19px;
-  width: 524px;
-  height: 401px;
-  border-radius: 8px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
   overflow: hidden;
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% 100%;
-  background-image: url("https://listings.selectvia.com/wp-content/uploads/2026/09/e17f277fe6dc891eb0c652d9da766eba9a52fe41.png");
+  background-size: cover;
+  background-image: var(--gt-cms-product-benefits-visual, url("https://listings.selectvia.com/wp-content/uploads/2026/09/e17f277fe6dc891eb0c652d9da766eba9a52fe41.png"));
 }
 
 /* ---------- Why SMS ---------- */
@@ -1198,22 +1229,22 @@ main {
 }
 
 .funnel__tab.is-active[data-funnel="acquisition"] {
-  color: #1D8004;
-  border-bottom-color: #1D8004;
-}
-
-.funnel__tab.is-active[data-funnel="acquisition"] img {
-  filter: brightness(0) saturate(100%) invert(28%) sepia(98%) saturate(1450%) hue-rotate(73deg) brightness(92%) contrast(101%);
-  opacity: 1;
-}
-
-.funnel__tab.is-active[data-funnel="retention"] {
   color: #A00EC3;
   border-bottom-color: #A00EC3;
 }
 
-.funnel__tab.is-active[data-funnel="retention"] img {
+.funnel__tab.is-active[data-funnel="acquisition"] img {
   filter: brightness(0) saturate(100%) invert(21%) sepia(98%) saturate(5000%) hue-rotate(280deg) brightness(95%) contrast(101%);
+  opacity: 1;
+}
+
+.funnel__tab.is-active[data-funnel="retention"] {
+  color: #394BB8;
+  border-bottom-color: #394BB8;
+}
+
+.funnel__tab.is-active[data-funnel="retention"] img {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(47%) saturate(1876%) hue-rotate(205deg) brightness(93%) contrast(92%);
   opacity: 1;
 }
 
@@ -1241,11 +1272,11 @@ main {
 }
 
 .funnel__panel.funnel__panel--acquisition {
-  background: #F8FCF7;
+  background: #FBF7FC;
 }
 
 .funnel__panel.funnel__panel--acquisition .funnel__list[data-funnel-list="acquisition"] img {
-  background: #E5FFDE;
+  background: #F6E1FB;
 }
 
 .funnel__panel.funnel__panel--engagement {
@@ -1262,11 +1293,11 @@ main {
 }
 
 .funnel__panel.funnel__panel--retention {
-  background: #FBF7FC;
+  background: #F8F9FF;
 }
 
 .funnel__panel.funnel__panel--retention .funnel__list[data-funnel-list="retention"] img {
-  background: #F6E1FB;
+  background: #DDE2FF;
 }
 
 .funnel__list {
@@ -1317,20 +1348,20 @@ main {
 
 .funnel__list[data-funnel-list="acquisition"]:not([hidden]) h3,
 .funnel__list[data-funnel-list="acquisition"]:not([hidden]) p {
-  color: #1D8004;
+  color: #A00EC3;
 }
 
 .funnel__list[data-funnel-list="acquisition"]:not([hidden]) img {
-  background: #E5FFDE;
+  background: #F6E1FB;
 }
 
 .funnel__list[data-funnel-list="retention"]:not([hidden]) h3,
 .funnel__list[data-funnel-list="retention"]:not([hidden]) p {
-  color: #A00EC3;
+  color: #394BB8;
 }
 
 .funnel__list[data-funnel-list="retention"]:not([hidden]) img {
-  background: #F6E1FB;
+  background: #DDE2FF;
 }
 
 .funnel__visual {
@@ -1346,7 +1377,7 @@ main {
   height: 605px;
   object-fit: contain;
   position: relative;
-  top: 90px;
+  top: 24px;
 }
 
 /* ---------- FAQ ---------- */

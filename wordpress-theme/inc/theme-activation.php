@@ -13,70 +13,102 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Create default pages on theme activation.
  */
 function growtele_on_theme_activation() {
+	if ( ! function_exists( 'wp_insert_post' ) || ! function_exists( 'get_page_by_path' ) ) {
+		return;
+	}
+
 	$pages = array(
-		'sms'               => array(
+		'sms'             => array(
 			'title'    => 'SMS',
 			'template' => 'page-templates/page-sms.php',
 		),
-		'whatsapp'          => array(
+		'whatsapp'        => array(
 			'title'    => 'WhatsApp',
 			'template' => 'page-templates/page-whatsapp.php',
 		),
-		'email'             => array(
+		'email'           => array(
 			'title'    => 'Email',
 			'template' => 'page-templates/page-email.php',
 		),
-		'rcs'               => array(
+		'rcs'             => array(
 			'title'    => 'RCS',
 			'template' => 'page-templates/page-rcs.php',
 		),
-		'cloud-telephony'   => array(
+		'cloud-telephony' => array(
 			'title'    => 'Cloud Telephony',
 			'template' => 'page-templates/page-cloud-telephony.php',
 		),
-		'retail'            => array(
+		'retail'          => array(
 			'title'    => 'Retail',
 			'template' => 'page-templates/page-retail.php',
 		),
-		'health'            => array(
+		'health'          => array(
 			'title'    => 'Health',
 			'template' => 'page-templates/page-health.php',
 		),
-		'banking'           => array(
+		'banking'         => array(
 			'title'    => 'Banking',
 			'template' => 'page-templates/page-banking.php',
 		),
-		'travelling'        => array(
+		'travelling'      => array(
 			'title'    => 'Travelling',
 			'template' => 'page-templates/page-travelling.php',
 		),
-		'ecommerce'         => array(
+		'ecommerce'       => array(
 			'title'    => 'E-Commerce',
 			'template' => 'page-templates/page-ecommerce.php',
 		),
-		'education'         => array(
+		'education'       => array(
 			'title'    => 'Education',
 			'template' => 'page-templates/page-education.php',
 		),
-		'logistic'          => array(
+		'logistic'        => array(
 			'title'    => 'Logistic',
 			'template' => 'page-templates/page-logistic.php',
 		),
-		'about-us'          => array(
+		'about-us'        => array(
 			'title'    => 'About Us',
 			'template' => 'page-templates/page-about-us.php',
 		),
-		'blogs'             => array(
+		'blogs'           => array(
 			'title'    => 'Blogs',
 			'template' => 'page-templates/page-blogs.php',
 		),
-		'career'            => array(
+		'career'          => array(
 			'title'    => 'Career',
 			'template' => 'page-templates/page-career.php',
 		),
-		'contact'           => array(
+		'contact'         => array(
 			'title'    => 'Contact',
 			'template' => 'page-templates/page-contact.php',
+		),
+		'growtele-io'     => array(
+			'title'    => 'Growinfinity.io',
+			'template' => 'page-templates/page-growtele-io.php',
+		),
+		'pricing'           => array(
+			'title'    => 'Pricing',
+			'template' => 'page-templates/page-pricing.php',
+		),
+		'api-documentation' => array(
+			'title'    => 'API Documentation',
+			'template' => 'page-templates/page-api-documentation.php',
+		),
+		'privacy-policy'    => array(
+			'title'    => 'Privacy Policy',
+			'template' => 'page-templates/page-privacy-policy.php',
+		),
+		'terms-and-condition' => array(
+			'title'    => 'Terms and Condition',
+			'template' => 'page-templates/page-terms-and-condition.php',
+		),
+		'security'          => array(
+			'title'    => 'Security',
+			'template' => 'page-templates/page-security.php',
+		),
+		'partners-term-of-use' => array(
+			'title'    => 'Partners Term of Use',
+			'template' => 'page-templates/page-partners-term-of-use.php',
 		),
 	);
 
@@ -95,7 +127,8 @@ function growtele_on_theme_activation() {
 				'post_status'  => 'publish',
 				'post_type'    => 'page',
 				'post_content' => '',
-			)
+			),
+			true
 		);
 
 		if ( ! is_wp_error( $page_id ) && $page_id ) {
@@ -114,7 +147,8 @@ function growtele_on_theme_activation() {
 				'post_status'  => 'publish',
 				'post_type'    => 'page',
 				'post_content' => '',
-			)
+			),
+			true
 		);
 	}
 
@@ -128,19 +162,35 @@ function growtele_on_theme_activation() {
 	}
 
 	flush_rewrite_rules( false );
+	update_option( 'growtele_static_pages_ready', GROWTELE_VERSION );
 }
 
 /**
- * Create missing static pages and keep templates assigned on first load.
+ * Defer heavy activation work until after the activation redirect completes.
  */
-function growtele_ensure_static_pages() {
+function growtele_schedule_theme_activation() {
+	update_option( 'growtele_pending_activation', GROWTELE_VERSION, false );
+}
+add_action( 'after_switch_theme', 'growtele_schedule_theme_activation' );
+
+/**
+ * Run deferred activation once in admin.
+ */
+function growtele_run_deferred_theme_activation() {
+	if ( get_option( 'growtele_pending_activation' ) === GROWTELE_VERSION ) {
+		delete_option( 'growtele_pending_activation' );
+		growtele_on_theme_activation();
+		return;
+	}
+
 	if ( get_option( 'growtele_static_pages_ready' ) === GROWTELE_VERSION ) {
 		return;
 	}
 
-	growtele_on_theme_activation();
-	update_option( 'growtele_static_pages_ready', GROWTELE_VERSION );
-}
+	if ( wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+		return;
+	}
 
-add_action( 'after_switch_theme', 'growtele_on_theme_activation' );
-add_action( 'init', 'growtele_ensure_static_pages', 20 );
+	growtele_on_theme_activation();
+}
+add_action( 'admin_init', 'growtele_run_deferred_theme_activation', 99 );

@@ -4,6 +4,39 @@
 (function () {
 	'use strict';
 
+	/* Resolve page-local asset paths to absolute theme URLs on WordPress. */
+	function growteleEncodeAssetPart(part) {
+		try {
+			return encodeURIComponent(decodeURIComponent(part));
+		} catch (e) {
+			return encodeURIComponent(part);
+		}
+	}
+
+	function growteleDetectAssetBase(hintEl) {
+		if (window.GROWTELE_PAGE_ASSETS) {
+			return window.GROWTELE_PAGE_ASSETS;
+		}
+		if (!hintEl) {
+			return '';
+		}
+		var src = hintEl.getAttribute('src') || hintEl.src || '';
+		var match = src.match(/^(.*\/assets\/)/i);
+		return match ? match[1] : '';
+	}
+
+	window.growteleResolveAssetUrl = function (path, hintEl) {
+		if (!path || /^https?:\/\//i.test(path) || /^\/\//.test(path) || path.charAt(0) === '/') {
+			return path;
+		}
+		var rel = String(path).replace(/^\.?\/?assets\//, '');
+		var base = growteleDetectAssetBase(hintEl);
+		if (!base) {
+			return path;
+		}
+		return base + rel.split('/').map(growteleEncodeAssetPart).join('/');
+	};
+
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	const MOBILE_MQ = window.matchMedia('(max-width: 1024px)');
 

@@ -9,14 +9,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GROWTELE_VERSION', '2.7.7' );
+define( 'GROWTELE_VERSION', '2.10.89' );
 define( 'GROWTELE_DIR', get_template_directory() );
 define( 'GROWTELE_URI', get_template_directory_uri() );
 
-require GROWTELE_DIR . '/inc/theme-setup.php';
-require GROWTELE_DIR . '/inc/enqueue.php';
-require GROWTELE_DIR . '/inc/elementor.php';
-require GROWTELE_DIR . '/inc/customizer.php';
-require GROWTELE_DIR . '/inc/template-tags.php';
-require GROWTELE_DIR . '/inc/static-pages.php';
-require GROWTELE_DIR . '/inc/theme-activation.php';
+$growtele_includes = array(
+	'/inc/theme-setup.php',
+	'/inc/enqueue.php',
+	'/inc/elementor.php',
+	'/inc/customizer.php',
+	'/inc/content/loader.php',
+	'/inc/template-tags.php',
+	'/inc/static-pages.php',
+	'/inc/theme-activation.php',
+);
+
+foreach ( $growtele_includes as $growtele_include ) {
+	$growtele_file = GROWTELE_DIR . $growtele_include;
+	if ( is_readable( $growtele_file ) ) {
+		require $growtele_file;
+	}
+}

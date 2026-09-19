@@ -27,20 +27,21 @@
   padding: 4px 6px;
   font-family: "Roboto", sans-serif;
   font-size: 20px;
-  font-weight: 400;
   line-height: normal;
   color: #121348;
-  white-space: nowrap;
   text-decoration: none;
   background: transparent;
-  transition: font-weight 0.2s ease;
 }
 
 .sms-nav-menu > .menu-item > a:hover,
 .sms-nav-menu > .menu-item.is-open > a,
+.sms-nav-menu > .menu-item.is-nav-current > a,
 .sms-nav-menu > .menu-item > a[aria-expanded="true"] {
-  font-weight: 700;
   color: #121348;
+}
+
+.sms-page .sms-nav-menu > .menu-item.is-nav-current > a {
+  color: #fff;
 }
 
 .sms-nav-menu .gt-menu-arrow,
@@ -82,12 +83,13 @@
   transform: translateX(-50%);
   visibility: hidden;
   pointer-events: none;
-  transition: visibility 0.2s ease;
+  transition: visibility 0s linear 0.36s;
 }
 
 .sms-dropdown.is-open {
   visibility: visible;
   pointer-events: auto;
+  transition: visibility 0s linear 0s;
 }
 
 .sms-dropdown[hidden] {
@@ -371,23 +373,15 @@
     height: 18px;
   }
 
-  .sms-dropdown {
-    transition: visibility 0s linear 0.32s;
-  }
-
-  .sms-dropdown.is-open {
-    transition: visibility 0s linear 0s;
-  }
-
   .sms-dropdown__panel,
   .sms-dropdown .gt-mega-menu__panel,
   .sms-dropdown .industry-solutions-dropdown-panel,
   .sms-dropdown .company-dropdown-panel {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     transition:
-      opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .sms-dropdown.is-open .sms-dropdown__panel,

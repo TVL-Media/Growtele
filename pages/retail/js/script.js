@@ -11,7 +11,7 @@
     whatsapp: {
       title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
       desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
-      image: 'assets/sassd.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-695.png'
     },
     telephony: {
       title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',

@@ -4,6 +4,10 @@
  *
  * @package Growtele
  */
+
+$gt_nav = function_exists( 'growtele_get_content' ) ? growtele_get_content( 'global.nav', array() ) : array();
+$gt_mega = is_array( $gt_nav['mega'] ?? null ) ? $gt_nav['mega'] : array();
+$gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : array();
 ?>
 <ul id="primary-menu" class="gt-header__menu" data-nav-menu>
 	<li class="menu-item current-menu-item" data-nav-item>
@@ -29,8 +33,8 @@
 							<img class="gt-mega-menu__img gt-mega-menu__img--sms" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/e068a65617596a51a8ee49b72d17f47dfb5bb193.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
 						</span>
 						<span class="gt-mega-menu__copy">
-							<span class="gt-mega-menu__title"><?php esc_html_e( 'SMS', 'growtele' ); ?></span>
-							<span class="gt-mega-menu__desc"><?php esc_html_e( 'Powerful SMS solutions that connect businesses with customers', 'growtele' ); ?></span>
+							<span class="gt-mega-menu__title"><?php echo esc_html( $gt_mega['sms']['title'] ?? 'SMS' ); ?></span>
+							<span class="gt-mega-menu__desc"><?php echo esc_html( $gt_mega['sms']['desc'] ?? 'Powerful SMS solutions that connect businesses with customers' ); ?></span>
 						</span>
 					</a>
 					<a class="gt-mega-menu__item gt-mega-menu__item--email" href="<?php echo esc_url( growtele_get_page_url( 'email' ) ); ?>" data-mega-link>
@@ -38,8 +42,8 @@
 							<img class="gt-mega-menu__img gt-mega-menu__img--email" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/19f867b5eea254b7493a13b05f4957415e10aade.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
 						</span>
 						<span class="gt-mega-menu__copy">
-							<span class="gt-mega-menu__title"><?php esc_html_e( 'E-Mail', 'growtele' ); ?></span>
-							<span class="gt-mega-menu__desc"><?php esc_html_e( 'Engage customers with personalized, reliable emails that drive conversations', 'growtele' ); ?></span>
+							<span class="gt-mega-menu__title"><?php echo esc_html( $gt_mega['email']['title'] ?? 'E-Mail' ); ?></span>
+							<span class="gt-mega-menu__desc"><?php echo esc_html( $gt_mega['email']['desc'] ?? 'Engage customers with personalized, reliable emails that drive conversations' ); ?></span>
 						</span>
 					</a>
 					<a class="gt-mega-menu__item gt-mega-menu__item--cloud" href="<?php echo esc_url( growtele_get_page_url( 'cloud-telephony' ) ); ?>" data-mega-link>
@@ -47,8 +51,8 @@
 							<img class="gt-mega-menu__img gt-mega-menu__img--cloud" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/3d9f60c411ff5c025d1a45119a83b8f70b3e1753.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
 						</span>
 						<span class="gt-mega-menu__copy">
-							<span class="gt-mega-menu__title"><?php esc_html_e( 'Cloud Telephony', 'growtele' ); ?></span>
-							<span class="gt-mega-menu__desc"><?php esc_html_e( 'Connect, engage, and support customers with powerful cloud-based calling', 'growtele' ); ?></span>
+							<span class="gt-mega-menu__title"><?php echo esc_html( $gt_mega['cloud-telephony']['title'] ?? 'Cloud Telephony' ); ?></span>
+							<span class="gt-mega-menu__desc"><?php echo esc_html( $gt_mega['cloud-telephony']['desc'] ?? 'Connect, engage, and support customers with powerful cloud-based calling' ); ?></span>
 						</span>
 					</a>
 					<a class="gt-mega-menu__item gt-mega-menu__item--whatsapp" href="<?php echo esc_url( growtele_get_page_url( 'whatsapp' ) ); ?>" data-mega-link>
@@ -56,8 +60,8 @@
 							<img class="gt-mega-menu__img gt-mega-menu__img--whatsapp" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/40cce6a65a1f4441217c085b9ec9bfd18066ad17.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
 						</span>
 						<span class="gt-mega-menu__copy">
-							<span class="gt-mega-menu__title"><?php esc_html_e( 'WhatsApp', 'growtele' ); ?></span>
-							<span class="gt-mega-menu__desc"><?php esc_html_e( 'Connect with customers on WhatsApp through engaging conversations', 'growtele' ); ?></span>
+							<span class="gt-mega-menu__title"><?php echo esc_html( $gt_mega['whatsapp']['title'] ?? 'WhatsApp' ); ?></span>
+							<span class="gt-mega-menu__desc"><?php echo esc_html( $gt_mega['whatsapp']['desc'] ?? 'Connect with customers on WhatsApp through engaging conversations' ); ?></span>
 						</span>
 					</a>
 					<a class="gt-mega-menu__item gt-mega-menu__item--rcs" href="<?php echo esc_url( growtele_get_page_url( 'rcs' ) ); ?>" data-mega-link>
@@ -65,8 +69,8 @@
 							<img class="gt-mega-menu__img gt-mega-menu__img--rcs" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/84847c7f8e4ed44d8a8e83fef3de936683103f8f.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
 						</span>
 						<span class="gt-mega-menu__copy">
-							<span class="gt-mega-menu__title"><?php esc_html_e( 'RCS', 'growtele' ); ?></span>
-							<span class="gt-mega-menu__desc"><?php esc_html_e( 'RCS is the next generation of business messaging that transforms.', 'growtele' ); ?></span>
+							<span class="gt-mega-menu__title"><?php echo esc_html( $gt_mega['rcs']['title'] ?? 'RCS' ); ?></span>
+							<span class="gt-mega-menu__desc"><?php echo esc_html( $gt_mega['rcs']['desc'] ?? 'RCS is the next generation of business messaging that transforms.' ); ?></span>
 						</span>
 					</a>
 				</div>
@@ -79,8 +83,8 @@
 						height="180"
 						loading="lazy"
 					/>
-					<h3 class="gt-mega-menu__feature-title"><?php esc_html_e( 'True Market Leaders for CPass', 'growtele' ); ?></h3>
-					<p class="gt-mega-menu__feature-desc"><?php esc_html_e( 'True Market Leaders in CPaaS — empowering businesses with seamless, scalable, and intelligent customer communications.', 'growtele' ); ?></p>
+					<h3 class="gt-mega-menu__feature-title"><?php echo esc_html( $gt_feature['title'] ?? 'True Market Leaders for CPass' ); ?></h3>
+					<p class="gt-mega-menu__feature-desc"><?php echo esc_html( $gt_feature['desc'] ?? 'True Market Leaders in CPaaS — empowering businesses with seamless, scalable, and intelligent customer communications.' ); ?></p>
 				</aside>
 			</div>
 		</div>
@@ -230,7 +234,7 @@
 							<span class="company-dropdown-desc"><?php esc_html_e( "Let's connect, explore opportunities, and build smarter communication solutions together.", 'growtele' ); ?></span>
 						</span>
 					</a>
-					<a class="company-dropdown-item company-dropdown-item--rcs" href="<?php echo esc_url( growtele_get_page_url( 'growtele-io' ) ); ?>" data-company-link>
+					<a class="company-dropdown-item company-dropdown-item--rcs" href="<?php echo esc_url( growtele_get_page_url( 'growinfinity-io' ) ); ?>" data-company-link>
 						<span class="company-dropdown-icon company-dropdown-icon--rcs">
 							<img class="company-dropdown-img company-dropdown-img--rcs" src="https://listings.selectvia.com/wp-content/uploads/2026/09/82757cbe2674c5b6b53a8141fab6efabe2faf537.png" alt="" width="40" height="40" loading="lazy" />
 						</span>

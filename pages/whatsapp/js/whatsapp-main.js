@@ -8,6 +8,11 @@
     engagement: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/fece317fe37c9cccd3c628247abf71ef36eaca5f.png", alt: "Engagement campaign flow" },
     retention: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/da2baeb8533e6edb03764ddc3aa3e02b8386dce4-1.png", alt: "Retention campaign flow" }
   };
+  if (window.GROWTELE_CMS_FUNNEL) {
+    Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {
+      funnelImages[key] = Object.assign({}, funnelImages[key] || {}, window.GROWTELE_CMS_FUNNEL[key]);
+    });
+  }
 
   Object.keys(funnelImages).forEach(function (key) {
     var preload = new Image();
@@ -193,7 +198,9 @@
       var secRect = section.getBoundingClientRect();
       var bodyRect = body.getBoundingClientRect();
       var first = cards[0].getBoundingClientRect();
-      var last = cards[cards.length - 1].getBoundingClientRect();
+      /* Check only first 3 cards — the last card stacks behind and may extend below viewport */
+      var checkIndex = Math.min(cards.length - 1, 2);
+      var last = cards[checkIndex].getBoundingClientRect();
       var sectionH = section.offsetHeight || 1;
       var designBodyTop = secRect.top + sectionH * (180 / 1000);
       var bodyTolerance = Math.max(48, viewH * 0.07);

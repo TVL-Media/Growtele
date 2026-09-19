@@ -4,19 +4,27 @@
  *
  * @package Growtele
  */
+
+$integrations = growtele_home_get_section( 'integrations' );
 ?>
 <section class="gt-integrations gt-section" id="integrations">
 	<div class="gt-integrations__bg" aria-hidden="true">
-		<img src="<?php echo esc_url( growtele_get_image( 'integrations/integrations-bg.png' ) ); ?>" alt="" loading="lazy" />
+		<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.integrations.bg_image', 'integrations/integrations-bg.png' ) ); ?>" alt="" loading="lazy" />
 	</div>
 
 	<div class="gt-container gt-integrations__inner">
 		<div class="gt-integrations__content" data-animate="fade-up">
-			<h2 class="gt-integrations__title"><?php esc_html_e( 'Building Strong Relationships That Drive Business Growth', 'growtele' ); ?></h2>
-			<p class="gt-integrations__desc"><?php esc_html_e( 'Trusted by leading brands and enterprises to deliver reliable, scalable, and impactful customer communication experiences.', 'growtele' ); ?></p>
-			<a href="#" class="gt-btn gt-btn--gradient gt-btn--learn">
-				<span><?php esc_html_e( 'Learn More', 'growtele' ); ?></span>
-				<img src="<?php echo esc_url( growtele_get_image( 'icons/learn-more-arrow.png' ) ); ?>" alt="" width="26" height="26" loading="lazy" />
+			<h2 class="gt-integrations__title"><?php echo esc_html( $integrations['title'] ?? '' ); ?></h2>
+			<p class="gt-integrations__desc"><?php echo esc_html( $integrations['description'] ?? '' ); ?></p>
+			<?php
+			$integrations_btn_url = $integrations['button_url'] ?? '';
+			if ( ! $integrations_btn_url || '#' === $integrations_btn_url ) {
+				$integrations_btn_url = growtele_get_page_url( 'about-us' );
+			}
+			?>
+			<a href="<?php echo esc_url( $integrations_btn_url ); ?>" class="gt-btn gt-btn--gradient gt-btn--learn">
+				<span><?php echo esc_html( $integrations['button_text'] ?? 'Learn More' ); ?></span>
+				<svg class="gt-btn__learn-arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 			</a>
 		</div>
 

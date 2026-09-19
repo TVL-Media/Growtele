@@ -41,7 +41,12 @@ function growtele_static_page_map() {
 		'blogs'             => 'blogs',
 		'career'            => 'career',
 		'contact'           => 'contact',
-		'growtele-io'       => 'growtele-io',
+		'growinfinity-io'   => 'growinfinity-io',
+		'api-documentation' => 'api-documentation',
+		'privacy-policy'    => 'privacy-policy',
+		'terms-and-condition' => 'terms-and-condition',
+		'security'          => 'security',
+		'partners-term-of-use' => 'partners-term-of-use',
 	);
 }
 
@@ -52,10 +57,15 @@ function growtele_static_page_map() {
  * @return string
  */
 function growtele_get_page_url( $slug ) {
+	$slug = trim( (string) $slug, '/' );
 	$page = get_page_by_path( $slug );
 
 	if ( $page instanceof WP_Post ) {
-		return get_permalink( $page );
+		$permalink = get_permalink( $page );
+		if ( is_string( $permalink ) && preg_match( '#page_id=\d+#i', $permalink ) ) {
+			return home_url( '/' . $slug . '/' );
+		}
+		return $permalink;
 	}
 
 	return home_url( '/' . $slug . '/' );
@@ -110,6 +120,10 @@ function growtele_match_static_page_href( $url ) {
 		return 'home';
 	}
 
+	if ( preg_match( '#^(?:\.\./|\./)+/?$#', $url ) ) {
+		return 'home';
+	}
+
 	if ( preg_match( '#^(?:\.\./|\./)?([a-z0-9-]+)(?:/index\.html)?/?$#i', $url, $matches ) ) {
 		$slug = growtele_resolve_static_page_slug( $matches[1] );
 
@@ -128,17 +142,25 @@ function growtele_match_static_page_href( $url ) {
  * @return string|false
  */
 function growtele_convert_static_page_href( $url ) {
-	$slug = growtele_match_static_page_href( $url );
+	$hash = '';
+	$path = $url;
+
+	if ( false !== strpos( $path, '#' ) ) {
+		list( $path, $hash ) = explode( '#', $path, 2 );
+		$hash = '#' . $hash;
+	}
+
+	$slug = growtele_match_static_page_href( $path );
 
 	if ( false === $slug ) {
 		return false;
 	}
 
 	if ( 'home' === $slug ) {
-		return growtele_get_home_path();
+		return growtele_get_home_path() . $hash;
 	}
 
-	return growtele_get_page_url( $slug );
+	return growtele_get_page_url( $slug ) . $hash;
 }
 
 /**
@@ -148,9 +170,11 @@ function growtele_convert_static_page_href( $url ) {
  */
 function growtele_static_page_folder_aliases() {
 	return array(
-		'healthcare'   => 'health',
-		'growinfinity' => 'growtele-io',
-		'growtele.io'  => 'growtele-io',
+		'healthcare'     => 'health',
+		'growinfinity'   => 'growinfinity-io',
+		'growtele.io'    => 'growinfinity-io',
+		'growtele-io'    => 'growinfinity-io',
+		'growtele io'    => 'growinfinity-io',
 	);
 }
 
@@ -397,6 +421,25 @@ function growtele_absolutize_static_assets( $html, $slug ) {
  * @param string $html HTML content.
  * @return string
  */
+function growtele_prepare_static_page_nav_current( $html ) {
+	if ( false !== stripos( $html, 'nav-current.js' ) ) {
+		return $html;
+	}
+
+	$version = GROWTELE_VERSION;
+	$script  = '<script src="' . esc_url( GROWTELE_URI . '/assets/js/nav-current.js?v=' . $version ) . '"></script>';
+
+	if ( preg_match( '/<script[^>]+sms-nav-dropdowns\.js[^>]*><\/script>/i', $html ) ) {
+		return preg_replace( '/(<script[^>]+sms-nav-dropdowns\.js[^>]*><\/script>)/i', $script . '$1', $html, 1 );
+	}
+
+	if ( preg_match( '/<script[^>]+assets\/js\/main\.js[^>]*><\/script>/i', $html ) ) {
+		return preg_replace( '/(<script[^>]+assets\/js\/main\.js[^>]*><\/script>)/i', $script . '$1', $html, 1 );
+	}
+
+	return preg_replace( '/<\/body>/i', $script . '</body>', $html, 1 );
+}
+
 function growtele_prepare_static_page_smooth_scroll( $html ) {
 	$version     = GROWTELE_VERSION;
 	$uri         = GROWTELE_URI;
@@ -505,7 +548,7 @@ function growtele_inject_page_assets( $html, $slug ) {
 
 	$version    = GROWTELE_VERSION;
 	$asset_base = trailingslashit( GROWTELE_URI ) . 'pages/' . $pages[ $slug ] . '/assets/';
-	$inject     = '<script>window.GROWTELE_PAGE_ASSETS=' . wp_json_encode( $asset_base ) . ';</script>';
+	$inject     = '<script>window.GROWTELE_THEME_URI=' . wp_json_encode( untrailingslashit( GROWTELE_URI ) ) . ';window.GROWTELE_PAGE_ASSETS=' . wp_json_encode( $asset_base ) . ';</script>';
 	$inject    .= '<script src="' . esc_url( GROWTELE_URI . '/assets/js/resolve-asset-url.js?v=' . $version ) . '"></script>';
 
 	return preg_replace( '/<head>/i', '<head>' . $inject, $html, 1 );
@@ -546,8 +589,13 @@ function growtele_render_static_page( $slug ) {
 	}
 
 	$html = growtele_prepare_static_page_smooth_scroll( $html );
+	$html = growtele_prepare_static_page_nav_current( $html );
 	$html = growtele_prepare_static_page_animations( $html );
 	$html = growtele_version_theme_assets( $html );
+
+	if ( function_exists( 'growtele_apply_static_page_cms' ) ) {
+		$html = growtele_apply_static_page_cms( $html, $slug );
+	}
 
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted theme HTML bundle.
 	echo $html;
@@ -581,3 +629,100 @@ function growtele_template_include_static_pages( $template ) {
 	return $template;
 }
 add_filter( 'template_include', 'growtele_template_include_static_pages', 99 );
+
+/**
+ * Tell LiteSpeed / page-cache plugins not to store this response.
+ */
+function growtele_bypass_page_cache() {
+	if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+		define( 'DONOTCACHEPAGE', true );
+	}
+}
+
+/**
+ * Slug from the current request path if it matches a bundled static page.
+ *
+ * @return string
+ */
+function growtele_request_static_page_slug() {
+	if ( is_admin() ) {
+		return '';
+	}
+
+	$path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
+	if ( '' === $path ) {
+		return '';
+	}
+
+	$parts = explode( '/', $path );
+	$slug  = (string) end( $parts );
+	$pages = growtele_static_page_map();
+
+	return isset( $pages[ $slug ] ) ? $slug : '';
+}
+
+/**
+ * Serve bundled pages when WP posts are missing; fix legacy ?page_id= footer links.
+ */
+function growtele_handle_static_page_routing() {
+	if ( is_admin() ) {
+		return;
+	}
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public GET only.
+	if ( ! empty( $_GET['page_id'] ) && 1 === count( $_GET ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page_id = (int) $_GET['page_id'];
+
+		$legacy_ids = array(
+			3 => 'privacy-policy',
+		);
+
+		if ( isset( $legacy_ids[ $page_id ] ) ) {
+			growtele_bypass_page_cache();
+			if ( function_exists( 'growtele_sync_static_page_posts' ) ) {
+				growtele_sync_static_page_posts();
+			}
+			wp_safe_redirect( home_url( '/' . $legacy_ids[ $page_id ] . '/' ), 301 );
+			exit;
+		}
+
+		$post = get_post( $page_id );
+
+		if ( $post instanceof WP_Post && 'page' === $post->post_type && 'publish' === $post->post_status ) {
+			$permalink = get_permalink( $post );
+			if ( is_string( $permalink ) && preg_match( '#page_id=\d+#i', $permalink ) && '' !== $post->post_name ) {
+				$permalink = home_url( '/' . $post->post_name . '/' );
+			}
+			wp_safe_redirect( $permalink, 301 );
+			exit;
+		}
+	}
+
+	if ( ! is_404() ) {
+		return;
+	}
+
+	$slug = growtele_request_static_page_slug();
+	if ( '' === $slug ) {
+		return;
+	}
+
+	growtele_bypass_page_cache();
+
+	if ( function_exists( 'growtele_sync_static_page_posts' ) ) {
+		growtele_sync_static_page_posts();
+	}
+
+	$page = get_page_by_path( $slug );
+	if ( $page instanceof WP_Post && 'publish' === $page->post_status ) {
+		$permalink = get_permalink( $page );
+		if ( is_string( $permalink ) && ! preg_match( '#page_id=\d+#i', $permalink ) ) {
+			wp_safe_redirect( $permalink, 301 );
+			exit;
+		}
+	}
+
+	growtele_render_static_page( $slug );
+}
+add_action( 'template_redirect', 'growtele_handle_static_page_routing', 0 );

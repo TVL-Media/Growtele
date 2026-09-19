@@ -277,8 +277,6 @@
       )}">
         <div class="blog-card__image-wrap">
           <img src="${resolveBlogAsset(blog.bgImage)}" alt="" class="bg">
-          ${blog.overlayClass ? `<div class="overlay ${blog.overlayClass}"></div>` : ''}
-          ${renderBadge(blog)}
         </div>
         <div class="blog-card__meta">
           <span class="tag ${blog.categoryClass}">${escapeHtml(blog.category)}</span>

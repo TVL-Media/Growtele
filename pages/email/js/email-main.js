@@ -8,6 +8,11 @@
     engagement: { src: "assets/email-Enagement Card.png", alt: "Engagement campaign flow" },
     retention: { src: "assets/email-retim.png", alt: "Retention campaign flow" }
   };
+  if (window.GROWTELE_CMS_FUNNEL) {
+    Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {
+      funnelImages[key] = Object.assign({}, funnelImages[key] || {}, window.GROWTELE_CMS_FUNNEL[key]);
+    });
+  }
 
   Object.keys(funnelImages).forEach(function (key) {
     var preload = new Image();

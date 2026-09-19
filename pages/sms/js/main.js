@@ -4,10 +4,15 @@
   var funnelVisual = document.getElementById("funnelVisual");
 
   var funnelImages = {
-    acquisition: { src: "assets/acquica.png", alt: "Acquisition campaign flow" },
-    engagement: { src: "assets/Enagement Card.png", alt: "Engagement campaign flow" },
-    retention: { src: "assets/retim.png", alt: "Retention campaign flow" }
+    acquisition: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Group-689.png", alt: "Acquisition campaign flow" },
+    engagement: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Group-679-1.png", alt: "Engagement campaign flow" },
+    retention: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Group-690.png", alt: "Retention campaign flow" }
   };
+  if (window.GROWTELE_CMS_FUNNEL) {
+    Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {
+      funnelImages[key] = Object.assign({}, funnelImages[key] || {}, window.GROWTELE_CMS_FUNNEL[key]);
+    });
+  }
 
   Object.keys(funnelImages).forEach(function (key) {
     var preload = new Image();
@@ -127,12 +132,7 @@
       return;
     }
 
-    var phone = document.querySelector(".journey__phone");
-    var phoneSources = [
-      "assets/Phone.png",
-      "assets/phone2.png",
-      "assets/phone3.png"
-    ];
+    var phones = Array.prototype.slice.call(section.querySelectorAll(".journey__phone"));
 
     var GAP = 12;
     var CARD_H = 172;
@@ -160,7 +160,7 @@
         card.style.zIndex = String(index + 1);
       });
 
-      if (phone) {
+      if (phones.length) {
         var halfTrigger = CARD_H / (2 * STEP);
         var phoneIndex = 0;
         for (var i = 1; i < cards.length; i++) {
@@ -168,16 +168,9 @@
             phoneIndex = i;
           }
         }
-        if (phone.dataset.phoneIndex !== String(phoneIndex)) {
-          phone.dataset.phoneIndex = String(phoneIndex);
-          if (window.growteleApplyAssetSrc) {
-            window.growteleApplyAssetSrc(phone, phoneSources[phoneIndex]);
-          } else {
-            phone.src = window.growteleResolveAssetUrl
-              ? window.growteleResolveAssetUrl(phoneSources[phoneIndex], phone)
-              : phoneSources[phoneIndex];
-          }
-        }
+        phones.forEach(function (phone, i) {
+          phone.classList.toggle("is-active", i === phoneIndex);
+        });
       }
     }
 
@@ -203,7 +196,9 @@
       var secRect = section.getBoundingClientRect();
       var bodyRect = body.getBoundingClientRect();
       var first = cards[0].getBoundingClientRect();
-      var last = cards[cards.length - 1].getBoundingClientRect();
+      /* Check only first 3 cards — the last card stacks behind and may extend below viewport */
+      var checkIndex = Math.min(cards.length - 1, 2);
+      var last = cards[checkIndex].getBoundingClientRect();
       var sectionH = section.offsetHeight || 1;
       var designBodyTop = secRect.top + sectionH * (180 / 1000);
       var bodyTolerance = Math.max(48, viewH * 0.07);

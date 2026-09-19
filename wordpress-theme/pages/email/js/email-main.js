@@ -8,6 +8,19 @@
     engagement: { src: "assets/email-Enagement Card.png", alt: "Engagement campaign flow" },
     retention: { src: "assets/email-retim.png", alt: "Retention campaign flow" }
   };
+  if (window.GROWTELE_CMS_FUNNEL) {
+    Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {
+      funnelImages[key] = Object.assign({}, funnelImages[key] || {}, window.GROWTELE_CMS_FUNNEL[key]);
+    });
+  }
+
+  Object.keys(funnelImages).forEach(function (key) {
+    var preload = new Image();
+    var src = funnelImages[key].src;
+    preload.src = window.growteleResolveAssetUrl
+      ? window.growteleResolveAssetUrl(src, funnelVisual)
+      : src;
+  });
 
   function getScrollY() {
     if (window.growteleLenis && typeof window.growteleLenis.scroll === "number") {
@@ -58,7 +71,13 @@
         panel.classList.toggle("funnel__panel--retention", key === "retention");
       }
       if (funnelVisual && funnelImages[key]) {
-        funnelVisual.src = funnelImages[key].src;
+        if (window.growteleApplyAssetSrc) {
+          window.growteleApplyAssetSrc(funnelVisual, funnelImages[key].src);
+        } else {
+          funnelVisual.src = window.growteleResolveAssetUrl
+            ? window.growteleResolveAssetUrl(funnelImages[key].src, funnelVisual)
+            : funnelImages[key].src;
+        }
         funnelVisual.alt = funnelImages[key].alt;
       }
       document.querySelectorAll("[data-funnel-list]").forEach(function (list) {
@@ -71,39 +90,7 @@
     });
   });
 
-  document.querySelectorAll(".faq-item__btn").forEach(function (button) {
-    button.addEventListener("click", function () {
-      var item = button.closest(".faq-item");
-      var isOpen = item.classList.contains("is-open");
-      document.querySelectorAll(".faq-item").forEach(function (other) {
-        other.classList.remove("is-open");
-        var otherBtn = other.querySelector(".faq-item__btn");
-        var otherToggle = other.querySelector(".faq-item__toggle");
-        if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
-        if (otherToggle) otherToggle.textContent = "+";
-      });
-      if (!isOpen) {
-        item.classList.add("is-open");
-        button.setAttribute("aria-expanded", "true");
-        var toggleEl = item.querySelector(".faq-item__toggle");
-        if (toggleEl) toggleEl.textContent = "_";
-      }
-    });
-  });
-
-  if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      document.body.classList.toggle("gt-nav-open", open);
-    });
-    nav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        if (isDropdownTrigger(link)) return;
-        closeNav();
-      });
-    });
-  }
+  /* Mobile nav toggle — handled by assets/js/mobile-nav.js */
 
   var layoutRefreshCallbacks = [];
 
@@ -118,10 +105,11 @@
     layoutRefreshCallbacks.forEach(function (callback) {
       callback();
     });
+    window.dispatchEvent(new Event("growtele:layout-refresh"));
   }
 
   window.addEventListener("resize", refreshScroll);
-  if (window.visualViewport) {
+  if (window.visualViewport && !window.matchMedia("(max-width: 1024px)").matches) {
     window.visualViewport.addEventListener("resize", refreshScroll);
   }
   window.addEventListener("growtele:smooth-scroll-ready", refreshScroll);
@@ -288,6 +276,15 @@
     if (!grid) return;
     var cards = Array.prototype.slice.call(grid.querySelectorAll("[data-scale-card]"));
     if (!cards.length) return;
+
+    /* Mobile: static stacked cards — no autoplay */
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      cards.forEach(function (item) {
+        item.classList.remove("is-active");
+      });
+      grid.classList.remove("has-active");
+      return;
+    }
 
     var activeIndex = 0;
     var intervalId = null;

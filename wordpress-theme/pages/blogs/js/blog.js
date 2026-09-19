@@ -75,9 +75,9 @@
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
       excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
-      bgImage: 'assets/Rectangle 409.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
-      badge: { type: 'ewee1', src: 'assets/11111113EWEE 1.png' }
+      badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
     },
     {
       id: 8,
@@ -87,9 +87,9 @@
       date: '04th June 2026',
       title: 'The New Era of Customer Communication',
       excerpt: 'Customers expect instant, personalized, and convenient communication. Traditional channels often struggle to deliver the speed......',
-      bgImage: 'assets/Rectangle 465.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png',
       overlayClass: 'overlay--465',
-      badge: { type: 'image69', src: 'assets/image 69.png' },
+      badge: { type: 'image69', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png' },
       whatsapp: true
     },
     {
@@ -100,9 +100,9 @@
       date: '22nd May 2026',
       title: 'How to: Get Started With SMS for Shipping + Delivery Notifications',
       excerpt: "SMS provides incredible advantages if you're shipping and making deliveries. Here are only a few matters you can do with....",
-      bgImage: 'assets/Rectangle 466.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png',
       overlayClass: 'overlay--466',
-      badge: { type: 'ewee6', src: 'assets/11111113EWEE 6.png' }
+      badge: { type: 'ewee6', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png' }
     },
     {
       id: 10,
@@ -112,9 +112,9 @@
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
       excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
-      bgImage: 'assets/Rectangle 464.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png',
       overlayClass: 'overlay--464',
-      badge: { type: 'ewee4', src: 'assets/11111113EWEE 4.png' }
+      badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png' }
     },
     {
       id: 11,
@@ -124,9 +124,9 @@
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
       excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
-      bgImage: 'assets/Rectangle 409.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
-      badge: { type: 'ewee1', src: 'assets/11111113EWEE 7.png' }
+      badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
     },
     {
       id: 12,
@@ -136,9 +136,9 @@
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
       excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
-      bgImage: 'assets/Rectangle 471.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--471',
-      badge: { type: 'ewee4', src: 'assets/11111113EWEE 8.png' }
+      badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
     },
     {
       id: 13,
@@ -148,9 +148,9 @@
       date: '04th June 2026',
       title: 'The New Era of Customer Communication',
       excerpt: 'Customers expect instant, personalized, and convenient communication. Traditional channels often struggle to deliver the speed......',
-      bgImage: 'assets/Rectangle 465.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png',
       overlayClass: 'overlay--465',
-      badge: { type: 'image69', src: 'assets/image 69.png' },
+      badge: { type: 'image69', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png' },
       whatsapp: true
     },
     {
@@ -161,9 +161,9 @@
       date: '22nd May 2026',
       title: 'How to: Get Started With SMS for Shipping + Delivery Notifications',
       excerpt: "SMS provides incredible advantages if you're shipping and making deliveries. Here are only a few matters you can do with....",
-      bgImage: 'assets/Rectangle 466.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png',
       overlayClass: 'overlay--466',
-      badge: { type: 'ewee6', src: 'assets/11111113EWEE 6.png' }
+      badge: { type: 'ewee6', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png' }
     },
     {
       id: 15,
@@ -173,9 +173,9 @@
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
       excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
-      bgImage: 'assets/Rectangle 409.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
-      badge: { type: 'ewee1', src: 'assets/11111113EWEE 1.png' }
+      badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
     },
     {
       id: 16,
@@ -185,9 +185,9 @@
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
       excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
-      bgImage: 'assets/Rectangle 464.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png',
       overlayClass: 'overlay--464',
-      badge: { type: 'ewee4', src: 'assets/11111113EWEE 4.png' }
+      badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png' }
     },
     {
       id: 17,
@@ -197,9 +197,9 @@
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
       excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
-      bgImage: 'assets/Rectangle 409.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
-      badge: { type: 'ewee1', src: 'assets/11111113EWEE 7.png' }
+      badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
     },
     {
       id: 18,
@@ -209,9 +209,9 @@
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
       excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
-      bgImage: 'assets/Rectangle 471.png',
+      bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--471',
-      badge: { type: 'ewee4', src: 'assets/11111113EWEE 8.png' }
+      badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
     }
   ];
 
@@ -237,6 +237,10 @@
     return div.innerHTML;
   }
 
+  function resolveBlogAsset(path) {
+    return window.growteleResolveAssetUrl ? window.growteleResolveAssetUrl(path) : path;
+  }
+
   function renderBadge(blog) {
     const badge = blog.badge;
     if (!badge) return '';
@@ -244,12 +248,12 @@
     if (badge.type === 'image69') {
       return `
         <div class="blog-card__badge blog-card__badge--image69">
-          <img src="${badge.src}" alt="">
+          <img src="${resolveBlogAsset(badge.src)}" alt="">
         </div>
         ${blog.whatsapp ? `
         <div class="blog-card__badge blog-card__badge--whatsapp">
-          <img src="assets/ellipse-106.svg" alt="" class="wa-circle">
-          <img src="assets/image-70.png" alt="" width="47" height="47">
+          <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png" alt="" class="wa-circle">
+          <img src="https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png" alt="" width="47" height="47">
         </div>` : ''}`;
     }
 
@@ -259,7 +263,7 @@
       ewee6: 'blog-card__badge--ewee6'
     };
 
-    return `<img src="${badge.src}" alt="" class="blog-card__badge ${classMap[badge.type] || 'blog-card__badge--ewee1'}">`;
+    return `<img src="${resolveBlogAsset(badge.src)}" alt="" class="blog-card__badge ${classMap[badge.type] || 'blog-card__badge--ewee1'}">`;
   }
 
   function renderCard(blog) {
@@ -272,9 +276,7 @@
         (blog.title + ' ' + blog.excerpt + ' ' + blog.category + ' ' + blog.date).toLowerCase()
       )}">
         <div class="blog-card__image-wrap">
-          <img src="${blog.bgImage}" alt="" class="bg">
-          ${blog.overlayClass ? `<div class="overlay ${blog.overlayClass}"></div>` : ''}
-          ${renderBadge(blog)}
+          <img src="${resolveBlogAsset(blog.bgImage)}" alt="" class="bg">
         </div>
         <div class="blog-card__meta">
           <span class="tag ${blog.categoryClass}">${escapeHtml(blog.category)}</span>

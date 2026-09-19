@@ -6,22 +6,22 @@
     sms: {
       title: 'Deliver secure patient communication through SMS with appointment reminders, health alerts and two-way engagement.',
       desc: 'Engage patients with appointment reminders, health updates, and real-time support on SMS.',
-      image: 'assets/Health X SMS.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d9ab14e4c7628bbd2da58c881ea7cff7be5d697e.png'
     },
     whatsapp: {
       title: 'Deliver personalized patient care through WhatsApp with appointment booking, prescription updates and instant assistance.',
       desc: 'Engage patients with appointment confirmations, health tips, and real-time support on WhatsApp.',
-      image: 'assets/Health x Whatsapp.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-688.png'
     },
     telephony: {
       title: 'Deliver reliable healthcare communication through Cloud Telephony with voice reminders and automated patient support.',
       desc: 'Engage patients with voice-assisted calls, follow-ups, and real-time support on Cloud Telephony.',
-      image: 'assets/Health X Cloud Tele.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-544.png'
     },
     rcs: {
       title: 'Deliver rich healthcare communication through RCS with interactive appointment cards and personalized health updates.',
       desc: 'Engage patients with rich media messages, reminders, and real-time support on RCS.',
-      image: 'assets/Health X RCS.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-543.png'
     },
     email: {
       title: 'Deliver secure healthcare communication through E-mail with test results, care plans and personalized patient updates.',

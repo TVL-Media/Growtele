@@ -1,0 +1,77 @@
+.coming-soon-page {
+  background: #fff;
+}
+
+.coming-soon-page .page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.coming-soon-page main {
+  flex: 1;
+  overflow: visible;
+}
+
+.coming-soon {
+  width: 100%;
+  margin: 0 auto;
+  padding: 140px 24px 100px;
+}
+
+.coming-soon__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coming-soon__icon {
+  font-size: 40px;
+  line-height: 1;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.coming-soon__title {
+  margin: 0;
+  font-family: 'Tomato Grotesk', sans-serif;
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #122454;
+}
+
+.coming-soon__text {
+  margin: 16px 0 0;
+  padding: 0;
+  white-space: nowrap;
+  font-family: 'Tomato Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #5a6478;
+}
+
+@media (min-width: 1025px) {
+  .coming-soon-page .coming-soon {
+    --gt-page-inset: max(calc((100vw - 1440px) / 2), 0px);
+    --gt-brand-inline: 120px;
+    padding-left: calc(var(--gt-page-inset) + var(--gt-brand-inline));
+    padding-right: calc(var(--gt-page-inset) + var(--gt-brand-inline));
+  }
+}
+
+@media (max-width: 1024px) {
+  .coming-soon-page.gt-nav-open .gt-retail-header.header {
+    z-index: 10003;
+  }
+
+  .coming-soon {
+    padding: 120px 20px 80px;
+  }
+
+  .coming-soon__text {
+    white-space: normal;
+  }
+}

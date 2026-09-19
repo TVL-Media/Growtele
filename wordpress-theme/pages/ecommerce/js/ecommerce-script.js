@@ -30,148 +30,8 @@
     }
   };
 
+  var industryChannels = window.growteleInitIndustryChannels(channelData);
   var tabs = document.querySelectorAll('.channels__tab');
-  var channelTitle = document.getElementById('channel-title');
-  var channelTabDesc = document.getElementById('channel-tab-desc');
-  var channelPhoneImg = document.getElementById('channel-phone-img');
-  var channelPhoneImgNext = document.getElementById('channel-phone-img-next');
-  var phoneActive = channelPhoneImg;
-  var phoneIdle = channelPhoneImgNext;
-  var tabsContainer = document.querySelector('.channels__tabs');
-
-  Object.keys(channelData).forEach(function (key) {
-    var preload = new Image();
-    preload.src = channelData[key].image;
-  });
-
-  function placeTabDesc(activeTab) {
-    if (!channelTabDesc || !activeTab || !tabsContainer) return;
-    activeTab.insertAdjacentElement('afterend', channelTabDesc);
-    channelTabDesc.hidden = false;
-  }
-
-  var channelPanel = document.getElementById('channel-panel');
-  var channelsContent = document.querySelector('.channels__content');
-  var channelActiveIndex = 0;
-  var channelSwitchTimer = null;
-
-  function updateIndicator(activeTab) {
-    if (!tabsContainer || !activeTab) return;
-    var height = activeTab.offsetHeight;
-    if (channelTabDesc && channelTabDesc.parentElement === tabsContainer) {
-      height += channelTabDesc.offsetHeight + 8;
-    }
-    tabsContainer.style.setProperty('--tab-indicator-top', activeTab.offsetTop + 'px');
-    tabsContainer.style.setProperty('--tab-indicator-height', height + 'px');
-  }
-
-  function showChannelImage(key, direction, animate) {
-    var data = channelData[key];
-    if (!data || !phoneActive) return;
-
-    var modifier = 'channels__phone-img--' + key;
-
-    if (!phoneIdle || !animate) {
-      phoneActive.src = data.image;
-      phoneActive.className = 'channels__phone-img ' + modifier + ' is-active';
-      phoneActive.setAttribute('data-channel', key);
-      if (phoneIdle) {
-        phoneIdle.className = 'channels__phone-img';
-        phoneIdle.removeAttribute('data-channel');
-      }
-      return;
-    }
-
-    if (phoneActive.getAttribute('data-channel') === key) return;
-
-    var incoming = phoneIdle;
-    var outgoing = phoneActive;
-    var fromClass = direction >= 0 ? 'is-from-down' : 'is-from-up';
-    var leaveClass = direction >= 0 ? 'is-leave-up' : 'is-leave-down';
-
-    incoming.src = data.image;
-    incoming.className = 'channels__phone-img ' + modifier + ' ' + fromClass;
-    incoming.setAttribute('data-channel', key);
-    incoming.alt = '';
-
-    void incoming.offsetWidth;
-
-    incoming.classList.add('is-active');
-    incoming.classList.remove('is-from-down', 'is-from-up');
-    outgoing.classList.remove('is-active', 'is-from-down', 'is-from-up', 'is-leave-up', 'is-leave-down');
-    outgoing.classList.add(leaveClass);
-
-    phoneActive = incoming;
-    phoneIdle = outgoing;
-  }
-
-  function setChannelContent(tab, options) {
-    options = options || {};
-    var key = tab.getAttribute('data-tab');
-    var data = channelData[key];
-    if (data) {
-      if (channelTitle) channelTitle.textContent = data.title;
-      if (channelTabDesc) channelTabDesc.textContent = data.desc;
-      showChannelImage(key, options.direction || 0, options.animateImage);
-    }
-    if (channelsContent) {
-      channelsContent.classList.toggle('channels__content--box-bg', key === 'whatsapp' || key === 'rcs');
-    }
-  }
-
-  function activateChannelTab(tab, options) {
-    options = options || {};
-    var nextIndex = Array.prototype.indexOf.call(tabs, tab);
-    if (nextIndex < 0) nextIndex = 0;
-    if (nextIndex === channelActiveIndex && !options.force) return;
-
-    if (channelSwitchTimer) {
-      window.clearTimeout(channelSwitchTimer);
-      channelSwitchTimer = null;
-    }
-
-    var direction = nextIndex - channelActiveIndex;
-
-    function applyState() {
-      tabs.forEach(function (t) {
-        t.classList.remove('channels__tab--active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('channels__tab--active');
-      tab.setAttribute('aria-selected', 'true');
-      setChannelContent(tab, {
-        direction: direction,
-        animateImage: !options.force
-      });
-      channelActiveIndex = nextIndex;
-      placeTabDesc(tab);
-      requestAnimationFrame(function () {
-        updateIndicator(tab);
-      });
-    }
-
-    if (options.animate && channelPanel && !options.immediate) {
-      channelPanel.classList.add('is-switching');
-      applyState();
-      channelSwitchTimer = window.setTimeout(function () {
-        if (channelPanel) channelPanel.classList.remove('is-switching');
-        channelSwitchTimer = null;
-      }, 220);
-      return;
-    }
-
-    if (channelPanel) channelPanel.classList.remove('is-switching');
-    applyState();
-  }
-
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      activateChannelTab(tab, { animate: true });
-    });
-  });
-
-  var initialTab = document.querySelector('.channels__tab--active') || tabs[0];
-  if (initialTab) activateChannelTab(initialTab, { force: true });
 
   /* Channels — tabs follow scroll through sticky stage (no scroll blocking) */
   (function initChannelsScroll() {
@@ -222,8 +82,8 @@
 
     function applyTab(index) {
       var next = Math.min(maxProgress, Math.max(0, Math.round(index)));
-      if (next === channelActiveIndex) return;
-      activateChannelTab(tabs[next], { animate: true, immediate: true });
+      if (!industryChannels || next === industryChannels.getActiveIndex()) return;
+      industryChannels.activateChannelTab(tabs[next], { animate: true, immediate: true });
     }
 
     function syncTabFromScroll() {
@@ -235,7 +95,7 @@
       var stageRect = stage.getBoundingClientRect();
 
       if (stageRect.top > stickyTop + 8) {
-        if (channelActiveIndex !== 0) applyTab(0);
+        if (industryChannels && industryChannels.getActiveIndex() !== 0) applyTab(0);
         return;
       }
 
@@ -296,33 +156,6 @@
     }
   })();
 
-  /* FAQ accordion */
-  var faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(function (item) {
-    var btn = item.querySelector('.faq-item__question');
-    if (!btn) return;
-
-    btn.addEventListener('click', function () {
-      var isOpen = item.classList.contains('faq-item--open');
-
-      faqItems.forEach(function (other) {
-        other.classList.remove('faq-item--open');
-        var otherBtn = other.querySelector('.faq-item__question');
-        var toggle = other.querySelector('.faq-item__toggle');
-        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-        if (toggle) toggle.textContent = '+';
-      });
-
-      if (!isOpen) {
-        item.classList.add('faq-item--open');
-        btn.setAttribute('aria-expanded', 'true');
-        var toggleEl = item.querySelector('.faq-item__toggle');
-        if (toggleEl) toggleEl.textContent = '_';
-      }
-    });
-  });
-
   /* Use cases — horizontal carousel driven by vertical scroll (retail layout) */
   (function initUsecasesCarousel() {
     var section = document.querySelector('.usecases');
@@ -333,6 +166,10 @@
 
     var cards = Array.prototype.slice.call(track.querySelectorAll('.usecase-card'));
     if (cards.length < 2) return;
+
+    if (window.growteleInitUsecasesMobile && window.growteleInitUsecasesMobile(viewport, track, dots, cards)) {
+      return;
+    }
 
     var GAP = 21;
     var CARD_W = 438;

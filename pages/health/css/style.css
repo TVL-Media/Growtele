@@ -14,7 +14,7 @@
   --cream-stat: #fff5e7;
   --white: #ffffff;
   --border-light: rgba(0, 0, 0, 0.15);
-  --font-body: 'Roboto';
+  --font-body: 'Roboto', sans-serif;
   --font-heading: 'Roboto', sans-serif;
   --page-width: 1440px;
   --container-padding: 120px;
@@ -537,7 +537,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__content.channels__content--box-bg {
-  background: url('../../retail/assets/BOX%20(2).png') no-repeat center center;
+  background: var(--gt-cms-industry-box-bg, url('../../retail/assets/BOX%20(2).png')) no-repeat center center;
   background-size: 100% 100%;
 }
 
@@ -643,17 +643,17 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__phone-img--sms {
-  width: 496px;
+  width: 509px;
   height: 530px;
   object-fit: contain;
   object-position: center right;
   position: relative;
-  top: 65px;
+  top: 157px;
   left: 145px;
 }
 
 .channels__phone-img--whatsapp {
-  width: 574px;
+  width: 501px;
   height: 555px;
   object-fit: contain;
   object-position: center;
@@ -663,23 +663,23 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__phone-img--telephony {
-  width: 643px;
-  height: 433px;
+  width: 592px;
+  height: 406px;
   object-fit: contain;
   object-position: center;
   position: relative;
-  top: 131px;
-  left: 64px;
+  top: 164px;
+  left: 103px;
 }
 
 .channels__phone-img--rcs {
-  width: 568px;
+  width: 658px;
   height: 482px;
   object-fit: contain;
   object-position: center;
   position: relative;
-  top: 99px;
-  left: 124px;
+  top: 107px;
+  left: 35px;
 }
 
 .channels__phone-img--email {
@@ -689,7 +689,7 @@ a { text-decoration: none; color: inherit; }
   object-position: center;
   position: relative;
   top: 138px;
-  left: 86px;
+  left: 147px;
 }
 
 /* ===== GROWTH ===== */
@@ -755,8 +755,8 @@ a { text-decoration: none; color: inherit; }
   width: 68%;
   max-width: 252px;
   height: auto;
-  top: 62px;
-  left: 4px;
+  top: 83px;
+  left: -21px;
   right: auto;
   object-fit: contain;
   object-position: left top;
@@ -768,8 +768,10 @@ a { text-decoration: none; color: inherit; }
 }
 
 .growth-card:nth-child(3) .growth-card__img {
-  width: 229px; height: 140px;
-  top: 109px; right: 138px;
+  width: 207px;
+  height: 120px;
+  top: 109px;
+  right: -8px;
 }
 
 .growth-card__body {
@@ -908,12 +910,18 @@ a { text-decoration: none; color: inherit; }
 
 .touchpoint__phone {
   position: absolute;
-  left: 0;
+  left: 10px;
   top: 46px;
-  width: 214px;
+  width: 320px;
   height: 358px;
   object-fit: cover;
   border-radius: 32px;
+}
+
+.health-page .touchpoint__phone {
+  left: 10px !important;
+  width: 320px !important;
+  max-width: none !important;
 }
 
 /* ===== USE CASES ===== */
@@ -1094,7 +1102,7 @@ a { text-decoration: none; color: inherit; }
 
 .testimonial__logo-card {
   width: 364px;
-  height: 432px;
+  height: 475px;
   flex-shrink: 0;
   background: linear-gradient(to right, #fdf3e6, var(--white));
   border: 1px solid rgba(0, 0, 0, 0.25);

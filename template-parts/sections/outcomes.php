@@ -4,6 +4,10 @@
  *
  * @package Growtele
  */
+
+$outcomes = growtele_home_get_section( 'outcomes' );
+$stat_1   = $outcomes['stat_1'] ?? array();
+$stat_2   = $outcomes['stat_2'] ?? array();
 ?>
 <section class="gt-outcomes gt-section" id="outcomes">
 	<div class="gt-container">
@@ -11,7 +15,7 @@
 			<h2 class="gt-section-heading__title" data-animate="fade-up">
 				<?php
 				echo wp_kses(
-					__( 'Communication That<br>Drives Business Outcomes', 'growtele' ),
+					$outcomes['heading_title'] ?? '',
 					array(
 						'br' => array(),
 					)
@@ -21,7 +25,7 @@
 			<p class="gt-section-heading__desc" data-animate="fade-up" data-animate-delay="100">
 				<?php
 				echo wp_kses(
-					__( 'Reliable, secure, and scalable communication solutions<br>built to help businesses connect, engage, and grow.', 'growtele' ),
+					$outcomes['heading_desc'] ?? '',
 					array(
 						'br' => array(),
 					)
@@ -33,14 +37,14 @@
 		<div class="gt-outcomes__grid">
 			<article class="gt-outcomes__card gt-outcomes__card--dark" data-animate="fade-up">
 				<div class="gt-outcomes__card-bg">
-					<img src="<?php echo esc_url( growtele_get_image( 'sections/outcomes-mask.svg' ) ); ?>" alt="" loading="lazy" />
+					<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.outcomes.card_bg', 'sections/outcomes-mask.svg' ) ); ?>" alt="" loading="lazy" />
 				</div>
 				<div class="gt-outcomes__card-content">
-					<h3 class="gt-outcomes__card-title"><?php esc_html_e( 'Smarter Customer Engagement', 'growtele' ); ?></h3>
+					<h3 class="gt-outcomes__card-title"><?php echo esc_html( $outcomes['card_title'] ?? '' ); ?></h3>
 					<p class="gt-outcomes__card-desc">
 						<?php
 						echo wp_kses(
-							__( 'Deliver meaningful, personalized conversations across SMS, WhatsApp, RCS, Email, and Voice with intelligent communication solutions designed to help businesses connect with customers at every stage of their journey.', 'growtele' ),
+							$outcomes['card_desc'] ?? '',
 							array(
 								'br' => array(),
 							)
@@ -49,20 +53,20 @@
 					</p>
 					<div class="gt-outcomes__stats">
 						<div class="gt-outcomes__stat">
-							<span class="gt-outcomes__stat-value" data-counter="12" data-counter-suffix="B+">0</span>
-							<span class="gt-outcomes__stat-label"><?php esc_html_e( 'Messages Delivered Globally', 'growtele' ); ?></span>
+							<span class="gt-outcomes__stat-value" data-counter="<?php echo esc_attr( $stat_1['counter'] ?? '0' ); ?>" data-counter-suffix="<?php echo esc_attr( $stat_1['suffix'] ?? '' ); ?>">0</span>
+							<span class="gt-outcomes__stat-label"><?php echo esc_html( $stat_1['label'] ?? '' ); ?></span>
 						</div>
 						<div class="gt-outcomes__stat">
-							<span class="gt-outcomes__stat-value" data-counter="300" data-counter-suffix="+">0</span>
-							<span class="gt-outcomes__stat-label"><?php esc_html_e( 'Enterprise Clients Served', 'growtele' ); ?></span>
+							<span class="gt-outcomes__stat-value" data-counter="<?php echo esc_attr( $stat_2['counter'] ?? '0' ); ?>" data-counter-suffix="<?php echo esc_attr( $stat_2['suffix'] ?? '' ); ?>">0</span>
+							<span class="gt-outcomes__stat-label"><?php echo esc_html( $stat_2['label'] ?? '' ); ?></span>
 						</div>
 					</div>
 				</div>
 			</article>
 
 			<article class="gt-outcomes__card gt-outcomes__card--reach" data-animate="fade-up" data-animate-delay="150">
-				<video class="gt-outcomes__reach-video" autoplay muted loop playsinline preload="auto">
-					<source src="<?php echo esc_url( growtele_get_cdn_video( 'outcomes' ) ); ?>" type="video/mp4" />
+				<video class="gt-outcomes__reach-video" autoplay muted loop playsinline preload="metadata">
+					<source src="<?php echo esc_url( growtele_get_content_video_url( 'home.outcomes.video', 'outcomes' ) ); ?>" type="video/mp4" />
 				</video>
 				<script>
 				(function () {

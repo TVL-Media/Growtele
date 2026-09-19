@@ -19,9 +19,23 @@
   padding: 0;
 }
 
+@media (max-width: 1024px) {
+  .about-us-page.gt-nav-open .header {
+    z-index: 10003;
+  }
+}
+
+.about-us-page .logo__img--dark {
+  display: none;
+}
+
+.about-us-page .logo__img--light {
+  filter: none;
+}
+
 .about-us-page .logo {
   position: absolute;
-  left: calc(var(--sms-inset) + 129px);
+  left: calc(var(--sms-inset) + 120px);
   top: 48px;
   width: 164.55px;
   height: 42px;
@@ -53,10 +67,6 @@
 .about-us-page .sms-nav-menu > .menu-item > a[aria-expanded="true"],
 .about-us-page .sms-nav-menu > .menu-item.company-parent > a {
   color: #fff;
-}
-
-.about-us-page .sms-nav-menu > .menu-item.company-parent > a {
-  font-weight: 700;
 }
 
 .about-us-page .sms-nav-menu .gt-menu-arrow,
@@ -99,84 +109,9 @@
 }
 
 .about-us-page .btn-cta__orb img {
-  width: 21px;
-  height: 21px;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
   transform: rotate(45deg);
 }
 
-@media (max-width: 1024px) {
-  .about-us-page .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 20px;
-    height: 72px;
-  }
-
-  .about-us-page .logo,
-  .about-us-page .btn-cta--header {
-    position: static;
-  }
-
-  .about-us-page .logo,
-  .about-us-page .logo img {
-    width: 132px;
-    height: 34px;
-  }
-
-  .about-us-page .nav-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 40px;
-    height: 40px;
-    z-index: 30;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .about-us-page .nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: #fff;
-    margin: 0 auto;
-  }
-
-  .about-us-page .nav {
-    position: fixed;
-    inset: 0 0 auto 0;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    height: auto;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 16px 24px 24px;
-    background: #fff;
-    box-shadow: 0 12px 30px rgba(18, 19, 72, 0.08);
-    z-index: 25;
-  }
-
-  .about-us-page .nav.is-open {
-    display: flex;
-  }
-
-  .about-us-page .nav.is-open .sms-nav-menu > .menu-item > a {
-    color: #121348;
-  }
-
-  .about-us-page .nav.is-open .sms-nav-menu .gt-menu-arrow,
-  .about-us-page .nav.is-open .sms-nav-menu .nav__chevron {
-    filter: brightness(0) saturate(100%);
-    opacity: 0.85;
-  }
-
-  .about-us-page .btn-cta--header {
-    display: none;
-  }
-}

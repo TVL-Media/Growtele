@@ -7,7 +7,7 @@
 
 get_header();
 
-if ( growtele_is_elementor_page() ) {
+if ( function_exists( 'growtele_is_elementor_page' ) && growtele_is_elementor_page() ) {
 	while ( have_posts() ) :
 		the_post();
 		the_content();

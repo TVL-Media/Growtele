@@ -14,7 +14,7 @@
   --cream-stat: #fff5e7;
   --white: #ffffff;
   --border-light: rgba(0, 0, 0, 0.15);
-  --font-body: 'Roboto';
+  --font-body: 'Roboto', sans-serif;
   --font-heading: 'Roboto', sans-serif;
   --page-width: 1440px;
   --container-padding: 120px;
@@ -537,7 +537,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__content--box-bg {
-  background: url('../assets/BOX%20(2).png') no-repeat center center;
+  background: var(--gt-cms-industry-box-bg, url('../assets/BOX%20(2).png')) no-repeat center center;
   background-size: 100% 100%;
 }
 
@@ -679,7 +679,7 @@ a { text-decoration: none; color: inherit; }
   object-position: center;
   position: relative;
   top: 131px;
-  left: 64px;
+  left: 79px;
 }
 
 .channels__phone-img--rcs {
@@ -1101,7 +1101,7 @@ a { text-decoration: none; color: inherit; }
 
 .testimonial__logo-card {
   width: 364px;
-  height: 432px;
+  height: 475px;
   flex-shrink: 0;
   background: linear-gradient(to right, #fdf3e6, var(--white));
   border: 1px solid rgba(0, 0, 0, 0.25);

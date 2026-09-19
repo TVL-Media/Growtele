@@ -9,7 +9,7 @@
 .gt-footer {
 	position: relative;
 	background-color: #0d0b34;
-	background-image: url('https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-1.png');
+	background-image: var(--gt-cms-footer-bg, url('https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-1.png'));
 	background-position: center top;
 	background-size: cover;
 	background-repeat: no-repeat;

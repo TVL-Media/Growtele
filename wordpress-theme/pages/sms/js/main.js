@@ -4,10 +4,23 @@
   var funnelVisual = document.getElementById("funnelVisual");
 
   var funnelImages = {
-    acquisition: { src: "assets/acquica.png", alt: "Acquisition campaign flow" },
-    engagement: { src: "assets/Enagement Card.png", alt: "Engagement campaign flow" },
-    retention: { src: "assets/retim.png", alt: "Retention campaign flow" }
+    acquisition: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Group-689.png", alt: "Acquisition campaign flow" },
+    engagement: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Group-679-1.png", alt: "Engagement campaign flow" },
+    retention: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Group-690.png", alt: "Retention campaign flow" }
   };
+  if (window.GROWTELE_CMS_FUNNEL) {
+    Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {
+      funnelImages[key] = Object.assign({}, funnelImages[key] || {}, window.GROWTELE_CMS_FUNNEL[key]);
+    });
+  }
+
+  Object.keys(funnelImages).forEach(function (key) {
+    var preload = new Image();
+    var src = funnelImages[key].src;
+    preload.src = window.growteleResolveAssetUrl
+      ? window.growteleResolveAssetUrl(src, funnelVisual)
+      : src;
+  });
 
   function getScrollY() {
     if (window.growteleLenis && typeof window.growteleLenis.scroll === "number") {
@@ -57,7 +70,13 @@
         panel.classList.toggle("funnel__panel--retention", key === "retention");
       }
       if (funnelVisual && funnelImages[key]) {
-        funnelVisual.src = funnelImages[key].src;
+        if (window.growteleApplyAssetSrc) {
+          window.growteleApplyAssetSrc(funnelVisual, funnelImages[key].src);
+        } else {
+          funnelVisual.src = window.growteleResolveAssetUrl
+            ? window.growteleResolveAssetUrl(funnelImages[key].src, funnelVisual)
+            : funnelImages[key].src;
+        }
         funnelVisual.alt = funnelImages[key].alt;
       }
       document.querySelectorAll("[data-funnel-list]").forEach(function (list) {
@@ -70,39 +89,7 @@
     });
   });
 
-  document.querySelectorAll(".faq-item__btn").forEach(function (button) {
-    button.addEventListener("click", function () {
-      var item = button.closest(".faq-item");
-      var isOpen = item.classList.contains("is-open");
-      document.querySelectorAll(".faq-item").forEach(function (other) {
-        other.classList.remove("is-open");
-        var otherBtn = other.querySelector(".faq-item__btn");
-        var otherToggle = other.querySelector(".faq-item__toggle");
-        if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
-        if (otherToggle) otherToggle.textContent = "+";
-      });
-      if (!isOpen) {
-        item.classList.add("is-open");
-        button.setAttribute("aria-expanded", "true");
-        var toggleEl = item.querySelector(".faq-item__toggle");
-        if (toggleEl) toggleEl.textContent = "_";
-      }
-    });
-  });
-
-  if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      document.body.classList.toggle("gt-nav-open", open);
-    });
-    nav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        if (isDropdownTrigger(link)) return;
-        closeNav();
-      });
-    });
-  }
+  /* Mobile nav toggle — handled by assets/js/mobile-nav.js */
 
   var layoutRefreshCallbacks = [];
 
@@ -117,10 +104,11 @@
     layoutRefreshCallbacks.forEach(function (callback) {
       callback();
     });
+    window.dispatchEvent(new Event("growtele:layout-refresh"));
   }
 
   window.addEventListener("resize", refreshScroll);
-  if (window.visualViewport) {
+  if (window.visualViewport && !window.matchMedia("(max-width: 1024px)").matches) {
     window.visualViewport.addEventListener("resize", refreshScroll);
   }
   window.addEventListener("growtele:smooth-scroll-ready", refreshScroll);
@@ -144,12 +132,7 @@
       return;
     }
 
-    var phone = document.querySelector(".journey__phone");
-    var phoneSources = [
-      "assets/Phone.png",
-      "assets/phone2.png",
-      "assets/phone3.png"
-    ];
+    var phones = Array.prototype.slice.call(section.querySelectorAll(".journey__phone"));
 
     var GAP = 12;
     var CARD_H = 172;
@@ -177,7 +160,7 @@
         card.style.zIndex = String(index + 1);
       });
 
-      if (phone) {
+      if (phones.length) {
         var halfTrigger = CARD_H / (2 * STEP);
         var phoneIndex = 0;
         for (var i = 1; i < cards.length; i++) {
@@ -185,10 +168,9 @@
             phoneIndex = i;
           }
         }
-        if (phone.dataset.phoneIndex !== String(phoneIndex)) {
-          phone.dataset.phoneIndex = String(phoneIndex);
-          phone.src = phoneSources[phoneIndex];
-        }
+        phones.forEach(function (phone, i) {
+          phone.classList.toggle("is-active", i === phoneIndex);
+        });
       }
     }
 
@@ -214,7 +196,9 @@
       var secRect = section.getBoundingClientRect();
       var bodyRect = body.getBoundingClientRect();
       var first = cards[0].getBoundingClientRect();
-      var last = cards[cards.length - 1].getBoundingClientRect();
+      /* Check only first 3 cards — the last card stacks behind and may extend below viewport */
+      var checkIndex = Math.min(cards.length - 1, 2);
+      var last = cards[checkIndex].getBoundingClientRect();
       var sectionH = section.offsetHeight || 1;
       var designBodyTop = secRect.top + sectionH * (180 / 1000);
       var bodyTolerance = Math.max(48, viewH * 0.07);
@@ -294,6 +278,15 @@
     var cards = Array.prototype.slice.call(grid.querySelectorAll("[data-scale-card]"));
     if (!cards.length) return;
 
+    /* Mobile: static stacked cards — no autoplay */
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      cards.forEach(function (item) {
+        item.classList.remove("is-active");
+      });
+      grid.classList.remove("has-active");
+      return;
+    }
+
     var activeIndex = 0;
     var intervalId = null;
     var hovered = false;
@@ -355,6 +348,9 @@
         item.classList.toggle("is-active", item === card);
       });
       var imgSrc = card.getAttribute("data-benefit-img") || "assets/Card Image.png";
+      if (window.growteleResolveAssetUrl) {
+        imgSrc = window.growteleResolveAssetUrl(imgSrc, visual);
+      }
       var heading = card.querySelector("h3");
       var label = heading ? heading.textContent.replace(/\s+/g, " ").trim() : "Benefits dashboard";
       visual.style.backgroundImage = 'url("' + imgSrc + '")';

@@ -1,0 +1,538 @@
+/* Retail FAQ + Trust, scoped so the rest of Growinfinity stays unchanged */
+.growtele-io-page {
+  --navy: #121348;
+  --faq-navy: #0e0f3a;
+  --orange: #ff9300;
+  --red: #f9363d;
+  --gradient-trust: linear-gradient(-55.4deg, #ffffff 1.85%, #fff6e9 66.53%);
+  --white: #ffffff;
+  --border-light: rgba(0, 0, 0, 0.15);
+  --font-body: "Roboto", sans-serif;
+  --retail-container-pad: 120px;
+}
+
+.growtele-io-page .faq .container,
+.growtele-io-page .trust .container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: var(--retail-container-pad);
+  padding-right: var(--retail-container-pad);
+}
+
+.growtele-io-page .faq .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.growtele-io-page .faq .btn--orange {
+  background: var(--orange);
+  color: var(--white);
+  height: 31px;
+  padding: 4px 18px;
+  border-radius: 37px;
+  font-size: 15px;
+  width: 100%;
+  max-width: 279px;
+}
+
+.growtele-io-page .value-prop ~ .faq,
+.growtele-io-page .value-prop ~ .trust {
+  margin-top: 0;
+}
+
+.growtele-io-page .faq {
+  position: relative;
+  padding: 80px 0 60px;
+  overflow: hidden;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  margin-top: 0;
+  display: block;
+}
+
+.growtele-io-page .faq .section-title,
+.growtele-io-page .section-title.faq__title {
+  font-family: "Tomato Grotesk", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--navy);
+  max-width: 920px;
+  margin: 0 0 -56px 162px;
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.growtele-io-page .faq__intro {
+  font-family: "Tomato Grotesk", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.3;
+  max-width: 547px;
+  margin: -86px 0 82px 59%;
+  color: var(--navy);
+  grid-column: auto;
+  grid-row: auto;
+  padding-top: 0;
+}
+
+.growtele-io-page .faq__inner {
+  display: flex;
+  gap: 37px;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  grid-template-columns: none;
+  grid-template-rows: none;
+}
+
+.growtele-io-page .faq__book {
+  width: 357px;
+  flex-shrink: 0;
+  background: var(--faq-navy);
+  border-radius: 20px;
+  padding: 32px 28px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 299px;
+}
+
+.growtele-io-page .faq__book-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.growtele-io-page .faq__book-avatar {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 23px;
+  object-fit: cover;
+}
+
+.growtele-io-page .faq__book-title {
+  position: relative;
+  z-index: 1;
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.growtele-io-page .faq__book-desc {
+  position: relative;
+  z-index: 1;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.3;
+  margin: 0 auto 20px;
+  max-width: 269px;
+}
+
+.growtele-io-page .faq__book-btn {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+}
+
+.growtele-io-page .faq__content {
+  flex: 1;
+}
+
+.growtele-io-page .faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.growtele-io-page .faq-item {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.growtele-io-page .faq-item--open {
+  padding-bottom: 8px;
+}
+
+.growtele-io-page .faq-item__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 24px;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--navy);
+  text-align: left;
+  cursor: pointer;
+}
+
+.growtele-io-page .faq-item__icon {
+  position: relative;
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+}
+
+.growtele-io-page .faq-item__icon-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.growtele-io-page .faq-item__toggle {
+  margin-left: auto;
+  font-size: 35px;
+  font-weight: 500;
+  color: var(--orange);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.growtele-io-page .faq-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 24px 0 69px;
+}
+
+.growtele-io-page .faq-item--open .faq-item__answer {
+  max-height: 120px;
+  width: 83%;
+  padding-bottom: 8px;
+}
+
+.growtele-io-page .faq-item__answer p {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--navy);
+}
+
+.growtele-io-page .trust {
+  padding: 40px 0 0;
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
+  margin-bottom: -150px;
+  height: auto;
+  max-height: none;
+}
+
+.growtele-io-page .trust__text {
+  flex: 0 0 auto;
+  max-width: 409px;
+}
+
+.growtele-io-page .trust__banner {
+  background: var(--gradient-trust);
+  border-radius: 30px;
+  padding: 40px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 285px;
+}
+
+.growtele-io-page .trust__title {
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.growtele-io-page .trust__desc {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.growtele-io-page .trust__stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  flex: 0 1 auto;
+  justify-content: flex-start;
+  grid-column: auto;
+}
+
+.growtele-io-page .trust__separators {
+  display: none;
+}
+
+.growtele-io-page .trust__stat {
+  text-align: center;
+  padding: 0 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.growtele-io-page .trust__stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 62px;
+  background: #121348;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.growtele-io-page .trust__num {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--red);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.growtele-io-page .trust__label {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.growtele-io-page .page > .gt-footer {
+  position: relative;
+  z-index: 5;
+}
+
+@media (max-width: 1024px) {
+  .growtele-io-page {
+    --retail-container-pad: 20px;
+  }
+
+  .growtele-io-page .faq {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .growtele-io-page .trust {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: -80px;
+  }
+
+  .growtele-io-page .section-title.faq__title {
+    font-size: clamp(26px, 6vw, 34px);
+    margin: 0 0 16px;
+    max-width: 100%;
+  }
+
+  .growtele-io-page .faq__intro {
+    font-size: clamp(16px, 4vw, 18px);
+    max-width: 100%;
+    margin: 0 0 24px;
+  }
+
+  .growtele-io-page .faq__inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .growtele-io-page .faq__book {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .growtele-io-page .trust__banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 32px 24px;
+  }
+
+  .growtele-io-page .trust__stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .growtele-io-page .trust__stat:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .growtele-io-page .faq-item__question {
+    font-size: 14px;
+    line-height: 1.35;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .growtele-io-page .faq-item__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .growtele-io-page .faq-item__icon > img:first-child {
+    width: 24px;
+    height: 24px;
+  }
+
+  .growtele-io-page .faq-item__icon-img {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .growtele-io-page .faq-item__toggle {
+    font-size: 22px;
+  }
+
+  .growtele-io-page .faq-item__answer {
+    padding: 0 14px 0 48px;
+  }
+
+  .growtele-io-page .faq-item--open .faq-item__answer {
+    width: 100%;
+    max-height: 200px;
+  }
+
+  .growtele-io-page .faq__list {
+    gap: 12px;
+  }
+
+  .growtele-io-page .faq {
+    padding: 24px var(--gt-space-inline-x, 20px) 28px;
+  }
+
+  /* Trust banner — compact, no footer overlap */
+  .growtele-io-page .trust {
+    padding: 20px var(--gt-space-inline-x, 20px) 24px;
+    margin-bottom: 0 !important;
+    z-index: 1;
+  }
+
+  .growtele-io-page .trust__banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 18px 16px;
+    min-height: 0;
+    border-radius: 20px;
+  }
+
+  .growtele-io-page .trust__title {
+    font-size: clamp(18px, 4.5vw, 22px);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .growtele-io-page .trust__desc {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .growtele-io-page .trust__desc br {
+    display: none;
+  }
+
+  .growtele-io-page .trust__stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 8px;
+    width: 100%;
+    flex-wrap: unset;
+    justify-content: stretch;
+  }
+
+  .growtele-io-page .trust__stat {
+    padding: 6px 4px;
+  }
+
+  .growtele-io-page .trust__num {
+    font-size: clamp(22px, 5.5vw, 28px);
+    margin-bottom: 2px;
+  }
+
+  .growtele-io-page .trust__label {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .growtele-io-page .page > .gt-footer {
+    z-index: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .growtele-io-page .faq-item__question {
+    font-size: 13px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .growtele-io-page .faq-item__toggle {
+    font-size: 20px;
+  }
+
+  .growtele-io-page .faq-item__answer {
+    padding: 0 12px 0 44px;
+  }
+
+  .growtele-io-page .trust {
+    padding-inline: var(--gt-space-inline-x-sm, 16px);
+    padding-bottom: 24px;
+  }
+
+  .growtele-io-page .trust__banner {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+
+  .growtele-io-page .trust__title {
+    font-size: clamp(16px, 4.2vw, 20px);
+  }
+
+  .growtele-io-page .trust__stats {
+    gap: 8px 6px;
+  }
+
+  .growtele-io-page .trust__num {
+    font-size: clamp(20px, 5vw, 24px);
+  }
+
+  .growtele-io-page .trust__label {
+    font-size: 10px;
+  }
+}

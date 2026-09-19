@@ -125,6 +125,8 @@ main {
   width: 100%;
   height: 130px;
   z-index: 20;
+  padding-left: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
+  padding-right: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
 }
 
 .sms-page .sms-nav-menu > .menu-item > a,
@@ -142,16 +144,22 @@ main {
 
 .logo {
   position: absolute;
-  left: calc(var(--sms-inset) + 129px);
-  top: 48px;
-  width: 164.55px;
-  height: 42px;
+  left: calc(var(--sms-inset) + 120px);
+  top: auto;
+  bottom: 38px;
+  width: 174.55px;
+  height: 52px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .logo img {
-  width: 164.55px;
+  width: 174.55px;
   height: 52px;
+  max-height: 100%;
   object-fit: contain;
+  object-position: left bottom;
+  transform: translateY(4px);
 }
 
 .nav-toggle {
@@ -382,7 +390,7 @@ main {
 .journey {
   position: relative;
   width: 100%;
-  min-height: 1000px;
+  min-height: 1100px;
   margin-top: 100px;
   z-index: 3;
 }
@@ -460,7 +468,7 @@ main {
   left: calc(var(--sms-inset) + 189px);
   top: 180px;
   width: 1068px;
-  height: 640px;
+  height: 724px;
 }
 
 .journey__phone {
@@ -471,6 +479,15 @@ main {
   height: 530px;
   object-fit: contain;
   object-position: center top;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.journey__phone.is-active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .journey__cards {
@@ -478,7 +495,7 @@ main {
   left: 423px;
   top: 0;
   width: 645px;
-  height: 540px;
+  height: 724px;
   display: block;
 }
 
@@ -545,6 +562,15 @@ main {
   filter: brightness(0) invert(1);
 }
 
+.journey-card__icond {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  /* Keep white glyph visible on orange circle */
+  filter: brightness(0) invert(1);
+}
+
 .journey-card h3 {
   position: absolute;
   left: 104px;
@@ -556,7 +582,8 @@ main {
 }
 
 .journey-card:nth-child(2) h3,
-.journey-card:nth-child(3) h3 {
+.journey-card:nth-child(3) h3,
+.journey-card:nth-child(4) h3 {
   font-weight: 700;
 }
 
@@ -577,6 +604,11 @@ main {
 }
 
 .journey-card:nth-child(3) p {
+  top: 100px;
+  width: 594px;
+}
+
+.journey-card:nth-child(4) p {
   top: 100px;
   width: 594px;
 }

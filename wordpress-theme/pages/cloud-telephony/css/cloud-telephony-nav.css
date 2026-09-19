@@ -74,7 +74,7 @@
 .sms-dropdown {
   position: fixed;
   left: 50%;
-  top: 116px;
+  top: 0;
   right: auto;
   z-index: 1100;
   width: min(1060px, calc(100vw - 64px));
@@ -339,4 +339,54 @@
   display: block;
   max-width: 40px;
   max-height: 40px;
+}
+
+/* Desktop hover — smooth dropdown reveal */
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+  .sms-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 0;
+    right: 0;
+    height: 18px;
+  }
+
+  .sms-dropdown {
+    transition: visibility 0s linear 0.32s;
+  }
+
+  .sms-dropdown.is-open {
+    transition: visibility 0s linear 0s;
+  }
+
+  .sms-dropdown__panel,
+  .sms-dropdown .gt-mega-menu__panel,
+  .sms-dropdown .industry-solutions-dropdown-panel,
+  .sms-dropdown .company-dropdown-panel {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sms-dropdown.is-open .sms-dropdown__panel,
+  .sms-dropdown.is-open .gt-mega-menu__panel,
+  .sms-dropdown.is-open .industry-solutions-dropdown-panel,
+  .sms-dropdown.is-open .company-dropdown-panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .sms-dropdown__panel,
+  .sms-dropdown .gt-mega-menu__panel,
+  .sms-dropdown .industry-solutions-dropdown-panel,
+  .sms-dropdown .company-dropdown-panel {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 }

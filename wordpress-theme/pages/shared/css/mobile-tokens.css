@@ -1,0 +1,68 @@
+/**
+ * Mobile-only typography + spacing tokens.
+ * Scoped to ≤1024px — desktop values in global.css / page styles are untouched.
+ */
+
+@media (max-width: 1024px) {
+  /* Site-wide: remove default mobile tap/selection flash; keep :focus-visible for keyboard */
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  summary,
+  label,
+  [role='button'],
+  [tabindex]:not([tabindex='-1']) {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+  }
+
+  a:focus:not(:focus-visible),
+  button:focus:not(:focus-visible),
+  summary:focus:not(:focus-visible),
+  [role='button']:focus:not(:focus-visible),
+  [tabindex]:not([tabindex='-1']):focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  :root {
+    /* Typography */
+    --gt-text-xs: 11px;
+    --gt-text-sm: 13px;
+    --gt-text-base: 14px;
+    --gt-text-md: 15px;
+    --gt-text-lg: 16px;
+    --gt-text-xl: clamp(18px, 4.5vw, 20px);
+    --gt-text-2xl: clamp(22px, 5.5vw, 26px);
+    --gt-text-3xl: clamp(24px, 6.5vw, 30px);
+    --gt-text-lead: clamp(14px, 3.5vw, 16px);
+
+    /* Spacing */
+    --gt-space-section-y: clamp(32px, 6vw, 48px);
+    --gt-space-section-y-sm: 28px;
+    --gt-space-hero-bottom: 24px;
+    --gt-space-heading-gap: 12px;
+    --gt-space-content-gap: 20px;
+    --gt-space-card-gap: 12px;
+    --gt-space-block-gap: 16px;
+    --gt-space-inline-x: 16px;
+    --gt-space-inline-x-sm: 16px;
+
+    /* Landing mobile section gap (desktop 150px stays in global.css) */
+    --gt-section-gap: var(--gt-space-section-y);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gt-space-section-y: var(--gt-space-section-y-sm);
+    --gt-space-inline-x: var(--gt-space-inline-x-sm);
+    --gt-text-3xl: clamp(22px, 6vw, 28px);
+    --gt-text-2xl: clamp(20px, 5vw, 24px);
+  }
+}

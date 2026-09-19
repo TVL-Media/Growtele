@@ -112,7 +112,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   right: 0;
   width: 100%;
   z-index: 100;
-  padding: clamp(20px, 3.4vw, 49px) 0 0;
+  padding: clamp(20px, 3.4vw, 49px) var(--side-padding) 0;
 }
 
 .header__inner {
@@ -226,7 +226,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   max-width: none;
   min-height: 100vh;
   overflow: hidden;
-  background: #060724 url('https://listings.selectvia.com/wp-content/uploads/2026/09/About-Us-BG.png') center / cover no-repeat;
+  background: #060724 var(--gt-cms-about-hero-bg, url('https://listings.selectvia.com/wp-content/uploads/2026/09/About-Us-BG.png')) center / cover no-repeat;
   font-family: var(--font-roboto);
 }
 
@@ -356,7 +356,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   /* height: auto; */
   aspect-ratio: 611 / 567;
   object-fit: cover;
-  border-radius: var(--radius-hero-img);
+  border-radius: 0;
 }
 
 .hero__support-badge {
@@ -414,7 +414,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .hero__support-avatars img {
   width: 58px;
   height: 58px;
-  border-radius: 50%;
+  border-radius: 0;
   margin-left: -22px;
   object-fit: cover;
   border: 2px solid transparent;
@@ -1047,6 +1047,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   line-height: 1.45;
   margin-bottom: clamp(20px, 2.5vh, 32px);
   max-width: 100%;
+  white-space: pre-line;
 }
 
 .locations__support-title {
@@ -1092,7 +1093,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .locations__image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  max-width: none;
+  object-fit: contain;
   object-position: center center;
   display: block;
   border-radius: 25px;
@@ -1154,20 +1156,30 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-navy);
+  transition: background-color 0.2s ease;
 }
 
-.team__nav-btn img {
-  width: 58px;
-  height: 58px;
+.team__nav-btn:hover {
+  background: var(--color-navy-dark);
+}
+
+.team__nav-btn::before {
+  content: '';
   display: block;
+  width: 14px;
+  height: 14px;
+  border-right: 3px solid var(--color-white);
+  border-bottom: 3px solid var(--color-white);
+  transform: rotate(-45deg);
+  margin-left: -4px;
 }
 
-.team__nav-btn--prev img {
-  transform: rotate(180deg);
-}
-
-.team__nav-btn--next img {
-  transform: rotate(0deg);
+.team__nav-btn--prev::before {
+  transform: rotate(135deg);
+  margin-left: 4px;
 }
 
 .team__carousel {
@@ -1213,6 +1225,15 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   display: block;
 }
 
+.team__card-img--1,
+.team__card-img--featured {
+  object-position: center 20%;
+}
+
+.team__card-img--3 {
+  object-position: center 20%;
+}
+
 @media (min-width: 1025px) {
   .team__card-img--featured {
     box-shadow: none;
@@ -1226,11 +1247,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 .team__card-name {
-  font-size: clamp(32px, 2.8vw, 40px);
+  font-size: clamp(24px, 2.2vw, 32px);
   font-weight: 700;
   color: var(--color-orange);
   margin-bottom: 8px;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .team__card-role {

@@ -14,7 +14,7 @@
   --cream-stat: #fff5e7;
   --white: #ffffff;
   --border-light: rgba(0, 0, 0, 0.15);
-  --font-body: 'Roboto';
+  --font-body: 'Roboto', sans-serif;
   --font-heading: 'Roboto', sans-serif;
   --page-width: 1440px;
   --container-padding: 120px;
@@ -547,7 +547,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__content.channels__content--box-bg {
-  background: url('../../retail/assets/BOX%20(2).png') no-repeat center center;
+  background: var(--gt-cms-industry-box-bg, url('../../retail/assets/BOX%20(2).png')) no-repeat center center;
   background-size: 100% 100%;
 }
 
@@ -663,7 +663,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__phone-img--whatsapp {
-  width: 574px;
+  width: 497px;
   height: 555px;
   object-fit: contain;
   object-position: center;
@@ -699,7 +699,7 @@ a { text-decoration: none; color: inherit; }
   object-position: center;
   position: relative;
   top: 138px;
-  left: 86px;
+  left: 149px;
 }
 
 /* ===== GROWTH ===== */
@@ -757,6 +757,19 @@ a { text-decoration: none; color: inherit; }
   transform: none;
   object-fit: cover;
   object-position: top center;
+}
+
+body .growth-card__visual:not(:has(.growth-card__img)) .growth-card__bg {
+  inset: -4% auto auto -4% !important;
+  width: 108% !important;
+  max-width: none !important;
+  height: 108% !important;
+}
+
+body .growth-card:nth-child(3) .growth-card__visual:not(:has(.growth-card__img)) .growth-card__bg {
+  inset: -6% auto auto -6% !important;
+  width: 112% !important;
+  height: 112% !important;
 }
 
 .growth-card__img {
@@ -1135,7 +1148,7 @@ a { text-decoration: none; color: inherit; }
 
 .testimonial__logo-card {
   width: 364px;
-  height: 432px;
+  height: 475px;
   flex-shrink: 0;
   background: linear-gradient(to right, #fdf3e6, var(--white));
   border: 1px solid rgba(0, 0, 0, 0.25);

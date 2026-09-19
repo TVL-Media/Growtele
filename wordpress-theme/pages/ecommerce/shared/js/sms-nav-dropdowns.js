@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  var MOBILE_MQ = window.matchMedia('(max-width: 1024px)');
+
   function initSmsNavDropdowns() {
     var menu = document.querySelector('[data-sms-nav] [data-nav-menu]');
     if (!menu) return;
@@ -24,14 +26,49 @@
     ];
 
     groups.forEach(function (group) {
-      if (group.panel && group.panel.parentElement !== document.body) {
+      if (!group.panel || !group.parent) return;
+      syncPanelParent(group);
+    });
+
+    function isMobileNav() {
+      return MOBILE_MQ.matches;
+    }
+
+    function syncPanelParent(group) {
+      if (!group.panel || !group.parent) return;
+
+      if (isMobileNav()) {
+        if (group.panel.parentElement !== group.parent) {
+          group.parent.appendChild(group.panel);
+        }
+        clearPanelPosition(group.panel);
+        return;
+      }
+
+      if (group.panel.parentElement !== document.body) {
         group.panel.classList.add('sms-dropdown');
         document.body.appendChild(group.panel);
       }
-    });
+    }
+
+    function clearPanelPosition(panel) {
+      if (!panel) return;
+      panel.style.position = '';
+      panel.style.left = '';
+      panel.style.top = '';
+      panel.style.transform = '';
+      panel.style.width = '';
+      panel.style.zIndex = '';
+    }
 
     function positionPanel(panel) {
       if (!panel) return;
+
+      if (isMobileNav()) {
+        clearPanelPosition(panel);
+        return;
+      }
+
       panel.style.position = 'fixed';
       panel.style.left = '50%';
       panel.style.transform = 'translateX(-50%)';
@@ -56,6 +93,7 @@
     function openGroup(group) {
       closeAll();
       if (!group.parent || !group.trigger || !group.panel) return;
+      syncPanelParent(group);
       group.parent.classList.add('is-open');
       group.panel.classList.add('is-open');
       group.trigger.setAttribute('aria-expanded', 'true');
@@ -65,9 +103,20 @@
 
     groups.forEach(function (group) {
       if (!group.trigger) return;
+
       group.trigger.addEventListener('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
+
+        if (isMobileNav()) {
+          if (group.parent && group.parent.classList.contains('is-open')) {
+            closeAll();
+          } else {
+            openGroup(group);
+          }
+          return;
+        }
+
         var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
         if (canHover) {
           if (!(group.parent && group.parent.classList.contains('is-open'))) {
@@ -75,6 +124,7 @@
           }
           return;
         }
+
         if (group.parent && group.parent.classList.contains('is-open')) {
           closeAll();
         } else {
@@ -84,15 +134,18 @@
 
       var hideTimer = 0;
       function showOnHover() {
+        if (isMobileNav()) return;
         if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
         window.clearTimeout(hideTimer);
         openGroup(group);
       }
       function hideOnHover() {
+        if (isMobileNav()) return;
         if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
         window.clearTimeout(hideTimer);
         hideTimer = window.setTimeout(closeAll, 140);
       }
+
       if (group.parent) {
         group.parent.addEventListener('mouseenter', showOnHover);
         group.parent.addEventListener('mouseleave', hideOnHover);
@@ -119,19 +172,19 @@
 
     window.addEventListener('resize', function () {
       groups.forEach(function (group) {
+        syncPanelParent(group);
         if (group.parent && group.parent.classList.contains('is-open')) {
           positionPanel(group.panel);
+        } else {
+          clearPanelPosition(group.panel);
         }
       });
     });
 
-    window.addEventListener('scroll', function () {
-      groups.forEach(function (group) {
-        if (group.parent && group.parent.classList.contains('is-open')) {
-          positionPanel(group.panel);
-        }
-      });
-    }, { passive: true });
+    MOBILE_MQ.addEventListener('change', function () {
+      groups.forEach(syncPanelParent);
+      closeAll();
+    });
   }
 
   if (document.readyState === 'loading') {

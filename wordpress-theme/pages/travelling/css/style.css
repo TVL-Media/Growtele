@@ -14,7 +14,7 @@
   --cream-stat: #fff5e7;
   --white: #ffffff;
   --border-light: rgba(0, 0, 0, 0.15);
-  --font-body: 'Roboto';
+  --font-body: 'Roboto', sans-serif;
   --font-heading: 'Roboto', sans-serif;
   --page-width: 1440px;
   --container-padding: 120px;
@@ -547,7 +547,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__content.channels__content--box-bg {
-  background: url('../../retail/assets/BOX%20(2).png') no-repeat center center;
+  background: var(--gt-cms-industry-box-bg, url('../../retail/assets/BOX%20(2).png')) no-repeat center center;
   background-size: 100% 100%;
 }
 
@@ -663,7 +663,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__phone-img--whatsapp {
-  width: 574px;
+  width: 497px;
   height: 555px;
   object-fit: contain;
   object-position: center;
@@ -699,7 +699,7 @@ a { text-decoration: none; color: inherit; }
   object-position: center;
   position: relative;
   top: 138px;
-  left: 86px;
+  left: 149px;
 }
 
 /* ===== GROWTH ===== */
@@ -733,6 +733,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 .growth-card {
+  display: flex;
+  flex-direction: column;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 4px 9.2px -1px rgba(0, 0, 0, 0.15);
@@ -740,6 +742,7 @@ a { text-decoration: none; color: inherit; }
 
 .growth-card__visual {
   position: relative;
+  flex: 0 0 310px;
   height: 310px;
   overflow: hidden;
   background: var(--white);
@@ -747,12 +750,26 @@ a { text-decoration: none; color: inherit; }
 
 .growth-card__bg {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 108%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   max-width: none;
-  transform: translate(-50%, -50%);
+  transform: none;
   object-fit: cover;
+  object-position: top center;
+}
+
+body .growth-card__visual:not(:has(.growth-card__img)) .growth-card__bg {
+  inset: -4% auto auto -4% !important;
+  width: 108% !important;
+  max-width: none !important;
+  height: 108% !important;
+}
+
+body .growth-card:nth-child(3) .growth-card__visual:not(:has(.growth-card__img)) .growth-card__bg {
+  inset: -6% auto auto -6% !important;
+  width: 112% !important;
+  height: 112% !important;
 }
 
 .growth-card__img {
@@ -776,8 +793,12 @@ a { text-decoration: none; color: inherit; }
 }
 
 .growth-card__body {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
   background: var(--white);
   padding: 24px 27px 20px;
+  min-height: 227px;
 }
 
 .growth-card__tag {
@@ -1127,7 +1148,7 @@ a { text-decoration: none; color: inherit; }
 
 .testimonial__logo-card {
   width: 364px;
-  height: 432px;
+  height: 475px;
   flex-shrink: 0;
   background: linear-gradient(to right, #fdf3e6, var(--white));
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -1583,54 +1604,6 @@ a { text-decoration: none; color: inherit; }
   gap: 12px;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1440px) {
-  .container { padding-left: 60px; padding-right: 60px; }
-}
-
-@media (max-width: 1280px) {
-  .hero__inner { flex-direction: column; align-items: center; }
-  .hero__content { padding-top: 0; text-align: center; }
-  .hero__desc { margin-left: auto; margin-right: auto; }
-  .hero__actions { justify-content: center; }
-  .channels__header,
-  .growth__header,
-  .usecases__header { flex-direction: column; }
-  .channels__panel { flex-direction: column; }
-  .channels__tabs { width: 100%; border-radius: 30px; }
-  .growth__cards { grid-template-columns: 1fr; max-width: 438px; margin: 0 auto; }
-  .touchpoint__grid { flex-direction: column; }
-  .touchpoint__visual { width: 100%; max-width: 661px; }
-  .testimonial__block { flex-direction: column; align-items: center; }
-  .testimonial__stats { margin: 0 auto; }
-  .faq__inner { flex-direction: column; }
-  .faq__book { width: 100%; max-width: 357px; }
-  .trust__banner { flex-direction: column; text-align: center; }
-  .footer__inner { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-  :root { --container-padding: 24px; }
-  .industry-nav__bar { flex-wrap: wrap; height: auto; padding: 12px; gap: 8px; border-radius: 24px; }
-  .hero__title { font-size: 36px; }
-  .hero__visual { width: 100%; max-width: 400px; height: auto; }
-  .hero__image { width: 100%; height: auto; }
-  .hero__sms-card, .hero__sms2-card, .hero__floating-ui, .hero__icon-badge { display: none; }
-  .section-title { font-size: 28px; }
-  .channels__phone { position: relative; width: 100%; height: 300px; margin-top: 20px; }
-  .touchpoint__item h3 { font-size: 24px; }
-  .testimonial-stat__num { font-size: 48px; }
-  .trust__stats { flex-wrap: wrap; justify-content: center; }
-  .trust__stat { padding: 12px 16px; }
-}
-
-@media (max-width: 480px) {
-  .hero__title { font-size: 28px; }
-  .hero__actions { flex-direction: column; width: 100%; }
-  .btn--primary, .btn--outline { width: 100%; }
-  .testimonial__stats { grid-template-columns: 1fr; }
-}
-
 .channels__header,
 .channels__header .section-title,
 .channels__header .channels__subtitle,
@@ -1655,5 +1628,5 @@ a { text-decoration: none; color: inherit; }
 .section-title.faq__title .gt-word,
 .faq__intro,
 .faq__intro .gt-word {
-  font-family: "Tomato Grotesk", sans-serif;
+  font-family: "Roboto", sans-serif;
 }

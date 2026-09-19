@@ -14,7 +14,7 @@
   --cream-stat: #fff5e7;
   --white: #ffffff;
   --border-light: rgba(0, 0, 0, 0.15);
-  --font-body: 'Roboto';
+  --font-body: 'Roboto', sans-serif;
   --font-heading: 'Roboto', sans-serif;
   --page-width: 1440px;
   --container-padding: 120px;
@@ -298,7 +298,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .hero__title {
-  font-size: 55px;
+  font-size: 50px;
   font-weight: 600;
   line-height: 1.15;
   color: var(--navy);
@@ -537,7 +537,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__content.channels__content--box-bg {
-  background: url('../../retail/assets/BOX%20(2).png') no-repeat center center;
+  background: var(--gt-cms-industry-box-bg, url('../../retail/assets/BOX%20(2).png')) no-repeat center center;
   background-size: 100% 100%;
 }
 
@@ -643,17 +643,17 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__phone-img--sms {
-  width: 496px;
+  width: 513px;
   height: 530px;
   object-fit: contain;
   object-position: center right;
   position: relative;
-  top: 65px;
-  left: 145px;
+  top: 83px;
+  left: 133px;
 }
 
 .channels__phone-img--whatsapp {
-  width: 574px;
+  width: 527px;
   height: 555px;
   object-fit: contain;
   object-position: center;
@@ -663,13 +663,13 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__phone-img--telephony {
-  width: 643px;
-  height: 433px;
+  width: 686px;
+  height: 531px;
   object-fit: contain;
   object-position: center;
   position: relative;
-  top: 131px;
-  left: 64px;
+  top: 139px;
+  left: 117px;
 }
 
 .channels__phone-img--rcs {
@@ -678,18 +678,18 @@ a { text-decoration: none; color: inherit; }
   object-fit: contain;
   object-position: center;
   position: relative;
-  top: 99px;
-  left: 124px;
+  top: 150px;
+  left: 141px;
 }
 
 .channels__phone-img--email {
-  width: 651px;
+  width: 533px;
   height: 552px;
   object-fit: contain;
   object-position: center;
   position: relative;
   top: 138px;
-  left: 86px;
+  left: 149px;
 }
 
 /* ===== GROWTH ===== */
@@ -740,10 +740,20 @@ a { text-decoration: none; color: inherit; }
 .growth-card__bg {
   position: absolute;
   inset: 0;
-  width: 100%;
+  left: -4%;
+  right: auto;
+  width: 108%;
+  max-width: none;
   height: 100%;
   object-fit: cover;
   object-position: top center;
+}
+
+body .growth-card__visual:not(:has(.growth-card__img)) .growth-card__bg {
+  inset: -4% auto auto -4% !important;
+  width: 108% !important;
+  max-width: none !important;
+  height: 108% !important;
 }
 
 .growth-card__img {
@@ -836,7 +846,7 @@ a { text-decoration: none; color: inherit; }
 .touchpoint__inner { position: relative; z-index: 2; }
 
 .touchpoint__title {
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 600;
   color: var(--white);
   line-height: 1.2;
@@ -872,7 +882,7 @@ a { text-decoration: none; color: inherit; }
 .touchpoint__item:last-child { margin-bottom: 0; }
 
 .touchpoint__item h3 {
-  font-size: 35px;
+  font-size: 34px;
   font-weight: 500;
   color: var(--white);
   margin-bottom: 8px;
@@ -1090,7 +1100,7 @@ a { text-decoration: none; color: inherit; }
 
 .testimonial__logo-card {
   width: 364px;
-  height: 432px;
+  height: 475px;
   flex-shrink: 0;
   background: linear-gradient(to right, #fdf3e6, var(--white));
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -1573,6 +1583,24 @@ a { text-decoration: none; color: inherit; }
   font-family: "Roboto", sans-serif;
 }
 
+.growth__header .section-title,
+.channels__header .section-title,
+.usecases__header .section-title {
+  font-size: clamp(28px, 2.8vw, 36px) !important;
+}
+
+.growth__header .growth__subtitle,
+.channels__header .channels__subtitle,
+.usecases__header {
+  font-size: clamp(28px, 2.8vw, 36px) !important;
+}
+
+.growth__header .growth__subtitle,
+.channels__header .channels__subtitle,
+.usecases__header .usecases__subtitle {
+  font-size: clamp(16px, 1.5vw, 20px) !important;
+}
+
 /* Use-case card images — bottom-aligned like other industry pages */
 .usecase-card__image1,
 .usecase-card__image2,
@@ -1595,7 +1623,7 @@ a { text-decoration: none; color: inherit; }
 
 .usecase-card__image2 {
   width: 430px;
-  height: 367px;
+  height: 441px;
   bottom: 0;
 }
 

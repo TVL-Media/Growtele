@@ -41,6 +41,13 @@ function growtele_static_page_map() {
 		'blogs'             => 'blogs',
 		'career'            => 'career',
 		'contact'           => 'contact',
+		'growtele-io'       => 'growtele-io',
+		'pricing'           => 'pricing',
+		'api-documentation' => 'api-documentation',
+		'privacy-policy'    => 'privacy-policy',
+		'terms-and-condition' => 'terms-and-condition',
+		'security'          => 'security',
+		'partners-term-of-use' => 'partners-term-of-use',
 	);
 }
 
@@ -87,7 +94,168 @@ function growtele_is_absolute_url( $url ) {
 		return false;
 	}
 
-	return (bool) preg_match( '#^(?:[a-z][a-z0-9+\-.]*:|/|#)#i', $url );
+	if ( 0 === strpos( $url, '/' ) || 0 === strpos( $url, '#' ) || 0 === strpos( $url, '//' ) ) {
+		return true;
+	}
+
+	if ( preg_match( '#^https?://#i', $url ) || preg_match( '#^https?%3A//#i', $url ) ) {
+		return true;
+	}
+
+	return (bool) preg_match( '#^[a-z][a-z0-9+\-.]*:#i', $url );
+}
+
+/**
+ * Detect static HTML page links and return their slug (or "home").
+ *
+ * @param string $url Relative href from HTML.
+ * @return string|false
+ */
+function growtele_match_static_page_href( $url ) {
+	if ( preg_match( '#^(?:\.\./|\./)?index\.html$#i', $url ) ) {
+		return 'home';
+	}
+
+	if ( preg_match( '#^(?:\.\./|\./)?([a-z0-9-]+)(?:/index\.html)?/?$#i', $url, $matches ) ) {
+		$slug = growtele_resolve_static_page_slug( $matches[1] );
+
+		if ( '' !== $slug ) {
+			return $slug;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Convert a static HTML page href to a WordPress URL.
+ *
+ * @param string $url Relative href from HTML.
+ * @return string|false
+ */
+function growtele_convert_static_page_href( $url ) {
+	$slug = growtele_match_static_page_href( $url );
+
+	if ( false === $slug ) {
+		return false;
+	}
+
+	if ( 'home' === $slug ) {
+		return growtele_get_home_path();
+	}
+
+	return growtele_get_page_url( $slug );
+}
+
+/**
+ * Folder name aliases used in static HTML links.
+ *
+ * @return array<string, string>
+ */
+function growtele_static_page_folder_aliases() {
+	return array(
+		'healthcare'   => 'health',
+		'growinfinity' => 'growtele-io',
+		'growtele.io'  => 'growtele-io',
+	);
+}
+
+/**
+ * Resolve a static HTML folder name to a registered page slug.
+ *
+ * @param string $folder Folder segment from a relative href.
+ * @return string
+ */
+function growtele_resolve_static_page_slug( $folder ) {
+	$folder  = strtolower( $folder );
+	$aliases = growtele_static_page_folder_aliases();
+
+	if ( isset( $aliases[ $folder ] ) ) {
+		$folder = $aliases[ $folder ];
+	}
+
+	$pages = growtele_static_page_map();
+
+	return isset( $pages[ $folder ] ) ? $folder : '';
+}
+
+/**
+ * Root-relative home path.
+ *
+ * @return string
+ */
+function growtele_get_home_path() {
+	$home_path = wp_make_link_relative( home_url( '/' ) );
+
+	if ( is_string( $home_path ) && '' !== $home_path ) {
+		return $home_path;
+	}
+
+	return '/';
+}
+
+/**
+ * Rewrite static HTML page links to root-relative WordPress paths.
+ *
+ * @param string $html HTML content.
+ * @return string
+ */
+function growtele_rewrite_static_page_hrefs( $html ) {
+	return preg_replace_callback(
+		'/\bhref=(["\'])([^"\']+)\1/i',
+		function ( $matches ) {
+			$converted = growtele_convert_static_page_href( $matches[2] );
+
+			if ( false === $converted ) {
+				return $matches[0];
+			}
+
+			return 'href=' . $matches[1] . esc_url( $converted ) . $matches[1];
+		},
+		$html
+	);
+}
+
+/**
+ * Resolve a relative asset URL to an absolute theme URL.
+ *
+ * @param string $url  Relative URL from HTML.
+ * @param string $slug Current static page slug.
+ * @return string
+ */
+function growtele_resolve_static_asset_url( $url, $slug ) {
+	$pages = growtele_static_page_map();
+
+	if ( ! isset( $pages[ $slug ] ) ) {
+		return $url;
+	}
+
+	$page_href = growtele_convert_static_page_href( $url );
+	if ( false !== $page_href ) {
+		return $page_href;
+	}
+
+	$page_dir    = trailingslashit( GROWTELE_URI ) . 'pages/' . $pages[ $slug ] . '/';
+	$pages_root  = trailingslashit( GROWTELE_URI ) . 'pages/';
+	$assets_root = trailingslashit( GROWTELE_URI ) . 'assets/';
+
+	if ( 0 === strpos( $url, '../../assets/' ) ) {
+		return $assets_root . substr( $url, 13 );
+	}
+
+	if ( 0 === strpos( $url, '../assets/' ) ) {
+		return $assets_root . substr( $url, 11 );
+	}
+
+	if ( 0 === strpos( $url, '../shared/' ) ) {
+		return $pages_root . 'shared/' . substr( $url, 10 );
+	}
+
+	if ( preg_match( '#^\.\./([^/]+)/(.+)$#', $url, $matches ) ) {
+		return $pages_root . $matches[1] . '/' . $matches[2];
+	}
+
+	return $page_dir . ltrim( $url, './' );
 }
 
 /**
@@ -97,78 +265,19 @@ function growtele_is_absolute_url( $url ) {
  * @return string
  */
 function growtele_filter_static_html( $html ) {
-	$home_path = wp_make_link_relative( home_url( '/' ) );
-	if ( ! is_string( $home_path ) || '' === $home_path ) {
-		$home_path = '/';
-	}
-
 	$map = array(
-		'../index.html'                               => $home_path,
-		'../../index.html'                            => $home_path,
 		'../../assets/'                               => trailingslashit( GROWTELE_URI ) . 'assets/',
 		'../assets/'                                  => trailingslashit( GROWTELE_URI ) . 'assets/',
-		'../sms/index.html'                           => growtele_get_page_path( 'sms' ),
-		'../whatsapp/index.html'                      => growtele_get_page_path( 'whatsapp' ),
-		'../email/index.html'                         => growtele_get_page_path( 'email' ),
-		'../rcs/index.html'                           => growtele_get_page_path( 'rcs' ),
-		'../cloud-telephony/index.html'               => growtele_get_page_path( 'cloud-telephony' ),
-		'../cloud%20telephony/index.html'             => growtele_get_page_path( 'cloud-telephony' ),
-		'../cloud telephony/index.html'               => growtele_get_page_path( 'cloud-telephony' ),
-		'../ecommerce/index.html'                     => growtele_get_page_path( 'ecommerce' ),
-		'../education/index.html'                     => growtele_get_page_path( 'education' ),
-		'../logistic/index.html'                      => growtele_get_page_path( 'logistic' ),
-		'../about-us/index.html'                      => growtele_get_page_path( 'about-us' ),
-		'../blogs/index.html'                         => growtele_get_page_path( 'blogs' ),
-		'../career/index.html'                        => growtele_get_page_path( 'career' ),
-		'../contact/index.html'                       => growtele_get_page_path( 'contact' ),
-		'retail/index.html'                           => growtele_get_page_path( 'retail' ),
-		'banking/index.html'                          => growtele_get_page_path( 'banking' ),
-		'health/index.html'                           => growtele_get_page_path( 'health' ),
-		'travelling/index.html'                       => growtele_get_page_path( 'travelling' ),
-		'ecommerce/index.html'                        => growtele_get_page_path( 'ecommerce' ),
-		'education/index.html'                        => growtele_get_page_path( 'education' ),
-		'logistic/index.html'                         => growtele_get_page_path( 'logistic' ),
-		'about-us/index.html'                         => growtele_get_page_path( 'about-us' ),
-		'blogs/index.html'                            => growtele_get_page_path( 'blogs' ),
-		'career/index.html'                           => growtele_get_page_path( 'career' ),
-		'contact/index.html'                          => growtele_get_page_path( 'contact' ),
-		'../healthcare/index.html'                    => growtele_get_page_path( 'health' ),
-		'../retail/index.html'                        => growtele_get_page_path( 'retail' ),
-		'../health/index.html'                        => growtele_get_page_path( 'health' ),
-		'../banking/index.html'                       => growtele_get_page_path( 'banking' ),
-		'../travelling/index.html'                    => growtele_get_page_path( 'travelling' ),
 		'../sms/css/sms-nav.css'                      => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
-		'../SMS Grwtl/index.html'                     => growtele_get_page_path( 'sms' ),
 		'../SMS Grwtl/css/sms-nav.css'                => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
 		'../pages/sms/css/sms-nav.css'                => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
-		'SMS Grwtl/index.html'                        => growtele_get_page_path( 'sms' ),
 		'SMS Grwtl/css/sms-nav.css'                   => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
-		'../whatsapp grwtl/index.html'                => growtele_get_page_path( 'whatsapp' ),
-		'whatsapp grwtl/index.html'                   => growtele_get_page_path( 'whatsapp' ),
-		'../email grwtl/index.html'                   => growtele_get_page_path( 'email' ),
-		'email grwtl/index.html'                      => growtele_get_page_path( 'email' ),
-		'../rcs grwtl/index.html'                     => growtele_get_page_path( 'rcs' ),
-		'rcs grwtl/index.html'                        => growtele_get_page_path( 'rcs' ),
-		'../cloud telephony grwtl/index.html'         => growtele_get_page_path( 'cloud-telephony' ),
-		'cloud telephony grwtl/index.html'            => growtele_get_page_path( 'cloud-telephony' ),
-		'../Retail grwtl/index.html'                  => growtele_get_page_path( 'retail' ),
-		'Retail grwtl/index.html'                     => growtele_get_page_path( 'retail' ),
-		'../Health grwtl/index.html'                  => growtele_get_page_path( 'health' ),
-		'Health grwtl/index.html'                     => growtele_get_page_path( 'health' ),
-		'../banking grwtl/index.html'                 => growtele_get_page_path( 'banking' ),
-		'banking grwtl/index.html'                    => growtele_get_page_path( 'banking' ),
-		'../Banking grwtl/index.html'                 => growtele_get_page_path( 'banking' ),
-		'Banking grwtl/index.html'                    => growtele_get_page_path( 'banking' ),
-		'../travelling grwtl/index.html'              => growtele_get_page_path( 'travelling' ),
-		'travelling grwtl/index.html'                 => growtele_get_page_path( 'travelling' ),
-		'../Travelling grwtl/index.html'              => growtele_get_page_path( 'travelling' ),
-		'Travelling grwtl/index.html'                 => growtele_get_page_path( 'travelling' ),
 	);
 
 	$keys = array_keys( $map );
 	usort(
 		$keys,
-		static function ( $a, $b ) {
+		function ( $a, $b ) {
 			return strlen( $b ) - strlen( $a );
 		}
 	);
@@ -178,7 +287,15 @@ function growtele_filter_static_html( $html ) {
 		$values[] = $map[ $key ];
 	}
 
-	return str_replace( $keys, $values, $html );
+	$html = str_replace( $keys, $values, $html );
+
+	$html = preg_replace(
+		'/window\.GROWTELE_PAGE_ASSETS\s*=\s*new URL\(\s*[\'"]assets\/[\'"]\s*,\s*window\.location\.href\s*\)\.href\s*;/',
+		'window.GROWTELE_PAGE_ASSETS=window.GROWTELE_PAGE_ASSETS||new URL(\'assets/\',window.location.href).href;',
+		$html
+	);
+
+	return $html;
 }
 
 /**
@@ -190,14 +307,18 @@ function growtele_filter_static_html( $html ) {
 function growtele_encode_static_asset_urls( $html ) {
 	return preg_replace_callback(
 		'/\b((?:src|href|data-[a-z0-9-]+)=["\'])([^"\']+)(["\'])/i',
-		static function ( $matches ) {
+		function ( $matches ) {
 			$url = $matches[2];
 
 			if ( preg_match( '/\bdata-counter/i', $matches[1] ) ) {
 				return $matches[0];
 			}
 
-			if ( growtele_is_absolute_url( $url ) || 0 === strpos( $url, 'data:' ) ) {
+			if ( false !== growtele_convert_static_page_href( $url ) ) {
+				return $matches[0];
+			}
+
+			if ( preg_match( '#^(?:https?:)?//#i', $url ) || growtele_is_absolute_url( $url ) || 0 === strpos( $url, 'data:' ) ) {
 				return $matches[0];
 			}
 
@@ -216,7 +337,7 @@ function growtele_encode_static_asset_urls( $html ) {
 
 			$parts = explode( '/', $path );
 			$parts = array_map(
-				static function ( $part ) {
+				function ( $part ) {
 					return rawurlencode( rawurldecode( $part ) );
 				},
 				$parts
@@ -248,23 +369,23 @@ function growtele_absolutize_static_assets( $html, $slug ) {
 		return $html;
 	}
 
-	$base    = trailingslashit( GROWTELE_URI ) . 'pages/' . $pages[ $slug ] . '/';
 	$version = GROWTELE_VERSION;
 
 	return preg_replace_callback(
 		'/\b(href|src)=(["\'])([^"\']+)\2/i',
-		static function ( $matches ) use ( $base, $version ) {
+		function ( $matches ) use ( $slug, $version ) {
 			$url = $matches[3];
 
 			if ( growtele_is_absolute_url( $url ) || 0 === strpos( $url, 'data:' ) || 0 === strpos( $url, GROWTELE_URI ) ) {
 				return $matches[0];
 			}
 
-			if ( 0 === strpos( $url, '../' ) ) {
-				return $matches[0];
+			$page_href = growtele_convert_static_page_href( $url );
+			if ( false !== $page_href ) {
+				return $matches[1] . '=' . $matches[2] . esc_url( $page_href ) . $matches[2];
 			}
 
-			$absolute = $base . ltrim( $url, './' );
+			$absolute = growtele_resolve_static_asset_url( $url, $slug );
 
 			if ( preg_match( '/\.(css|js)(?:\?|$)/i', $url ) && false === stripos( $url, 'v=' ) ) {
 				$absolute .= ( false === strpos( $absolute, '?' ) ? '?' : '&' ) . 'v=' . rawurlencode( $version );
@@ -282,6 +403,25 @@ function growtele_absolutize_static_assets( $html, $slug ) {
  * @param string $html HTML content.
  * @return string
  */
+function growtele_prepare_static_page_nav_current( $html ) {
+	if ( false !== stripos( $html, 'nav-current.js' ) ) {
+		return $html;
+	}
+
+	$version = GROWTELE_VERSION;
+	$script  = '<script src="' . esc_url( GROWTELE_URI . '/assets/js/nav-current.js?v=' . $version ) . '"></script>';
+
+	if ( preg_match( '/<script[^>]+sms-nav-dropdowns\.js[^>]*><\/script>/i', $html ) ) {
+		return preg_replace( '/(<script[^>]+sms-nav-dropdowns\.js[^>]*><\/script>)/i', $script . '$1', $html, 1 );
+	}
+
+	if ( preg_match( '/<script[^>]+assets\/js\/main\.js[^>]*><\/script>/i', $html ) ) {
+		return preg_replace( '/(<script[^>]+assets\/js\/main\.js[^>]*><\/script>)/i', $script . '$1', $html, 1 );
+	}
+
+	return preg_replace( '/<\/body>/i', $script . '</body>', $html, 1 );
+}
+
 function growtele_prepare_static_page_smooth_scroll( $html ) {
 	$version     = GROWTELE_VERSION;
 	$uri         = GROWTELE_URI;
@@ -357,7 +497,7 @@ function growtele_version_theme_assets( $html ) {
 
 	return preg_replace_callback(
 		'/\b(href|src)=(["\'])(' . $uri . '[^"\']+\.(?:css|js))(?:\?[^"\']*)?\2/i',
-		static function ( $matches ) use ( $version ) {
+		function ( $matches ) use ( $version ) {
 			$url  = preg_replace( '/\?.*$/', '', $matches[3] );
 			$attr = $matches[1] . '=' . $matches[2];
 
@@ -379,6 +519,21 @@ function growtele_prepare_channel_page_html( $html, $slug = '' ) {
 	}
 
 	return preg_replace( '/<\/head>/i', $footer_fix . '</head>', $html, 1 );
+}
+
+function growtele_inject_page_assets( $html, $slug ) {
+	$pages = growtele_static_page_map();
+
+	if ( ! isset( $pages[ $slug ] ) ) {
+		return $html;
+	}
+
+	$version    = GROWTELE_VERSION;
+	$asset_base = trailingslashit( GROWTELE_URI ) . 'pages/' . $pages[ $slug ] . '/assets/';
+	$inject     = '<script>window.GROWTELE_PAGE_ASSETS=' . wp_json_encode( $asset_base ) . ';</script>';
+	$inject    .= '<script src="' . esc_url( GROWTELE_URI . '/assets/js/resolve-asset-url.js?v=' . $version ) . '"></script>';
+
+	return preg_replace( '/<head>/i', '<head>' . $inject, $html, 1 );
 }
 
 /**
@@ -404,14 +559,10 @@ function growtele_render_static_page( $slug ) {
 	}
 
 	$html     = file_get_contents( $html_file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-	$base_uri = trailingslashit( GROWTELE_URI ) . 'pages/' . $pages[ $slug ] . '/';
-	$base_tag = '<base href="' . esc_url( $base_uri ) . '">';
-
-	if ( false === stripos( $html, '<base ' ) ) {
-		$html = preg_replace( '/<head>/i', '<head>' . $base_tag, $html, 1 );
-	}
 
 	$html = growtele_filter_static_html( $html );
+	$html = growtele_inject_page_assets( $html, $slug );
+	$html = growtele_rewrite_static_page_hrefs( $html );
 	$html = growtele_encode_static_asset_urls( $html );
 	$html = growtele_absolutize_static_assets( $html, $slug );
 
@@ -420,8 +571,13 @@ function growtele_render_static_page( $slug ) {
 	}
 
 	$html = growtele_prepare_static_page_smooth_scroll( $html );
+	$html = growtele_prepare_static_page_nav_current( $html );
 	$html = growtele_prepare_static_page_animations( $html );
 	$html = growtele_version_theme_assets( $html );
+
+	if ( function_exists( 'growtele_apply_static_page_cms' ) ) {
+		$html = growtele_apply_static_page_cms( $html, $slug );
+	}
 
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted theme HTML bundle.
 	echo $html;

@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register theme supports, menus, and image sizes.
  */
+if ( ! function_exists( 'growtele_theme_setup' ) ) {
 function growtele_theme_setup() {
 	load_theme_textdomain( 'growtele', GROWTELE_DIR . '/languages' );
 
@@ -59,6 +60,7 @@ function growtele_theme_setup() {
 	add_image_size( 'growtele-thumb', 400, 300, true );
 }
 add_action( 'after_setup_theme', 'growtele_theme_setup' );
+}
 
 /**
  * Set content width for Elementor and media.

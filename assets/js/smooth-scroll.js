@@ -9,7 +9,27 @@
 
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	const MOBILE_MQ = window.matchMedia('(max-width: 1024px)');
-	const SCROLL_KEY = 'growtele:scroll-y:' + window.location.pathname + window.location.search;
+
+	function normalizeScrollPath(path) {
+		path = (path || '/').replace(/\\/g, '/');
+		if (/\/index\.html$/i.test(path)) {
+			path = path.replace(/\/index\.html$/i, '/');
+		}
+		if (path !== '/' && path.slice(-1) !== '/') {
+			path += '/';
+		}
+		return path;
+	}
+
+	function scrollStoragePath() {
+		return normalizeScrollPath(window.location.pathname) + (window.location.search || '');
+	}
+
+	function scrollStorageKeyFromUrl(url) {
+		return 'growtele:scroll-y:' + normalizeScrollPath(url.pathname) + (url.search || '');
+	}
+
+	const SCROLL_KEY = 'growtele:scroll-y:' + scrollStoragePath();
 
 	if ('scrollRestoration' in history) {
 		history.scrollRestoration = 'manual';
@@ -42,16 +62,27 @@
 
 	function applyScroll(lenis, y) {
 		if (y == null || !isFinite(y) || y < 0) return;
+		window.__growteleScrollRestore = true;
 		if (lenis && typeof lenis.scrollTo === 'function') {
 			lenis.scrollTo(y, { immediate: true });
 		} else {
 			window.scrollTo(0, y);
 		}
+		window.setTimeout(function () {
+			window.__growteleScrollRestore = false;
+		}, 120);
+	}
+
+	function captureScrollY() {
+		var lenis = window.growteleLenis;
+		if (lenis && typeof lenis.scroll === 'number') {
+			return lenis.scroll;
+		}
+		return window.scrollY || window.pageYOffset || 0;
 	}
 
 	function initLenis() {
 		var savedScroll = readSavedScroll();
-		var browserScroll = window.scrollY || window.pageYOffset || 0;
 		var forceHeroTop = window.location.hash === '#hero';
 		var restoreY = 0;
 
@@ -59,8 +90,6 @@
 			saveScroll(0);
 		} else if (savedScroll != null && savedScroll > 20) {
 			restoreY = savedScroll;
-		} else if (browserScroll > 20) {
-			restoreY = browserScroll;
 		}
 
 		var userHasScrolled = false;
@@ -75,6 +104,30 @@
 			}
 			applyScroll(lenis || null, restoreY);
 			dispatchScroll(restoreY);
+		}
+
+		function scheduleRestoreAfterLayout() {
+			if (MOBILE_MQ.matches || userHasScrolled || restoreY < 1) {
+				return;
+			}
+
+			var lenisRef = window.growteleLenis;
+
+			function tick() {
+				if (userHasScrolled) {
+					return;
+				}
+				reapplyRestore(lenisRef);
+			}
+
+			requestAnimationFrame(function () {
+				tick();
+				requestAnimationFrame(tick);
+			});
+
+			[80, 200, 450, 900, 1400].forEach(function (delay) {
+				window.setTimeout(tick, delay);
+			});
 		}
 
 		function scheduleScrollTriggerRefresh() {
@@ -100,8 +153,13 @@
 				dispatchScroll(y);
 			}, { passive: true });
 			window.addEventListener('pagehide', function () {
-				saveScroll(window.scrollY || 0);
+				saveScroll(captureScrollY());
 			});
+			window.addEventListener('beforeunload', function () {
+				saveScroll(captureScrollY());
+			});
+			window.addEventListener('growtele:industries-scroll-ready', scheduleRestoreAfterLayout, { once: true });
+			window.addEventListener('load', scheduleRestoreAfterLayout);
 			return null;
 		}
 
@@ -140,16 +198,18 @@
 		}
 
 		lenis.on('scroll', function (e) {
-			if (!userHasScrolled && restoreY > 0 && Math.abs(e.scroll - restoreY) > 2) {
-				stopRestore();
-			}
 			saveScroll(e.scroll);
 			dispatchScroll(e.scroll);
 		});
 
 		window.addEventListener('pagehide', function () {
-			saveScroll(typeof lenis.scroll === 'number' ? lenis.scroll : (window.scrollY || 0));
+			saveScroll(captureScrollY());
 		});
+		window.addEventListener('beforeunload', function () {
+			saveScroll(captureScrollY());
+		});
+		window.addEventListener('growtele:industries-scroll-ready', scheduleRestoreAfterLayout, { once: true });
+		window.addEventListener('load', scheduleRestoreAfterLayout);
 
 		if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 			gsap.registerPlugin(ScrollTrigger);
@@ -229,7 +289,30 @@
 		return lenis;
 	}
 
+	function prepareFooterNavigationScrollTop(event) {
+		var anchor = event.target && event.target.closest ? event.target.closest('.gt-footer a[href]') : null;
+		if (!anchor || anchor.target === '_blank' || anchor.hasAttribute('download')) {
+			return;
+		}
+
+		var href = anchor.getAttribute('href');
+		if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href) || /^mailto:/i.test(href)) {
+			return;
+		}
+
+		try {
+			var url = new URL(href, window.location.href);
+			if (url.origin !== window.location.origin) {
+				return;
+			}
+			sessionStorage.setItem(scrollStorageKeyFromUrl(url), '0');
+		} catch (err) {
+			/* ignore malformed href */
+		}
+	}
+
 	function boot() {
+		document.addEventListener('click', prepareFooterNavigationScrollTop, true);
 		initLenis();
 	}
 

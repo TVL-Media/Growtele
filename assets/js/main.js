@@ -9,7 +9,14 @@
 	const nav = document.querySelector('.gt-header__nav');
 
 	function getScrollStorageKey() {
-		return 'growtele:scroll-y:' + window.location.pathname + window.location.search;
+		var path = (window.location.pathname || '/').replace(/\\/g, '/');
+		if (/\/index\.html$/i.test(path)) {
+			path = path.replace(/\/index\.html$/i, '/');
+		}
+		if (path !== '/' && path.slice(-1) !== '/') {
+			path += '/';
+		}
+		return 'growtele:scroll-y:' + path + (window.location.search || '');
 	}
 
 	function clearSavedScroll() {
@@ -516,7 +523,7 @@
 
 	function scheduleNavDropdownHide(closeFn) {
 		cancelNavDropdownHide();
-		navDropdownHideTimer = window.setTimeout(closeFn, 280);
+		navDropdownHideTimer = window.setTimeout(closeFn, 360);
 	}
 
 	function isMobileNavLayout() {
@@ -635,13 +642,7 @@
 
 		function setActiveNavItem(activeItem) {
 			navItems.forEach(function (item) {
-				const isActive = item === activeItem;
-				item.classList.toggle('is-active', isActive);
-				if (isActive) {
-					item.classList.add('current-menu-item');
-				} else {
-					item.classList.remove('current-menu-item');
-				}
+				item.classList.toggle('is-active', item === activeItem);
 			});
 		}
 
@@ -771,13 +772,7 @@
 
 		function setActiveNavItem(activeItem) {
 			navItems.forEach(function (item) {
-				const isActive = item === activeItem;
-				item.classList.toggle('is-active', isActive);
-				if (isActive) {
-					item.classList.add('current-menu-item');
-				} else {
-					item.classList.remove('current-menu-item');
-				}
+				item.classList.toggle('is-active', item === activeItem);
 			});
 		}
 
@@ -1075,7 +1070,7 @@
 			renderStack(target, animate && !isManual);
 
 			const tab = caseContainer.querySelector('[data-case-tab="' + target + '"]');
-			if (isManual && section.classList.contains('is-case-paused')) {
+			if (section.classList.contains('is-case-paused')) {
 				updateCaseProgressPosition(tab);
 				return;
 			}
@@ -1086,6 +1081,7 @@
 		const CASE_AUTO_MS = parseInt(section.getAttribute('data-case-cycle'), 10) || 5000;
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		let caseAutoTimer = null;
+		let caseCycleStarted = false;
 
 		function advanceCaseTab() {
 			if (section.classList.contains('is-case-paused')) return;
@@ -1118,23 +1114,44 @@
 		}
 
 		function startCaseFallbackTimer() {
+			if (!caseCycleStarted) return;
 			if (caseAutoTimer) clearInterval(caseAutoTimer);
 			caseAutoTimer = setInterval(advanceCaseTab, CASE_AUTO_MS);
 		}
 
+		function startCaseAutoCycle() {
+			if (caseCycleStarted) return;
+			caseCycleStarted = true;
+			resumeCaseCycle();
+		}
+
+		section.classList.add('is-case-paused');
+
 		if (initial) {
-			activateCaseTab(initial, true);
+			activateCaseTab(initial, false);
 		}
 
 		/* Advance when progress bar finishes — stays in sync, no interval drift */
 		if (!prefersReducedMotion && progressBar) {
 			progressBar.addEventListener('animationend', function (event) {
+				if (!caseCycleStarted) return;
 				if (event.animationName !== 'gt-case-progress-fill') return;
 				if (event.target !== progressBar) return;
 				advanceCaseTab();
 			});
+		}
+
+		if ('IntersectionObserver' in window) {
+			const caseInViewObserver = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					if (!entry.isIntersecting) return;
+					startCaseAutoCycle();
+					caseInViewObserver.disconnect();
+				});
+			}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+			caseInViewObserver.observe(section);
 		} else {
-			startCaseFallbackTimer();
+			startCaseAutoCycle();
 		}
 
 		let userStopped = false;
@@ -1157,6 +1174,7 @@
 						progressBar.style.animationPlayState = '';
 					}
 					section.classList.remove('is-case-paused');
+					caseCycleStarted = true;
 					activateCaseTab(target, true, true);
 					if (prefersReducedMotion) {
 						startCaseFallbackTimer();
@@ -1169,7 +1187,7 @@
 		document.addEventListener('visibilitychange', function () {
 			if (document.hidden) {
 				pauseCaseCycle();
-			} else if (section.classList.contains('is-case-paused')) {
+			} else if (caseCycleStarted && !userStopped && section.classList.contains('is-case-paused')) {
 				resumeCaseCycle();
 			}
 		});

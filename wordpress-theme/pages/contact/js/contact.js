@@ -19,18 +19,60 @@
     });
   }
 
-  // Location tabs — Delhi NCR is the only Figma-documented location data
+  var sharedAddress = 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309';
+
   const locationData = {
-    delhi: {
-      city: 'Delhi NCR',
-      address: 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
+    kolkata: {
+      city: 'Kolkata',
+      address: '3, Ismail Madan Lane, Zakaria Street, Kolkata 700073, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/526d7a71d22dd2b2008ce00a1bd539b77309d3e1.png',
+      iconAlt: 'Kolkata office',
+      map: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-3.png',
+      mapAlt: 'Kolkata office location'
+    },
+    delhi: {
+      city: 'Delhi NCR',
+      address: sharedAddress,
+      phone: '+91 9999-564-564',
+      email1: 'info@growtele.com',
+      email2: 'support@growtele.com',
+      icon: 'assets/image 82 (1).png',
+      iconAlt: 'India Gate, Delhi NCR',
       map: 'assets/Group 462 (1).png',
       mapAlt: 'India Gate, Delhi NCR'
+    },
+    bengaluru: {
+      city: 'Bengaluru',
+      address: 'MG road, Raheja Towers, 7th floor, East Wing, Bengaluru, Karnataka 560061, IN',
+      phone: '+91 9999-564-564',
+      email1: 'info@growtele.com',
+      email2: 'support@growtele.com',
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/bb8667e3c10c1ec42abfb1e27f4c0a753d6d38c4.png',
+      iconAlt: 'Bengaluru office',
+      map: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-1.png',
+      mapAlt: 'Bengaluru office location'
+    },
+    mumbai: {
+      city: 'Mumbai',
+      address: sharedAddress,
+      phone: '+91 9999-564-564',
+      email1: 'info@growtele.com',
+      email2: 'support@growtele.com',
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/954a1aa36af01ba5f2647ec2b95abd204c1942d5.png',
+      iconAlt: 'Mumbai office',
+      map: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-2.png',
+      mapAlt: 'Mumbai office location'
     }
   };
+
+  if (window.GROWTELE_CMS_LOCATIONS) {
+    Object.keys(window.GROWTELE_CMS_LOCATIONS).forEach(function (key) {
+      locationData[key] = Object.assign({}, locationData[key] || {}, window.GROWTELE_CMS_LOCATIONS[key]);
+    });
+  }
 
   const tabs = document.querySelectorAll('.locations__tab');
   const cityEl = document.getElementById('locationCity');
@@ -38,10 +80,50 @@
   const phoneEl = document.getElementById('locationPhone');
   const email1El = document.getElementById('locationEmail1');
   const email2El = document.getElementById('locationEmail2');
+  const iconEl = document.getElementById('locationIcon');
   const mapEl = document.getElementById('locationMap');
+
+  if (mapEl) {
+    mapEl.style.transition = 'opacity 0.15s ease';
+  }
+
+  function applyLocation(data) {
+    if (!data) return;
+
+    if (cityEl) cityEl.textContent = data.city;
+    if (addressEl) addressEl.textContent = data.address;
+    if (phoneEl) {
+      phoneEl.textContent = data.phone;
+      phoneEl.href = 'tel:' + data.phone.replace(/\s/g, '');
+    }
+    if (email1El) {
+      email1El.textContent = data.email1;
+      email1El.href = 'mailto:' + data.email1;
+    }
+    if (email2El) {
+      email2El.textContent = data.email2;
+      email2El.href = 'mailto:' + data.email2;
+    }
+    if (iconEl) {
+      iconEl.src = data.icon;
+      iconEl.alt = data.iconAlt;
+    }
+    if (mapEl) {
+      mapEl.style.opacity = '0';
+      setTimeout(function () {
+        mapEl.src = data.map;
+        mapEl.alt = data.mapAlt;
+        mapEl.style.opacity = '1';
+      }, 150);
+    }
+  }
 
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
+      var key = tab.getAttribute('data-location');
+      var data = locationData[key];
+      if (!data) return;
+
       tabs.forEach(function (t) {
         t.classList.remove('locations__tab--active');
         t.setAttribute('aria-selected', 'false');
@@ -49,32 +131,22 @@
       tab.classList.add('locations__tab--active');
       tab.setAttribute('aria-selected', 'true');
 
-      var key = tab.getAttribute('data-location');
-      var data = locationData[key] || locationData.delhi;
-
-      if (cityEl) cityEl.textContent = data.city;
-      if (addressEl) addressEl.textContent = data.address;
-      if (phoneEl) {
-        phoneEl.textContent = data.phone;
-        phoneEl.href = 'tel:' + data.phone.replace(/\s/g, '');
-      }
-      if (email1El) {
-        email1El.textContent = data.email1;
-        email1El.href = 'mailto:' + data.email1;
-      }
-      if (email2El) {
-        email2El.textContent = data.email2;
-        email2El.href = 'mailto:' + data.email2;
-      }
-      if (mapEl) {
-        mapEl.src = data.map;
-        mapEl.alt = data.mapAlt;
-      }
+      applyLocation(data);
     });
   });
 
   // Contact form validation
   const form = document.getElementById('contactForm');
+
+  var contactErrors = Object.assign({
+    first_name: 'First name is required',
+    last_name: 'Last name is required',
+    email: 'Email is required',
+    email_invalid: 'Please enter a valid email',
+    phone: 'Phone number is required',
+    phone_invalid: 'Please enter a valid 10-digit phone number',
+    terms: 'You must agree to the terms'
+  }, window.GROWTELE_CMS_CONTACT_ERRORS || {});
 
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -89,40 +161,40 @@
       var terms = document.getElementById('terms');
 
       if (!firstName.value.trim()) {
-        showError(firstName, 'First name is required');
+        showError(firstName, contactErrors.first_name);
         valid = false;
       }
 
       if (!lastName.value.trim()) {
-        showError(lastName, 'Last name is required');
+        showError(lastName, contactErrors.last_name);
         valid = false;
       }
 
       if (!email.value.trim()) {
-        showError(email, 'Email is required');
+        showError(email, contactErrors.email);
         valid = false;
       } else if (!isValidEmail(email.value)) {
-        showError(email, 'Please enter a valid email');
+        showError(email, contactErrors.email_invalid);
         valid = false;
       }
 
       if (!phone.value.trim()) {
-        showError(phone, 'Phone number is required');
+        showError(phone, contactErrors.phone);
         valid = false;
       } else if (!/^\d{10}$/.test(phone.value.replace(/\D/g, ''))) {
-        showError(phone, 'Please enter a valid 10-digit phone number');
+        showError(phone, contactErrors.phone_invalid);
         valid = false;
       }
 
       if (!terms.checked) {
-        showError(terms, 'You must agree to the terms');
+        showError(terms, contactErrors.terms);
         valid = false;
       }
 
       if (valid) {
         var btn = form.querySelector('.contact-form__submit');
         var originalText = btn.textContent;
-        btn.textContent = 'Submitted!';
+        btn.textContent = window.GROWTELE_CMS_CONTACT_SUBMITTED || 'Submitted!';
         btn.disabled = true;
         setTimeout(function () {
           btn.textContent = originalText;

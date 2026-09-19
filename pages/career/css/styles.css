@@ -122,11 +122,33 @@ main {
   width: 100%;
 }
 
+.career-page .gt-retail-header.header {
+  position: relative;
+  z-index: 100;
+  isolation: isolate;
+}
+
+@media (max-width: 1024px) {
+  .career-page.gt-nav-open .gt-retail-header.header {
+    z-index: 10003;
+  }
+}
+
+.career-page .gt-retail-header .header__logo img {
+  width: 165px;
+  max-width: 165px;
+  height: 42px;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
 /* Header */
 .site-header {
   position: relative;
   z-index: 100;
-  padding: 48px 0 0;
+  padding: 48px var(--pad-x) 0;
 }
 
 .site-header__inner {
@@ -365,6 +387,23 @@ main {
   padding-bottom: 165px;
 }
 
+@media (min-width: 1025px) {
+  .values .section-header {
+    grid-template-columns: minmax(560px, 1.15fr) 1fr;
+    align-items: end;
+  }
+
+  .values .section-title {
+    max-width: 560px;
+  }
+
+  .values .section-desc {
+    align-self: end;
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 .values-card {
   display: grid;
   grid-template-columns: 1fr 531px;
@@ -493,9 +532,48 @@ main {
   border-radius: 35px;
 }
 
-@media (min-width: 769px) {
-  .perks-card:not(.perks-card--overlay) .perks-card__label {
-    display: none;
+@media (min-width: 1025px) {
+  .career-page .perks-card .perks-card__label {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .career-page .perks-card:hover .perks-card__label {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .career-page .perks-card--overlay::after {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .career-page .perks-card--overlay:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (min-width: 1025px) {
+  .career-page .perks .section-header {
+    grid-template-columns: minmax(620px, 1.2fr) 1fr;
+    align-items: end;
+  }
+
+  .career-page .perks .section-header .section-title {
+    max-width: 620px;
+  }
+
+  .career-page .perks .section-title .section-title__line {
+    display: block;
+  }
+
+  .career-page .perks .section-desc {
+    align-self: end;
+    padding-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -506,6 +584,7 @@ main {
   background: linear-gradient(180deg, rgba(18, 19, 72, 0) 31%, rgba(18, 19, 72, 0) 59%, var(--navy) 85%);
   border-radius: 35px;
   pointer-events: none;
+  z-index: 1;
 }
 
 .perks-card--crop img {
@@ -517,12 +596,20 @@ main {
   bottom: 24px;
   left: 20px;
   right: 20px;
-  z-index: 1;
+  z-index: 2;
   color: var(--white);
   min-height: 96px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .career-page .perks-card:hover .perks-card__label {
+    opacity: 1;
+  }
 }
 
 .perks-card__label strong {
@@ -616,9 +703,10 @@ main {
   flex-shrink: 0;
 }
 
-.job-card__icon--blue { background: #e8f0fe; }
-.job-card__icon--purple { background: #f0e8fe; }
-.job-card__icon--pink { background: #fde8f0; }
+.job-card__icon--blue { background: #1CA8FF; }
+.job-card__icon--purple { background: #9D1CFF; }
+.job-card__icon--pink { background: #E11CFF; }
+.job-card__icon--blue-alt { background: #1C64FF; }
 
 .job-card__title-row h3 {
   font-size: 27px;
@@ -654,6 +742,10 @@ main {
 
 .job-card:not(.is-expanded) .job-card__qualifications {
   display: none;
+}
+
+.job-card.is-expanded .job-card__qualifications {
+  display: block;
 }
 
 .job-card:not(.is-expanded) .job-card__summary,

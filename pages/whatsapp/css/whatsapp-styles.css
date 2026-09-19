@@ -125,6 +125,8 @@ main {
   width: 100%;
   height: 130px;
   z-index: 20;
+  padding-left: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
+  padding-right: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
 }
 
 .sms-page .sms-nav-menu > .menu-item > a,
@@ -142,16 +144,22 @@ main {
 
 .logo {
   position: absolute;
-  left: calc(var(--sms-inset) + 129px);
-  top: 48px;
-  width: 164.55px;
-  height: 42px;
+  left: calc(var(--sms-inset) + 120px);
+  top: auto;
+  bottom: 38px;
+  width: 174.55px;
+  height: 52px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .logo img {
-  width: 164.55px;
+  width: 174.55px;
   height: 52px;
+  max-height: 100%;
   object-fit: contain;
+  object-position: left bottom;
+  transform: translateY(4px);
 }
 
 .nav-toggle {
@@ -232,7 +240,7 @@ main {
   width: 100%;
   min-height: max(683px, 100svh);
   z-index: 2;
-  background: url("https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-3.png") no-repeat center / 107% 107%;
+  background: var(--gt-cms-product-hero-bg, url("https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-3.png")) no-repeat center / 107% 107%;
   overflow: hidden;
 }
 
@@ -382,7 +390,7 @@ main {
 .journey {
   position: relative;
   width: 100%;
-  min-height: 1000px;
+  min-height: 1100px;
   margin-top: 100px;
   z-index: 3;
 }
@@ -460,7 +468,7 @@ main {
   left: calc(var(--sms-inset) + 189px);
   top: 180px;
   width: 1068px;
-  height: 640px;
+  height: 724px;
 }
 
 .journey__phone {
@@ -479,18 +487,20 @@ main {
 
 /* Left phone — card 1 (Broadcast Campaigns) */
 .journey__phone--a {
-  left: -75px;
-  top: -77px;
-  width: 402px;
-  height: 648px;
+  left: -25px;
+  top: -27px;
+  width: 327px;
+  height: 573px;
+  object-fit: cover;
 }
 
 /* Left phone — card 2 (Verified Business Messaging) */
 .journey__phone--b {
-  left: -75px;
-  top: -77px;
-  width: 402px;
-  height: 648px;
+  left: -25px;
+  top: -27px;
+  width: 327px;
+  height: 573px;
+  object-fit: cover;
 }
 
 /* Left phone — card 3 (AI Chatbot & Live Support) */
@@ -501,12 +511,21 @@ main {
   height: 648px;
 }
 
+/* Left phone — card 4 (Service) */
+.journey__phone--d {
+  left: -25px;
+  top: -27px;
+  width: 327px;
+  height: 573px;
+  object-fit: cover;
+}
+
 .journey__cards {
   position: absolute;
   left: 423px;
   top: 0;
   width: 645px;
-  height: 540px;
+  height: 724px;
   display: block;
 }
 
@@ -516,7 +535,7 @@ main {
   width: 645px;
   height: 172px;
   background-color: var(--navy-card);
-  background-image: url("../assets/whatsapp-Group%20450.png");
+  background-image: var(--gt-cms-product-journey-card-bg, url("../assets/whatsapp-Group%20450.png"));
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -573,6 +592,15 @@ main {
   filter: brightness(0) invert(1);
 }
 
+.journey-card__icond {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  /* Keep white glyph visible on orange circle */
+  filter: brightness(0) invert(1);
+}
+
 .journey-card h3 {
   position: absolute;
   left: 104px;
@@ -584,7 +612,8 @@ main {
 }
 
 .journey-card:nth-child(2) h3,
-.journey-card:nth-child(3) h3 {
+.journey-card:nth-child(3) h3,
+.journey-card:nth-child(4) h3 {
   font-weight: 700;
 }
 
@@ -605,6 +634,11 @@ main {
 }
 
 .journey-card:nth-child(3) p {
+  top: 100px;
+  width: 594px;
+}
+
+.journey-card:nth-child(4) p {
   top: 100px;
   width: 594px;
 }
@@ -713,8 +747,9 @@ main {
 }
 
 .scale-card:first-child.is-active .scale-card__media {
-  width: 300px;
+  width: 250px;
   padding: 0;
+  align-items: flex-end;
 }
 
 .scale-card:first-child:not(.is-active) .scale-card__media img {
@@ -728,55 +763,49 @@ main {
 }
 
 .scale-card:first-child.is-active .scale-card__media img {
-  width: 280px;
+  width: auto;
+  max-width: 240px;
   height: auto;
-  max-height: 200px;
+  max-height: 196px;
+  object-fit: contain;
+  object-position: center center;
   transform: none;
 }
 
-/* Cards 2–4 — centered in closed cards (match card 2) */
+/* Cards 2–4 — identical sizing (closed + open) */
+.scale-card:nth-child(n + 2) .scale-card__media {
+  align-items: flex-end;
+  justify-content: center;
+}
+
 .scale-card:nth-child(n + 2) .scale-card__media img {
-  width: 168px;
+  display: block;
+  width: 100%;
+  max-width: 191px;
   height: 196px;
-  object-fit: cover;
-  object-position: center center;
+  max-height: 196px;
+  object-fit: contain;
+  object-position: center bottom;
   border-radius: 10px;
 }
 
-.scale-card:nth-child(2) .scale-card__media img {
-  object-position: center 18%;
-}
-
-.scale-card:nth-child(3) .scale-card__media img {
-  width: 168px;
-  height: 196px;
-  object-fit: cover;
-  object-position: center center;
-}
-
-.scale-card:nth-child(4) .scale-card__media img {
-  width: 168px;
-  height: 196px;
-  object-fit: contain;
-  object-position: center center;
-}
-
 .scale-card:nth-child(n + 2).is-active .scale-card__media img {
-  width: 220px;
-  height: 200px;
+  max-width: 210px;
 }
 
-.scale-card:nth-child(3).is-active .scale-card__media img {
-  width: 220px;
-  height: 200px;
-  object-fit: cover;
-  object-position: center center;
-}
-
-.scale-card:nth-child(4).is-active .scale-card__media img {
-  width: 210px;
+.scale-card:nth-child(2):not(.is-active) .scale-card__media img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
   height: 196px;
-  object-fit: contain;
+  max-width: none;
+}
+
+.scale-card:nth-child(2).is-active .scale-card__media img {
+  width: auto;
+  height: 196px;
+  max-width: none;
 }
 
 /* Expanded: fixed-size text slides in (no reflow / size change) */
@@ -840,7 +869,7 @@ main {
   z-index: 3;
   color: #fff;
   overflow: hidden;
-  background: url("../assets/whatsapp-Group%20591.png") no-repeat left top / 100% 100%;
+  background: var(--gt-cms-product-benefits-bg, url("../assets/whatsapp-Group%20591.png")) no-repeat left top / 100% 100%;
 }
 
 .benefits__title {
@@ -939,24 +968,24 @@ main {
   width: 605px;
   height: 440px;
   background: none;
-  border-radius: 15px;
+  border-radius: 30px;
   overflow: hidden;
 }
 
 .benefits__visual-frame,
 #benefitsVisual {
   position: absolute;
-  left: 39px;
-  top: 19px;
-  width: 524px;
-  height: 401px;
-  border-radius: 8px;
+  left: 0;
+  top: -18px;
+  width: 84%;
+  height: 100%;
+  border-radius: 30px;
   overflow: hidden;
   /* background-color: #fff; */
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% 100%;
-  background-image: url("../assets/whatsapp-Card%20Image.png");
+  background-size: cover;
+  background-image: var(--gt-cms-product-benefits-visual, url("../assets/whatsapp-Card%20Image.png"));
 }
 
 /* ---------- Why SMS ---------- */
@@ -1047,12 +1076,12 @@ main {
 }
 
 .why-card:nth-child(1) .why-card__media img {
-  width: 67%;
-  height: 121%;
+  width: 77%;
+  height: 110%;
   object-fit: cover;
   object-position: 12% 10%;
-  margin-top: -52px;
-  margin-left: 13%;
+  margin-top: -24px;
+  margin-left: 7%;
 }
 
 .why-card:nth-child(2) .why-card__media img {
@@ -1065,18 +1094,18 @@ main {
 
 .why-card:nth-child(3) .why-card__media img {
   width: 88%;
-  height: 100%;
+  height: 96%;
   object-fit: contain;
   object-position: center center;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .why-card:nth-child(4) .why-card__media img {
   width: 85%;
-  height: 116%;
+  height: 110%;
   object-fit: cover;
   object-position: 88% 6%;
-  margin-top: -40px;
+  margin-top: -22px;
   margin-left: 8%;
 }
 
@@ -1349,7 +1378,7 @@ main {
 }
 
 .funnel__visual img {
-  width: 645px;
+  width: 705px;
   height: auto;
   max-height: 100%;
   object-fit: contain;

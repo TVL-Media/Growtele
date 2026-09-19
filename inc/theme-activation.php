@@ -10,14 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Create default pages on theme activation.
+ * Static pages the theme registers in WordPress.
+ *
+ * @return array<string, array{title: string, template: string}>
  */
-function growtele_on_theme_activation() {
-	if ( ! function_exists( 'wp_insert_post' ) || ! function_exists( 'get_page_by_path' ) ) {
-		return;
-	}
-
-	$pages = array(
+function growtele_get_static_page_definitions() {
+	return array(
 		'sms'             => array(
 			'title'    => 'SMS',
 			'template' => 'page-templates/page-sms.php',
@@ -82,13 +80,42 @@ function growtele_on_theme_activation() {
 			'title'    => 'Contact',
 			'template' => 'page-templates/page-contact.php',
 		),
-		'growtele-io'     => array(
+		'growinfinity-io' => array(
 			'title'    => 'Growinfinity.io',
-			'template' => 'page-templates/page-growtele-io.php',
+			'template' => 'page-templates/page-growinfinity-io.php',
+		),
+		'api-documentation' => array(
+			'title'    => 'API Documentation',
+			'template' => 'page-templates/page-api-documentation.php',
+		),
+		'privacy-policy'    => array(
+			'title'    => 'Privacy Policy',
+			'template' => 'page-templates/page-privacy-policy.php',
+		),
+		'terms-and-condition' => array(
+			'title'    => 'Terms and Condition',
+			'template' => 'page-templates/page-terms-and-condition.php',
+		),
+		'security'          => array(
+			'title'    => 'Security',
+			'template' => 'page-templates/page-security.php',
+		),
+		'partners-term-of-use' => array(
+			'title'    => 'Partners Term of Use',
+			'template' => 'page-templates/page-partners-term-of-use.php',
 		),
 	);
+}
 
-	foreach ( $pages as $slug => $page ) {
+/**
+ * Create or update static pages (safe to run on every request).
+ */
+function growtele_sync_static_page_posts() {
+	if ( ! function_exists( 'wp_insert_post' ) || ! function_exists( 'get_page_by_path' ) ) {
+		return;
+	}
+
+	foreach ( growtele_get_static_page_definitions() as $slug => $page ) {
 		$existing = get_page_by_path( $slug );
 
 		if ( $existing instanceof WP_Post ) {
@@ -111,6 +138,22 @@ function growtele_on_theme_activation() {
 			update_post_meta( $page_id, '_wp_page_template', $page['template'] );
 		}
 	}
+
+	$removed = get_page_by_path( 'pricing' );
+	if ( $removed instanceof WP_Post && 'trash' !== $removed->post_status ) {
+		wp_trash_post( $removed->ID );
+	}
+}
+
+/**
+ * Create default pages on theme activation.
+ */
+function growtele_on_theme_activation() {
+	if ( ! function_exists( 'wp_insert_post' ) || ! function_exists( 'get_page_by_path' ) ) {
+		return;
+	}
+
+	growtele_sync_static_page_posts();
 
 	$home = get_page_by_path( 'home' );
 	if ( $home instanceof WP_Post ) {
@@ -160,6 +203,7 @@ function growtele_run_deferred_theme_activation() {
 	}
 
 	if ( get_option( 'growtele_static_pages_ready' ) === GROWTELE_VERSION ) {
+		growtele_sync_static_page_posts();
 		return;
 	}
 
@@ -170,3 +214,4 @@ function growtele_run_deferred_theme_activation() {
 	growtele_on_theme_activation();
 }
 add_action( 'admin_init', 'growtele_run_deferred_theme_activation', 99 );
+add_action( 'init', 'growtele_run_deferred_theme_activation', 99 );

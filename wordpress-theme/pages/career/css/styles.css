@@ -122,11 +122,33 @@ main {
   width: 100%;
 }
 
+.career-page .gt-retail-header.header {
+  position: relative;
+  z-index: 100;
+  isolation: isolate;
+}
+
+@media (max-width: 1024px) {
+  .career-page.gt-nav-open .gt-retail-header.header {
+    z-index: 10003;
+  }
+}
+
+.career-page .gt-retail-header .header__logo img {
+  width: 165px;
+  max-width: 165px;
+  height: 42px;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
 /* Header */
 .site-header {
   position: relative;
   z-index: 100;
-  padding: 48px 0 0;
+  padding: 48px var(--pad-x) 0;
 }
 
 .site-header__inner {
@@ -365,6 +387,23 @@ main {
   padding-bottom: 165px;
 }
 
+@media (min-width: 1025px) {
+  .values .section-header {
+    grid-template-columns: minmax(560px, 1.15fr) 1fr;
+    align-items: end;
+  }
+
+  .values .section-title {
+    max-width: 560px;
+  }
+
+  .values .section-desc {
+    align-self: end;
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 .values-card {
   display: grid;
   grid-template-columns: 1fr 531px;
@@ -493,6 +532,51 @@ main {
   border-radius: 35px;
 }
 
+@media (min-width: 1025px) {
+  .career-page .perks-card .perks-card__label {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .career-page .perks-card:hover .perks-card__label {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .career-page .perks-card--overlay::after {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .career-page .perks-card--overlay:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (min-width: 1025px) {
+  .career-page .perks .section-header {
+    grid-template-columns: minmax(620px, 1.2fr) 1fr;
+    align-items: end;
+  }
+
+  .career-page .perks .section-header .section-title {
+    max-width: 620px;
+  }
+
+  .career-page .perks .section-title .section-title__line {
+    display: block;
+  }
+
+  .career-page .perks .section-desc {
+    align-self: end;
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 .perks-card--overlay::after {
   content: '';
   position: absolute;
@@ -500,6 +584,7 @@ main {
   background: linear-gradient(180deg, rgba(18, 19, 72, 0) 31%, rgba(18, 19, 72, 0) 59%, var(--navy) 85%);
   border-radius: 35px;
   pointer-events: none;
+  z-index: 1;
 }
 
 .perks-card--crop img {
@@ -511,8 +596,20 @@ main {
   bottom: 24px;
   left: 20px;
   right: 20px;
-  z-index: 1;
+  z-index: 2;
   color: var(--white);
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .career-page .perks-card:hover .perks-card__label {
+    opacity: 1;
+  }
 }
 
 .perks-card__label strong {
@@ -520,6 +617,8 @@ main {
   font-size: 27px;
   font-weight: 500;
   margin-bottom: 6px;
+  min-height: 2.4em;
+  line-height: 1.15;
 }
 
 .perks-card__label span {
@@ -604,9 +703,10 @@ main {
   flex-shrink: 0;
 }
 
-.job-card__icon--blue { background: #e8f0fe; }
-.job-card__icon--purple { background: #f0e8fe; }
-.job-card__icon--pink { background: #fde8f0; }
+.job-card__icon--blue { background: #1CA8FF; }
+.job-card__icon--purple { background: #9D1CFF; }
+.job-card__icon--pink { background: #E11CFF; }
+.job-card__icon--blue-alt { background: #1C64FF; }
 
 .job-card__title-row h3 {
   font-size: 27px;
@@ -642,6 +742,10 @@ main {
 
 .job-card:not(.is-expanded) .job-card__qualifications {
   display: none;
+}
+
+.job-card.is-expanded .job-card__qualifications {
+  display: block;
 }
 
 .job-card:not(.is-expanded) .job-card__summary,
@@ -902,94 +1006,6 @@ main {
 }
 
 /* Responsive — desktop layout preserved until 1024px */
-@media (max-width: 1024px) {
-  .site-nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: var(--white);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 80px 32px 32px;
-    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
-    transition: right 0.3s;
-    z-index: 200;
-  }
-  .site-nav.is-open { right: 0; }
-  .nav-toggle { display: flex; z-index: 201; }
-  .nav-toggle.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
-  .nav-toggle.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-  .btn-header-cta span:first-child { display: none; }
-  .btn-header-cta { padding: 0 10px; }
-  .section-header { grid-template-columns: 1fr; gap: 16px; }
-  .section-desc { justify-self: start; padding-top: 0; max-width: 100%; }
-
-  .jobs .section-header {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
-  .jobs .section-desc {
-    max-width: 100%;
-  }
-  .hero__title { font-size: 42px; }
-  .hero__subtitle { font-size: 18px; }
-  .hero__photos {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, minmax(200px, 1fr));
-    gap: 0;
-    height: auto;
-    min-height: 400px;
-    margin-top: -300px;
-    padding-bottom: 40px;
-  }
-
-  .hero__photo {
-    width: 100%;
-    height: 100%;
-    min-height: 200px;
-  }
-  .hero__band { height: 320px; margin-top: 40px; }
-  .culture-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, minmax(200px, 1fr));
-  }
-  .jobs-accordion { grid-template-columns: 1fr; }
-  .site-footer__main { grid-template-columns: 1fr; }
-  .site-footer__links { padding-left: 0; }
-}
-
-@media (max-width: 768px) {
-  .hero__title { font-size: 32px; }
-  .section-title { font-size: 28px; }
-  .culture-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, minmax(200px, 1fr));
-  }
-  .perks-grid { grid-template-columns: 1fr; }
-  .value-item__content h3 { font-size: 24px; }
-  .bottom-cta__content { padding: 40px 24px; }
-  .bottom-cta__content h2 { font-size: 28px; }
-  .site-footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
-}
-
-@media (max-width: 480px) {
-  :root { --pad-x: 20px; }
-  .hero__title { font-size: 26px; }
-  .hero__photos {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 200px);
-  }
-  .btn-header-cta { display: none; }
-}
-
-@media (max-width: 375px) {
-  .hero__title { font-size: 22px; }
-  .section-title { font-size: 24px; }
-}
 
 /* Word reveal — inherit parent text alignment */
 .career-page .gt-words {

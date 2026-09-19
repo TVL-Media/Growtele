@@ -6,11 +6,12 @@
   const locationData = {
     kolkata: {
       city: 'Kolkata',
-      address: 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
+      address: '3, Ismail Madan Lane, Zakaria Street,\nKolkata 700073, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png'
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/526d7a71d22dd2b2008ce00a1bd539b77309d3e1.png',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-3.png'
     },
     delhi: {
       city: 'Delhi NCR',
@@ -18,15 +19,17 @@
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16.png',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png'
     },
     bengaluru: {
       city: 'Bengaluru',
-      address: 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
+      address: 'MG road, Raheja Towers, 7th floor, East Wing, Bengaluru, Karnataka 560061, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png'
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/bb8667e3c10c1ec42abfb1e27f4c0a753d6d38c4.png',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-1.png'
     },
     mumbai: {
       city: 'Mumbai',
@@ -34,9 +37,16 @@
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png'
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/954a1aa36af01ba5f2647ec2b95abd204c1942d5.png',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-2.png'
     }
   };
+
+  if (window.GROWTELE_CMS_LOCATIONS) {
+    Object.keys(window.GROWTELE_CMS_LOCATIONS).forEach(function (key) {
+      locationData[key] = Object.assign({}, locationData[key] || {}, window.GROWTELE_CMS_LOCATIONS[key]);
+    });
+  }
 
   if (locationTabs) {
     const tabs = locationTabs.querySelectorAll('.locations__tab');
@@ -45,6 +55,7 @@
     const phoneEl = document.getElementById('locationPhone');
     const email1El = document.getElementById('locationEmail1');
     const email2El = document.getElementById('locationEmail2');
+    const iconEl = document.getElementById('locationIcon');
     const imageEl = document.getElementById('locationImage');
 
     tabs.forEach(function (tab) {
@@ -61,6 +72,10 @@
         if (phoneEl) phoneEl.textContent = data.phone;
         if (email1El) email1El.textContent = data.email1;
         if (email2El) email2El.textContent = data.email2;
+        if (iconEl && data.icon) {
+          iconEl.src = data.icon;
+          iconEl.alt = data.city + ' office';
+        }
         if (imageEl) {
           imageEl.style.opacity = '0';
           setTimeout(function () {

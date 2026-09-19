@@ -4,10 +4,15 @@
   var funnelVisual = document.getElementById("funnelVisual");
 
   var funnelImages = {
-    acquisition: { src: "assets/cloud-telephony-acquica.png", alt: "Acquisition campaign flow" },
-    engagement: { src: "assets/cloud-telephony-Enagement Card.png", alt: "Engagement campaign flow" },
-    retention: { src: "assets/cloud-telephony-retim.png", alt: "Retention campaign flow" }
+    acquisition: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Eng-1-1.png", alt: "Acquisition campaign flow" },
+    engagement: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/cttt.png", alt: "Engagement campaign flow" },
+    retention: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Eng-1-2.png", alt: "Retention campaign flow" }
   };
+  if (window.GROWTELE_CMS_FUNNEL) {
+    Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {
+      funnelImages[key] = Object.assign({}, funnelImages[key] || {}, window.GROWTELE_CMS_FUNNEL[key]);
+    });
+  }
 
   Object.keys(funnelImages).forEach(function (key) {
     var preload = new Image();
@@ -193,7 +198,9 @@
       var secRect = section.getBoundingClientRect();
       var bodyRect = body.getBoundingClientRect();
       var first = cards[0].getBoundingClientRect();
-      var last = cards[cards.length - 1].getBoundingClientRect();
+      /* Check only first 3 cards — the last card stacks behind and may extend below viewport */
+      var checkIndex = Math.min(cards.length - 1, 2);
+      var last = cards[checkIndex].getBoundingClientRect();
       var sectionH = section.offsetHeight || 1;
       var designBodyTop = secRect.top + sectionH * (180 / 1000);
       var bodyTolerance = Math.max(48, viewH * 0.07);

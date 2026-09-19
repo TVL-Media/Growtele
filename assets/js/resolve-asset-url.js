@@ -5,8 +5,23 @@
     return;
   }
 
-  var THEME_CDN = 'https://listings.selectvia.com/wp-content/themes/mt';
   var RASTER_EXT = /\.(png|jpe?g|gif|webp|mp4|mov|avif|svg)(\?|$)/i;
+
+  function getThemeCdnBase() {
+    if (window.GROWTELE_THEME_URI) {
+      return String(window.GROWTELE_THEME_URI).replace(/\/$/, '');
+    }
+
+    var script = document.querySelector('script[src*="resolve-asset-url.js"]');
+    if (script && script.src) {
+      var match = script.src.match(/^(.*\/wp-content\/themes\/[^/]+)/i);
+      if (match) {
+        return match[1];
+      }
+    }
+
+    return 'https://listings.selectvia.com/wp-content/themes/growtele';
+  }
 
   function encodePart(part) {
     try {
@@ -68,7 +83,11 @@
       var pathname = new URL(documentBase(hintEl)).pathname;
       var parts = pathname.split('/').filter(Boolean);
       if (parts.length) {
-        return decodeURIComponent(parts[parts.length - 1]);
+        var last = decodeURIComponent(parts[parts.length - 1]);
+        if (last.toLowerCase() === 'index.html' && parts.length > 1) {
+          return decodeURIComponent(parts[parts.length - 2]);
+        }
+        return last;
       }
     } catch (e) {
       /* ignore */
@@ -90,7 +109,7 @@
     }
 
     var rel = normalized.replace(/^assets\//i, '');
-    return THEME_CDN + '/pages/' + encodePart(slug) + '/assets/' + encodePath(rel);
+    return getThemeCdnBase() + '/pages/' + encodePart(slug) + '/assets/' + encodePath(rel);
   }
 
   function resolveWordPressPageAsset(path) {

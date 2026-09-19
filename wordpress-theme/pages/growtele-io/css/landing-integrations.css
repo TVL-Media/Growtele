@@ -1,0 +1,114 @@
+/* Landing-page integrations orbit diagram, scoped to Growinfinity page */
+.growtele-io-page .gt-integrations.gt-section {
+  margin-bottom: 0;
+  padding: clamp(48px, 5.5vw, 80px) var(--content-padding) clamp(40px, 4.2vw, 60px);
+  overflow: visible;
+}
+
+.growtele-io-page .gt-integrations__inner {
+  width: min(100%, var(--content-max, 1200px));
+  max-width: var(--content-max, 1200px);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.growtele-io-page .gt-integrations__content .gt-btn--learn {
+  color: #fff;
+}
+
+.growtele-io-page .gt-integrations__content .gt-btn--learn .gt-btn__learn-arrow {
+  flex-shrink: 0;
+}
+
+.growtele-io-page .gt-integrations [data-animate].is-visible,
+.growtele-io-page .gt-integrations [data-animate] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1024px) {
+  .growtele-io-page .gt-integrations__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .growtele-io-page .gt-integrations__title,
+  .growtele-io-page .gt-integrations__desc {
+    max-width: 100%;
+    font-size: var(--gt-text-xl, clamp(18px, 4.5vw, 20px));
+  }
+
+  .growtele-io-page .gt-integrations__title {
+    margin-bottom: 12px;
+  }
+
+  .growtele-io-page .gt-integrations__desc {
+    font-size: var(--gt-text-lead, clamp(14px, 3.5vw, 16px));
+    line-height: 1.45;
+    margin-bottom: var(--gt-space-content-gap, 20px);
+  }
+
+  .growtele-io-page .gt-integrations.gt-section,
+  .growtele-io-page .gt-integrations__inner {
+    overflow: visible;
+  }
+
+  .growtele-io-page .gt-integrations__diagram {
+    width: min(100%, 300px);
+    max-width: calc(100% - 52px);
+    margin: 0 auto;
+    justify-self: center;
+    overflow: visible;
+  }
+
+  .growtele-io-page .gt-orbit-diagram__icon-slot {
+    width: 13.5cqw;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .growtele-io-page .gt-integrations__diagram,
+    .growtele-io-page .gt-orbit-diagram {
+      animation: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .growtele-io-page .gt-integrations.gt-section {
+    padding: 20px var(--content-padding) 24px;
+  }
+
+  .growtele-io-page .gt-integrations__inner {
+    gap: 20px;
+  }
+
+  /* Learn More — compact pill (matches landing page) */
+  .growtele-io-page .gt-integrations__content .gt-btn--learn {
+    font-size: 14px;
+    height: 36px;
+    min-height: 36px;
+    padding: 4px 6px 4px 16px;
+    gap: 6px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+
+  .growtele-io-page .gt-integrations__content .gt-btn--learn img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .growtele-io-page .gt-integrations__title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .growtele-io-page .gt-integrations__desc {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 20px;
+  }
+}

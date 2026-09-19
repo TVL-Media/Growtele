@@ -897,9 +897,11 @@
     height: 40px;
   }
 
-  .about-us-page .team__nav-btn img {
-    width: 40px;
-    height: 40px;
+  .about-us-page .team__nav-btn::before {
+    width: 11px;
+    height: 11px;
+    border-right-width: 2.5px;
+    border-bottom-width: 2.5px;
   }
 
   .about-us-page .team__carousel {
@@ -2071,6 +2073,14 @@
     border-radius: 16px;
     pointer-events: none;
     z-index: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .career-page .perks-card:hover::after {
+    opacity: 1;
+    visibility: visible;
   }
 
   .career-page .perks-card__label {

@@ -681,9 +681,10 @@
   .hero__actions {
     order: 4;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: stretch;
-    gap: var(--gt-space-card-gap);
+    gap: 10px;
     margin-bottom: var(--gt-space-content-gap);
   }
 
@@ -691,13 +692,38 @@
   .btn-outline,
   .hero__actions .btn,
   .hero__actions .btn-cta {
-    width: 100%;
-    min-height: 48px;
-    font-size: var(--gt-text-md);
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    min-height: 42px;
+    height: auto;
+    font-size: 12px;
+    border-radius: 10px;
   }
 
-  .btn-outline {
-    height: auto;
+  .hero__actions .btn-cta--hero {
+    justify-content: space-between;
+    padding: 8px 8px 8px 12px;
+  }
+
+  .hero__actions .btn-outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .hero__actions .btn-cta--hero .btn-cta__orb {
+    width: 26px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .hero__actions .btn-cta--hero .btn-cta__orb img {
+    width: 12px;
+    height: 12px;
   }
 
   .hero__pills {
@@ -745,6 +771,32 @@
     top: 0;
     object-fit: contain;
     object-position: center bottom;
+  }
+
+  .sms-page .hero__actions {
+    order: 3;
+    margin-bottom: 14px;
+  }
+
+  .sms-page .hero__visual {
+    order: 4;
+    flex: 1 1 auto;
+    max-height: none;
+    width: 100%;
+    margin: 10px 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .sms-page .hero__visual img {
+    width: 100%;
+    max-width: 100%;
+    max-height: min(56vw, 300px);
+    height: auto;
+    object-fit: contain;
+    object-position: bottom center;
   }
 
   .hero__notch {
@@ -795,7 +847,8 @@
   .journey__phone,
   .journey__phone--a,
   .journey__phone--b,
-  .journey__phone--c {
+  .journey__phone--c,
+  .journey__phone--d {
     position: relative !important;
     left: auto !important;
     top: auto !important;
@@ -814,13 +867,14 @@
   /* Multi-phone pages — match SMS single-phone sizing (no scale) */
   .journey__phone--a.is-active,
   .journey__phone--b.is-active,
-  .journey__phone--c.is-active {
+  .journey__phone--c.is-active,
+  .journey__phone--d.is-active {
     transform: none !important;
     margin: 0 auto !important;
   }
 
   /* SMS uses a single phone image without is-active */
-  .journey__phone:not(.journey__phone--a):not(.journey__phone--b):not(.journey__phone--c) {
+  .journey__phone:not(.journey__phone--a):not(.journey__phone--b):not(.journey__phone--c):not(.journey__phone--d) {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -829,7 +883,8 @@
   /* Multi-phone pages (Email, WhatsApp, RCS, Cloud Telephony) */
   .journey__phone--a:not(.is-active),
   .journey__phone--b:not(.is-active),
-  .journey__phone--c:not(.is-active) {
+  .journey__phone--c:not(.is-active),
+  .journey__phone--d:not(.is-active) {
     display: none !important;
   }
 
@@ -1066,6 +1121,7 @@
     width: 100% !important;
     height: 100% !important;
     min-height: 200px;
+    background-color: transparent !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
@@ -1504,7 +1560,8 @@
   .sms-page .journey__phone,
   .sms-page .journey__phone--a,
   .sms-page .journey__phone--b,
-  .sms-page .journey__phone--c {
+  .sms-page .journey__phone--c,
+  .sms-page .journey__phone--d {
     width: min(360px, 96vw) !important;
     max-width: none !important;
     height: min(530px, 62vh) !important;
@@ -1514,7 +1571,8 @@
 
   .sms-page .journey__phone--a.is-active,
   .sms-page .journey__phone--b.is-active,
-  .sms-page .journey__phone--c.is-active {
+  .sms-page .journey__phone--c.is-active,
+  .sms-page .journey__phone--d.is-active {
     transform: none !important;
     margin: 0 auto 4px !important;
   }

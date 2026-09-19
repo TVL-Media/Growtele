@@ -125,6 +125,8 @@ main {
   width: 100%;
   height: 130px;
   z-index: 20;
+  padding-left: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
+  padding-right: max(var(--sms-inset), clamp(20px, 8.33vw, 120px));
 }
 
 .sms-page .sms-nav-menu > .menu-item > a,
@@ -142,16 +144,22 @@ main {
 
 .logo {
   position: absolute;
-  left: calc(var(--sms-inset) + 129px);
-  top: 48px;
-  width: 164.55px;
-  height: 42px;
+  left: calc(var(--sms-inset) + 120px);
+  top: auto;
+  bottom: 38px;
+  width: 174.55px;
+  height: 52px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .logo img {
-  width: 164.55px;
+  width: 174.55px;
   height: 52px;
+  max-height: 100%;
   object-fit: contain;
+  object-position: left bottom;
+  transform: translateY(4px);
 }
 
 .nav-toggle {
@@ -232,7 +240,7 @@ main {
   width: 100%;
   min-height: max(683px, 100svh);
   z-index: 2;
-  background: url("https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-3.png") no-repeat center / 107% 107%;
+  background: var(--gt-cms-product-hero-bg, url("https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-3.png")) no-repeat center / 107% 107%;
   overflow: hidden;
 }
 
@@ -516,7 +524,7 @@ main {
   width: 645px;
   height: 172px;
   background-color: var(--navy-card);
-  background-image: url("../assets/rcs-Group%20450.png");
+  background-image: var(--gt-cms-product-journey-card-bg, url("../assets/rcs-Group%20450.png"));
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -815,7 +823,7 @@ main {
   z-index: 3;
   color: #fff;
   overflow: hidden;
-  background: url("../assets/rcs-Group%20591.png") no-repeat left top / 100% 100%;
+  background: var(--gt-cms-product-benefits-bg, url("../assets/rcs-Group%20591.png")) no-repeat left top / 100% 100%;
 }
 
 .benefits__title {
@@ -903,7 +911,7 @@ main {
   width: 605px;
   height: 440px;
   background: none;
-  border-radius: 15px;
+  border-radius: 30px;
   overflow: hidden;
 }
 
@@ -914,13 +922,13 @@ main {
   top: 0;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 30px;
   overflow: hidden;
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% 100%;
-  background-image: url("https://listings.selectvia.com/wp-content/uploads/2026/09/e6f1e938ecf0adfbc22076c112e0031b884df6e9.png");
+  background-size: cover;
+  background-image: var(--gt-cms-product-benefits-visual, url("https://listings.selectvia.com/wp-content/uploads/2026/09/e6f1e938ecf0adfbc22076c112e0031b884df6e9.png"));
 }
 
 /* ---------- Why SMS ---------- */
@@ -1173,22 +1181,22 @@ main {
 }
 
 .funnel__tab.is-active[data-funnel="acquisition"] {
-  color: #1D8004;
-  border-bottom-color: #1D8004;
-}
-
-.funnel__tab.is-active[data-funnel="acquisition"] img {
-  filter: brightness(0) saturate(100%) invert(28%) sepia(98%) saturate(1450%) hue-rotate(73deg) brightness(92%) contrast(101%);
-  opacity: 1;
-}
-
-.funnel__tab.is-active[data-funnel="retention"] {
   color: #A00EC3;
   border-bottom-color: #A00EC3;
 }
 
-.funnel__tab.is-active[data-funnel="retention"] img {
+.funnel__tab.is-active[data-funnel="acquisition"] img {
   filter: brightness(0) saturate(100%) invert(21%) sepia(98%) saturate(5000%) hue-rotate(280deg) brightness(95%) contrast(101%);
+  opacity: 1;
+}
+
+.funnel__tab.is-active[data-funnel="retention"] {
+  color: #394BB8;
+  border-bottom-color: #394BB8;
+}
+
+.funnel__tab.is-active[data-funnel="retention"] img {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(47%) saturate(1876%) hue-rotate(205deg) brightness(93%) contrast(92%);
   opacity: 1;
 }
 
@@ -1216,11 +1224,11 @@ main {
 }
 
 .funnel__panel.funnel__panel--acquisition {
-  background: #F8FCF7;
+  background: #FBF7FC;
 }
 
 .funnel__panel.funnel__panel--acquisition .funnel__list[data-funnel-list="acquisition"] img {
-  background: #E5FFDE;
+  background: #F6E1FB;
 }
 
 .funnel__panel.funnel__panel--engagement {
@@ -1237,11 +1245,11 @@ main {
 }
 
 .funnel__panel.funnel__panel--retention {
-  background: #FBF7FC;
+  background: #F8F9FF;
 }
 
 .funnel__panel.funnel__panel--retention .funnel__list[data-funnel-list="retention"] img {
-  background: #F6E1FB;
+  background: #DDE2FF;
 }
 
 .funnel__list {
@@ -1292,20 +1300,20 @@ main {
 
 .funnel__list[data-funnel-list="acquisition"]:not([hidden]) h3,
 .funnel__list[data-funnel-list="acquisition"]:not([hidden]) p {
-  color: #1D8004;
+  color: #A00EC3;
 }
 
 .funnel__list[data-funnel-list="acquisition"]:not([hidden]) img {
-  background: #E5FFDE;
+  background: #F6E1FB;
 }
 
 .funnel__list[data-funnel-list="retention"]:not([hidden]) h3,
 .funnel__list[data-funnel-list="retention"]:not([hidden]) p {
-  color: #A00EC3;
+  color: #394BB8;
 }
 
 .funnel__list[data-funnel-list="retention"]:not([hidden]) img {
-  background: #F6E1FB;
+  background: #DDE2FF;
 }
 
 .funnel__visual {
@@ -1318,7 +1326,7 @@ main {
 
 .funnel__visual img {
   width: 645px;
-  height: 405px;
+  height: 461px;
   object-fit: contain;
 }
 

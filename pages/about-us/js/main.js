@@ -6,12 +6,12 @@
   const locationData = {
     kolkata: {
       city: 'Kolkata',
-      address: 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
+      address: '3, Ismail Madan Lane, Zakaria Street,\nKolkata 700073, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
       icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/526d7a71d22dd2b2008ce00a1bd539b77309d3e1.png',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-3.png'
     },
     delhi: {
       city: 'Delhi NCR',
@@ -24,7 +24,7 @@
     },
     bengaluru: {
       city: 'Bengaluru',
-      address: 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
+      address: 'MG road, Raheja Towers, 7th floor, East Wing, Bengaluru, Karnataka 560061, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
@@ -41,6 +41,12 @@
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-2.png'
     }
   };
+
+  if (window.GROWTELE_CMS_LOCATIONS) {
+    Object.keys(window.GROWTELE_CMS_LOCATIONS).forEach(function (key) {
+      locationData[key] = Object.assign({}, locationData[key] || {}, window.GROWTELE_CMS_LOCATIONS[key]);
+    });
+  }
 
   if (locationTabs) {
     const tabs = locationTabs.querySelectorAll('.locations__tab');

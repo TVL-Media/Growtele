@@ -73,14 +73,18 @@ function growtele_get_cdn_video( $key ) {
  * @param string $class CSS class.
  * @param int    $width Width.
  * @param int    $height Height.
+ * @param array  $extra_attrs Optional extra attributes (e.g. loading, fetchpriority).
  */
-function growtele_image( $path, $alt = '', $class = '', $width = '', $height = '' ) {
-	$attrs = array(
-		'src'   => growtele_get_image( $path ),
-		'alt'   => esc_attr( $alt ),
-		'class' => esc_attr( $class ),
-		'loading' => 'lazy',
-		'decoding' => 'async',
+function growtele_image( $path, $alt = '', $class = '', $width = '', $height = '', $extra_attrs = array() ) {
+	$attrs = array_merge(
+		array(
+			'src'      => growtele_get_image( $path ),
+			'alt'      => esc_attr( $alt ),
+			'class'    => esc_attr( $class ),
+			'loading'  => 'lazy',
+			'decoding' => 'async',
+		),
+		is_array( $extra_attrs ) ? $extra_attrs : array()
 	);
 
 	if ( $width ) {
@@ -107,6 +111,21 @@ function growtele_image( $path, $alt = '', $class = '', $width = '', $height = '
  * @param string $class Extra class.
  */
 function growtele_cta_button( $text, $url = '#', $class = 'gt-btn gt-btn--gradient' ) {
+	$is_header_cta = false !== strpos( $class, 'btn-cta' );
+
+	if ( $is_header_cta ) {
+		$arrow_url = trailingslashit( GROWTELE_URI ) . 'pages/sms/assets/arrow-cta.png';
+		?>
+		<a href="<?php echo esc_url( $url ); ?>" class="<?php echo esc_attr( $class ); ?>">
+			<span><?php echo esc_html( $text ); ?></span>
+			<span class="btn-cta__orb">
+				<img src="<?php echo esc_url( $arrow_url ); ?>" alt="" width="16" height="16" loading="lazy" />
+			</span>
+		</a>
+		<?php
+		return;
+	}
+
 	?>
 	<a href="<?php echo esc_url( $url ); ?>" class="<?php echo esc_attr( $class ); ?>">
 		<span class="gt-btn__text"><?php echo esc_html( $text ); ?></span>

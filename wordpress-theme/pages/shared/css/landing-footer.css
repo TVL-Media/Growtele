@@ -1,6 +1,13 @@
 /**
- * Landing page footer + CTA on company pages.
+ * Shared footer CTA card + footer layout (About Us reference).
  */
+.gt-cta {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -170px;
+  overflow: visible;
+}
+
 .gt-cta.gt-section {
   position: relative;
   z-index: 10;
@@ -10,17 +17,127 @@
   overflow: visible;
 }
 
+.gt-cta .gt-container.gt-cta__inner {
+  width: min(92vw, 1280px);
+  max-width: min(92vw, 1280px);
+  margin-inline: auto;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  display: grid;
+  grid-template-columns: minmax(0, 456px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: stretch;
+  min-height: auto;
+  overflow: visible;
+}
+
+.gt-cta__visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 28px;
+  box-shadow: none;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
+}
+
+.gt-cta__visual-media {
+  position: static;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gt-cta__visual-img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center center;
+  background: transparent;
+  pointer-events: none;
+}
+
+.gt-cta__content {
+  position: relative;
+  z-index: 2;
+  height: 0;
+  min-height: 100%;
+  align-self: stretch;
+  background: linear-gradient(-72deg, var(--gt-white, #fff) 2%, var(--gt-peach-light, #fff2df) 67%);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  padding: 40px 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+}
+
+.gt-cta__content h2 {
+  font-family: var(--gt-font-heading, 'Tomato Grotesk', sans-serif);
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 700;
+  color: var(--gt-navy, #121348);
+  margin: 0 0 24px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: none;
+  width: 100%;
+  text-align: left;
+}
+
+.gt-cta__content h2 br {
+  display: block;
+}
+
+.gt-cta__content p {
+  font-family: var(--gt-font-body, 'Roboto', sans-serif);
+  font-size: 18px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 560px;
+  text-align: left;
+}
+
+.gt-cta__content .gt-btn {
+  margin-top: 32px;
+  align-self: flex-start;
+  border-radius: 54px;
+  padding: 10px 22px;
+  font-size: 17px;
+  background: var(--gt-navy, #121348);
+  border: none;
+  transition: all 0.3s ease;
+  color: #fff;
+  text-decoration: none;
+}
+
+.gt-cta__content .gt-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(18, 19, 72, 0.28);
+}
+
 /* Keep the 100px gap on the CTA margin only */
 section:has(+ .gt-cta.gt-section) {
   padding-bottom: 0 !important;
 }
 
-.gt-cta .gt-container.gt-cta__inner {
-  width: min(92vw, 1280px);
-  max-width: min(92vw, 1280px);
-}
-
 body > .gt-footer,
+.page > .gt-footer,
+.page-wrapper + .gt-footer,
 .page > .gt-footer,
 .page-wrapper + .gt-footer {
   position: relative;
@@ -41,21 +158,193 @@ body.contact-page .page {
   overflow: hidden;
 }
 
-@media (max-width: 991px) {
+/* ─── Mobile: stacked CTA card + footer (all pages) ─── */
+@media (max-width: 1024px) {
+  .gt-cta,
+  .gt-cta.gt-section {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: var(--gt-space-section-y, 48px) !important;
+    margin-bottom: 0 !important;
+    padding: 0 var(--gt-space-inline-x, 16px) 24px !important;
+    overflow: visible;
+    z-index: 2;
+  }
+
   .gt-cta .gt-container.gt-cta__inner {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    display: flex !important;
+    flex-direction: column;
+    grid-template-columns: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 0;
+    padding: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(165deg, #ffffff 0%, #fff6eb 100%);
+    box-shadow: 0 16px 48px rgba(18, 19, 72, 0.1);
+    border: 1px solid rgba(18, 19, 72, 0.08);
+  }
+
+  .gt-cta__visual {
+    order: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .gt-cta__visual-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 200px;
+    overflow: hidden;
+  }
+
+  .gt-cta__visual-img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    object-position: center bottom;
+    margin: 0 auto;
   }
 
   .gt-cta__content {
-    height: auto;
-    min-height: 0;
+    height: auto !important;
+    min-height: auto !important;
+    align-self: auto !important;
+    padding: 24px 20px 28px;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .gt-cta__content h2 {
+    font-size: clamp(22px, 6vw, 28px);
+    margin-bottom: 12px;
+  }
+
+  .gt-cta__content p {
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 0;
+    max-width: 100%;
+  }
+
+  .gt-cta__content .gt-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+    margin-top: 20px;
+  }
+
+  .gt-cta__inner {
+    flex-direction: column;
+    gap: 0;
+    text-align: left;
+  }
+
+  .gt-footer,
+  body > .gt-footer,
+  .page > .gt-footer {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 32px 0 32px !important;
+    margin-top: 0;
+    overflow-x: clip;
+    border-radius: 24px 24px 0 0;
+    z-index: 1;
+  }
+
+  .gt-footer .gt-container.gt-footer__inner,
+  .gt-footer__inner {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-left: var(--gt-space-inline-x, 16px);
+    padding-right: var(--gt-space-inline-x, 16px);
+  }
+
+  .gt-footer__brand {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .gt-footer__brand p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .gt-footer__nav {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 24px;
+    width: 100%;
+  }
+
+  .gt-footer__col h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .gt-footer__col ul li {
+    margin-bottom: 10px;
+  }
+
+  .gt-footer__col a {
+    font-size: 14px;
+  }
+
+  .gt-footer__col--social .gt-footer__contact-heading {
+    margin-top: 20px;
+  }
+
+  .gt-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .gt-footer__legal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .gt-footer__legal span {
+    display: none;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 480px) {
+  .gt-cta,
   .gt-cta.gt-section {
-    margin-top: 48px;
-    margin-bottom: -80px !important;
+    padding-left: var(--gt-space-inline-x-sm, 16px);
+    padding-right: var(--gt-space-inline-x-sm, 16px);
+  }
+
+  .gt-footer,
+  .page > .gt-footer {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
   }
 }
+

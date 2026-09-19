@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @param WP_Customize_Manager $wp_customize Customizer manager.
  */
+if ( ! function_exists( 'growtele_customize_register' ) ) {
 function growtele_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'growtele_theme_options',
@@ -43,7 +44,7 @@ function growtele_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'growtele_cta_url',
 		array(
-			'default'           => '#',
+			'default'           => '',
 			'sanitize_callback' => 'esc_url_raw',
 		)
 	);
@@ -60,7 +61,7 @@ function growtele_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'growtele_contact_email',
 		array(
-			'default'           => 'hello@growtele.com',
+			'default'           => 'enquiry@growtele.com',
 			'sanitize_callback' => 'sanitize_email',
 		)
 	);
@@ -97,16 +98,24 @@ function growtele_customize_register( $wp_customize ) {
 	);
 }
 add_action( 'customize_register', 'growtele_customize_register' );
+}
 
 /**
  * Output customizer CSS variables.
  */
 function growtele_customizer_css() {
-	$container = absint( get_theme_mod( 'growtele_container_width', 1480 ) );
+	$container = function_exists( 'growtele_get_container_width' ) ? growtele_get_container_width() : absint( get_theme_mod( 'growtele_container_width', 1480 ) );
+	$footer_bg = '';
+	if ( function_exists( 'growtele_content_is_overridden' ) && growtele_content_is_overridden( 'media.footer_bg' ) ) {
+		$footer_bg = growtele_get_content_media_url( 'media.footer_bg', 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-593-1-1.png' );
+	}
 	?>
 	<style id="growtele-customizer-css">
 		:root {
 			--gt-container-max: <?php echo esc_attr( $container ); ?>px;
+			<?php if ( $footer_bg ) : ?>
+			--gt-cms-footer-bg: url("<?php echo esc_url( $footer_bg ); ?>");
+			<?php endif; ?>
 		}
 	</style>
 	<?php

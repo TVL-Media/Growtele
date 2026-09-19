@@ -15,7 +15,7 @@ const pages = [
   'pages/logistic/index.html',
   'pages/retail/index.html',
   'pages/travelling/index.html',
-  'pages/growtele-io/index.html',
+  'pages/growinfinity-io/index.html',
 ];
 
 function removeOldFooterCard(html) {

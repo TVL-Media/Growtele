@@ -5,19 +5,31 @@
  * @package Growtele
  */
 
-$cta_text = get_theme_mod( 'growtele_cta_text', __( "Let's Get Started", 'growtele' ) );
-$cta_url  = get_theme_mod( 'growtele_cta_url', '#' );
+$cta_text = function_exists( 'growtele_get_content_with_theme_mod' )
+	? growtele_get_content_with_theme_mod( 'global.header.cta_text', 'growtele_cta_text', __( "Let's Get Started", 'growtele' ) )
+	: __( "Let's Get Started", 'growtele' );
+$cta_url  = function_exists( 'growtele_get_header_cta_url' ) ? growtele_get_header_cta_url() : home_url( '/contact/' );
 ?>
 <header id="masthead" class="gt-header" data-header>
 	<div class="gt-container">
 		<div class="gt-header__inner">
 			<div class="gt-header__logo">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" data-home-logo rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				<a href="<?php echo esc_url( home_url( '/' ) . '#hero' ); ?>" data-home-logo rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 					<?php
 					if ( has_custom_logo() ) {
 						the_custom_logo();
 					} else {
-						growtele_image( 'icons/logo.png', get_bloginfo( 'name' ), 'gt-header__logo-img', 196, 50 );
+						growtele_image(
+							'icons/logo.png',
+							get_bloginfo( 'name' ),
+							'gt-header__logo-img',
+							196,
+							50,
+							array(
+								'loading'       => 'eager',
+								'fetchpriority' => 'high',
+							)
+						);
 					}
 					?>
 				</a>
@@ -45,7 +57,7 @@ $cta_url  = get_theme_mod( 'growtele_cta_url', '#' );
 			</nav>
 
 			<div class="gt-header__cta">
-				<?php growtele_cta_button( $cta_text, $cta_url ); ?>
+				<?php growtele_cta_button( $cta_text, $cta_url, 'btn-cta btn-cta--header' ); ?>
 			</div>
 		</div>
 	</div>

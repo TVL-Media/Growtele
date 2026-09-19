@@ -24,13 +24,13 @@
   const locationData = {
     kolkata: {
       city: 'Kolkata',
-      address: sharedAddress,
+      address: '3, Ismail Madan Lane, Zakaria Street, Kolkata 700073, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
       icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/526d7a71d22dd2b2008ce00a1bd539b77309d3e1.png',
       iconAlt: 'Kolkata office',
-      map: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group.png',
+      map: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-3.png',
       mapAlt: 'Kolkata office location'
     },
     delhi: {
@@ -46,7 +46,7 @@
     },
     bengaluru: {
       city: 'Bengaluru',
-      address: sharedAddress,
+      address: 'MG road, Raheja Towers, 7th floor, East Wing, Bengaluru, Karnataka 560061, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
@@ -67,6 +67,12 @@
       mapAlt: 'Mumbai office location'
     }
   };
+
+  if (window.GROWTELE_CMS_LOCATIONS) {
+    Object.keys(window.GROWTELE_CMS_LOCATIONS).forEach(function (key) {
+      locationData[key] = Object.assign({}, locationData[key] || {}, window.GROWTELE_CMS_LOCATIONS[key]);
+    });
+  }
 
   const tabs = document.querySelectorAll('.locations__tab');
   const cityEl = document.getElementById('locationCity');
@@ -132,6 +138,16 @@
   // Contact form validation
   const form = document.getElementById('contactForm');
 
+  var contactErrors = Object.assign({
+    first_name: 'First name is required',
+    last_name: 'Last name is required',
+    email: 'Email is required',
+    email_invalid: 'Please enter a valid email',
+    phone: 'Phone number is required',
+    phone_invalid: 'Please enter a valid 10-digit phone number',
+    terms: 'You must agree to the terms'
+  }, window.GROWTELE_CMS_CONTACT_ERRORS || {});
+
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -145,40 +161,40 @@
       var terms = document.getElementById('terms');
 
       if (!firstName.value.trim()) {
-        showError(firstName, 'First name is required');
+        showError(firstName, contactErrors.first_name);
         valid = false;
       }
 
       if (!lastName.value.trim()) {
-        showError(lastName, 'Last name is required');
+        showError(lastName, contactErrors.last_name);
         valid = false;
       }
 
       if (!email.value.trim()) {
-        showError(email, 'Email is required');
+        showError(email, contactErrors.email);
         valid = false;
       } else if (!isValidEmail(email.value)) {
-        showError(email, 'Please enter a valid email');
+        showError(email, contactErrors.email_invalid);
         valid = false;
       }
 
       if (!phone.value.trim()) {
-        showError(phone, 'Phone number is required');
+        showError(phone, contactErrors.phone);
         valid = false;
       } else if (!/^\d{10}$/.test(phone.value.replace(/\D/g, ''))) {
-        showError(phone, 'Please enter a valid 10-digit phone number');
+        showError(phone, contactErrors.phone_invalid);
         valid = false;
       }
 
       if (!terms.checked) {
-        showError(terms, 'You must agree to the terms');
+        showError(terms, contactErrors.terms);
         valid = false;
       }
 
       if (valid) {
         var btn = form.querySelector('.contact-form__submit');
         var originalText = btn.textContent;
-        btn.textContent = 'Submitted!';
+        btn.textContent = window.GROWTELE_CMS_CONTACT_SUBMITTED || 'Submitted!';
         btn.disabled = true;
         setTimeout(function () {
           btn.textContent = originalText;

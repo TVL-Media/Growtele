@@ -1,0 +1,47 @@
+/**
+ * Header "Let's Get Started" — matches SMS page btn-cta.
+ */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  background: linear-gradient(90deg, #fe8d03 0%, #f93a3a 100%);
+  white-space: nowrap;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.header .btn-cta--header,
+.gt-retail-header .btn-cta--header,
+.about-us-page .btn-cta--header {
+  height: 38px;
+  min-width: 180px;
+  width: auto;
+  border-radius: 18.5px;
+  padding: 0 10px 0 16px;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 400;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.btn-cta__orb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  flex-shrink: 0;
+  width: 29.06px;
+  height: 25.14px;
+  border-radius: 12.22px;
+}
+
+.btn-cta--header .btn-cta__orb img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transform: rotate(45deg);
+}

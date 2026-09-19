@@ -19,9 +19,23 @@
   padding: 0;
 }
 
+@media (max-width: 1024px) {
+  .about-us-page.gt-nav-open .header {
+    z-index: 10003;
+  }
+}
+
+.about-us-page .logo__img--dark {
+  display: none;
+}
+
+.about-us-page .logo__img--light {
+  filter: none;
+}
+
 .about-us-page .logo {
   position: absolute;
-  left: calc(var(--sms-inset) + 129px);
+  left: calc(var(--sms-inset) + 120px);
   top: 48px;
   width: 164.55px;
   height: 42px;
@@ -53,10 +67,6 @@
 .about-us-page .sms-nav-menu > .menu-item > a[aria-expanded="true"],
 .about-us-page .sms-nav-menu > .menu-item.company-parent > a {
   color: #fff;
-}
-
-.about-us-page .sms-nav-menu > .menu-item.company-parent > a {
-  font-weight: 700;
 }
 
 .about-us-page .sms-nav-menu .gt-menu-arrow,
@@ -99,8 +109,9 @@
 }
 
 .about-us-page .btn-cta__orb img {
-  width: 21px;
-  height: 21px;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
   transform: rotate(45deg);
 }
 

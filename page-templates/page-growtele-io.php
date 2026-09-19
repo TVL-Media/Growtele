@@ -6,4 +6,4 @@
  * @package Growtele
  */
 
-growtele_render_static_page( 'growtele-io' );
+growtele_render_static_page( 'growinfinity-io' );

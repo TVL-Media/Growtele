@@ -52,9 +52,12 @@
 	function initLenis() {
 		var savedScroll = readSavedScroll();
 		var browserScroll = window.scrollY || window.pageYOffset || 0;
+		var forceHeroTop = window.location.hash === '#hero';
 		var restoreY = 0;
 
-		if (savedScroll != null && savedScroll > 20) {
+		if (forceHeroTop) {
+			saveScroll(0);
+		} else if (savedScroll != null && savedScroll > 20) {
 			restoreY = savedScroll;
 		} else if (browserScroll > 20) {
 			restoreY = browserScroll;
@@ -84,8 +87,13 @@
 		}
 
 		if (prefersReducedMotion || typeof Lenis === 'undefined' || MOBILE_MQ.matches) {
-			reapplyRestore(null);
-			dispatchScroll(window.scrollY || 0);
+			if (forceHeroTop) {
+				window.scrollTo(0, 0);
+				dispatchScroll(0);
+			} else {
+				reapplyRestore(null);
+				dispatchScroll(window.scrollY || 0);
+			}
 			window.addEventListener('scroll', function () {
 				var y = window.scrollY || 0;
 				saveScroll(y);
@@ -124,6 +132,12 @@
 		});
 
 		reapplyRestore(lenis);
+
+		if (forceHeroTop) {
+			stopRestore();
+			applyScroll(lenis, 0);
+			dispatchScroll(0);
+		}
 
 		lenis.on('scroll', function (e) {
 			if (!userHasScrolled && restoreY > 0 && Math.abs(e.scroll - restoreY) > 2) {
