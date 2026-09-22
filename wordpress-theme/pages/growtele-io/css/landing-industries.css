@@ -197,10 +197,10 @@
   .growtele-io-page .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__visual-img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img {
-    right: -69px !important;
-    bottom: 30px !important;
+    right: 25px !important;
+    bottom: 62px !important;
     width: auto !important;
-    height: 364px !important;
+    height: 343px !important;
     max-width: none !important;
     max-height: none !important;
     object-fit: contain !important;
@@ -610,4 +610,21 @@
   .growtele-io-page .gt-industries__panel-title {
     font-size: 16px;
   }
+}
+
+/* Tab icons — same colors as tab labels (navy / brand gradient) */
+.growtele-io-page .gt-industries__tab:not(.is-active) .gt-industries__tab-icon.has-mask {
+  background: #121348;
+}
+
+.growtele-io-page .gt-industries__tab.is-active .gt-industries__tab-icon.has-mask {
+  background: linear-gradient(90deg, #ff9300 0%, #f9363d 100%);
+}
+
+.growtele-io-page .gt-industries__tab:not(.is-active) .gt-industries__tab-icon:not(.has-mask) img {
+  filter: brightness(0) saturate(100%) invert(11%) sepia(45%) saturate(2000%) hue-rotate(218deg) brightness(0.92);
+}
+
+.growtele-io-page .gt-industries__tab.is-active .gt-industries__tab-icon:not(.has-mask) img {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(93%) saturate(4200%) hue-rotate(359deg) brightness(103%) contrast(101%);
 }

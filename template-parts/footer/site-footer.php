@@ -32,11 +32,6 @@ if ( empty( $social_links ) ) {
 			'icon'  => $icon_map['Facebook'],
 		),
 		array(
-			'label' => 'X',
-			'url'   => 'https://x.com/growtele',
-			'icon'  => $icon_map['X'],
-		),
-		array(
 			'label' => 'Instagram',
 			'url'   => 'https://www.instagram.com/growtele/',
 			'icon'  => $icon_map['Instagram'],

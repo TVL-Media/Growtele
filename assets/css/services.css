@@ -836,6 +836,11 @@
 	margin: 0;
 }
 
+.gt-channels a.card {
+	text-decoration: none;
+	color: inherit;
+}
+
 .gt-channels .card {
 	position: absolute;
 	width: 290px;
@@ -1427,6 +1432,11 @@
 	font-size: 20px;
 	font-weight: 500;
 	font-style: normal;
+	background: linear-gradient(180deg, #ff9300 0%, #f9363d 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
 }
 
 .gt-case-studies__card-quote cite span {

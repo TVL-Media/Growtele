@@ -8,24 +8,30 @@
 
   function closeAllFaqItems() {
     faqItems.forEach(function (other) {
-      other.classList.remove('faq-item--open');
-      var otherBtn = other.querySelector('.faq-item__question');
-      var otherToggle = other.querySelector('.faq-item__toggle');
-      if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-      if (otherToggle) otherToggle.textContent = '+';
+      setFaqItemOpen(other, false);
     });
+  }
+
+  function setFaqItemOpen(item, isOpen) {
+    if (!item) return;
+    item.classList.toggle('faq-item--open', isOpen);
+    var button = item.querySelector('.faq-item__question');
+    var toggleEl = item.querySelector('.faq-item__toggle');
+    if (button) button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (toggleEl) toggleEl.textContent = isOpen ? '_' : '+';
   }
 
   function openFaqItem(item) {
     if (!item) return;
-
-    closeAllFaqItems();
-
-    item.classList.add('faq-item--open');
-    var button = item.querySelector('.faq-item__question');
-    var toggleEl = item.querySelector('.faq-item__toggle');
-    if (button) button.setAttribute('aria-expanded', 'true');
-    if (toggleEl) toggleEl.textContent = '_';
+    faqItems.forEach(function (other) {
+      if (other === item) {
+        setFaqItemOpen(other, true);
+        return;
+      }
+      if (other.classList.contains('faq-item--open')) {
+        setFaqItemOpen(other, false);
+      }
+    });
   }
 
   document.querySelectorAll('.faq-item__question').forEach(function (button) {

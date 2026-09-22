@@ -64,7 +64,7 @@ return array(
 				'phone'   => $shared_phone,
 				'email1'  => $shared_email1,
 				'email2'  => $shared_email2,
-				'icon'    => 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16.png',
+				'icon'    => 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16-1.png',
 				'image'   => 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png',
 			),
 			'bengaluru' => array(
@@ -166,7 +166,7 @@ return array(
 				'phone'   => $shared_phone,
 				'email1'  => $shared_email1,
 				'email2'  => $shared_email2,
-				'icon'    => 'assets/image 82 (1).png',
+				'icon'    => 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16-1.png',
 				'iconAlt' => 'India Gate, Delhi NCR',
 				'map'     => 'assets/Group 462 (1).png',
 				'mapAlt'  => 'India Gate, Delhi NCR',

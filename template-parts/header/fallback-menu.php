@@ -104,15 +104,6 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 		<div class="industry-solutions-dropdown" id="industry-solutions-dropdown" data-industry-solutions-dropdown hidden>
 			<div class="industry-solutions-dropdown-panel">
 				<div class="industry-solutions-dropdown-links">
-					<a class="industry-solutions-dropdown-item industry-solutions-dropdown-item--sms" href="<?php echo esc_url( growtele_get_page_url( 'retail' ) ); ?>" data-industry-solutions-link>
-						<span class="industry-solutions-dropdown-icon industry-solutions-dropdown-icon--sms">
-							<img class="industry-solutions-dropdown-img industry-solutions-dropdown-img--sms" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/30a6ce0b9e920774cfc9ff9516864e8d199f72c3.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
-						</span>
-						<span class="industry-solutions-dropdown-content">
-							<span class="industry-solutions-dropdown-title"><?php esc_html_e( 'Retail', 'growtele' ); ?></span>
-							<span class="industry-solutions-dropdown-desc"><?php esc_html_e( 'Build stronger customer connections, drive engagement, and grow your business.', 'growtele' ); ?></span>
-						</span>
-					</a>
 					<a class="industry-solutions-dropdown-item industry-solutions-dropdown-item--email" href="<?php echo esc_url( growtele_get_page_url( 'banking' ) ); ?>" data-industry-solutions-link>
 						<span class="industry-solutions-dropdown-icon industry-solutions-dropdown-icon--email">
 							<img class="industry-solutions-dropdown-img industry-solutions-dropdown-img--email" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/fca6aeb5a1f4ad4d6a486de6348bfceb090ae651.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
@@ -122,6 +113,16 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 							<span class="industry-solutions-dropdown-desc"><?php esc_html_e( 'Build secure customer connections, streamline engagement, and drive growth.', 'growtele' ); ?></span>
 						</span>
 					</a>
+					<a class="industry-solutions-dropdown-item industry-solutions-dropdown-item--sms" href="<?php echo esc_url( growtele_get_page_url( 'retail' ) ); ?>" data-industry-solutions-link>
+						<span class="industry-solutions-dropdown-icon industry-solutions-dropdown-icon--sms">
+							<img class="industry-solutions-dropdown-img industry-solutions-dropdown-img--sms" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/30a6ce0b9e920774cfc9ff9516864e8d199f72c3.png' ); ?>" alt="" width="40" height="40" loading="lazy" />
+						</span>
+						<span class="industry-solutions-dropdown-content">
+							<span class="industry-solutions-dropdown-title"><?php esc_html_e( 'Retail', 'growtele' ); ?></span>
+							<span class="industry-solutions-dropdown-desc"><?php esc_html_e( 'Build stronger customer connections, drive engagement, and grow your business.', 'growtele' ); ?></span>
+						</span>
+					</a>
+					
 					<a class="industry-solutions-dropdown-item industry-solutions-dropdown-item--cloud" href="<?php echo esc_url( growtele_get_page_url( 'health' ) ); ?>" data-industry-solutions-link>
 						<span class="industry-solutions-dropdown-icon industry-solutions-dropdown-icon--cloud">
 							<img class="industry-solutions-dropdown-img industry-solutions-dropdown-img--cloud" src="<?php echo esc_url( 'https://listings.selectvia.com/wp-content/uploads/2026/09/8c2fe6d9628384a9b995be508019127388c31950.png' ); ?>" alt="" width="40" height="40" loading="lazy" />

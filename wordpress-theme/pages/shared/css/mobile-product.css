@@ -685,13 +685,13 @@
     flex-wrap: nowrap;
     align-items: stretch;
     gap: 10px;
+    margin-top: 14px;
     margin-bottom: var(--gt-space-content-gap);
   }
 
-  .btn-cta--hero,
   .btn-outline,
-  .hero__actions .btn,
-  .hero__actions .btn-cta {
+  .hero__actions .btn:not(.btn-cta--hero),
+  .hero__actions .btn-cta:not(.btn-cta--hero) {
     flex: 1 1 0;
     min-width: 0;
     width: auto;
@@ -702,8 +702,18 @@
   }
 
   .hero__actions .btn-cta--hero {
-    justify-content: space-between;
-    padding: 8px 8px 8px 12px;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 45px;
+    height: auto;
+    font-size: 15px;
+    border-radius: 10px;
+    align-self: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 10px 12px 10px 16px;
   }
 
   .hero__actions .btn-outline {
@@ -716,14 +726,14 @@
   }
 
   .hero__actions .btn-cta--hero .btn-cta__orb {
-    width: 26px;
-    height: 22px;
+    width: 32px;
+    height: 28px;
     flex-shrink: 0;
   }
 
   .hero__actions .btn-cta--hero .btn-cta__orb img {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
 
   .hero__pills {
@@ -775,6 +785,7 @@
 
   .sms-page .hero__actions {
     order: 3;
+    margin-top: 14px;
     margin-bottom: 14px;
   }
 
@@ -948,21 +959,47 @@
     width: 100%;
     flex-basis: auto;
     height: auto;
-    min-height: 0;
+    min-height: 132px;
     border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .scale-card__copy {
+    order: 1;
+    flex: 1 1 52%;
+    min-width: 0;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    border-left: 0;
+    padding: 12px 8px 12px 14px;
+    pointer-events: auto;
+    width: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .scale-card__media,
   .scale-card.is-active .scale-card__media {
+    order: 2;
+    flex: 0 0 48%;
+    max-width: 48%;
     position: relative;
     left: auto;
     top: auto;
     bottom: auto;
-    width: 100%;
+    width: auto;
     height: auto;
     min-height: 0;
-    max-height: 128px;
-    padding: 10px 12px 0;
+    max-height: none;
+    padding: 8px 10px 8px 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -975,27 +1012,14 @@
   .scale-card:first-child.is-active .scale-card__media img,
   .scale-card:nth-child(n + 2) .scale-card__media img,
   .scale-card:nth-child(n + 2).is-active .scale-card__media img {
-    width: auto;
+    width: 100%;
     max-width: 100%;
     height: auto;
-    max-height: 108px;
+    max-height: 148px;
+    min-height: 100px;
     object-fit: contain;
     object-position: center center;
     transform: none !important;
-  }
-
-  .scale-card__copy {
-    position: static !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    border-left: 0;
-    padding: 10px 14px 14px;
-    pointer-events: auto;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .scale-card__copy p {
@@ -1127,23 +1151,45 @@
     background-position: center center !important;
   }
 
-  /* Why carousel → vertical stack */
+  /* Why section — horizontal scroll row (mobile) */
   .why__viewport {
-    overflow: visible !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     height: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    margin-left: calc(-1 * var(--gt-space-inline-x));
+    margin-right: calc(-1 * var(--gt-space-inline-x));
+    padding-left: var(--gt-space-inline-x);
+    padding-right: var(--gt-space-inline-x);
+  }
+
+  .why__viewport::-webkit-scrollbar {
+    display: none;
   }
 
   .why__cards {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100% !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 12px;
+    width: max-content !important;
     height: auto !important;
     will-change: auto;
+    transform: none !important;
+  }
+
+  .why__pager {
+    display: none !important;
   }
 
   .why-card {
-    width: 100%;
+    flex: 0 0 auto;
+    width: min(72vw, 260px);
+    max-width: 280px;
+    scroll-snap-align: start;
     height: auto;
     min-height: 0;
     padding-bottom: 0;
@@ -1228,42 +1274,88 @@
   }
 
   .sms-page .why-card:nth-child(1) .why-card__media,
+  .sms-page .why-card:nth-child(2) .why-card__media,
+  .sms-page .why-card:nth-child(3) .why-card__media,
   .sms-page .why-card:nth-child(4):not(.why-card--email-4) .why-card__media {
     min-height: 132px !important;
     max-height: 148px !important;
+    height: 148px !important;
     align-items: flex-end !important;
-    padding-bottom: 4px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media,
+  .sms-page .why-card:nth-child(4):not(.why-card--email-4) .why-card__media {
+    position: relative !important;
+    padding: 0 !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    overflow: hidden !important;
   }
 
   .sms-page .why-card:nth-child(1) .why-card__media img {
-    max-width: 104% !important;
-    max-height: 138px !important;
-    object-fit: contain !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: -44px !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 130% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    display: block !important;
+    object-fit: cover !important;
     object-position: center bottom !important;
+    transform: none !important;
   }
 
-  .sms-page .why-card:nth-child(2) .why-card__media {
-    min-height: 132px !important;
-    max-height: 148px !important;
-    padding: 4px 4px 4px !important;
-    align-items: flex-end !important;
-    overflow: hidden;
+  .sms-page .why-card:nth-child(2) .why-card__media,
+  .sms-page .why-card--green .why-card__media {
+    position: relative !important;
+    padding: 0 !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    overflow: hidden !important;
   }
 
-  .sms-page .why-card:nth-child(2) .why-card__media img {
-    width: 116% !important;
-    max-width: 116% !important;
-    height: auto !important;
-    max-height: 138px !important;
+  .sms-page .why-card:nth-child(2) .why-card__media img,
+  .sms-page .why-card--green .why-card__media img {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: -44px !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 130% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center bottom !important;
+    transform: none !important;
+  }
+
+  .sms-page .why-card:nth-child(3) .why-card__media img {
+    max-width: 102% !important;
+    max-height: 100% !important;
     object-fit: contain !important;
     object-position: center bottom !important;
   }
 
   .sms-page .why-card:nth-child(4):not(.why-card--email-4) .why-card__media img {
-    max-width: 106% !important;
-    max-height: 138px !important;
-    object-fit: contain !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: -44px !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 130% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    display: block !important;
+    object-fit: cover !important;
     object-position: 50% bottom !important;
+    transform: none !important;
   }
 
   /* Funnel */
@@ -1472,8 +1564,15 @@
   .sms-page .scale-card.is-active {
     transition: none !important;
     will-change: auto !important;
-    min-height: 0 !important;
-    height: auto !important;
+    min-height: 158px !important;
+    height: 158px !important;
+  }
+
+  .sms-page .scale-card,
+  .sms-page .scale-card.is-active {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
   }
 
   .sms-page .scale-card__media,
@@ -1482,15 +1581,18 @@
   .sms-page .scale-card:first-child.is-active .scale-card__media,
   .sms-page .scale-card:nth-child(n + 2) .scale-card__media,
   .sms-page .scale-card:nth-child(n + 2).is-active .scale-card__media {
+    order: 2 !important;
+    flex: 0 0 48% !important;
+    max-width: 48% !important;
     position: relative !important;
     left: auto !important;
     top: auto !important;
     bottom: auto !important;
-    width: 100% !important;
+    width: auto !important;
     height: auto !important;
     min-height: 0 !important;
-    max-height: 128px !important;
-    padding: 10px 12px 0 !important;
+    max-height: none !important;
+    padding: 8px 10px 8px 4px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1501,10 +1603,11 @@
   .sms-page .scale-card:first-child.is-active .scale-card__media img,
   .sms-page .scale-card:nth-child(n + 2) .scale-card__media img,
   .sms-page .scale-card:nth-child(n + 2).is-active .scale-card__media img {
-    width: auto !important;
+    width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: 108px !important;
+    max-height: 148px !important;
+    min-height: 100px !important;
     transform: none !important;
     object-fit: contain !important;
     object-position: center center !important;
@@ -1512,13 +1615,16 @@
   }
 
   .sms-page .scale-card__copy {
+    order: 1 !important;
+    flex: 1 1 52% !important;
     position: static !important;
     left: auto !important;
     top: auto !important;
     transform: none !important;
     transition: none !important;
-    padding: 10px 14px 14px !important;
-    width: 100% !important;
+    padding: 12px 8px 12px 14px !important;
+    width: auto !important;
+    max-width: none !important;
   }
 
   .sms-page .scale-card__copy h3 {
@@ -1529,6 +1635,77 @@
   .sms-page .scale-card__copy p {
     font-size: 13px !important;
     line-height: 1.4 !important;
+  }
+
+  /* SMS scale cards — per-card right image sizing (mobile) */
+  .sms-page .scale-card:first-child .scale-card__media {
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding: 6px 6px 6px 2px !important;
+    overflow: visible !important;
+  }
+
+  .sms-page .scale-card:first-child .scale-card__media img,
+  .sms-page .scale-card:first-child.is-active .scale-card__media img {
+    max-height: 100% !important;
+    min-height: 0 !important;
+    width: 132% !important;
+    max-width: 132% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: scale(1.06) translateX(14px) !important;
+    transform-origin: center center !important;
+  }
+
+  .sms-page .scale-card:nth-child(2) .scale-card__media {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 8px 10px 0 4px !important;
+  }
+
+  .sms-page .scale-card:nth-child(2) .scale-card__media img {
+    max-height: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: bottom center !important;
+  }
+
+  .sms-page .scale-card:nth-child(3) .scale-card__media {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 6px 8px 0 4px !important;
+  }
+
+  .sms-page .scale-card:nth-child(3) .scale-card__media img {
+    width: 138% !important;
+    max-width: 138% !important;
+    max-height: 100% !important;
+    min-height: 148px !important;
+    object-fit: contain !important;
+    object-position: bottom center !important;
+    transform: scale(1.05) !important;
+    transform-origin: bottom center !important;
+  }
+
+  .sms-page .scale-card:nth-child(4) .scale-card__media,
+  .sms-page .scale-card.scale-card--last .scale-card__media {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 16px 10px 0 4px !important;
+  }
+
+  .sms-page .scale-card:nth-child(4) .scale-card__media img,
+  .sms-page .scale-card.scale-card--last .scale-card__media img {
+    width: 90% !important;
+    max-width: 90% !important;
+    max-height: 86% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: bottom center !important;
+    transform: translateY(6px) !important;
   }
 
   .sms-page .why__pager {
@@ -1591,7 +1768,7 @@
   }
 
   .sms-page .hero__sub {
-    margin-bottom: 10px;
+    margin-bottom: 0;
     font-size: 13px;
     line-height: 1.4;
   }
@@ -1602,14 +1779,15 @@
     flex-wrap: nowrap;
     align-items: stretch;
     gap: 10px;
+    margin-top: 16px;
     margin-bottom: 14px;
   }
 
   .sms-page .hero__actions {
+    margin-top: 16px;
     margin-bottom: 0;
   }
 
-  .hero__actions .btn-cta--hero,
   .hero__actions .btn-outline {
     flex: 1 1 0;
     min-width: 0;
@@ -1621,8 +1799,18 @@
   }
 
   .hero__actions .btn-cta--hero {
-    justify-content: space-between;
-    padding: 8px 8px 8px 12px;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 45px;
+    height: auto;
+    font-size: 15px;
+    border-radius: 10px;
+    align-self: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 10px 12px 10px 16px;
   }
 
   .hero__actions .btn-outline {
@@ -1635,13 +1823,13 @@
   }
 
   .hero__actions .btn-cta--hero .btn-cta__orb {
-    width: 26px;
-    height: 22px;
+    width: 32px;
+    height: 28px;
   }
 
   .hero__actions .btn-cta--hero .btn-cta__orb img {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
 
   .sms-page .hero__visual {
@@ -1688,93 +1876,96 @@
     left: auto !important;
     top: auto !important;
     width: calc(100% - 20px) !important;
-    height: auto !important;
-    min-height: 0 !important;
+    min-height: 132px !important;
     max-height: 148px !important;
-    padding: 6px 10px !important;
+    height: 148px !important;
+    padding: 6px 8px 0 !important;
     margin: 8px auto 0 !important;
     overflow: hidden;
     line-height: 0;
     border-radius: 12px;
     display: flex !important;
-    align-items: center !important;
+    align-items: flex-end !important;
     justify-content: center !important;
     box-sizing: border-box;
   }
 
-  /* Card 1 — woman + phone: anchor to bottom, no torso crop */
-  .sms-page .why-card:nth-child(1) .why-card__media {
-    min-height: 132px !important;
-    max-height: 148px !important;
-    align-items: flex-end !important;
-    padding-bottom: 4px !important;
+  .sms-page .why-card:nth-child(3) .why-card__media img {
+    width: auto !important;
+    height: auto !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    display: block;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+    transform: none !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media,
+  .sms-page .why-card:nth-child(4):not(.why-card--email-4) .why-card__media {
+    position: relative !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 
   .sms-page .why-card:nth-child(1) .why-card__media img {
-    width: auto !important;
-    max-width: 104% !important;
-    height: auto !important;
-    max-height: 138px !important;
+    position: absolute !important;
+    left: 18px !important;
+    right: 0 !important;
+    bottom: -14px !important;
+    width: 84% !important;
+    max-width: none !important;
+    height: 105% !important;
+    max-height: none !important;
     margin: 0 !important;
-    display: block;
-    object-fit: contain !important;
+    display: block !important;
+    object-fit: cover !important;
     object-position: center bottom !important;
+    transform: none !important;
   }
 
-  /* Card 2 — wide scene: same card band as 1/4, bottom-aligned like card 1 */
-  .sms-page .why-card:nth-child(2) .why-card__media {
-    min-height: 132px !important;
-    max-height: 148px !important;
-    padding: 4px 4px 4px !important;
-    align-items: flex-end !important;
-    overflow: hidden;
+  .sms-page .why-card:nth-child(2) .why-card__media,
+  .sms-page .why-card--green .why-card__media {
+    position: relative !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 
-  .sms-page .why-card:nth-child(2) .why-card__media img {
-    width: 116% !important;
-    max-width: 116% !important;
-    height: auto !important;
-    max-height: 138px !important;
+  .sms-page .why-card:nth-child(2) .why-card__media img,
+  .sms-page .why-card--green .why-card__media img {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: -44px !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 130% !important;
+    max-height: none !important;
     margin: 0 !important;
-    display: block;
-    object-fit: contain !important;
+    display: block !important;
+    object-fit: cover !important;
     object-position: center bottom !important;
-  }
-
-  /* Card 3 — map graphic (unchanged, already balanced) */
-  .sms-page .why-card:nth-child(3) .why-card__media {
-    min-height: 96px !important;
-    max-height: 120px !important;
+    transform: none !important;
   }
 
   .sms-page .why-card:nth-child(3) .why-card__media img {
-    width: auto !important;
-    max-width: 100% !important;
-    height: auto !important;
-    max-height: 96px !important;
-    margin: 0 !important;
-    display: block;
-    object-fit: contain !important;
-    object-position: center center !important;
-  }
-
-  /* Card 4 — delivery mockup (SMS only; email card 4 uses email-mobile-why.css) */
-  .sms-page .why-card:nth-child(4):not(.why-card--email-4) .why-card__media {
-    min-height: 132px !important;
-    max-height: 148px !important;
-    align-items: flex-end !important;
-    padding-bottom: 4px !important;
+    max-width: 102% !important;
   }
 
   .sms-page .why-card:nth-child(4):not(.why-card--email-4) .why-card__media img {
-    width: auto !important;
-    max-width: 106% !important;
-    height: auto !important;
-    max-height: 138px !important;
-    margin: 0 auto !important;
-    display: block;
-    object-fit: contain !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 97% !important;
+    max-width: none !important;
+    height: 110% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    display: block !important;
+    object-fit: cover !important;
     object-position: 50% bottom !important;
+    transform: none !important;
   }
 
   .sms-page .why-card h3 {

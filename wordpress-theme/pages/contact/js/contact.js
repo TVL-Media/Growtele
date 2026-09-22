@@ -39,7 +39,7 @@
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
-      icon: 'assets/image 82 (1).png',
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16-1.png',
       iconAlt: 'India Gate, Delhi NCR',
       map: 'assets/Group 462 (1).png',
       mapAlt: 'India Gate, Delhi NCR'

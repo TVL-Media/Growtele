@@ -62,7 +62,7 @@ return array(
 		'trust_brands'   => array(
 			array( 'url' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/lhba-scaled.png', 'modifier' => '' ),
 			array( 'url' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/lhbb.png', 'modifier' => 'gt-marquee__item--tanishq' ),
-			array( 'url' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/lhbc-scaled.png', 'modifier' => '' ),
+			array( 'url' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/lhbc-scaled.png', 'modifier' => 'gt-marquee__item--marquee-brand-lg' ),
 			array( 'url' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/lhbd-scaled.png', 'modifier' => 'gt-marquee__item--tanishq' ),
 			array( 'url' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/lhbe-scaled.png', 'modifier' => '' ),
 			array( 'url' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/lhbf.png', 'modifier' => '' ),

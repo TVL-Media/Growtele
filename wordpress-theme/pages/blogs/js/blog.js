@@ -5,6 +5,8 @@
 (function () {
   'use strict';
 
+  const FIRST_BLOG_POST_URL = 'top-5-advanced-features-scalable-sms/';
+
   const BLOGS = [
     {
       id: 1,
@@ -284,7 +286,7 @@
         </div>
         <h3 class="blog-card__title">${titleHtml}</h3>
         <p class="blog-card__excerpt">${escapeHtml(blog.excerpt)}</p>
-        <a href="#" class="read-more">Read More</a>
+        <a href="${blog.id === 1 ? FIRST_BLOG_POST_URL : '#'}" class="read-more">Read More</a>
       </article>`;
   }
 

@@ -1231,7 +1231,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 .team__card-img--3 {
-  object-position: center 20%;
+  object-position: center 26%;
+}
+
+.team__card-img--swati {
+  object-position: center 14%;
 }
 
 @media (min-width: 1025px) {

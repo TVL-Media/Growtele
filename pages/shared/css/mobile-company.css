@@ -91,6 +91,7 @@
   }
 
   .contact-page .contact-split__image {
+    position: relative;
     flex: none;
     width: 100%;
     min-height: 0;
@@ -106,6 +107,17 @@
     max-height: 100%;
     object-fit: cover;
     object-position: center center;
+  }
+
+  .contact-page .contact-split__image video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center 14%;
   }
 
   .contact-page .contact-split__form-wrap {
@@ -675,6 +687,7 @@
     height: auto;
     border-radius: 16px;
     overflow: hidden;
+    background: var(--color-white, #fff);
   }
 
   .about-us-page .partners__logos {
@@ -683,22 +696,33 @@
     grid-template-rows: repeat(3, auto);
     flex: none;
     width: 100%;
+    max-width: none;
+    margin-inline: 0;
     order: 1;
     gap: 0;
+    background: var(--color-white, #fff);
   }
 
   .about-us-page .partners__logo-cell,
   .about-us-page .partners__logo-cell--active {
     opacity: 1 !important;
-    min-height: 72px;
-    padding: 12px 8px;
+    min-height: 44px;
+    padding: 6px 4px;
     border-radius: 0 !important;
   }
 
   .about-us-page .partners__logo-cell img {
-    max-height: 48px;
+    max-height: 24px;
     width: auto;
-    max-width: 100%;
+    max-width: min(100%, 108px);
+  }
+
+  /* Shopify, WebEngage, LeadSquared — match MoEngage (cell 1) visual size */
+  .about-us-page .partners__logo-cell:nth-child(2) img,
+  .about-us-page .partners__logo-cell:nth-child(3) img,
+  .about-us-page .partners__logo-cell:nth-child(5) img {
+    transform: scale(0.82);
+    transform-origin: center center;
   }
 
   .about-us-page .partners__featured {
@@ -760,7 +784,7 @@
     margin-bottom: 12px;
     padding: 4px;
     gap: 4px;
-    min-height: 0;
+    min-height: 36px;
     overflow: hidden;
     justify-content: stretch;
     align-items: stretch;
@@ -769,7 +793,8 @@
   .about-us-page .locations__tab {
     flex: 1 1 0;
     min-width: 0;
-    padding: 6px 4px;
+    min-height: 28px;
+    padding: 5px 2px;
     font-size: 10px;
     line-height: 1.2;
     text-align: center;
@@ -804,54 +829,261 @@
 
   .about-us-page .locations__tab--active {
     flex: 1 1 0;
-    padding: 6px 4px;
+    padding: 5px 2px;
     font-size: 10px;
+    font-weight: 600;
   }
 
+  /* Match Contact page locations card (img2) — navy shell, white info + map */
   .about-us-page .locations__card {
     display: flex;
     flex-direction: column;
     grid-template-columns: none;
+    width: 100%;
     min-height: 0;
     height: auto;
-    padding: 12px;
-    gap: 0;
+    padding: 16px;
+    gap: 12px;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
+    border-radius: 40px;
+    background: #121348;
+    overflow: hidden;
   }
 
   .about-us-page .locations__info {
     width: 100%;
-    max-width: 100%;
+    max-width: none;
     height: auto;
     min-height: 0;
-    margin: 0 auto;
-    padding: 18px 16px;
-    border-radius: 18px;
-    align-self: center;
+    margin: 0;
+    padding: 24px 20px;
+    border-radius: 25px;
+    align-self: stretch;
     justify-content: flex-start;
+    overflow: hidden;
   }
 
-  .about-us-page .locations__city-name {
-    font-size: 22px;
-  }
-
-  .about-us-page .locations__address {
-    font-size: 12px;
-    margin-bottom: 16px;
-  }
-
-  .about-us-page .locations__support-title {
-    font-size: 14px;
+  .about-us-page .locations__city-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
     margin-bottom: 10px;
   }
 
+  .about-us-page .locations__city-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .about-us-page .locations__city-name {
+    font-size: clamp(26px, 6.5vw, 32px);
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .about-us-page .locations__address {
+    font-size: 14px;
+    line-height: 1.35;
+    margin-bottom: 20px;
+    max-width: none;
+  }
+
+  .about-us-page .locations__support-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .about-us-page .locations__contact {
+    gap: 13px;
+  }
+
   .about-us-page .locations__contact-item {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 300;
+    gap: 10px;
+  }
+
+  .about-us-page .locations__contact-item img {
+    width: 20px;
+    height: 20px;
   }
 
   .about-us-page .locations__image-wrap {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: clamp(200px, 52vw, 260px);
+    height: auto;
+    max-height: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+  }
+
+  .about-us-page .locations__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: clamp(200px, 52vw, 260px);
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 25px;
+  }
+
+  /* Contact — locations card sizing matches About Us (mobile) */
+  .contact-page .locations__header {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .contact-page .locations__desc {
+    padding-top: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+
+  .contact-page .locations__tabs-wrap {
+    width: 100%;
+    margin-bottom: 12px;
+    justify-content: stretch;
+  }
+
+  .contact-page .locations__tabs {
+    width: 100%;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 36px;
+    margin: 0;
+    padding: 4px;
+    gap: 4px;
+    overflow: hidden;
+    justify-content: stretch;
+    align-items: stretch;
+    border-radius: 71px;
+  }
+
+  .contact-page .locations__tab {
+    flex: 1 1 0;
+    min-width: 0;
+    height: auto !important;
+    min-height: 28px;
+    padding: 5px 2px;
+    font-size: 10px !important;
+    line-height: 1.2;
+    border-radius: 71px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-page .locations__tab--active {
+    flex: 1 1 0;
+    height: auto !important;
+    padding: 5px 2px;
+    font-size: 10px !important;
+    font-weight: 600;
+  }
+
+  .contact-page .locations__card {
+    min-height: 0 !important;
+    height: auto;
+    border-radius: 40px;
+    background: #121348;
+    overflow: hidden;
+  }
+
+  .contact-page .locations__card-mask {
     display: none;
+  }
+
+  .contact-page .locations__card-inner {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none !important;
+    min-height: 0 !important;
+    height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .contact-page .locations__info {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .contact-page .locations__info-content {
+    padding: 24px 20px;
+  }
+
+  .contact-page .locations__info-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .contact-page .locations__city {
+    font-size: clamp(26px, 6.5vw, 32px);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .contact-page .locations__address {
+    font-size: 14px;
+    line-height: 1.35;
+    margin-bottom: 20px;
+    max-width: none;
+  }
+
+  .contact-page .locations__support-heading {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .contact-page .locations__contacts {
+    gap: 13px;
+  }
+
+  .contact-page .locations__contacts li img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-page .locations__contacts a {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .contact-page .locations__map {
+    width: 100%;
+    min-width: 0;
+    min-height: clamp(200px, 52vw, 260px);
+    height: auto;
+    max-height: none;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .contact-page .locations__map img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: clamp(200px, 52vw, 260px);
+    object-fit: cover;
+    object-position: center;
+    border-radius: 25px;
   }
 
   /* Team — stack heading above cards, compact carousel */
@@ -910,6 +1142,9 @@
     order: 3;
     width: 100%;
     gap: 10px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    -webkit-overflow-scrolling: touch;
   }
 
   .about-us-page .team__card,
@@ -918,6 +1153,8 @@
     min-height: 0;
     height: auto;
     border-radius: 22px 22px 14px 14px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .about-us-page .team__card-photo {
@@ -1547,29 +1784,19 @@
     max-height: 360px;
   }
 
-  /* Contact — equal-width location tabs */
-  .contact-page .locations__tabs-wrap {
-    margin-bottom: 12px;
+  /* Contact — section gaps: form ↔ locations ↔ success (same rhythm) */
+  .contact-page .contact-intro {
+    margin-bottom: 24px;
   }
 
-  .contact-page .locations__tabs {
-    min-height: 36px;
-  }
-
-  .contact-page .locations__tab {
-    min-height: 28px;
-    padding: 5px 2px;
-    font-size: 10px;
-  }
-
-  .contact-page .locations__tab--active {
-    padding: 5px 2px;
-    font-size: 10px;
+  .contact-page .locations {
+    margin-bottom: 24px;
+    padding-top: 12px;
   }
 
   /* Contact — success section: compact heading + stacked cards */
   .contact-page .success {
-    padding-top: 24px;
+    padding-top: 12px;
   }
 
   .contact-page .success__header {
@@ -1601,32 +1828,70 @@
     border-radius: 20px;
   }
 
+  .contact-page .success__card-bg {
+    object-fit: cover;
+    object-position: center center;
+  }
+
   .contact-page .success__card-bg--3 {
+    object-fit: cover;
+    object-position: center 59%;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
   }
 
-  .contact-page .success__card-overlay,
-  .contact-page .success__card-overlay--2,
+  .contact-page .success__card-overlay {
+    border-radius: 20px;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 19, 72, 0) 38%,
+      rgba(18, 19, 72, 0.52) 62%,
+      rgba(18, 19, 72, 0.98) 100%
+    );
+  }
+
+  .contact-page .success__card-overlay--2 {
+    border-radius: 20px;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 19, 72, 0) 32%,
+      rgba(18, 19, 72, 0.55) 65%,
+      rgba(18, 19, 72, 0.98) 100%
+    );
+  }
+
   .contact-page .success__card-overlay--3 {
     border-radius: 20px;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 19, 72, 0) 34%,
+      rgba(18, 19, 72, 0.55) 66%,
+      rgba(18, 19, 72, 0.98) 100%
+    );
   }
 
   .contact-page .success__card-text {
-    padding: 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 18px 14px;
+    margin: 0;
   }
 
   .contact-page .success__card-text h3 {
     font-size: 18px;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .contact-page .success__card-text p {
     font-size: 13px;
     line-height: 1.35;
     max-width: 100%;
+    margin-bottom: 0;
   }
 
   /* Contact — CTA card + footer stacked layout */
@@ -2366,5 +2631,9 @@
     height: clamp(200px, 52vw, 240px);
     min-height: 200px;
     max-height: 240px;
+  }
+
+  .contact-page .success__card-bg--3 {
+    object-position: center 59%;
   }
 }

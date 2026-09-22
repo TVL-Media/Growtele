@@ -1300,7 +1300,7 @@ body .growth-card:nth-child(1) .growth-card__visual:not(:has(.growth-card__img))
 .faq__inner {
   display: flex;
   gap: 37px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .faq__book {
@@ -1378,6 +1378,12 @@ body .growth-card:nth-child(1) .growth-card__visual:not(:has(.growth-card__img))
 }
 
 .faq__list { display: flex; flex-direction: column; gap: 19px; }
+
+@media (min-width: 1025px) {
+  .faq__list {
+    min-height: 500px;
+  }
+}
 
 .faq-item {
   background: rgba(255, 255, 255, 0.8);

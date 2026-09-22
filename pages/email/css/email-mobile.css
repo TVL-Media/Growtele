@@ -3,6 +3,38 @@
  * Loaded after mobile-product.css and email-mobile-why.css.
  */
 @media (max-width: 1024px) {
+  /* Benefits — tab 1 art matches other tabs; one clip radius on mobile */
+  .email-page .benefits__visual,
+  .email-page .benefits__visual-frame,
+  .email-page #benefitsVisual {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .email-page #benefitsVisual {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+  }
+
+  .email-page.sms-page .scale-card:nth-child(3) .scale-card__media {
+    padding: 8px 14px 8px 6px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .email-page.sms-page .scale-card:nth-child(3) .scale-card__media img {
+    width: auto !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
   .journey-card,
   .scale-card,
   .scale-card.is-active,
@@ -80,5 +112,24 @@
 
   .sms-page .funnel__visual img {
     max-height: 156px !important;
+  }
+
+  /* Scale — card 3 (Rich Email Content): keep art inside inner band */
+  .email-page.sms-page .scale-card:nth-child(3) .scale-card__media {
+    padding: 8px 14px 8px 6px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .email-page.sms-page .scale-card:nth-child(3) .scale-card__media img {
+    width: auto !important;
+    max-width: 98% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 }

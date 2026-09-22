@@ -19,7 +19,7 @@
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
       email2: 'support@growtele.com',
-      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16.png',
+      icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16-1.png',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png'
     },
     bengaluru: {
@@ -94,14 +94,56 @@
   const teamNext = document.getElementById('teamNext');
 
   if (teamCarousel && teamPrev && teamNext) {
-    const scrollAmount = 320;
+    function getTeamCards() {
+      return Array.prototype.slice.call(teamCarousel.querySelectorAll('.team__card'));
+    }
+
+    function getTeamGap() {
+      var gap = getComputedStyle(teamCarousel).gap || getComputedStyle(teamCarousel).columnGap;
+      return parseFloat(gap) || 0;
+    }
+
+    function getTeamCardScrollLeft(index) {
+      var cards = getTeamCards();
+      var gap = getTeamGap();
+      var left = 0;
+      for (var i = 0; i < index; i++) {
+        left += cards[i].getBoundingClientRect().width + gap;
+      }
+      return left;
+    }
+
+    function getTeamActiveIndex() {
+      var cards = getTeamCards();
+      if (!cards.length) return 0;
+      var scrollLeft = teamCarousel.scrollLeft;
+      var active = 0;
+      var bestDist = Infinity;
+      for (var i = 0; i < cards.length; i++) {
+        var dist = Math.abs(getTeamCardScrollLeft(i) - scrollLeft);
+        if (dist < bestDist) {
+          bestDist = dist;
+          active = i;
+        }
+      }
+      return active;
+    }
+
+    function scrollTeamToCard(index) {
+      var cards = getTeamCards();
+      if (!cards.length) return;
+      index = Math.max(0, Math.min(cards.length - 1, index));
+      var maxScroll = Math.max(0, teamCarousel.scrollWidth - teamCarousel.clientWidth);
+      var left = Math.min(getTeamCardScrollLeft(index), maxScroll);
+      teamCarousel.scrollTo({ left: left, behavior: 'smooth' });
+    }
 
     teamPrev.addEventListener('click', function () {
-      teamCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      scrollTeamToCard(getTeamActiveIndex() - 1);
     });
 
     teamNext.addEventListener('click', function () {
-      teamCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      scrollTeamToCard(getTeamActiveIndex() + 1);
     });
   }
 

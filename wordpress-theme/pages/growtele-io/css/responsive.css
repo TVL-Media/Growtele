@@ -362,10 +362,32 @@
     padding-bottom: 24px;
   }
 
-  .growtele-io-page .hero__content {
+  .growtele-io-page .hero-shell .hero__content {
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
     align-items: flex-start;
-    padding-top: calc(var(--sms-mobile-header-h, 72px) + 16px);
-    padding-bottom: 24px;
+    padding-top: calc(var(--sms-mobile-header-h, 72px) + 92px);
+    padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 20px));
+    overflow: visible;
+  }
+
+  .growtele-io-page .hero-shell .hero {
+    overflow: visible;
+  }
+
+  .growtele-io-page .hero-shell__bg-video {
+    object-position: 78% 48%;
+  }
+
+  .growtele-io-page .hero__text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
   }
 
   .growtele-io-page .hero__title {
@@ -393,11 +415,11 @@
   .growtele-io-page .hero__actions {
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: stretch;
+    align-items: center;
     gap: 10px;
-    width: 100%;
-    margin-top: 4px;
-    margin-bottom: 28px;
+    width: auto;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .growtele-io-page .hero__actions .btn-cta--hero,
@@ -412,15 +434,20 @@
   }
 
   .growtele-io-page .hero__actions .btn-cta--hero {
+    flex: 0 0 auto;
+    width: auto;
     min-width: 0;
-    padding: 0 8px 0 12px;
-    justify-content: space-between;
+    max-width: 100%;
+    min-height: 45px;
+    height: auto;
+    font-size: 15px;
+    padding: 10px 12px 10px 16px;
+    justify-content: flex-start;
+    gap: 12px;
   }
 
   .growtele-io-page .hero__actions .btn-cta--hero > span:first-child {
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .growtele-io-page .hero__actions .btn-outline {
@@ -430,15 +457,38 @@
   }
 
   .growtele-io-page .hero__actions .btn-cta--hero .btn-cta__orb {
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 28px;
     flex-shrink: 0;
   }
 
   .growtele-io-page .hero__social-proof {
     flex-direction: row;
     align-items: center;
-    margin-top: 16px;
+    flex-shrink: 0;
+    margin-top: auto;
+    padding-top: 12px;
+    padding-bottom: 0;
+    overflow: visible;
+  }
+
+  .growtele-io-page .hero__avatars {
+    flex-shrink: 0;
+    overflow: visible;
+    line-height: 0;
+  }
+
+  /* Full avatar art — mask only hides empty 4th ring on the right (no vertical crop) */
+  .growtele-io-page .hero__avatars img {
+    display: block;
+    width: 108px;
+    max-width: none;
+    height: auto;
+    margin-left: 0;
+    border: none;
+    clip-path: none;
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 72%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 0, #000 72%, transparent 100%);
   }
 
   /* Value prop — compact text card + photo on phones */
@@ -500,7 +550,7 @@
     min-height: clamp(280px, 40vh, 420px);
     max-height: none;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 18%;
   }
 
   /* Capabilities — compact mobile layout */

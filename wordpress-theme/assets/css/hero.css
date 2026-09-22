@@ -224,6 +224,15 @@
 	max-width: 160px;
 }
 
+.gt-marquee__item--marquee-brand-lg {
+	height: 70px;
+}
+
+.gt-marquee__item--marquee-brand-lg img {
+	height: 70px;
+	max-width: 200px;
+}
+
 .gt-marquee__item:hover img {
 	opacity: 1;
 }

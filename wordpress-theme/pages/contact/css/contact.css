@@ -338,6 +338,7 @@ ul {
 }
 
 .contact-split__image {
+  position: relative;
   flex: 567 1 0;
   min-width: 0;
   min-height: 657px;
@@ -353,6 +354,16 @@ ul {
   height: 100%;
   min-height: 657px;
   object-fit: cover;
+}
+
+.contact-split__image video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
+  display: block;
 }
 
 .contact-split__form-wrap {

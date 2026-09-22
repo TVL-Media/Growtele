@@ -498,15 +498,15 @@ main {
   left: -68px;
   top: -20px;
   width: 440px;
-  /* height: 680px; */
+  height: 550px;
 }
 
-/* Left phone — card 3 (Email Automation) */
+/* Left phone — card 3 (OTP Authentication) — same slot as card 2 */
 .journey__phone--c {
-  left: -68px;
-  top: -20px;
-  width: 440px;
-  /* height: 668px; */
+  left: 0px;
+  top: -8px;
+  width: 302px;
+  height: 539px;
 }
 
 .journey__cards {
@@ -749,7 +749,12 @@ main {
   border-radius: 10px;
 }
 
-.scale-card:nth-child(2) .scale-card__media img {
+.scale-card:nth-child(2):not(.is-active) .scale-card__media img {
+  object-fit: contain;
+  object-position: center center;
+}
+
+.scale-card:nth-child(2).is-active .scale-card__media img {
   object-position: center 18%;
 }
 
@@ -970,7 +975,7 @@ main {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: var(--gt-cms-email-benefit-tab1, url("https://listings.selectvia.com/wp-content/uploads/2026/09/82893a2e4422d2b57b3cab109b10d700ca5f6105.png"));
+  background-image: var(--gt-cms-email-benefit-tab1, url("https://listings.selectvia.com/wp-content/uploads/2026/09/0f3cfb246890f57945e18c91cd2549bed1c668a8.png"));
   background-position: center center;
   background-size: cover;
 }

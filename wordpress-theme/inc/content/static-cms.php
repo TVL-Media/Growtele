@@ -882,7 +882,7 @@ function growtele_inject_cms_runtime( $html, $slug ) {
 	}
 
 	if ( 'email' === $slug ) {
-		growtele_cms_append_css_url( $css, 'media.email_benefit_tab1', '--gt-cms-email-benefit-tab1', 'https://listings.selectvia.com/wp-content/uploads/2026/09/82893a2e4422d2b57b3cab109b10d700ca5f6105.png' );
+		growtele_cms_append_css_url( $css, 'media.email_benefit_tab1', '--gt-cms-email-benefit-tab1', 'https://listings.selectvia.com/wp-content/uploads/2026/09/0f3cfb246890f57945e18c91cd2549bed1c668a8.png' );
 		growtele_cms_append_css_url( $css, 'media.email_benefit_tab2', '--gt-cms-email-benefit-tab2', 'https://listings.selectvia.com/wp-content/uploads/2026/09/51163c4b0aa4a8c87cd9694b6d53a0bf882d1542.png' );
 		growtele_cms_append_css_url( $css, 'media.email_benefit_tab3', '--gt-cms-email-benefit-tab3', 'https://listings.selectvia.com/wp-content/uploads/2026/09/6966a362d6c33885f37e97de1017648ffcd4d5a0.png' );
 		growtele_cms_append_css_url( $css, 'media.email_benefit_tab4', '--gt-cms-email-benefit-tab4', 'https://listings.selectvia.com/wp-content/uploads/2026/09/46c9808fbb57c8a3c26c7e5b83f1e975a189c26d.png' );

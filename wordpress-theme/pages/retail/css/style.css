@@ -1218,7 +1218,7 @@ a { text-decoration: none; color: inherit; }
 .faq__inner {
   display: flex;
   gap: 37px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .faq__book {
@@ -1296,6 +1296,12 @@ a { text-decoration: none; color: inherit; }
 }
 
 .faq__list { display: flex; flex-direction: column; gap: 19px; }
+
+@media (min-width: 1025px) {
+  .faq__list {
+    min-height: 500px;
+  }
+}
 
 .faq-item {
   background: rgba(255, 255, 255, 0.8);

@@ -536,3 +536,23 @@
     font-size: 10px;
   }
 }
+
+/* FAQ accordion — same behavior as industry bottom sections (hover/expand stability) */
+@media (min-width: 1025px) {
+  .growtele-io-page .faq__list {
+    min-height: 250px !important;
+  }
+
+  .growtele-io-page .faq-item__answer {
+    transition: none !important;
+  }
+
+  .growtele-io-page .gt-cta__content {
+    height: auto !important;
+  }
+
+  .growtele-io-page .gt-cta.gt-section,
+  .growtele-io-page .gt-footer {
+    backface-visibility: hidden;
+  }
+}

@@ -26,22 +26,22 @@ return array(
 			'title' => 'Products',
 			'links' => array(
 				array(
-					'label' => 'Whatsapp API',
+					'label' => 'Whatsapp',
 					'url'   => '',
 					'slug'  => 'whatsapp',
 				),
 				array(
-					'label' => 'SMS API',
+					'label' => 'SMS',
 					'url'   => '',
 					'slug'  => 'sms',
 				),
 				array(
-					'label' => 'RCS API',
+					'label' => 'RCS',
 					'url'   => '',
 					'slug'  => 'rcs',
 				),
 				array(
-					'label' => 'E-Mail API',
+					'label' => 'E-Mail',
 					'url'   => '',
 					'slug'  => 'email',
 				),
@@ -102,10 +102,6 @@ return array(
 		array(
 			'label' => 'Facebook',
 			'url'   => 'https://www.facebook.com/Growtele',
-		),
-		array(
-			'label' => 'X',
-			'url'   => 'https://x.com/growtele',
 		),
 		array(
 			'label' => 'Instagram',

@@ -148,3 +148,57 @@
     object-position: center top !important;
   }
 }
+
+/* Industry FAQ → CTA gap (desktop); beats landing-footer section:has padding reset */
+@media (min-width: 1025px) {
+  .page section.faq:has(+ .gt-cta.gt-section) {
+    padding-bottom: 30px !important;
+  }
+
+  .page .gt-cta.gt-section {
+    margin-top: 80px !important;
+  }
+
+  .page .faq__list {
+    min-height: 250px !important;
+  }
+
+  .page .faq-item__answer {
+    transition: none !important;
+  }
+
+  .page .gt-cta__content {
+    height: auto !important;
+  }
+
+  .page .gt-cta.gt-section,
+  .page > .gt-footer {
+    backface-visibility: hidden;
+  }
+}
+
+/* FAQ accordion — stable CTA card below (mobile); no max-height transition jitter */
+@media (max-width: 768px) {
+  .page section.faq:has(+ .gt-cta.gt-section) {
+    overflow-anchor: none;
+    padding-bottom: 8px !important;
+  }
+
+  .page section.faq:has(+ .gt-cta.gt-section) + .gt-cta.gt-section {
+    margin-top: 20px !important;
+  }
+
+  .page .faq-item__answer {
+    transition: none !important;
+  }
+
+  /* Fixed open-answer block — swap items without shifting the CTA (no extra list min-height) */
+  .page .faq-item--open .faq-item__answer {
+    min-height: 5.25rem;
+    box-sizing: border-box;
+  }
+
+  .page .gt-cta.gt-section {
+    backface-visibility: hidden;
+  }
+}

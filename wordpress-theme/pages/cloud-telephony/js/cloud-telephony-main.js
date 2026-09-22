@@ -292,14 +292,45 @@
     var activeIndex = 0;
     var intervalId = null;
     var hovered = false;
+    var transitionTimers = [];
     var ROTATE_MS = 3000;
+    var TRANSITION_MS = 900;
+
+    function clearCardPointerLock() {
+      transitionTimers.forEach(function (timerId) {
+        window.clearTimeout(timerId);
+      });
+      transitionTimers = [];
+      cards.forEach(function (item) {
+        item.style.pointerEvents = "";
+      });
+    }
+
+    function lockPreviousCardDuringTransition(previousIndex) {
+      var prevCard = cards[previousIndex];
+      if (!prevCard) {
+        return;
+      }
+      prevCard.style.pointerEvents = "none";
+      var timerId = window.setTimeout(function () {
+        prevCard.style.pointerEvents = "";
+        transitionTimers = transitionTimers.filter(function (id) {
+          return id !== timerId;
+        });
+      }, TRANSITION_MS);
+      transitionTimers.push(timerId);
+    }
 
     function setActiveIndex(index) {
+      var previousIndex = activeIndex;
       activeIndex = ((index % cards.length) + cards.length) % cards.length;
       cards.forEach(function (item, i) {
         item.classList.toggle("is-active", i === activeIndex);
       });
       grid.classList.add("has-active");
+      if (hovered && previousIndex !== activeIndex) {
+        lockPreviousCardDuringTransition(previousIndex);
+      }
     }
 
     function startAutoplay() {
@@ -330,6 +361,7 @@
 
     grid.addEventListener("mouseleave", function () {
       hovered = false;
+      clearCardPointerLock();
       startAutoplay();
     });
 

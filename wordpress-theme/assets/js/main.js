@@ -988,9 +988,68 @@
 			progressBar.classList.add('is-running');
 		}
 
+		function isCaseMobileLayout() {
+			return window.matchMedia('(max-width: 1024px)').matches;
+		}
+
+		function getActiveCaseTabKey() {
+			if (isCaseMobileLayout()) {
+				var activeTab = caseContainer.querySelector('.gt-case-studies__tab.is-active');
+				return activeTab ? activeTab.dataset.caseTab : '0';
+			}
+			return stackOrder[stackOrder.length - 1] || '0';
+		}
+
+		function scrollCaseTabIntoView(tab, done) {
+			if (!tab || !isCaseMobileLayout()) {
+				if (done) done();
+				return;
+			}
+
+			var scroller = caseContainer;
+			var edge = 12;
+			var tabLeft = tab.offsetLeft;
+			var tabRight = tabLeft + tab.offsetWidth;
+			var viewLeft = scroller.scrollLeft;
+			var viewRight = viewLeft + scroller.clientWidth;
+			var targetScroll = viewLeft;
+
+			if (tabLeft < viewLeft + edge) {
+				targetScroll = Math.max(0, tabLeft - edge);
+			} else if (tabRight > viewRight - edge) {
+				targetScroll = Math.min(
+					scroller.scrollWidth - scroller.clientWidth,
+					tabRight - scroller.clientWidth + edge
+				);
+			} else {
+				if (done) done();
+				return;
+			}
+
+			scroller.scrollTo({ left: targetScroll, behavior: 'smooth' });
+
+			if (!done) return;
+
+			var finished = false;
+			function finish() {
+				if (finished) return;
+				finished = true;
+				scroller.removeEventListener('scroll', onScroll);
+				done();
+			}
+
+			function onScroll() {
+				clearTimeout(scrollEndTimer);
+				scrollEndTimer = setTimeout(finish, 60);
+			}
+
+			var scrollEndTimer = setTimeout(finish, 420);
+			scroller.addEventListener('scroll', onScroll, { passive: true });
+		}
+
 		function syncStackHeight() {
 			if (!stackEl) return;
-			if (window.matchMedia('(max-width: 1024px)').matches) {
+			if (isCaseMobileLayout()) {
 				stackEl.style.minHeight = 'auto';
 				stackEl.style.height = 'auto';
 				return;
@@ -1000,7 +1059,7 @@
 		}
 
 		function renderStack(target, animate) {
-			if (window.matchMedia('(max-width: 1024px)').matches) {
+			if (isCaseMobileLayout()) {
 				casePanels.forEach(function (panel) {
 					panel.classList.remove('is-stacked', 'is-entering');
 					panel.style.removeProperty('--stack-depth');
@@ -1054,7 +1113,7 @@
 			|| caseTabs[0]?.dataset.caseTab;
 
 		function activateCaseTab(target, animate, isManual) {
-			const current = stackOrder[stackOrder.length - 1];
+			const current = getActiveCaseTabKey();
 			if (target === current && animate && !isManual) {
 				return;
 			}
@@ -1070,12 +1129,23 @@
 			renderStack(target, animate && !isManual);
 
 			const tab = caseContainer.querySelector('[data-case-tab="' + target + '"]');
-			if (isManual && section.classList.contains('is-case-paused')) {
-				updateCaseProgressPosition(tab);
-				return;
+
+			function syncCaseTabChrome() {
+				if (!tab) return;
+				if (isManual && section.classList.contains('is-case-paused')) {
+					updateCaseProgressPosition(tab);
+					return;
+				}
+				startCaseProgress(tab);
 			}
 
-			startCaseProgress(tab);
+			if (isCaseMobileLayout()) {
+				requestAnimationFrame(function () {
+					scrollCaseTabIntoView(tab, syncCaseTabChrome);
+				});
+			} else {
+				syncCaseTabChrome();
+			}
 		}
 
 		const CASE_AUTO_MS = parseInt(section.getAttribute('data-case-cycle'), 10) || 5000;
@@ -1084,7 +1154,7 @@
 
 		function advanceCaseTab() {
 			if (section.classList.contains('is-case-paused')) return;
-			const current = stackOrder[stackOrder.length - 1] || '0';
+			const current = getActiveCaseTabKey();
 			const nextIndex = (parseInt(current, 10) + 1) % caseTabs.length;
 			activateCaseTab(String(nextIndex), true);
 		}
