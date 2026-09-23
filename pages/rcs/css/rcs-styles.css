@@ -1731,3 +1731,13 @@ main {
 .faq__lead .gt-word {
   font-family: "Tomato Grotesk", sans-serif;
 }
+
+/* Mobile — benefits tab visual: 12px clip (overrides desktop 30px above) */
+@media (max-width: 1024px) {
+  .benefits__visual,
+  .benefits__visual-frame,
+  #benefitsVisual {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+}

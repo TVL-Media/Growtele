@@ -1159,3 +1159,10 @@ button {
 .blogs-page .gt-words {
   text-align: inherit;
 }
+
+@media (max-width: 1024px) {
+  .blogs-page .tag.tag--sms.tag--lg {
+    height: 27px;
+    font-size: 14px;
+  }
+}

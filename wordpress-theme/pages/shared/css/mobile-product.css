@@ -1361,15 +1361,18 @@
   /* Funnel */
   .funnel__tabs {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
+    align-items: stretch;
     border-bottom: 0;
     gap: 8px;
     margin-bottom: 16px;
   }
 
   .funnel__tab {
-    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
     justify-content: center;
     border-bottom: 0;
     padding: 10px;

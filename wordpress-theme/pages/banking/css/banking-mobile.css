@@ -1,0 +1,43 @@
+/**
+ * Banking — mobile/tablet overrides (loads after mobile-industry.css).
+ */
+
+@media (max-width: 1024px) {
+  .touchpoint__photo {
+    width: 97%;
+  }
+
+  .usecase-card:nth-child(1) .usecase-card__image1 {
+    max-height: 132% !important;
+  }
+
+  .usecase-card:nth-child(2) .usecase-card__image2 {
+    max-height: 169% !important;
+    aspect-ratio: 270 / 307;
+  }
+
+  .usecase-card:nth-child(4) .usecase-card__image4 {
+    max-height: 161% !important;
+    aspect-ratio: 270 / 307;
+  }
+
+  .usecase-card__image2 {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .usecase-card:nth-child(1) .usecase-card__image1 {
+    max-height: 132% !important;
+  }
+
+  .usecase-card:nth-child(2) .usecase-card__image2 {
+    max-height: 169% !important;
+    aspect-ratio: 270 / 307;
+  }
+
+  .usecase-card:nth-child(4) .usecase-card__image4 {
+    max-height: 161% !important;
+    aspect-ratio: 270 / 307;
+  }
+}

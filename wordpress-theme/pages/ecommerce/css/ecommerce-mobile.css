@@ -2,8 +2,68 @@
  * E-commerce page — mobile-only overrides (after mobile-industry.css).
  */
 @media (max-width: 1024px) {
-  /* Welcome art is taller; scale to match sibling cards */
-  .usecase-card__image-wrap > .usecase-card__image--welcome {
-    max-width: 118% !important;
+  .touchpoint__photo {
+    width: 88%;
+    right: 26px;
+  }
+
+  .usecases__header .section-title br {
+    display: none;
+  }
+
+  .usecases__header .section-title {
+    text-wrap: balance;
+  }
+
+  .usecase-card:nth-child(1) .usecase-card__image-wrap,
+  .usecase-card:nth-child(2) .usecase-card__image-wrap,
+  .usecase-card:nth-child(3) .usecase-card__image-wrap {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 4px 4px 0 !important;
+  }
+
+  .usecase-card:nth-child(1) .usecase-card__image--welcome,
+  .usecase-card:nth-child(2) .usecase-card__image--recommendations,
+  .usecase-card:nth-child(3) .usecase-card__image--cart {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 0 !important;
+    top: auto !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 124% !important;
+    max-height: 112% !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  .usecase-card:nth-child(1) .usecase-card__image--welcome {
+    max-height: 145% !important;
+  }
+
+  .usecase-card:nth-child(2) .usecase-card__image--recommendations {
+    max-height: 107% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .usecase-card:nth-child(1) .usecase-card__image--welcome,
+  .usecase-card:nth-child(2) .usecase-card__image--recommendations,
+  .usecase-card:nth-child(3) .usecase-card__image--cart {
+    max-width: 126% !important;
+    max-height: 118% !important;
+    object-position: center bottom !important;
+  }
+
+  .usecase-card:nth-child(1) .usecase-card__image--welcome {
+    max-height: 145% !important;
+  }
+
+  .usecase-card:nth-child(2) .usecase-card__image--recommendations {
+    max-height: 107% !important;
   }
 }

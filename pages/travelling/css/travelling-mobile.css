@@ -1,0 +1,52 @@
+/**
+ * Travelling — mobile/tablet overrides (loads after mobile-industry.css).
+ */
+
+@media (max-width: 1024px) {
+  .touchpoint__photo {
+    width: 114%;
+  }
+
+  .usecase-card:nth-child(3) .usecase-card__image-wrap,
+  .usecase-card:nth-child(4) .usecase-card__image-wrap {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 4px 4px 0 !important;
+  }
+
+  .usecase-card:nth-child(3) .usecase-card__image3,
+  .usecase-card:nth-child(4) .usecase-card__image4 {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 0 !important;
+    top: auto !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 124% !important;
+    max-height: 112% !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  .usecase-card:nth-child(4) .usecase-card__image4 {
+    max-height: 190% !important;
+    bottom: -80px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .usecase-card:nth-child(3) .usecase-card__image3,
+  .usecase-card:nth-child(4) .usecase-card__image4 {
+    max-width: 126% !important;
+    max-height: 118% !important;
+    object-position: center bottom !important;
+  }
+
+  .usecase-card:nth-child(4) .usecase-card__image4 {
+    max-height: 190% !important;
+    bottom: -80px !important;
+  }
+}

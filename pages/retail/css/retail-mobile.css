@@ -1,0 +1,68 @@
+/**
+ * Retail — mobile/tablet overrides (loads after mobile-industry.css).
+ */
+
+@media (max-width: 1024px) {
+  .growth-card:nth-child(3) .growth-card__img {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 40px !important;
+    left: -50px !important;
+    right: 10px !important;
+  }
+
+  /* Use cases — larger art, bottom flush with inner band */
+  .usecase-card__image-wrap {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 4px 4px 0 !important;
+  }
+
+  .usecase-card__image-wrap .usecase-card__image {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 0 !important;
+    top: auto !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 124% !important;
+    max-height: 112% !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  .usecase-card:nth-child(2) .usecase-card__image {
+    max-height: 150% !important;
+    bottom: -21px !important;
+  }
+
+  .usecase-card:nth-child(3) .usecase-card__image {
+    max-height: 130% !important;
+    bottom: -21px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .usecase-card__image-wrap {
+    padding: 4px 4px 0 !important;
+  }
+
+  .usecase-card__image-wrap .usecase-card__image {
+    max-width: 126% !important;
+    max-height: 118% !important;
+    object-position: center bottom !important;
+  }
+
+  .usecase-card:nth-child(2) .usecase-card__image {
+    max-height: 150% !important;
+    bottom: -21px !important;
+  }
+
+  .usecase-card:nth-child(3) .usecase-card__image {
+    max-height: 130% !important;
+    bottom: -21px !important;
+  }
+}

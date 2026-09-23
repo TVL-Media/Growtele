@@ -47,8 +47,7 @@
 
   .email-page.sms-page .why-card:nth-child(1) .why-card__media img,
   .email-page.sms-page .why-card:nth-child(2) .why-card__media img,
-  .email-page.sms-page .why-card:nth-child(3) .why-card__media img,
-  .email-page.sms-page .why-card:nth-child(4) .why-card__media img {
+  .email-page.sms-page .why-card:nth-child(3) .why-card__media img {
     position: absolute !important;
     left: 50% !important;
     bottom: 0 !important;
@@ -79,21 +78,22 @@
     max-height: 148px !important;
   }
 
-  /* Card 4 — img1 width/anchor; bottom: -85px hid art inside 148px + overflow:hidden */
-  .email-page.sms-page .why-card--email-4 .why-card__media img,
+  /* Card 4 only — fill media band (contain + width:auto kept art tiny on wide PNG) */
+  .email-page.sms-page .why-card--email-4 .why-card__media img.why-card__img--email-4,
   .email-page.sms-page img.why-card__img--email-4 {
     position: absolute !important;
     left: 50% !important;
-    bottom: 0 !important;
+    bottom: -50px !important;
     top: auto !important;
-    width: 127% !important;
+    width: 128% !important;
     max-width: none !important;
-    height: auto !important;
-    max-height: 172px !important;
+    height: 185px !important;
+    min-height: 148px !important;
+    max-height: none !important;
     margin: 0 !important;
     display: block !important;
     transform: translateX(-50%) !important;
-    object-fit: contain !important;
-    object-position: center bottom !important;
+    object-fit: cover !important;
+    object-position: center 68% !important;
   }
 }

@@ -3,6 +3,64 @@
  * Loaded after mobile-product.css.
  */
 @media (max-width: 1024px) {
+  /* Benefits — same mobile layout as Email page (icons + tab visual) */
+  .sms-page .benefits .benefit img {
+    width: 44px !important;
+    height: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
+    margin-bottom: 10px !important;
+    object-fit: contain !important;
+  }
+
+  .sms-page .benefits__visual,
+  .sms-page .benefits__visual-frame,
+  .sms-page #benefitsVisual {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .sms-page #benefitsVisual {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+  }
+
+  /* Scale card 1 — Virtual Numbers art (avoid SMS first-card mobile sizing) */
+  .sms-page .scale-card:first-child .scale-card__media:has(img[src*="cloud-telephony-smrc"]) {
+    overflow: hidden !important;
+    padding: 8px 12px 8px 4px !important;
+    justify-content: center !important;
+  }
+
+  .sms-page .scale-card:first-child .scale-card__media img[src*="cloud-telephony-smrc"],
+  .sms-page .scale-card:first-child.is-active .scale-card__media img[src*="cloud-telephony-smrc"] {
+    width: 90% !important;
+    max-width: 90% !important;
+    max-height: 126px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
+  /* Scale card 2 — Cloud Telephony diagram (vertical center in card) */
+  .sms-page .scale-card:nth-child(2) .scale-card__media:has(img[src*="cloud-telephony-Card%202"]),
+  .sms-page .scale-card:nth-child(2) .scale-card__media:has(img[src*="cloud-telephony-Card 2"]) {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px 10px 8px 4px !important;
+  }
+
+  .sms-page .scale-card:nth-child(2) .scale-card__media img[src*="cloud-telephony-Card%202"],
+  .sms-page .scale-card:nth-child(2) .scale-card__media img[src*="cloud-telephony-Card 2"],
+  .sms-page .scale-card:nth-child(2).is-active .scale-card__media img[src*="cloud-telephony-Card%202"],
+  .sms-page .scale-card:nth-child(2).is-active .scale-card__media img[src*="cloud-telephony-Card 2"] {
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
   /* Desktop accordion/carousel leftovers can cause repaint jank while scrolling */
   .journey-card,
   .scale-card,
@@ -27,6 +85,39 @@
 }
 
 @media (max-width: 768px) {
+  .sms-page .scale-card:first-child .scale-card__media:has(img[src*="cloud-telephony-smrc"]) {
+    overflow: hidden !important;
+    padding: 6px 14px 6px 4px !important;
+    justify-content: center !important;
+  }
+
+  .sms-page .scale-card:first-child .scale-card__media img[src*="cloud-telephony-smrc"],
+  .sms-page .scale-card:first-child.is-active .scale-card__media img[src*="cloud-telephony-smrc"] {
+    width: 84% !important;
+    max-width: 84% !important;
+    max-height: 112px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
+  .sms-page .scale-card:nth-child(2) .scale-card__media:has(img[src*="cloud-telephony-Card%202"]),
+  .sms-page .scale-card:nth-child(2) .scale-card__media:has(img[src*="cloud-telephony-Card 2"]) {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px 10px 8px 4px !important;
+  }
+
+  .sms-page .scale-card:nth-child(2) .scale-card__media img[src*="cloud-telephony-Card%202"],
+  .sms-page .scale-card:nth-child(2) .scale-card__media img[src*="cloud-telephony-Card 2"],
+  .sms-page .scale-card:nth-child(2).is-active .scale-card__media img[src*="cloud-telephony-Card%202"],
+  .sms-page .scale-card:nth-child(2).is-active .scale-card__media img[src*="cloud-telephony-Card 2"] {
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
   /*
    * Fixed 100dvh hero height jumps when the mobile browser chrome shows/hides,
    * which feels like the page shaking during scroll.
@@ -60,9 +151,9 @@
     left: auto !important;
     top: auto !important;
     width: calc(100% - 20px) !important;
-    height: 148px !important;
-    min-height: 148px !important;
-    max-height: 148px !important;
+    height: 168px !important;
+    min-height: 168px !important;
+    max-height: 168px !important;
     padding: 0 !important;
     margin: 8px auto 0 !important;
     overflow: hidden !important;
@@ -92,19 +183,19 @@
   }
 
   .sms-page .why-card:nth-child(1) .why-card__media img,
+  .sms-page .why-card:nth-child(2) .why-card__media img,
   .sms-page .why-card:nth-child(3) .why-card__media img {
-    max-width: 112% !important;
-    max-height: 148px !important;
-  }
-
-  .sms-page .why-card:nth-child(2) .why-card__media img {
     max-width: 118% !important;
-    max-height: 148px !important;
+    max-height: 168px !important;
   }
 
-  .sms-page .why-card:nth-child(4) .why-card__media img {
-    max-width: 104% !important;
-    max-height: 148px !important;
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted%20Channel%204"],
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted Channel 4"] {
+    left: 19px !important;
+    bottom: -28px !important;
+    width: 79% !important;
+    max-width: none !important;
+    transform: none !important;
   }
 
   /* Why cards — prevent desktop fixed card height from stretching layout */
@@ -168,22 +259,24 @@
   .sms-page .why-card:nth-child(2) .why-card__media,
   .sms-page .why-card:nth-child(3) .why-card__media,
   .sms-page .why-card:nth-child(4) .why-card__media {
-    height: 132px !important;
-    min-height: 132px !important;
-    max-height: 132px !important;
+    height: 148px !important;
+    min-height: 148px !important;
+    max-height: 148px !important;
   }
 
   .sms-page .why-card:nth-child(1) .why-card__media img,
+  .sms-page .why-card:nth-child(2) .why-card__media img,
   .sms-page .why-card:nth-child(3) .why-card__media img {
-    max-height: 132px !important;
+    max-height: 148px !important;
   }
 
-  .sms-page .why-card:nth-child(2) .why-card__media img {
-    max-height: 132px !important;
-  }
-
-  .sms-page .why-card:nth-child(4) .why-card__media img {
-    max-height: 132px !important;
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted%20Channel%204"],
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted Channel 4"] {
+    left: 19px !important;
+    bottom: -28px !important;
+    width: 79% !important;
+    max-width: none !important;
+    transform: none !important;
   }
 
   .sms-page .funnel__visual {

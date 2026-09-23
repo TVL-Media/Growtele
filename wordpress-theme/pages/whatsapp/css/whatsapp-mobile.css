@@ -3,6 +3,29 @@
  * Loaded after mobile-product.css.
  */
 @media (max-width: 1024px) {
+  /* Scale — card 2 & 4 images (WhatsApp assets only) */
+  .sms-page .scale-card:nth-child(2) .scale-card__media img[src*="Group-680"] {
+    position: relative !important;
+    left: -14% !important;
+  }
+
+  .sms-page .scale-card:nth-child(4) .scale-card__media img[src*="Group-694"],
+  .sms-page .scale-card.scale-card--last .scale-card__media img[src*="Group-694"] {
+    position: relative !important;
+    left: -6% !important;
+    max-height: 104% !important;
+  }
+
+  /* Benefits — all tab visuals: anchor art to bottom of blue band (size unchanged) */
+  .sms-page .benefits .benefits__visual-frame,
+  .sms-page .benefits #benefitsVisual {
+    background-position: center bottom !important;
+  }
+
+  .sms-page .benefits .benefits__visual {
+    top: 28px !important;
+  }
+
   /* Desktop accordion/carousel leftovers can cause repaint jank while scrolling */
   .journey-card,
   .scale-card,
@@ -48,14 +71,22 @@
     gap: 14px !important;
   }
 
+  /* Equal panel height across Discovery / Engagement / Retention (visual slot only) */
+  .sms-page .funnel__list:not([hidden]) {
+    min-height: 318px !important;
+    box-sizing: border-box;
+  }
+
   .sms-page .funnel__visual {
-    flex: 0 0 auto !important;
+    flex: 0 0 211px !important;
     align-items: flex-end !important;
     justify-content: center !important;
     width: 100% !important;
-    max-height: 200px !important;
+    min-height: 211px !important;
+    max-height: 211px !important;
     padding: 4px 12px 12px !important;
     overflow: hidden !important;
+    box-sizing: border-box;
   }
 
   .sms-page .funnel__visual img {
@@ -67,6 +98,19 @@
     max-height: 188px !important;
     object-fit: contain !important;
     object-position: center bottom !important;
+  }
+
+  .sms-page .funnel__panel.funnel__panel--engagement .funnel__visual img {
+    max-height: 207px !important;
+  }
+
+  .sms-page .funnel__panel.funnel__panel--engagement .funnel__visual {
+    padding: 4px 11px 0px !important;
+  }
+
+  .sms-page .funnel__panel.funnel__panel--acquisition .funnel__visual,
+  .sms-page .funnel__panel.funnel__panel--retention .funnel__visual {
+    padding: 4px 12px 0px !important;
   }
 
   /* Why section — bottom-aligned images in colored inner bands */
@@ -90,9 +134,9 @@
     left: auto !important;
     top: auto !important;
     width: calc(100% - 20px) !important;
-    height: 148px !important;
-    min-height: 148px !important;
-    max-height: 148px !important;
+    height: 168px !important;
+    min-height: 168px !important;
+    max-height: 168px !important;
     padding: 0 !important;
     margin: 8px auto 0 !important;
     overflow: hidden !important;
@@ -121,20 +165,45 @@
     object-position: center bottom !important;
   }
 
-  .sms-page .why-card:nth-child(1) .why-card__media img,
-  .sms-page .why-card:nth-child(3) .why-card__media img {
-    max-width: 112% !important;
-    max-height: 148px !important;
+  .sms-page .why-card:nth-child(1) .why-card__media img {
+    max-width: 118% !important;
+    max-height: 162px !important;
   }
 
   .sms-page .why-card:nth-child(2) .why-card__media img {
     max-width: 118% !important;
-    max-height: 148px !important;
+    max-height: 190px !important;
+  }
+
+  .sms-page .why-card:nth-child(3) .why-card__media img {
+    max-width: 118% !important;
+    max-height: 138px !important;
   }
 
   .sms-page .why-card:nth-child(4) .why-card__media img {
     max-width: 104% !important;
-    max-height: 148px !important;
+    max-height: 168px !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media img[src*="Group-687"] {
+    max-height: 162px !important;
+  }
+
+  .sms-page .why-card:nth-child(2) .why-card__media img[src*="Trusted%20Channel%202"],
+  .sms-page .why-card:nth-child(2) .why-card__media img[src*="Trusted Channel 2"] {
+    max-height: 190px !important;
+  }
+
+  .sms-page .why-card:nth-child(3) .why-card__media img[src*="41028f67dedd4f3a869a2639ea8bf4d6e4060e65"] {
+    max-height: 138px !important;
+  }
+
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted%20Channel%204"],
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted Channel 4"] {
+    left: 26px !important;
+    width: 82% !important;
+    max-width: none !important;
+    transform: none !important;
   }
 
   .sms-page .why-card {
@@ -154,27 +223,63 @@
     max-height: none !important;
   }
 
+  .sms-page .funnel__list:not([hidden]) {
+    min-height: 318px !important;
+  }
+
   .sms-page .funnel__visual {
-    max-height: 168px !important;
+    flex: 0 0 211px !important;
+    min-height: 211px !important;
+    max-height: 211px !important;
   }
 
   .sms-page .funnel__visual img {
     max-height: 156px !important;
   }
 
+  .sms-page .funnel__panel.funnel__panel--engagement .funnel__visual img {
+    max-height: 207px !important;
+  }
+
   .sms-page .why-card:nth-child(1) .why-card__media,
   .sms-page .why-card:nth-child(2) .why-card__media,
   .sms-page .why-card:nth-child(3) .why-card__media,
   .sms-page .why-card:nth-child(4) .why-card__media {
-    height: 132px !important;
-    min-height: 132px !important;
-    max-height: 132px !important;
+    height: 148px !important;
+    min-height: 148px !important;
+    max-height: 148px !important;
   }
 
-  .sms-page .why-card:nth-child(1) .why-card__media img,
-  .sms-page .why-card:nth-child(2) .why-card__media img,
-  .sms-page .why-card:nth-child(3) .why-card__media img,
-  .sms-page .why-card:nth-child(4) .why-card__media img {
-    max-height: 132px !important;
+  .sms-page .why-card:nth-child(1) .why-card__media img {
+    max-height: 162px !important;
+  }
+
+  .sms-page .why-card:nth-child(2) .why-card__media img {
+    max-height: 190px !important;
+  }
+
+  .sms-page .why-card:nth-child(3) .why-card__media img {
+    max-height: 138px !important;
+  }
+
+  .sms-page .why-card:nth-child(1) .why-card__media img[src*="Group-687"] {
+    max-height: 162px !important;
+  }
+
+  .sms-page .why-card:nth-child(2) .why-card__media img[src*="Trusted%20Channel%202"],
+  .sms-page .why-card:nth-child(2) .why-card__media img[src*="Trusted Channel 2"] {
+    max-height: 190px !important;
+  }
+
+  .sms-page .why-card:nth-child(3) .why-card__media img[src*="41028f67dedd4f3a869a2639ea8bf4d6e4060e65"] {
+    max-height: 138px !important;
+  }
+
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted%20Channel%204"],
+  .sms-page .why-card:nth-child(4) .why-card__media img[src*="Trusted Channel 4"] {
+    left: 26px !important;
+    width: 82% !important;
+    max-width: none !important;
+    transform: none !important;
   }
 }

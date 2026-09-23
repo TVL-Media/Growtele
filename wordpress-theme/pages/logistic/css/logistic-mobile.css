@@ -1,0 +1,57 @@
+/**
+ * Logistic — mobile/tablet overrides (loads after mobile-industry.css).
+ */
+
+@media (max-width: 1024px) {
+  .touchpoint__grid {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .touchpoint__list {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    align-self: stretch;
+  }
+
+  .touchpoint__item h3 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .touchpoint__photo {
+    width: 95%;
+    right: 21px;
+  }
+
+  .usecase-card:nth-child(4) .usecase-card__image-wrap {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 4px 4px 0 !important;
+  }
+
+  .usecase-card:nth-child(4) .usecase-card__image--realtime {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 0 !important;
+    top: auto !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 124% !important;
+    max-height: 122% !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .usecase-card:nth-child(4) .usecase-card__image--realtime {
+    max-width: 126% !important;
+    max-height: 122% !important;
+    object-position: center bottom !important;
+  }
+}
