@@ -277,61 +277,7 @@
   }
 
   .industry-nav {
-    position: relative;
-    z-index: 5;
-    padding: 20px 20px 16px;
-    margin-top: 0;
-  }
-
-  .industry-nav__bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    height: auto;
-    min-height: 0;
-    padding: 10px 12px;
-    gap: 8px;
-    border-radius: 20px;
-  }
-
-  .industry-nav__item {
-    font-size: var(--gt-text-sm);
-    padding: 8px 12px;
-    min-height: 36px;
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-    tap-highlight-color: transparent;
-    touch-action: manipulation;
-  }
-
-  .industry-nav__bar a:active,
-  .industry-nav__bar a:focus,
-  .industry-nav__bar a:focus-visible,
-  .industry-nav__item:active,
-  .industry-nav__item:focus,
-  .industry-nav__item:focus-visible {
-    background: transparent !important;
-    background-color: transparent !important;
-    outline: none;
-    box-shadow: none;
-  }
-
-  .industry-nav__item--active {
-    font-weight: 600;
-    color: var(--orange, #ff9300);
-  }
-
-  .industry-nav__item--active::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(52px, 80%);
-    height: 2px;
-    background: var(--orange, #ff9300);
-    border-radius: 9px;
+    display: none !important;
   }
 
   .channels,
@@ -392,6 +338,15 @@
   .channels__tabs {
     width: 100%;
     border-radius: 24px;
+    padding: 18px 14px 18px !important;
+  }
+
+  .channels__tab {
+    font-size: 16px !important;
+  }
+
+  .channels__tab-desc {
+    display: none !important;
   }
 
   /* Growth cards — horizontal swipe with side peek (matches landing gt-channels) */
@@ -665,6 +620,10 @@
     border-radius: 14px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+  }
+
+  .usecase-card__title {
+    font-size: clamp(17px, 4vw, 21px) !important;
   }
 
   /* Use cases — image band + card shell match SMS why cards (mobile-product.css) */
@@ -1330,7 +1289,7 @@
   }
 
   .usecase-card__title {
-    font-size: clamp(20px, 5vw, 24px);
+    font-size: clamp(17px, 4vw, 21px) !important;
     padding: 16px 20px 6px;
   }
 
@@ -1338,16 +1297,64 @@
     font-size: 14px;
     padding: 0 20px 20px;
   }
+
+  /* Section intro copy below headings (phones) */
+  .hero__desc,
+  .channels__subtitle,
+  .growth__subtitle,
+  .usecases__subtitle,
+  .touchpoint__intro,
+  .faq__intro,
+  .testimonial__subheading,
+  .trust__desc,
+  .growth__header .growth__subtitle,
+  .channels__header .channels__subtitle,
+  .usecases__header .usecases__subtitle {
+    font-size: 4.2vw !important;
+  }
+
+  /* Section headings (phones) */
+  .hero__title,
+  .section-title,
+  .channels__header .section-title,
+  .growth__header .section-title,
+  .usecases__header .section-title,
+  .touchpoint__title,
+  .testimonial__heading,
+  .faq__title,
+  .trust__title {
+    font-size: 6.8vw !important;
+  }
+
+  /* Section headings + intro: center (phones, not hero) */
+  .channels__header,
+  .growth__header,
+  .usecases__header {
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .channels__header .section-title,
+  .channels__subtitle,
+  .growth__header .section-title,
+  .growth__subtitle,
+  .usecases__header .section-title,
+  .usecases__subtitle,
+  .touchpoint__title,
+  .touchpoint__intro,
+  .testimonial__heading,
+  .testimonial__subheading,
+  .faq__title,
+  .faq__intro,
+  .trust__title,
+  .trust__desc {
+    text-align: center !important;
+  }
 }
 
 @media (max-width: 480px) {
-  .industry-nav__item {
-    font-size: var(--gt-text-xs);
-    padding: 7px 10px;
-  }
-
   .channels__tab {
-    font-size: var(--gt-text-base);
+    font-size: 16px !important;
     padding: 12px 14px;
   }
 
@@ -1424,6 +1431,11 @@
 }
 
 @media (min-width: 1025px) {
+  /* Mobile line-break markers are hidden on desktop — preserve word spacing */
+  br.gt-mobile-br + *::before {
+    content: ' ';
+  }
+
   .growth__header {
     flex-direction: row;
     justify-content: space-between;

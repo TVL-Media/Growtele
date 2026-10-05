@@ -279,39 +279,71 @@ main {
   height: 477px;
   margin: 58px 0 0;
   background: var(--navy-dark);
+  overflow: hidden;
 }
 
-.hero__photos {
-  position: relative;
-  z-index: 2;
-  width: min(1378px, calc(100% - 2 * var(--pad-x)));
-  max-width: 1378px;
-  margin: -446px auto 0;
-  height: 414px;
-  display: grid;
-  grid-template-columns: 287fr 461fr 407fr 223fr;
-  gap: 0;
+.hero__marquee {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero__marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: hero-marquee-scroll 52s linear infinite;
+}
+
+.hero__marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 14px;
+  padding-right: 14px;
+}
+
+.hero__marquee-card {
+  flex-shrink: 0;
+  margin: 0;
   border-radius: 30px;
   overflow: hidden;
-  background: var(--white);
-  box-shadow: 0 24px 48px rgba(9, 10, 44, 0.18);
 }
 
-.hero__photo {
+.hero__marquee-card img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0;
 }
 
-.hero__photo--1,
-.hero__photo--2,
-.hero__photo--3,
-.hero__photo--4 {
-  position: static;
-  left: auto;
-  top: auto;
+.hero__marquee-card--odd {
+  width: 461px;
+  height: 322px;
+}
+
+.hero__marquee-card--even {
+  width: 407px;
+  height: 405px;
+}
+
+@keyframes hero-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__marquee-track {
+    animation: none;
+  }
 }
 
 /* Section headers */
@@ -346,38 +378,274 @@ main {
 .culture {
   position: relative;
   z-index: 1;
-  padding: 121px 0 135px;
-}
-
-.culture-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, minmax(220px, 306px));
-  gap: 0;
-  width: 100%;
-  max-width: 1141px;
-  border-radius: 25px;
-  overflow: hidden;
-  background: var(--white);
-  box-shadow: 0 20px 40px rgba(9, 10, 44, 0.1);
+  padding: 140px 0 166px;
 }
 
 .culture .section-desc {
   font-size: 19px;
 }
 
-.culture-grid__img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 220px;
-  object-fit: cover;
-  border-radius: 0;
+.culture-hscroll {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
-.culture-grid__img--crop {
+.culture-hscroll__sticky {
+  position: sticky;
+  top: var(--culture-sticky-top, 120px);
+  height: auto;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.culture-hscroll__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.culture-hscroll__track {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+}
+
+@media (min-width: 1025px) {
+  .culture-hscroll__track {
+    padding-left: calc((100vw - min(100vw, var(--container))) / 2 + var(--pad-x));
+    padding-right: calc((100vw - min(100vw, var(--container))) / 2 + var(--pad-x));
+  }
+}
+
+.culture-hscroll__track .culture-card {
+  flex: 0 0 970px;
+  width: 970px;
+  max-width: none;
+}
+
+.culture-card {
+  width: 100%;
+  max-width: 970px;
+  border-radius: 41px;
+  overflow: hidden;
+  background-color: #0a0b35;
+  background-image: url('https://listings.selectvia.com/wp-content/uploads/2026/09/ssz.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.culture-card__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 384px;
+  padding: 34px 44px 34px 40px;
+}
+
+.culture-card__content {
+  position: relative;
+  z-index: 1;
+  max-width: 46%;
+  padding-right: 12px;
+}
+
+.culture-card__title {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+  margin: 0 0 16px;
+}
+
+.culture-card__desc {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+}
+
+.culture-card__media {
+  position: static;
+  width: 0;
+  height: 0;
+  min-height: 0;
+  overflow: visible;
+}
+
+.culture-card__photo {
+  position: absolute;
+  top: 34px;
+  left: 52%;
+  width: 42%;
+  height: 317px;
+  display: block;
   object-fit: cover;
-  object-position: 30% center;
+  border-radius: 24px;
+}
+
+.culture-card--learn-grow,
+.culture-card--work-create {
+  background-image: url('https://listings.selectvia.com/wp-content/uploads/2026/09/scdsvsdvdsvvv.png');
+}
+
+.culture-card--learn-grow .culture-card__title,
+.culture-card--work-create .culture-card__title,
+.culture-card--learn-grow .culture-card__desc,
+.culture-card--work-create .culture-card__desc {
+  color: #121348;
+}
+
+@media (min-width: 1025px) {
+  .culture-card--learn-grow .culture-card__content {
+    max-width: 52%;
+  }
+
+  .culture-card--learn-grow .culture-card__title {
+    white-space: nowrap;
+    font-size: 34px;
+    letter-spacing: -0.02em;
+  }
+
+  .culture-card--learn-grow .culture-card__photo-frame {
+    position: absolute;
+    top: 34px;
+    left: 52%;
+    width: 42%;
+    height: 317px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .culture-card--learn-grow .culture-card__photo {
+    position: absolute;
+    inset: 0;
+    width: 111%;
+    height: 116%;
+    border-radius: 0;
+    object-fit: cover;
+    transform-origin: 85% 104%;
+  }
+}
+
+@media (max-width: 900px) {
+  .culture-card--learn-grow .culture-card__photo-frame {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 240px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .culture-card--learn-grow .culture-card__photo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    transform: scale(1.2);
+    transform-origin: center 40%;
+  }
+
+  .culture-card--learn-grow .culture-card__title {
+    white-space: normal;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .culture-hscroll {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    height: auto !important;
+  }
+
+  .culture-hscroll__sticky {
+    position: static;
+    height: auto;
+  }
+
+  .culture-hscroll__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--pad-x, 20px);
+    scrollbar-width: none;
+  }
+
+  .culture-hscroll__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .culture-hscroll__track {
+    flex-direction: row;
+    width: max-content;
+    transform: none !important;
+    gap: 16px;
+    padding: 0 var(--pad-x, 20px);
+  }
+
+  .culture-hscroll__track .culture-card {
+    flex: 0 0 min(88vw, 360px);
+    width: min(88vw, 360px);
+    max-width: none;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 900px) {
+  .culture-card {
+    border-radius: 28px;
+  }
+
+  .culture-card__inner {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 28px 20px 24px;
+  }
+
+  .culture-card__content {
+    max-width: none;
+    padding-right: 0;
+    margin-bottom: 16px;
+  }
+
+  .culture-card__title {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .culture-card__desc {
+    font-size: 17px;
+  }
+
+  .culture-card__media {
+    width: auto;
+    height: auto;
+  }
+
+  .culture-card__photo {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    min-height: 240px;
+  }
 }
 
 /* Values */
@@ -499,6 +767,343 @@ main {
   line-height: 1.45;
   color: var(--white);
   max-width: 490px;
+}
+
+.career-culture-title__m,
+.career-jobs-title__m,
+.career-perks-title__m {
+  display: none;
+}
+
+.career-culture-title__d,
+.career-jobs-title__d,
+.career-perks-title__d {
+  display: block;
+}
+
+/* Mid-page CTA (same as growinfinity.io) */
+.career-page .cta-mid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
+  padding: clamp(24px, 4vh, 48px) var(--pad-x);
+  margin-bottom: 130px;
+  box-sizing: border-box;
+  --cta-bg-position-y: 28%;
+}
+
+.career-page .cta-mid__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://listings.selectvia.com/wp-content/uploads/2026/09/bgo-1.png');
+  background-repeat: no-repeat;
+  background-position: center var(--cta-bg-position-y);
+  background-size: cover;
+}
+
+.career-page .cta-mid__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 542fr) minmax(0, 605fr);
+  gap: clamp(24px, 2.8vw, 40px);
+  width: min(100%, 1200px);
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  margin-inline: auto;
+  align-items: stretch;
+}
+
+.career-page .cta-mid__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+
+.career-page .cta-mid__title {
+  font-family: 'Tomato Grotesk', var(--font-heading);
+  font-size: clamp(40px, 3.89vw, 56px);
+  font-weight: 600;
+  line-height: normal;
+  color: var(--white);
+  margin: 0 0 20px;
+}
+
+.career-page .cta-mid__desc {
+  font-family: 'Tomato Grotesk', var(--font-heading);
+  font-size: clamp(22px, 2.08vw, 30px);
+  font-weight: 300;
+  line-height: normal;
+  color: var(--white);
+  max-width: 471px;
+  margin: 0 0 clamp(24px, 2.8vw, 40px);
+}
+
+.career-page .cta-mid__actions {
+  display: flex;
+  gap: 14px;
+}
+
+.career-page .cta-mid__photo {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.career-page .cta-mid__photo-stack {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 98%;
+  height: 85%;
+  transform: translate(-50%, -50%);
+}
+
+.career-page .cta-mid__stack-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62%;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 22px 48px rgba(9, 10, 44, 0.35);
+  transition:
+    transform 1.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.career-page .cta-mid__stack-card[data-pos='center'] {
+  z-index: 3;
+  opacity: 1;
+  filter: none;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.career-page .cta-mid__stack-card[data-pos='left'] {
+  z-index: 2;
+  opacity: 0.9;
+  filter: brightness(0.9);
+  transform: translate(calc(-50% - 38%), -50%) scale(0.88);
+}
+
+.career-page .cta-mid__stack-card[data-pos='right'] {
+  z-index: 2;
+  opacity: 0.9;
+  filter: brightness(0.9);
+  transform: translate(calc(-50% + 38%), -50%) scale(0.88);
+}
+
+.career-page .cta-mid__stack-card[data-pos='hidden'] {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.82);
+}
+
+.career-page .cta-mid__photo-img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.career-page .cta-mid .btn-blue,
+.career-page .cta-mid .btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  min-width: 148px;
+  border-radius: 10px;
+  font-family: 'Tomato Grotesk', var(--font-heading);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.career-page .cta-mid .btn-blue {
+  background: #0d12ff;
+  font-weight: 500;
+  color: var(--white);
+  min-width: 220px;
+  padding: 0 36px;
+}
+
+.career-page .cta-mid .btn-outline-white {
+  border: 1px solid var(--white);
+  color: var(--white);
+  font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+  .career-culture-title__m,
+  .career-jobs-title__m,
+  .career-perks-title__m {
+    display: block;
+  }
+
+  .career-culture-title__d,
+  .career-jobs-title__d,
+  .career-perks-title__d {
+    display: none !important;
+  }
+
+  .career-page .culture .section-title .career-section-title__line,
+  .career-page .jobs .section-title .career-section-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .career-page .cta-mid {
+    height: auto;
+    max-height: none;
+    min-height: 100svh;
+    min-height: 100dvh;
+    overflow: hidden;
+    margin-bottom: 48px;
+    align-items: stretch;
+  }
+
+  .career-page .cta-mid__text {
+    text-align: center;
+    align-items: center;
+  }
+
+  .career-page .cta-mid__title,
+  .career-page .cta-mid__desc {
+    text-align: center;
+  }
+
+  .career-page .cta-mid__desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .career-page .cta-mid__actions {
+    align-self: center;
+    justify-content: center;
+    width: auto;
+    margin-bottom: clamp(28px, 6vh, 44px);
+  }
+
+  .career-page .cta-mid .btn-blue {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    max-width: min(100%, 240px);
+    padding: 0 22px;
+  }
+
+  .career-page .cta-mid__inner {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: calc(100svh - clamp(48px, 8vh, 96px));
+    min-height: calc(100dvh - clamp(48px, 8vh, 96px));
+    flex: 1;
+    align-content: center;
+    gap: clamp(24px, 5vh, 36px);
+  }
+
+  .career-page .cta-mid__photo {
+    flex: 1 1 auto;
+    min-height: clamp(240px, 38vh, 420px);
+    max-height: none;
+  }
+
+  .career-page .cta-mid__photo-stack {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .career-page .cta-mid {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 24px var(--pad-x) 28px;
+  }
+
+  .career-page .cta-mid__inner {
+    gap: 20px;
+    min-height: calc(100svh - 52px);
+    min-height: calc(100dvh - 52px);
+  }
+
+  .career-page .cta-mid__title {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .career-page .cta-mid__desc {
+    font-size: 14px;
+    line-height: 1.45;
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .career-page .cta-mid__actions {
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: auto;
+    align-self: center;
+    justify-content: center;
+    margin-bottom: clamp(28px, 6vh, 44px);
+  }
+
+  .career-page .cta-mid .btn-blue,
+  .career-page .cta-mid .btn-outline-white {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    max-width: min(100%, 240px);
+    height: 42px;
+    font-size: 13px;
+    padding: 0 22px;
+  }
+
+  .career-page .cta-mid__photo {
+    min-height: clamp(220px, 42vh, 380px);
+    max-height: none;
+  }
+
+  .career-page .cta-mid__photo-stack {
+    height: 100%;
+    min-height: clamp(220px, 42vh, 380px);
+    max-height: none;
+  }
+
+  .career-page .cta-mid__stack-card {
+    border-radius: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-page .cta-mid__stack-card {
+    transition: opacity 0.2s ease;
+  }
 }
 
 /* Perks */

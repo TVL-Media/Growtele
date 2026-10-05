@@ -482,6 +482,32 @@ function growtele_prepare_static_page_smooth_scroll( $html ) {
 }
 
 /**
+ * Inject contact request modal assets on bundled static pages.
+ *
+ * @param string $html HTML content.
+ * @return string
+ */
+function growtele_prepare_static_page_contact_modal( $html ) {
+	$version = GROWTELE_VERSION;
+
+	if ( false === stripos( $html, 'contact-request-modal.css' ) ) {
+		$css = '<link rel="stylesheet" href="' . esc_url( GROWTELE_URI . '/pages/shared/css/contact-request-modal.css?v=' . $version ) . '">';
+		if ( preg_match( '/<link[^>]+landing-footer\.css[^>]*>/i', $html ) ) {
+			$html = preg_replace( '/(<link[^>]+landing-footer\.css[^>]*>)/i', '$1' . $css, $html, 1 );
+		} else {
+			$html = preg_replace( '/<\/head>/i', $css . '</head>', $html, 1 );
+		}
+	}
+
+	if ( false === stripos( $html, 'contact-request-modal.js' ) ) {
+		$js = '<script src="' . esc_url( GROWTELE_URI . '/assets/js/contact-request-modal.js?v=' . $version ) . '"></script>';
+		$html = preg_replace( '/<\/body>/i', $js . '</body>', $html, 1 );
+	}
+
+	return $html;
+}
+
+/**
  * Inject landing-page scroll text animations on static product/industry pages.
  *
  * @param string $html HTML content.
@@ -591,6 +617,7 @@ function growtele_render_static_page( $slug ) {
 	$html = growtele_prepare_static_page_smooth_scroll( $html );
 	$html = growtele_prepare_static_page_nav_current( $html );
 	$html = growtele_prepare_static_page_animations( $html );
+	$html = growtele_prepare_static_page_contact_modal( $html );
 	$html = growtele_version_theme_assets( $html );
 
 	if ( function_exists( 'growtele_apply_static_page_cms' ) ) {

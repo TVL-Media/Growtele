@@ -114,6 +114,10 @@
 	margin-bottom: 40px;
 }
 
+.gt-hero__subtitle-br--before-rcs {
+	display: none;
+}
+
 .gt-hero__features {
 	display: flex;
 	flex-wrap: wrap;

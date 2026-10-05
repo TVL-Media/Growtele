@@ -1,7 +1,85 @@
 /**
  * E-commerce page — mobile-only overrides (after mobile-industry.css).
  */
+
+.ecommerce-growth-header-title__m,
+.ecommerce-growth-card1-title__m,
+.ecommerce-growth-card2-title__m,
+.ecommerce-faq-title__m {
+  display: none;
+}
+
+.ecommerce-growth-header-title__d,
+.ecommerce-growth-card1-title__d,
+.ecommerce-growth-card2-title__d,
+.ecommerce-faq-title__d {
+  display: block;
+}
+
 @media (max-width: 1024px) {
+  .ecommerce-growth-header-title__m {
+    display: block;
+  }
+
+  .ecommerce-growth-header-title__d {
+    display: none !important;
+  }
+
+  .growth__header .section-title {
+    line-height: 1.22 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .growth__header .section-title .growth-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .ecommerce-growth-card1-title__m,
+  .ecommerce-growth-card2-title__m {
+    display: block;
+  }
+
+  .ecommerce-growth-card1-title__d,
+  .ecommerce-growth-card2-title__d {
+    display: none !important;
+  }
+
+  .growth-card:first-child .growth-card__title,
+  .growth-card:nth-child(2) .growth-card__title {
+    line-height: 1.22 !important;
+  }
+
+  .growth-card-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .ecommerce-faq-title__m {
+    display: block;
+  }
+
+  .ecommerce-faq-title__d {
+    display: none !important;
+  }
+
+  .ecommerce-faq-title__m .faq-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .faq__title {
+    line-height: 1.22 !important;
+  }
+
+  .usecase-card:nth-child(2) .ecommerce-usecase-rec-title {
+    white-space: nowrap !important;
+  }
+
   .touchpoint__photo {
     width: 88%;
     right: 26px;

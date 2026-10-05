@@ -2,14 +2,86 @@
  * Education — mobile/tablet overrides (loads after mobile-industry.css).
  */
 
+.education-growth-card1-title__m,
+.education-growth-card2-title__m,
+.education-faq-title__m,
+.education-faq-intro__m {
+  display: none;
+}
+
+.education-growth-card1-title__d,
+.education-growth-card2-title__d,
+.education-faq-title__d,
+.education-faq-intro__d {
+  display: block;
+}
+
+.education-faq-intro__d {
+  display: inline;
+}
+
 @media (max-width: 1024px) {
+  .education-growth-card1-title__m,
+  .education-growth-card2-title__m {
+    display: block;
+  }
+
+  .education-growth-card1-title__d,
+  .education-growth-card2-title__d {
+    display: none !important;
+  }
+
+  .growth-card:first-child .growth-card__title,
+  .growth-card:nth-child(2) .growth-card__title {
+    line-height: 1.22 !important;
+  }
+
+  .growth-card-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .education-faq-title__m {
+    display: block;
+  }
+
+  .education-faq-title__d {
+    display: none !important;
+  }
+
+  .education-faq-title__m .faq-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .faq__title {
+    line-height: 1.22 !important;
+  }
+
+  .education-faq-intro__m {
+    display: block;
+  }
+
+  .education-faq-intro__d {
+    display: none !important;
+  }
+
+  .education-faq-intro__m .faq-intro__line {
+    display: block;
+    line-height: 1.4;
+    text-align: center;
+  }
+
   .touchpoint__photo {
     width: 98%;
     right: 12px;
   }
 
   .usecase-card .usecase-card__title {
-    font-size: clamp(17px, 4.25vw, 19px) !important;
+    font-size: clamp(17px, 4vw, 21px) !important;
     line-height: 1.25 !important;
   }
 

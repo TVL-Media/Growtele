@@ -114,6 +114,10 @@
 	margin-bottom: 40px;
 }
 
+.gt-hero__subtitle-br--before-rcs {
+	display: none;
+}
+
 .gt-hero__features {
 	display: flex;
 	flex-wrap: wrap;
@@ -198,7 +202,8 @@
 	display: flex;
 	align-items: center;
 	gap: 60px;
-	animation: gt-marquee 12s linear infinite;
+	width: max-content;
+	animation: gt-marquee var(--marquee-duration, 36s) linear infinite;
 	will-change: transform;
 }
 
@@ -215,8 +220,8 @@
 	max-width: 160px;
 	object-fit: contain;
 	filter: brightness(0) invert(1);
-	opacity: 0.85;
-	transition: opacity var(--gt-duration) var(--gt-ease);
+	opacity: 0.9;
+	transition: filter var(--gt-duration) var(--gt-ease), opacity var(--gt-duration) var(--gt-ease);
 }
 
 .gt-marquee__item--tanishq img {
@@ -234,12 +239,13 @@
 }
 
 .gt-marquee__item:hover img {
+	filter: none;
 	opacity: 1;
 }
 
 @keyframes gt-marquee {
-	0% { transform: translateX(0); }
-	100% { transform: translateX(-50%); }
+	0% { transform: translate3d(0, 0, 0); }
+	100% { transform: translate3d(calc(-1 * var(--marquee-distance, 50%)), 0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

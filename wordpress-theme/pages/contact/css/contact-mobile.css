@@ -1,0 +1,32 @@
+/**
+ * Contact — mobile/tablet overrides (after mobile-company.css).
+ */
+
+.contact-success-title__m {
+  display: none;
+}
+
+.contact-success-title__d {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .contact-success-title__m {
+    display: block;
+  }
+
+  .contact-success-title__d {
+    display: none !important;
+  }
+
+  .contact-page .success__title {
+    line-height: 1.22 !important;
+  }
+
+  .contact-page .success__title .success-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+}

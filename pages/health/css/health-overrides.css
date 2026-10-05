@@ -1,3 +1,23 @@
+br.gt-mobile-br {
+  display: none;
+}
+
+.health-page .health-growth-sub-l3-m {
+  display: none;
+}
+
+.health-page .health-growth-sub-l3-d {
+  display: inline;
+}
+
+.health-page .health-faq-title__m {
+  display: none;
+}
+
+.health-page .health-faq-title__d {
+  display: block;
+}
+
 .health-page .channels__header .section-title--two-line {
   max-width: none;
 }
@@ -38,8 +58,94 @@
 }
 
 @media (max-width: 1024px) {
+  br.gt-mobile-br {
+    display: block !important;
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .health-page .hero__title br.gt-mobile-br,
+  .health-page .growth__header .section-title br.gt-mobile-br {
+    display: none !important;
+  }
+
+  .health-page .hero__title {
+    line-height: 1.22 !important;
+  }
+
+  .health-page .hero__title .hero-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .health-page .channels__header .section-title--two-line {
+    font-size: max(19px, calc(6.8vw - 3px)) !important;
+    line-height: 1.22 !important;
+    margin-bottom: 0 !important;
+  }
+
   .health-page .channels__header .section-title--two-line .section-title__line {
-    white-space: normal;
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .health-page .growth__header .section-title {
+    line-height: 1.22 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .health-page .growth__header .section-title .growth-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .health-page .health-growth-sub-l3-m {
+    display: inline;
+  }
+
+  .health-page .health-growth-sub-l3-d {
+    display: none !important;
+  }
+
+  .health-page .growth__subtitle br.gt-mobile-br {
+    display: none !important;
+  }
+
+  .health-page .growth__subtitle {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .health-page .growth__subtitle .growth-subtitle__line {
+    display: block !important;
+    white-space: normal !important;
+    line-height: 1.4 !important;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .health-page .health-faq-title__m {
+    display: block;
+  }
+
+  .health-page .health-faq-title__d {
+    display: none !important;
+  }
+
+  .health-page .health-faq-title__m .faq-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .health-page .faq__title {
+    line-height: 1.22 !important;
   }
 
   .health-page .growth-card:nth-child(1) .growth-card__img {

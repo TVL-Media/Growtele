@@ -56,7 +56,7 @@ const pageConfigs = [
   { file: 'pages/email/index.html', assets: '../../assets', pages: '../' },
   { file: 'pages/rcs/index.html', assets: '../../assets', pages: '../' },
   { file: 'pages/cloud-telephony/index.html', assets: '../../assets', pages: '../' },
-  { file: 'pages/growtele-io/index.html', assets: '../../assets', pages: '../' },
+  { file: 'pages/growinfinity-io/index.html', assets: '../../assets', pages: '../' },
   { file: 'pages/banking/index.html', assets: '../../assets', pages: '../' },
   { file: 'pages/ecommerce/index.html', assets: '../../assets', pages: '../' },
   { file: 'pages/education/index.html', assets: '../../assets', pages: '../' },

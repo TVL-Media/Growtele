@@ -104,14 +104,14 @@ return array(
 		),
 		'culture' => array(
 			'title' => 'A Workplace Where Fun Meet Growth',
-			'desc'  => "it's a dynamic and engaging environment where creativity thrives,<br>collaboration is encouraged, and every achievement is celebrated.",
+			'desc'  => "It's a dynamic and engaging environment where creativity thrives,<br>collaboration is encouraged, and every achievement is celebrated.",
 		),
 		'values'  => array(
 			'title' => 'Build the Future With People Who Inspire You',
 			'desc'  => "Build meaningful solutions, take ownership, and grow alongside a team that's shaping the future of customer communication.",
 		),
 		'perks'   => array(
-			'title' => 'Perks and Benefits That Help You<br>Learn, Grow',
+			'title' => 'Perks and Benefits That<br>Help You Learn, Grow',
 		),
 		'jobs'    => array(
 			'title' => "Find the Opportunity<br>That's Right for You",

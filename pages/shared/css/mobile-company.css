@@ -45,9 +45,21 @@
   }
 
   .section-header {
+    display: flex !important;
     flex-direction: column;
+    grid-template-columns: unset !important;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px !important;
+  }
+
+  .section-header .section-title {
+    margin-bottom: 0 !important;
+  }
+
+  .section-desc {
+    padding-top: 0 !important;
+    justify-self: auto !important;
+    margin-top: 0 !important;
   }
 
   .locations__header,
@@ -2082,7 +2094,7 @@
   .career-page .hero__title {
     max-width: 100%;
     width: 100%;
-    font-size: clamp(24px, 6.5vw, 28px);
+    font-size: 28px;
     line-height: 1.2;
     padding: 0 4px;
   }
@@ -2094,7 +2106,7 @@
   .career-page .hero__subtitle {
     max-width: 100%;
     width: 100%;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.45;
     margin-top: 12px;
     padding: 0 4px;
@@ -2649,5 +2661,98 @@
 
   .contact-page .success__card-bg--3 {
     object-position: center 70%;
+  }
+
+  /* Section intro copy below headings (phones) */
+  .hero__subtitle,
+  .hero__desc,
+  .section-desc,
+  .connecting__desc,
+  .core-values__desc,
+  .driven__subtitle,
+  .partners__subtitle,
+  .locations__subtitle,
+  .locations__desc,
+  .team__desc,
+  .success__desc,
+  .most-read__desc,
+  .about-us-page .hero__desc,
+  .about-us-page .connecting__desc,
+  .about-us-page .core-values__desc,
+  .about-us-page .driven__subtitle,
+  .about-us-page .partners__subtitle,
+  .about-us-page .locations__subtitle,
+  .about-us-page .team__desc,
+  .contact-page .locations__desc,
+  .contact-page .success__desc,
+  .career-page .culture .section-desc,
+  .career-page .values .section-desc,
+  .career-page .perks .section-desc,
+  .career-page .jobs .section-desc {
+    font-size: 4.2vw !important;
+  }
+
+  /* Section headings (phones) */
+  .hero__title,
+  .contact-intro .hero__title,
+  .section-title,
+  .connecting__title,
+  .core-values__title,
+  .driven__title,
+  .partners__title,
+  .locations__title,
+  .team__title,
+  .success__title,
+  .most-read__title,
+  .about-us-page .connecting__title,
+  .about-us-page .core-values__title,
+  .about-us-page .driven__title,
+  .about-us-page .partners__title,
+  .about-us-page .team__title,
+  .contact-page .success__title,
+  .career-page .culture .section-title,
+  .career-page .values .section-title,
+  .career-page .perks .section-title,
+  .career-page .jobs .section-title {
+    font-size: 6.8vw !important;
+  }
+
+  /* Section headings + intro: center (phones, not hero) */
+  .section-header,
+  .driven__header,
+  .partners__header,
+  .locations__header,
+  .success__header,
+  .most-read__header {
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .connecting__title,
+  .connecting__desc,
+  .core-values__title,
+  .core-values__desc,
+  .driven__title,
+  .driven__subtitle,
+  .partners__title,
+  .partners__subtitle,
+  .locations__title,
+  .locations__subtitle,
+  .locations__desc,
+  .team__title,
+  .team__desc,
+  .success__title,
+  .success__desc,
+  .most-read__title,
+  .most-read__desc,
+  .career-page .culture .section-title,
+  .career-page .culture .section-desc,
+  .career-page .values .section-title,
+  .career-page .values .section-desc,
+  .career-page .perks .section-title,
+  .career-page .perks .section-desc,
+  .career-page .jobs .section-title,
+  .career-page .jobs .section-desc {
+    text-align: center;
   }
 }

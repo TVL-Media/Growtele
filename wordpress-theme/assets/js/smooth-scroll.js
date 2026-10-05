@@ -10,15 +10,23 @@
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	const MOBILE_MQ = window.matchMedia('(max-width: 1024px)');
 
-	function scrollStoragePath() {
-		var path = (window.location.pathname || '/').replace(/\\/g, '/');
+	function normalizeScrollPath(path) {
+		path = (path || '/').replace(/\\/g, '/');
 		if (/\/index\.html$/i.test(path)) {
 			path = path.replace(/\/index\.html$/i, '/');
 		}
 		if (path !== '/' && path.slice(-1) !== '/') {
 			path += '/';
 		}
-		return path + (window.location.search || '');
+		return path;
+	}
+
+	function scrollStoragePath() {
+		return normalizeScrollPath(window.location.pathname) + (window.location.search || '');
+	}
+
+	function scrollStorageKeyFromUrl(url) {
+		return 'growtele:scroll-y:' + normalizeScrollPath(url.pathname) + (url.search || '');
 	}
 
 	const SCROLL_KEY = 'growtele:scroll-y:' + scrollStoragePath();
@@ -75,7 +83,6 @@
 
 	function initLenis() {
 		var savedScroll = readSavedScroll();
-		var browserScroll = window.scrollY || window.pageYOffset || 0;
 		var forceHeroTop = window.location.hash === '#hero';
 		var restoreY = 0;
 
@@ -83,8 +90,6 @@
 			saveScroll(0);
 		} else if (savedScroll != null && savedScroll > 20) {
 			restoreY = savedScroll;
-		} else if (browserScroll > 20) {
-			restoreY = browserScroll;
 		}
 
 		var userHasScrolled = false;
@@ -284,7 +289,30 @@
 		return lenis;
 	}
 
+	function prepareFooterNavigationScrollTop(event) {
+		var anchor = event.target && event.target.closest ? event.target.closest('.gt-footer a[href]') : null;
+		if (!anchor || anchor.target === '_blank' || anchor.hasAttribute('download')) {
+			return;
+		}
+
+		var href = anchor.getAttribute('href');
+		if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href) || /^mailto:/i.test(href)) {
+			return;
+		}
+
+		try {
+			var url = new URL(href, window.location.href);
+			if (url.origin !== window.location.origin) {
+				return;
+			}
+			sessionStorage.setItem(scrollStorageKeyFromUrl(url), '0');
+		} catch (err) {
+			/* ignore malformed href */
+		}
+	}
+
 	function boot() {
+		document.addEventListener('click', prepareFooterNavigationScrollTop, true);
 		initLenis();
 	}
 

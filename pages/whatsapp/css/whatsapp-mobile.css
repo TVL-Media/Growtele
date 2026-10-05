@@ -2,7 +2,19 @@
  * WhatsApp page — mobile scroll stability + compact funnel layout.
  * Loaded after mobile-product.css.
  */
+br.gt-mobile-br {
+  display: none;
+}
+
 @media (max-width: 1024px) {
+  br.gt-mobile-br {
+    display: block !important;
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
   /* Scale — card 2 & 4 images (WhatsApp assets only) */
   .sms-page .scale-card:nth-child(2) .scale-card__media img[src*="Group-680"] {
     position: relative !important;
@@ -281,5 +293,109 @@
     width: 82% !important;
     max-width: none !important;
     transform: none !important;
+  }
+
+  .whatsapp-page .journey__title {
+    font-size: clamp(19px, calc(5.5vw - 3px), 23px) !important;
+    line-height: 1.22;
+    width: calc(100% + 20px);
+    max-width: none;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 480px) {
+    .whatsapp-page .journey__title {
+      font-size: max(19px, calc(6.8vw - 3px)) !important;
+    }
+  }
+
+  .whatsapp-page .journey__title br {
+    display: none !important;
+  }
+
+  .whatsapp-page .journey__title .journey-title__line {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .whatsapp-page .journey__title .journey-title__line:first-child,
+  .whatsapp-page .journey__title .journey-title__line:last-child {
+    white-space: nowrap !important;
+  }
+
+  .whatsapp-page .funnel__title,
+  .whatsapp-page .faq__title {
+    line-height: 1.22;
+    width: calc(100% + 20px);
+    max-width: none;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    box-sizing: border-box;
+  }
+
+  .whatsapp-page .funnel__title {
+    font-size: clamp(19px, calc(5.5vw - 2px), 23px) !important;
+  }
+
+  .whatsapp-page .faq__title {
+    font-size: clamp(19px, calc(6vw - 2px), 26px) !important;
+  }
+
+  @media (max-width: 480px) {
+    .whatsapp-page .funnel__title {
+      font-size: max(19px, calc(6.8vw - 3px)) !important;
+    }
+
+    .whatsapp-page .faq__title {
+      font-size: max(19px, calc(6.8vw - 3px)) !important;
+    }
+  }
+
+  .whatsapp-page .funnel__title br,
+  .whatsapp-page .faq__title br {
+    display: none !important;
+  }
+
+  .whatsapp-page .funnel__title .funnel-title__line,
+  .whatsapp-page .faq__title .faq-title__line {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .whatsapp-page .funnel__title .funnel-title__line,
+  .whatsapp-page .faq__title .faq-title__line {
+    white-space: nowrap !important;
+  }
+
+  .whatsapp-page .benefit:nth-child(1) h3 br.gt-mobile-br,
+  .whatsapp-page .benefit:nth-child(2) h3 br.gt-mobile-br,
+  .whatsapp-page .benefit:nth-child(3) h3 br.gt-mobile-br,
+  .whatsapp-page .benefit:nth-child(4) h3 br.gt-mobile-br {
+    display: none !important;
+  }
+
+  .whatsapp-page .benefit:nth-child(1) h3,
+  .whatsapp-page .benefit:nth-child(2) h3,
+  .whatsapp-page .benefit:nth-child(3) h3,
+  .whatsapp-page .benefit:nth-child(4) h3 {
+    line-height: 1.22 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .whatsapp-page .benefit:nth-child(1) h3 .benefit-title__line,
+  .whatsapp-page .benefit:nth-child(2) h3 .benefit-title__line,
+  .whatsapp-page .benefit:nth-child(3) h3 .benefit-title__line,
+  .whatsapp-page .benefit:nth-child(4) h3 .benefit-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
   }
 }

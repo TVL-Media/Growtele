@@ -182,18 +182,79 @@ function growtele_get_content_with_theme_mod( $path, $theme_mod_key, $default = 
 }
 
 /**
+ * Map common footer/nav labels to Growtele page slugs when CMS drops the slug field.
+ *
+ * @return array<string, string>
+ */
+function growtele_content_link_label_slugs() {
+	return array(
+		'Privacy Policy'        => 'privacy-policy',
+		'Terms & Condition'     => 'terms-and-condition',
+		'Terms and Condition'   => 'terms-and-condition',
+		'Security'              => 'security',
+		'Partners Term of Use'  => 'partners-term-of-use',
+		'API Documentation'     => 'api-documentation',
+		'Pricing'               => 'pricing',
+	);
+}
+
+/**
  * Resolve footer / nav link URL from slug or explicit URL.
  *
  * @param array $link Link item with url and/or slug keys.
  * @return string
  */
 function growtele_content_resolve_page_url( $link ) {
-	if ( ! empty( $link['url'] ) ) {
-		return $link['url'];
+	if ( ! is_array( $link ) ) {
+		return '#';
 	}
-	if ( ! empty( $link['slug'] ) && function_exists( 'growtele_get_page_url' ) ) {
-		return growtele_get_page_url( $link['slug'] );
+
+	$slug  = ! empty( $link['slug'] ) ? (string) $link['slug'] : '';
+	$label = ! empty( $link['label'] ) ? trim( (string) $link['label'] ) : '';
+
+	if ( '' === $slug && '' !== $label ) {
+		$label_slugs = growtele_content_link_label_slugs();
+		if ( isset( $label_slugs[ $label ] ) ) {
+			$slug = $label_slugs[ $label ];
+		}
 	}
+
+	$stored = ! empty( $link['url'] ) ? trim( (string) $link['url'] ) : '';
+
+	if ( preg_match( '#page_id=\d+#i', $stored ) && $slug && function_exists( 'growtele_get_page_url' ) ) {
+		return growtele_get_page_url( $slug );
+	}
+
+	if ( $slug && function_exists( 'growtele_get_page_url' ) ) {
+		$slug_url = growtele_get_page_url( $slug );
+
+		if ( '' !== $stored ) {
+			if ( preg_match( '#page_id=(\d+)#i', $stored, $matches ) ) {
+				$post  = get_post( (int) $matches[1] );
+				$valid = $post instanceof WP_Post
+					&& 'page' === $post->post_type
+					&& 'publish' === $post->post_status
+					&& $post->post_name === $slug;
+
+				if ( ! $valid ) {
+					return $slug_url;
+				}
+			}
+
+			if ( preg_match( '#^[?&]page_id=\d+#i', ltrim( $stored, '/' ) ) ) {
+				return $slug_url;
+			}
+
+			return $stored;
+		}
+
+		return $slug_url;
+	}
+
+	if ( '' !== $stored ) {
+		return $stored;
+	}
+
 	return '#';
 }
 

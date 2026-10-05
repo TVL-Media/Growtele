@@ -85,23 +85,60 @@
 }
 
 .gt-footer__cta {
-	display: inline-block;
-	transition: transform 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 8px;
+	box-sizing: border-box;
+	width: fit-content;
+	min-width: 0;
+	height: 35px;
+	padding: 0 8px 0 14px;
+	border-radius: 17.5px;
+	background: #f9363d;
+	color: #fff;
+	font-family: var(--gt-font-body, 'Helvetica', sans-serif);
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.gt-footer__cta img {
-	height: 35px;
-	width: auto;
+.gt-footer__cta-label {
+	flex: 0 0 auto;
+}
+
+.gt-footer__cta-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 23px;
+	height: 23px;
+	border-radius: 50%;
+	background: #fff;
+}
+
+.gt-footer__cta-icon::after {
+	content: '';
 	display: block;
-	transition: opacity 0.3s ease;
+	width: 5px;
+	height: 5px;
+	border-right: 2px solid #f9363d;
+	border-bottom: 2px solid #f9363d;
+	transform: rotate(-45deg) translate(-1px, -1px);
 }
 
 .gt-footer__cta:hover {
 	transform: translateY(-2px);
+	background: #e83238;
 }
 
-.gt-footer__cta:hover img {
-	opacity: 0.92;
+.gt-footer__cta:focus-visible {
+	outline: 2px solid rgba(255, 255, 255, 0.85);
+	outline-offset: 2px;
 }
 
 .gt-footer__nav {
@@ -266,6 +303,35 @@
 	.page > .gt-footer {
 		padding-top: 32px !important;
 		padding-bottom: 32px !important;
+	}
+
+	.gt-footer__brand {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.gt-footer__brand > a.gt-footer__cta,
+	a.gt-footer__cta {
+		display: inline-flex !important;
+		flex-direction: row !important;
+		flex-wrap: nowrap !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+		width: fit-content !important;
+		max-width: 100% !important;
+		height: 35px !important;
+		align-self: flex-start !important;
+	}
+
+	.gt-footer__cta-label {
+		flex: 0 0 auto !important;
+		white-space: nowrap !important;
+	}
+
+	.gt-footer__cta-icon {
+		flex: 0 0 23px !important;
+		display: inline-flex !important;
 	}
 }
 

@@ -28,7 +28,7 @@ const TITLE_BY_PAGE = {
   'pages/education/index.html': 'Education | Growtele',
   'pages/ecommerce/index.html': 'Ecommerce | Growtele',
   'pages/logistic/index.html': 'Logistic | Growtele',
-  'pages/growtele-io/index.html': 'Growinfinity.io — One Intelligent Platform. Unlimited Possibilities.',
+  'pages/growinfinity-io/index.html': 'Growinfinity.io — One Intelligent Platform. Unlimited Possibilities.',
 };
 
 function walk(dir, files = []) {

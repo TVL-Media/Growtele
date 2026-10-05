@@ -30,6 +30,10 @@
 
 /* Desktop: dual logo markup is for mobile swap — hide duplicate on large screens */
 @media (min-width: 1025px) {
+  br.gt-mobile-br + *::before {
+    content: ' ';
+  }
+
   .sms-page .logo__img--dark {
     display: none !important;
   }
@@ -821,7 +825,7 @@
   .funnel__title,
   .faq__title {
     font-size: var(--gt-text-2xl);
-    margin-bottom: var(--gt-space-heading-gap);
+    margin-bottom: 8px;
   }
 
   .journey__lead,
@@ -831,6 +835,7 @@
   .funnel__lead,
   .faq__lead {
     font-size: var(--gt-text-base);
+    margin-top: 0;
     margin-bottom: var(--gt-space-content-gap);
   }
 
@@ -905,7 +910,7 @@
     visibility: visible !important;
   }
 
-  .journey__cards {
+  .journey:not(.journey--scroll-stack) .journey__cards {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -913,13 +918,85 @@
     min-height: 0 !important;
   }
 
-  .journey-card {
+  .journey:not(.journey--scroll-stack) .journey-card {
     position: relative !important;
     top: auto !important;
     width: 100%;
     height: auto;
     padding: 24px 20px 20px;
     transform: none !important;
+  }
+
+  .journey.journey--scroll-stack .journey__body {
+    position: relative;
+    z-index: 3;
+  }
+
+  .journey.journey--scroll-stack .journey__cards {
+    display: block !important;
+    flex-direction: unset !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden;
+    border-radius: 20px;
+    isolation: isolate;
+  }
+
+  .journey.journey--scroll-stack .journey-card {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: 20px !important;
+    will-change: auto;
+    transition: none !important;
+    padding: 24px 20px 20px;
+  }
+
+  .journey.journey--scroll-stack .journey-card h3 {
+    position: static !important;
+    display: block;
+    max-width: 100%;
+    margin: 8px 0 4px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .journey.journey--scroll-stack .journey-card p {
+    position: static !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    line-height: 1.45;
+  }
+
+  .journey.journey--scroll-stack .journey-card__icon-wrap {
+    position: static !important;
+    margin-bottom: 4px;
+  }
+
+  .journey.journey--scroll-stack {
+    padding-bottom: var(--gt-space-section-y, 32px);
+  }
+
+  .journey.journey--scroll-stack .journey__phone:not(.is-active) {
+    display: none !important;
+  }
+
+  .journey.journey--scroll-stack .journey__phone.is-active {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .journey-card,
@@ -939,7 +1016,7 @@
 
   .journey-card h3 {
     font-size: var(--gt-text-xl);
-    margin: 12px 0 8px;
+    margin: 8px 0 4px;
   }
 
   .journey-card p {
@@ -2024,5 +2101,55 @@
   .gt-footer {
     padding-top: 40px;
     padding-bottom: 28px;
+  }
+
+  /* Section intro copy below headings (phones) */
+  .hero__sub,
+  .sms-page .hero__sub,
+  .journey__lead,
+  .scale__lead,
+  .benefits__lead,
+  .why__lead,
+  .funnel__lead,
+  .faq__lead {
+    font-size: 4.2vw !important;
+  }
+
+  /* Section headings (phones) */
+  .hero__title,
+  .sms-page .hero__title,
+  .journey__title,
+  .scale__title,
+  .benefits__title,
+  .why__title,
+  .funnel__title,
+  .faq__title {
+    font-size: 6.8vw !important;
+  }
+
+  /* Section headings + intro: center (phones, not hero) */
+  .journey__title,
+  .journey__lead,
+  .scale__title,
+  .scale__lead,
+  .benefits__title,
+  .benefits__lead,
+  .why__title,
+  .why__lead,
+  .funnel__title,
+  .funnel__lead,
+  .faq__title,
+  .faq__lead {
+    text-align: center;
+  }
+
+  .journey__lead,
+  .scale__lead,
+  .benefits__lead,
+  .why__lead,
+  .funnel__lead,
+  .faq__lead {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

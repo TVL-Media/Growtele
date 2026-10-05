@@ -16,7 +16,13 @@ $integrations = growtele_home_get_section( 'integrations' );
 		<div class="gt-integrations__content" data-animate="fade-up">
 			<h2 class="gt-integrations__title"><?php echo esc_html( $integrations['title'] ?? '' ); ?></h2>
 			<p class="gt-integrations__desc"><?php echo esc_html( $integrations['description'] ?? '' ); ?></p>
-			<a href="<?php echo esc_url( $integrations['button_url'] ?? '#' ); ?>" class="gt-btn gt-btn--gradient gt-btn--learn">
+			<?php
+			$integrations_btn_url = $integrations['button_url'] ?? '';
+			if ( ! $integrations_btn_url || '#' === $integrations_btn_url ) {
+				$integrations_btn_url = growtele_get_page_url( 'about-us' );
+			}
+			?>
+			<a href="<?php echo esc_url( $integrations_btn_url ); ?>" class="gt-btn gt-btn--gradient gt-btn--learn">
 				<span><?php echo esc_html( $integrations['button_text'] ?? 'Learn More' ); ?></span>
 				<svg class="gt-btn__learn-arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 			</a>

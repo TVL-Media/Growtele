@@ -51,7 +51,6 @@ if ( empty( $social_links ) ) {
 
 $footer_columns = function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.columns', array() ) : array();
 $legal_links    = function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.legal', array() ) : array();
-$touch_img_url  = function_exists( 'growtele_get_content_media_url' ) ? growtele_get_content_media_url( 'footer.get_in_touch_image', 'icons/get-in-touch.png' ) : ( function_exists( 'growtele_get_image' ) ? growtele_get_image( 'icons/get-in-touch.png' ) : '' );
 ?>
 <footer id="colophon" class="gt-footer">
 	<div class="gt-footer__glow"></div>
@@ -61,9 +60,7 @@ $touch_img_url  = function_exists( 'growtele_get_content_media_url' ) ? growtele
 				<?php growtele_image( 'icons/logo.png', get_bloginfo( 'name' ), '', 163, 42 ); ?>
 			</a>
 			<p><?php echo esc_html( function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.brand_description', "Growtele's global network solutions enable every business sector to optimize their business across the globe." ) : "Growtele's global network solutions enable every business sector to optimize their business across the globe." ); ?></p>
-			<a href="mailto:<?php echo esc_attr( $email ); ?>" class="gt-footer__cta">
-				<img src="<?php echo esc_url( $touch_img_url ); ?>" alt="<?php esc_attr_e( 'Get In Touch', 'growtele' ); ?>" width="165" height="35" loading="lazy" />
-			</a>
+			<?php growtele_footer_get_in_touch_cta( $email ); ?>
 		</div>
 
 		<div class="gt-footer__nav">

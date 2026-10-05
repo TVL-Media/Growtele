@@ -1,0 +1,366 @@
+/* Header CTA contact modal — scoped contact split + form */
+
+.gt-contact-request-modal {
+  --navy: #121348;
+  --orange: #ff5c00;
+  --white: #ffffff;
+  --text-muted: #aaaaaa;
+  --input-bg: rgba(245, 244, 240, 0.2);
+  --input-border: rgba(0, 0, 0, 0.1);
+  --font-roboto: 'Roboto', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.gt-contact-request-modal[hidden] {
+  display: none !important;
+}
+
+html.gt-contact-modal-open,
+body.gt-contact-modal-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.gt-contact-request-modal:not([hidden]) {
+  overscroll-behavior: contain;
+}
+
+.gt-contact-request-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 10, 44, 0.62);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+
+.gt-contact-request-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 96vw);
+  max-height: 92vh;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: scale(0.96) translateY(14px);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.gt-contact-request-modal.gt-contact-request-modal--open .gt-contact-request-modal__backdrop {
+  opacity: 1;
+}
+
+.gt-contact-request-modal.gt-contact-request-modal--open .gt-contact-request-modal__panel {
+  opacity: 1;
+  transform: none;
+}
+
+.gt-contact-request-modal .gt-contact-request-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 25;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #121348;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  font-family: var(--font-roboto);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.gt-contact-request-modal .contact-split--modal {
+  padding: 0;
+}
+
+.gt-contact-request-modal .contact-split__inner {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  width: 100%;
+}
+
+.gt-contact-request-modal .contact-split__image {
+  position: relative;
+  flex: 48 1 0;
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  border-radius: 24px 0 0 24px;
+  overflow: hidden;
+}
+
+.gt-contact-request-modal .contact-split__image video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
+  display: block;
+}
+
+.gt-contact-request-modal .contact-split__form-wrap {
+  position: relative;
+  flex: 52 1 0;
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  border-radius: 0 24px 24px 0;
+  overflow: hidden;
+}
+
+.gt-contact-request-modal .contact-split__form-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--navy);
+}
+
+.gt-contact-request-modal .contact-split__form-mask {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gt-contact-request-modal .contact-form {
+  position: relative;
+  z-index: 2;
+  padding: 28px 32px 30px;
+  min-height: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.gt-contact-request-modal .contact-form__row {
+  display: flex;
+  gap: 20px;
+}
+
+.gt-contact-request-modal .contact-form__row--two .contact-form__field {
+  flex: 1;
+}
+
+.gt-contact-request-modal .contact-form__field {
+  margin-bottom: 18px;
+}
+
+.gt-contact-request-modal .contact-form__field label {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--white);
+  opacity: 0.76;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.gt-contact-request-modal .contact-form__field input,
+.gt-contact-request-modal .contact-form__field textarea {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 9px;
+  color: var(--white);
+  font-family: var(--font-roboto);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 7px 11px;
+  outline: none;
+}
+
+.gt-contact-request-modal .contact-form__field input::placeholder,
+.gt-contact-request-modal .contact-form__field textarea::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 14px;
+  opacity: 0.76;
+}
+
+.gt-contact-request-modal .contact-form__field input {
+  height: 38px;
+}
+
+.gt-contact-request-modal .contact-form__field textarea {
+  height: 68px;
+  resize: none;
+  padding-top: 10px;
+  font-weight: 400;
+}
+
+.gt-contact-request-modal .contact-form__phone {
+  display: flex;
+  align-items: center;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 9px;
+  height: 38px;
+  overflow: hidden;
+}
+
+.gt-contact-request-modal .contact-form__phone-prefix {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px 0 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.gt-contact-request-modal .contact-form__phone-code {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  opacity: 0.76;
+}
+
+.gt-contact-request-modal .contact-form__phone input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  height: 100%;
+  border-radius: 0;
+}
+
+.gt-contact-request-modal .contact-form__terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 14px;
+  margin-top: 0;
+}
+
+.gt-contact-request-modal .contact-form__terms input[type='checkbox'] {
+  width: 18px;
+  height: 17px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--orange);
+  appearance: none;
+  border: 0.6px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.gt-contact-request-modal .contact-form__terms input[type='checkbox']:checked {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.gt-contact-request-modal .contact-form__terms label {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.gt-contact-request-modal .contact-form__terms-white {
+  color: var(--white);
+  opacity: 0.76;
+}
+
+.gt-contact-request-modal .contact-form__terms a {
+  color: var(--orange);
+  font-weight: 400;
+}
+
+.gt-contact-request-modal .contact-form__submit {
+  width: 100%;
+  height: 36px;
+  background: var(--orange);
+  border: 0;
+  border-radius: 14px;
+  color: var(--white);
+  font-family: var(--manrope, var(--font-manrope));
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.gt-contact-request-modal .contact-form__field--error input,
+.gt-contact-request-modal .contact-form__field--error textarea,
+.gt-contact-request-modal .contact-form__field--error .contact-form__phone {
+  border-color: #ff4444;
+}
+
+.gt-contact-request-modal .contact-form__error-msg {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 4px;
+  display: none;
+}
+
+.gt-contact-request-modal .contact-form__field--error .contact-form__error-msg {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gt-contact-request-modal__backdrop,
+  .gt-contact-request-modal__panel {
+    transition: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gt-contact-request-modal {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .gt-contact-request-modal__panel {
+    max-height: 94vh;
+    overflow: auto;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .gt-contact-request-modal .contact-split__inner {
+    flex-direction: column;
+  }
+
+  .gt-contact-request-modal .contact-split__image {
+    flex: none;
+    min-height: 220px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .gt-contact-request-modal .contact-split__form-wrap {
+    flex: none;
+    min-height: 0;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .gt-contact-request-modal .contact-form {
+    min-height: 0;
+    padding: 24px 20px 28px;
+  }
+
+  .gt-contact-request-modal .contact-form__row--two {
+    flex-direction: column;
+    gap: 0;
+  }
+}

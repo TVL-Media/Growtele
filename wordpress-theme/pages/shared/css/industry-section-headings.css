@@ -163,6 +163,7 @@
     min-height: 250px !important;
   }
 
+  /* FAQ hover: no answer animation jitter → stable CTA/footer overlap */
   .page .faq-item__answer {
     transition: none !important;
   }

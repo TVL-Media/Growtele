@@ -137,6 +137,23 @@ function growtele_cta_button( $text, $url = '#', $class = 'gt-btn gt-btn--gradie
 }
 
 /**
+ * Footer "Get In Touch" CTA (opens contact modal via .gt-footer__cta when script is loaded).
+ *
+ * @param string $email Mailto address.
+ */
+function growtele_footer_get_in_touch_cta( $email = '' ) {
+	if ( '' === $email ) {
+		$email = function_exists( 'growtele_get_contact_email' ) ? growtele_get_contact_email() : 'enquiry@growtele.com';
+	}
+	?>
+	<a href="mailto:<?php echo esc_attr( $email ); ?>" class="gt-footer__cta">
+		<span class="gt-footer__cta-label"><?php esc_html_e( 'Get In Touch', 'growtele' ); ?></span>
+		<span class="gt-footer__cta-icon" aria-hidden="true"></span>
+	</a>
+	<?php
+}
+
+/**
  * Get section heading markup.
  *
  * @param string $title Section title.

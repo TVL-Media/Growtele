@@ -192,19 +192,19 @@
     transform-origin: bottom right !important;
   }
 
-  /* Card 4 — DLT Management */
+  /* Card 4 — DLT Management (match Dashboard framing) */
   .growtele-io-page .gt-industries__visual-img--education,
   .growtele-io-page .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__visual-img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img {
-    right: 25px !important;
-    bottom: 62px !important;
+    right: 0 !important;
+    bottom: 0 !important;
     width: auto !important;
-    height: 343px !important;
+    height: 430px !important;
     max-width: none !important;
-    max-height: none !important;
+    max-height: 430px !important;
     object-fit: contain !important;
-    object-position: 100% 100% !important;
+    object-position: bottom right !important;
     transform: none !important;
     transform-origin: bottom right !important;
   }
@@ -252,13 +252,14 @@
 
   .growtele-io-page .gt-industries .gt-section-heading {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     width: 100%;
     max-width: 100%;
     margin-inline: 0;
     margin-bottom: 16px;
     gap: 10px;
+    text-align: center;
   }
 
   .growtele-io-page .gt-industries .gt-section-heading__title {
@@ -267,6 +268,7 @@
     font-size: var(--gt-text-2xl, clamp(22px, 5.5vw, 26px));
     line-height: 1.2;
     margin: 0;
+    text-align: center;
   }
 
   .growtele-io-page .gt-industries .gt-section-heading__desc {
@@ -275,6 +277,7 @@
     font-size: var(--gt-text-lead, clamp(14px, 3.5vw, 16px));
     line-height: 1.45;
     margin: 0;
+    text-align: center;
   }
 
   /* ─── Industries (mobile scroll stack — matches landing page) ─── */

@@ -86,9 +86,26 @@ function growtele_enqueue_assets() {
 	);
 
 	wp_enqueue_script(
+		'growtele-resolve-asset',
+		GROWTELE_URI . '/assets/js/resolve-asset-url.js',
+		array(),
+		GROWTELE_VERSION,
+		array(
+			'in_footer' => false,
+			'strategy'  => 'defer',
+		)
+	);
+
+	wp_add_inline_script(
+		'growtele-resolve-asset',
+		'window.GROWTELE_THEME_URI=' . wp_json_encode( untrailingslashit( GROWTELE_URI ) ) . ';',
+		'before'
+	);
+
+	wp_enqueue_script(
 		'growtele-image-performance',
 		GROWTELE_URI . '/assets/js/image-performance.js',
-		array(),
+		array( 'growtele-resolve-asset' ),
 		GROWTELE_VERSION,
 		array(
 			'in_footer' => true,
@@ -175,6 +192,24 @@ function growtele_enqueue_assets() {
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 			'themeUri' => GROWTELE_URI,
 			'homeUrl'  => home_url( '/' ),
+		)
+	);
+
+	wp_enqueue_style(
+		'growtele-contact-request-modal',
+		GROWTELE_URI . '/pages/shared/css/contact-request-modal.css',
+		array(),
+		GROWTELE_VERSION
+	);
+
+	wp_enqueue_script(
+		'growtele-contact-request-modal',
+		GROWTELE_URI . '/assets/js/contact-request-modal.js',
+		array( 'growtele-resolve-asset' ),
+		GROWTELE_VERSION,
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
 		)
 	);
 

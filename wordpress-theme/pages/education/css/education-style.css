@@ -653,13 +653,13 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__phone-img--whatsapp {
-  width: 774px;
+  width: 563px;
   /* height: 555px; */
   object-fit: contain;
   object-position: center;
   position: relative;
-  top: 165px;
-  left: 24px;
+  top: 199px;
+  left: 136px;
 }
 
 .channels__phone-img--telephony {

@@ -2,7 +2,141 @@
  * Logistic — mobile/tablet overrides (loads after mobile-industry.css).
  */
 
+.logistic-channels-title__m,
+.logistic-deliver-title__m,
+.logistic-growth-card1-title__m,
+.logistic-growth-card2-title__m,
+.logistic-growth-card3-title__m,
+.logistic-usecases-title__m,
+.logistic-faq-title__m {
+  display: none;
+}
+
+.logistic-channels-title__d,
+.logistic-deliver-title__d,
+.logistic-growth-card1-title__d,
+.logistic-growth-card2-title__d,
+.logistic-growth-card3-title__d,
+.logistic-usecases-title__d,
+.logistic-faq-title__d {
+  display: block;
+}
+
 @media (max-width: 1024px) {
+  .logistic-channels-title__m {
+    display: block;
+  }
+
+  .logistic-channels-title__d {
+    display: none !important;
+  }
+
+  .channels__header .section-title {
+    line-height: 1.22 !important;
+  }
+
+  .channels-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .logistic-deliver-title__m {
+    display: block;
+  }
+
+  .logistic-deliver-title__d {
+    display: none !important;
+  }
+
+  .growth__header .section-title {
+    line-height: 1.22 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .growth__header .section-title .growth-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .touchpoint__title {
+    line-height: 1.22 !important;
+  }
+
+  .touchpoint__title .touchpoint-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .logistic-growth-card1-title__m,
+  .logistic-growth-card2-title__m,
+  .logistic-growth-card3-title__m {
+    display: block;
+  }
+
+  .logistic-growth-card1-title__d,
+  .logistic-growth-card2-title__d,
+  .logistic-growth-card3-title__d {
+    display: none !important;
+  }
+
+  .growth-card:nth-child(1) .growth-card__title,
+  .growth-card:nth-child(2) .growth-card__title,
+  .growth-card:nth-child(3) .growth-card__title {
+    line-height: 1.22 !important;
+  }
+
+  .growth-card-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .logistic-usecases-title__m {
+    display: block;
+  }
+
+  .logistic-usecases-title__d {
+    display: none !important;
+  }
+
+  .usecases__header .section-title {
+    line-height: 1.22 !important;
+  }
+
+  .usecases-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .usecase-card:first-child .logistic-usecase-tracking-title {
+    white-space: nowrap !important;
+  }
+
+  .logistic-faq-title__m {
+    display: block;
+  }
+
+  .logistic-faq-title__d {
+    display: none !important;
+  }
+
+  .logistic-faq-title__m .faq-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .faq__title {
+    line-height: 1.22 !important;
+  }
+
   .touchpoint__grid {
     align-items: stretch;
     width: 100%;

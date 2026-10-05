@@ -349,6 +349,7 @@
 
 .value-prop__card--photo {
   position: relative;
+  overflow: hidden;
   border: 2px solid var(--color-border-light);
   border-radius: var(--radius-2xl);
   display: flex;
@@ -365,9 +366,17 @@
   min-height: 0;
   max-height: none;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 28%;
   border-radius: var(--radius-2xl);
   pointer-events: none;
+}
+
+@media (min-width: 1025px) {
+  .value-prop__video {
+    object-position: center 32%;
+    transform: scale(1.08);
+    transform-origin: center center;
+  }
 }
 
 /* ============================================================

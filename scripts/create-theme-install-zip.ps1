@@ -9,7 +9,7 @@ $desktop = [Environment]::GetFolderPath('Desktop')
 $outZip = Join-Path $desktop "growtele-PRODUCTION-$stamp.zip"
 
 $excludeDirNames = @(
-    '.git', '.cursor', 'node_modules', 'dist', 'wordpress-theme',
+    '.git', '.cursor', 'node_modules', 'dist', 'wordpress-theme', '_zzz_extract',
     '.tmp-contact-loc', '.tmp-health-cards', '.tmp-loc-imgs', 'agent-transcripts'
 )
 $excludeFileNames = @(

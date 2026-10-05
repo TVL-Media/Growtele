@@ -1,0 +1,43 @@
+/**
+ * Blogs listing — mobile/tablet overrides.
+ */
+
+.blogs-hero-subtitle__m,
+.blogs-most-read-desc__m {
+  display: none;
+}
+
+.blogs-hero-subtitle__d,
+.blogs-most-read-desc__d {
+  display: inline;
+}
+
+@media (max-width: 1024px) {
+  .blogs-hero-subtitle__m {
+    display: block;
+  }
+
+  .blogs-hero-subtitle__d {
+    display: none !important;
+  }
+
+  .blogs-page .hero__subtitle .hero-subtitle__line {
+    display: block;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  .blogs-most-read-desc__m {
+    display: block;
+  }
+
+  .blogs-most-read-desc__d {
+    display: none !important;
+  }
+
+  .blogs-page .most-read__desc .most-read-desc__line {
+    display: block;
+    line-height: 1.45;
+    text-align: center;
+  }
+}

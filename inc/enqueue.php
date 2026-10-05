@@ -195,6 +195,24 @@ function growtele_enqueue_assets() {
 		)
 	);
 
+	wp_enqueue_style(
+		'growtele-contact-request-modal',
+		GROWTELE_URI . '/pages/shared/css/contact-request-modal.css',
+		array(),
+		GROWTELE_VERSION
+	);
+
+	wp_enqueue_script(
+		'growtele-contact-request-modal',
+		GROWTELE_URI . '/assets/js/contact-request-modal.js',
+		array( 'growtele-resolve-asset' ),
+		GROWTELE_VERSION,
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

@@ -2,7 +2,76 @@
  * Banking — mobile/tablet overrides (loads after mobile-industry.css).
  */
 
+br.gt-mobile-br {
+  display: none;
+}
+
+.banking-faq-title__m {
+  display: none;
+}
+
+.banking-faq-title__d {
+  display: block;
+}
+
 @media (max-width: 1024px) {
+  br.gt-mobile-br {
+    display: block !important;
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .channels__header .section-title br.gt-mobile-br {
+    display: none !important;
+  }
+
+  .channels__header .section-title {
+    line-height: 1.22 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .channels__header .section-title .channels-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .usecases__header {
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .usecases__header .section-title {
+    margin-bottom: 0 !important;
+  }
+
+  .usecases__header .usecases__subtitle {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .banking-faq-title__m {
+    display: block;
+  }
+
+  .banking-faq-title__d {
+    display: none !important;
+  }
+
+  .banking-faq-title__m .faq-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .faq__title {
+    line-height: 1.22 !important;
+  }
+
   .touchpoint__photo {
     width: 97%;
   }

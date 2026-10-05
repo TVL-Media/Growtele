@@ -1132,7 +1132,7 @@
 
 			function syncCaseTabChrome() {
 				if (!tab) return;
-				if (isManual && section.classList.contains('is-case-paused')) {
+				if (section.classList.contains('is-case-paused')) {
 					updateCaseProgressPosition(tab);
 					return;
 				}
@@ -1151,6 +1151,7 @@
 		const CASE_AUTO_MS = parseInt(section.getAttribute('data-case-cycle'), 10) || 5000;
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		let caseAutoTimer = null;
+		let caseCycleStarted = false;
 
 		function advanceCaseTab() {
 			if (section.classList.contains('is-case-paused')) return;
@@ -1183,23 +1184,44 @@
 		}
 
 		function startCaseFallbackTimer() {
+			if (!caseCycleStarted) return;
 			if (caseAutoTimer) clearInterval(caseAutoTimer);
 			caseAutoTimer = setInterval(advanceCaseTab, CASE_AUTO_MS);
 		}
 
+		function startCaseAutoCycle() {
+			if (caseCycleStarted) return;
+			caseCycleStarted = true;
+			resumeCaseCycle();
+		}
+
+		section.classList.add('is-case-paused');
+
 		if (initial) {
-			activateCaseTab(initial, true);
+			activateCaseTab(initial, false);
 		}
 
 		/* Advance when progress bar finishes — stays in sync, no interval drift */
 		if (!prefersReducedMotion && progressBar) {
 			progressBar.addEventListener('animationend', function (event) {
+				if (!caseCycleStarted) return;
 				if (event.animationName !== 'gt-case-progress-fill') return;
 				if (event.target !== progressBar) return;
 				advanceCaseTab();
 			});
+		}
+
+		if ('IntersectionObserver' in window) {
+			const caseInViewObserver = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					if (!entry.isIntersecting) return;
+					startCaseAutoCycle();
+					caseInViewObserver.disconnect();
+				});
+			}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+			caseInViewObserver.observe(section);
 		} else {
-			startCaseFallbackTimer();
+			startCaseAutoCycle();
 		}
 
 		let userStopped = false;
@@ -1222,6 +1244,7 @@
 						progressBar.style.animationPlayState = '';
 					}
 					section.classList.remove('is-case-paused');
+					caseCycleStarted = true;
 					activateCaseTab(target, true, true);
 					if (prefersReducedMotion) {
 						startCaseFallbackTimer();
@@ -1234,7 +1257,7 @@
 		document.addEventListener('visibilitychange', function () {
 			if (document.hidden) {
 				pauseCaseCycle();
-			} else if (section.classList.contains('is-case-paused')) {
+			} else if (caseCycleStarted && !userStopped && section.classList.contains('is-case-paused')) {
 				resumeCaseCycle();
 			}
 		});
@@ -1261,6 +1284,41 @@
 			btn.style.overflow = 'hidden';
 			btn.appendChild(ripple);
 			setTimeout(function () { ripple.remove(); }, 600);
+		});
+	});
+
+	/* Hero brand marquee — pixel-perfect seamless loop */
+	function updateMarqueeDistance(track) {
+		if (!track) {
+			return;
+		}
+		var half = track.scrollWidth / 2;
+		if (half > 0) {
+			track.style.setProperty('--marquee-distance', half + 'px');
+		}
+	}
+
+	document.querySelectorAll('[data-marquee]').forEach(function (marquee) {
+		var track = marquee.querySelector('.gt-marquee__track');
+		if (!track) {
+			return;
+		}
+
+		updateMarqueeDistance(track);
+		window.addEventListener('load', function () {
+			updateMarqueeDistance(track);
+		}, { once: true });
+		window.addEventListener('resize', function () {
+			updateMarqueeDistance(track);
+		});
+
+		track.querySelectorAll('img').forEach(function (img) {
+			if (img.complete) {
+				return;
+			}
+			img.addEventListener('load', function () {
+				updateMarqueeDistance(track);
+			}, { once: true });
 		});
 	});
 

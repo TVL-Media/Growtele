@@ -46,8 +46,22 @@ function growtele_cms_company_slugs() {
 		'blogs',
 		'career',
 		'contact',
-		'growtele-io',
+		'growinfinity-io',
 	);
+}
+
+/**
+ * Map public page slug to company.* CMS key.
+ *
+ * @param string $slug Page slug.
+ * @return string
+ */
+function growtele_cms_company_page_key( $slug ) {
+	if ( 'growinfinity-io' === $slug ) {
+		return 'growtele-io';
+	}
+
+	return $slug;
 }
 
 /**
@@ -413,6 +427,7 @@ function growtele_apply_product_footer_cta_url( $html, $slug ) {
  * @return array<int, array{path:string, needle:string, format:string}>
  */
 function growtele_company_cms_needles( $slug ) {
+	$slug    = growtele_cms_company_page_key( $slug );
 	$company = growtele_array_get( growtele_content_get_defaults(), 'company.' . $slug, array() );
 	if ( ! is_array( $company ) || empty( $company ) ) {
 		return array();
@@ -525,7 +540,7 @@ function growtele_apply_company_needles( $html, $slug ) {
  * @return string
  */
 function growtele_apply_company_footer_cta_url( $html, $slug ) {
-	$path = 'company.' . $slug . '.cta.button_url';
+	$path = 'company.' . growtele_cms_company_page_key( $slug ) . '.cta.button_url';
 	if ( ! growtele_content_is_overridden( $path ) ) {
 		return $html;
 	}
@@ -897,7 +912,7 @@ function growtele_inject_cms_runtime( $html, $slug ) {
 		growtele_cms_append_css_url( $css, 'media.about_hero_bg', '--gt-cms-about-hero-bg', 'https://listings.selectvia.com/wp-content/uploads/2026/09/About-Us-BG.png' );
 	}
 
-	if ( 'growtele-io' === $slug ) {
+	if ( in_array( $slug, array( 'growtele-io', 'growinfinity-io' ), true ) ) {
 		growtele_cms_append_css_url( $css, 'media.io_value_prop_bg', '--gt-cms-io-value-prop-bg', 'https://listings.selectvia.com/wp-content/uploads/2026/09/bgo.png' );
 		growtele_cms_append_css_url( $css, 'media.io_value_prop_card', '--gt-cms-io-value-prop-card', 'https://listings.selectvia.com/wp-content/uploads/2026/09/dsvd.png' );
 		growtele_cms_append_css_url( $css, 'media.io_apis_visual', '--gt-cms-io-apis-visual', 'https://listings.selectvia.com/wp-content/uploads/2026/09/bqb.png' );

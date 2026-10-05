@@ -26,19 +26,9 @@ return array(
 			'title' => 'Products',
 			'links' => array(
 				array(
-					'label' => 'Whatsapp',
-					'url'   => '',
-					'slug'  => 'whatsapp',
-				),
-				array(
 					'label' => 'SMS',
 					'url'   => '',
 					'slug'  => 'sms',
-				),
-				array(
-					'label' => 'RCS',
-					'url'   => '',
-					'slug'  => 'rcs',
 				),
 				array(
 					'label' => 'E-Mail',
@@ -49,6 +39,16 @@ return array(
 					'label' => 'Cloud Telephony',
 					'url'   => '',
 					'slug'  => 'cloud-telephony',
+				),
+				array(
+					'label' => 'Whatsapp',
+					'url'   => '',
+					'slug'  => 'whatsapp',
+				),
+				array(
+					'label' => 'RCS',
+					'url'   => '',
+					'slug'  => 'rcs',
 				),
 			),
 		),
@@ -73,18 +73,13 @@ return array(
 				array(
 					'label' => 'Growinfinity.io',
 					'url'   => '',
-					'slug'  => 'growtele-io',
+					'slug'  => 'growinfinity-io',
 				),
 			),
 		),
 		'resources' => array(
 			'title' => 'Resources',
 			'links' => array(
-				array(
-					'label' => 'Pricing',
-					'url'   => '',
-					'slug'  => 'pricing',
-				),
 				array(
 					'label' => 'API Documentation',
 					'url'   => '',

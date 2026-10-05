@@ -17,37 +17,28 @@
 .coming-soon {
   width: 100%;
   margin: 0 auto;
-  padding: 140px 24px 100px;
-}
-
-.coming-soon__row {
+  padding: 20px 24px 100px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
 }
 
-.coming-soon__icon {
-  font-size: 40px;
-  line-height: 1;
-  margin: 0;
-  flex-shrink: 0;
-}
-
-.coming-soon__title {
-  margin: 0;
-  font-family: 'Tomato Grotesk', sans-serif;
-  font-size: clamp(28px, 3.2vw, 40px);
-  font-weight: 700;
-  line-height: 1.2;
-  color: #122454;
+.coming-soon__video {
+  display: block;
+  width: min(100%, 720px);
+  max-height: 405px;
+  margin-right: 0;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 .coming-soon__text {
-  margin: 16px 0 0;
+  margin: 20px 0 0;
   padding: 0;
+  text-align: center;
   white-space: nowrap;
   font-family: 'Tomato Grotesk', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.5;
   color: #5a6478;
@@ -60,6 +51,10 @@
     padding-left: calc(var(--gt-page-inset) + var(--gt-brand-inline));
     padding-right: calc(var(--gt-page-inset) + var(--gt-brand-inline));
   }
+
+  .coming-soon__video {
+    margin-left: -264px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -68,10 +63,29 @@
   }
 
   .coming-soon {
-    padding: 120px 20px 80px;
+    padding: 0 20px 80px;
+  }
+
+  .coming-soon__video {
+    width: min(100%, 320px);
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    margin: 112px 50px 0 auto;
+    align-self: flex-end;
+    object-fit: contain;
+    object-position: right center;
+    border-radius: 10px;
   }
 
   .coming-soon__text {
     white-space: normal;
+    font-size: 15px;
+    line-height: 1.45;
+    margin-bottom: 24px;
+  }
+
+  .coming-soon-page .gt-cta {
+    margin-top: 32px;
   }
 }

@@ -2,7 +2,19 @@
  * Cloud Telephony — mobile scroll stability.
  * Loaded after mobile-product.css.
  */
+br.gt-mobile-br {
+  display: none;
+}
+
 @media (max-width: 1024px) {
+  br.gt-mobile-br {
+    display: block !important;
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
   /* Benefits — same mobile layout as Email page (icons + tab visual) */
   .sms-page .benefits .benefit img {
     width: 44px !important;
@@ -285,5 +297,79 @@
 
   .sms-page .funnel__visual img {
     max-height: 156px !important;
+  }
+
+  .cloud-telephony-page .why__title {
+    line-height: 1.22;
+    width: calc(100% + 20px);
+    max-width: none;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    box-sizing: border-box;
+    margin-bottom: var(--gt-space-heading-gap) !important;
+  }
+
+  .cloud-telephony-page .why__title br {
+    display: none !important;
+  }
+
+  .cloud-telephony-page .why__title .why-title__line {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cloud-telephony-page .why__title .why-title__line:first-child {
+    white-space: nowrap !important;
+  }
+
+  .cloud-telephony-page .faq__title {
+    font-size: clamp(20px, 6vw, 28px) !important;
+    line-height: 1.22;
+    width: calc(100% + 20px);
+    max-width: none;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    box-sizing: border-box;
+  }
+
+  .cloud-telephony-page .faq__title br {
+    display: none !important;
+  }
+
+  .cloud-telephony-page .faq__title .faq-title__line {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cloud-telephony-page .faq__title .faq-title__line:first-child,
+  .cloud-telephony-page .faq__title .faq-title__line:last-child {
+    white-space: nowrap !important;
+  }
+
+  .cloud-telephony-page .benefit:nth-child(1) h3 br.gt-mobile-br,
+  .cloud-telephony-page .benefit:nth-child(2) h3 br.gt-mobile-br,
+  .cloud-telephony-page .benefit:nth-child(3) h3 br.gt-mobile-br {
+    display: none !important;
+  }
+
+  .cloud-telephony-page .benefit:nth-child(1) h3,
+  .cloud-telephony-page .benefit:nth-child(2) h3,
+  .cloud-telephony-page .benefit:nth-child(3) h3 {
+    line-height: 1.22 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cloud-telephony-page .benefit:nth-child(1) h3 .benefit-title__line,
+  .cloud-telephony-page .benefit:nth-child(2) h3 .benefit-title__line,
+  .cloud-telephony-page .benefit:nth-child(3) h3 .benefit-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
   }
 }

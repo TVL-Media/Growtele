@@ -1,0 +1,131 @@
+/**
+ * About Us — mobile/tablet overrides (after mobile-company.css).
+ */
+
+.about-stat-label__m,
+.about-partners-title__m,
+.about-team-title__m {
+  display: none;
+}
+
+.about-stat-label__d,
+.about-partners-title__d,
+.about-team-title__d {
+  display: inline;
+}
+
+.about-partners-title__d,
+.about-team-title__d {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .about-us-page .connecting__mockup {
+    display: none !important;
+  }
+
+  .about-us-page .connecting__stat-divider {
+    display: none !important;
+  }
+
+  .about-us-page .connecting__desc {
+    text-align: left !important;
+  }
+
+  .about-us-page .connecting__stats {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
+  .about-us-page .connecting__stat {
+    flex: 0 1 auto !important;
+    max-width: calc(50% - 8px);
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about-us-page .connecting__stat-number {
+    text-align: left;
+  }
+
+  .about-us-page .connecting__stat-label {
+    text-align: left;
+  }
+
+  .about-stat-label__m {
+    display: block;
+  }
+
+  .about-stat-label__d {
+    display: none !important;
+  }
+
+  .about-us-page .connecting__stat-label .stat-label__line {
+    display: block;
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  .about-us-page .driven__bento {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px;
+  }
+
+  .about-us-page .driven__bento-col {
+    display: contents;
+  }
+
+  .about-us-page .bento-card h3 {
+    font-size: 20px !important;
+  }
+
+  .about-partners-title__m {
+    display: block;
+  }
+
+  .about-partners-title__d {
+    display: none !important;
+  }
+
+  .about-partners-title__m .partners-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  .about-us-page .partners__title {
+    line-height: 1.22 !important;
+  }
+
+  .about-team-title__m {
+    display: block;
+  }
+
+  .about-team-title__d {
+    display: none !important;
+  }
+
+  .about-team-title__m .team-title__line {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 1.22 !important;
+  }
+
+  .about-us-page .team__title {
+    line-height: 1.22 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-us-page .bento-card h3 {
+    font-size: 20px !important;
+  }
+}

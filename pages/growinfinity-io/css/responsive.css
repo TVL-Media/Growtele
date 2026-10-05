@@ -4,6 +4,14 @@
    rules remain only to prevent layout failure.
    ============================================================ */
 
+.gi-io-title__m {
+  display: none;
+}
+
+.gi-io-title__d {
+  display: block;
+}
+
 @media (max-width: 1366px) {
   .hero-shell__bg-video {
     object-position: 72% top;
@@ -360,9 +368,13 @@
   .growtele-io-page .platform-section,
   .growtele-io-page .capabilities,
   .growtele-io-page .apis,
-  .growtele-io-page .cta-mid,
   .growtele-io-page .reporting {
     min-height: auto !important;
+  }
+
+  .growtele-io-page .cta-mid {
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
   }
 }
 
@@ -536,6 +548,8 @@
 
   .growtele-io-page .value-prop__card--text {
     padding: 80px 18px 22px;
+    text-align: center;
+    align-items: center;
   }
 
   .growtele-io-page .value-prop__sticker {
@@ -548,9 +562,12 @@
     font-size: clamp(22px, 6vw, 26px);
     line-height: 1.2;
     max-width: 100%;
+    width: 100%;
     margin-top: 0;
     margin-bottom: 10px;
+    margin-inline: auto;
     padding-left: 0;
+    text-align: center;
   }
 
   .growtele-io-page .value-prop__title br {
@@ -561,6 +578,9 @@
     font-size: 14px;
     line-height: 1.45;
     max-width: 100%;
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .growtele-io-page .value-prop__card--photo {
@@ -593,18 +613,19 @@
 
   .growtele-io-page .capabilities__header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     width: 100%;
     max-width: 100%;
     margin-inline: 0;
     margin-bottom: 16px;
     gap: 10px;
+    text-align: center;
   }
 
   .growtele-io-page .capabilities__title {
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: var(--gt-text-2xl, clamp(22px, 5.5vw, 26px));
     line-height: 1.2;
   }
@@ -612,17 +633,24 @@
   .growtele-io-page .capabilities__subtitle {
     width: 100%;
     max-width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: var(--gt-text-lead, clamp(14px, 3.5vw, 16px));
     line-height: 1.45;
   }
 
   .growtele-io-page .capabilities__grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-direction: unset;
     width: 100%;
     max-width: 100%;
     margin-inline: 0;
     gap: 10px;
     --gt-cap-card-h: clamp(140px, 42vw, 180px);
+  }
+
+  .growtele-io-page .capabilities__grid .cap-r1c3 {
+    display: none !important;
   }
 
   .growtele-io-page .capabilities__card,
@@ -635,6 +663,10 @@
   .growtele-io-page .cap-r3c1,
   .growtele-io-page .cap-r3c2,
   .growtele-io-page .cap-r3c3 {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
     min-height: 0;
     border-radius: 16px;
   }
@@ -671,21 +703,27 @@
     text-wrap: balance;
   }
 
-  /* Mid-page CTA — compact text + buttons in one row */
+  /* Mid-page CTA — full viewport on mobile */
   .growtele-io-page .cta-mid {
-    min-height: auto;
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
     height: auto;
     max-height: none;
-    overflow: visible;
+    overflow: hidden;
     padding: 24px var(--gt-space-inline-x, 20px) 28px;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   .growtele-io-page .cta-mid__inner {
     width: 100%;
     max-width: 100%;
     height: auto;
+    min-height: calc(100svh - 52px);
+    min-height: calc(100dvh - 52px);
     max-height: none;
-    gap: 20px;
+    gap: clamp(32px, 6vh, 48px);
+    align-content: center;
   }
 
   .growtele-io-page .cta-mid__title {
@@ -707,6 +745,7 @@
     align-items: stretch;
     gap: 10px;
     width: 100%;
+    margin-bottom: clamp(12px, 3vh, 20px);
   }
 
   .growtele-io-page .cta-mid__actions .btn-blue,
@@ -715,7 +754,7 @@
     min-width: 0;
     width: auto;
     height: 42px;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.2;
     padding: 0 10px;
     opacity: 1;
@@ -1056,7 +1095,7 @@
   .growtele-io-page .cta-mid__actions .btn-outline-white {
     width: auto;
     min-width: 0;
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .growtele-io-page .cta-mid__title {
@@ -1171,6 +1210,175 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+  }
+}
+
+/* Mobile: center section headings + lead copy (not cards, lists, or CTAs) */
+@media (max-width: 1024px) {
+  .gi-io-title__m {
+    display: block;
+  }
+
+  .gi-io-title__d {
+    display: none !important;
+  }
+
+  .growtele-io-page .gi-io-title__line {
+    display: block;
+    white-space: nowrap;
+    line-height: 1.22;
+    text-align: center;
+  }
+
+  .growtele-io-page .value-prop__title .gi-io-title__line {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .growtele-io-page .value-prop__card--text {
+    text-align: center;
+    align-items: center;
+  }
+
+  .growtele-io-page .value-prop__title,
+  .growtele-io-page .value-prop__desc {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center !important;
+  }
+
+  .growtele-io-page .value-prop__title br {
+    display: none;
+  }
+
+  .growtele-io-page .apis__title br {
+    display: none;
+  }
+
+  .growtele-io-page .gt-industries .gt-section-heading__title {
+    font-size: 28px !important;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .growtele-io-page .gt-industries .gt-section-heading__desc {
+    font-size: 18px !important;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  .growtele-io-page .apis__content {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .growtele-io-page .apis__title,
+  .growtele-io-page .apis__desc {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .growtele-io-page .cta-mid__text {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .growtele-io-page .hero__title,
+  .growtele-io-page .hero__desc,
+  .growtele-io-page .value-prop__title,
+  .growtele-io-page .value-prop__desc,
+  .growtele-io-page .gt-industries .gt-section-heading__title,
+  .growtele-io-page .gt-industries .gt-section-heading__desc,
+  .growtele-io-page .capabilities__title,
+  .growtele-io-page .capabilities__subtitle,
+  .growtele-io-page .apis__title,
+  .growtele-io-page .apis__desc,
+  .growtele-io-page .cta-mid__title,
+  .growtele-io-page .cta-mid__desc,
+  .growtele-io-page .performance__title,
+  .growtele-io-page .performance__subtitle,
+  .growtele-io-page .reporting__title,
+  .growtele-io-page .reporting__subtitle,
+  .growtele-io-page .security__title,
+  .growtele-io-page .security__subtitle,
+  .growtele-io-page .gt-integrations__title,
+  .growtele-io-page .gt-integrations__desc,
+  .growtele-io-page .section-title.faq__title,
+  .growtele-io-page .faq__intro,
+  .growtele-io-page .gt-cta__content h2,
+  .growtele-io-page .gt-cta__content p {
+    text-align: center !important;
+  }
+
+  .growtele-io-page .value-prop__title,
+  .growtele-io-page .value-prop__desc,
+  .growtele-io-page .capabilities__title,
+  .growtele-io-page .capabilities__subtitle,
+  .growtele-io-page .gt-industries .gt-section-heading__title,
+  .growtele-io-page .gt-industries .gt-section-heading__desc {
+    text-align: center !important;
+  }
+
+  .growtele-io-page .gt-industries .gt-section-heading,
+  .growtele-io-page .capabilities__header,
+  .growtele-io-page .security__header {
+    align-items: center;
+  }
+
+  /* img1–6: section heading 28px, lead copy 18px (mobile) */
+  .growtele-io-page .capabilities__title,
+  .growtele-io-page .value-prop__title,
+  .growtele-io-page .gt-industries .gt-section-heading__title,
+  .growtele-io-page .apis__title,
+  .growtele-io-page .cta-mid__title,
+  .growtele-io-page .performance__title {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+  }
+
+  .growtele-io-page .capabilities__subtitle,
+  .growtele-io-page .value-prop__desc,
+  .growtele-io-page .gt-industries .gt-section-heading__desc,
+  .growtele-io-page .apis__desc,
+  .growtele-io-page .cta-mid__desc,
+  .growtele-io-page .performance__subtitle {
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+  }
+
+  .growtele-io-page .capabilities__grid .cap-r1c3 {
+    display: none !important;
+  }
+
+  /* Mobile img1–3: reporting, security, integrations — 28px heading / 18px lead */
+  .growtele-io-page .reporting__title,
+  .growtele-io-page .security__title,
+  .growtele-io-page .gt-integrations__title {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+  }
+
+  .growtele-io-page .reporting__subtitle,
+  .growtele-io-page .security__subtitle,
+  .growtele-io-page .gt-integrations__desc {
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+  }
+
+  .growtele-io-page .cta-mid__inner {
+    gap: clamp(32px, 6vh, 48px);
+  }
+
+  .growtele-io-page .cta-mid__actions {
+    margin-bottom: clamp(12px, 3vh, 20px);
+  }
+
+  .growtele-io-page .cta-mid__actions .btn-blue,
+  .growtele-io-page .cta-mid__actions .btn-outline-white {
+    font-size: 16px !important;
   }
 }
 

@@ -152,4 +152,70 @@
   if (locationImage) {
     locationImage.style.transition = 'opacity 0.15s ease';
   }
+
+  // Connecting section — stat count-up
+  var statEls = document.querySelectorAll('.connecting__stat-number[data-count-to]');
+  if (statEls.length && 'IntersectionObserver' in window) {
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function formatStat(value, el) {
+      var suffix = el.getAttribute('data-count-suffix') || '';
+      if (suffix.indexOf('B') !== -1) {
+        return Math.round(value) + suffix;
+      }
+      return Math.round(value) + suffix;
+    }
+
+    function animateStat(el) {
+      if (el.dataset.countAnimated === '1') {
+        return;
+      }
+      el.dataset.countAnimated = '1';
+      var target = parseFloat(el.getAttribute('data-count-to') || '0', 10);
+      if (!target) {
+        return;
+      }
+      if (reducedMotion) {
+        return;
+      }
+      var suffix = el.getAttribute('data-count-suffix') || '';
+      var start = 0;
+      var duration = 1400;
+      var startTime = null;
+
+      function tick(now) {
+        if (startTime === null) {
+          startTime = now;
+        }
+        var t = Math.min(1, (now - startTime) / duration);
+        var eased = 1 - Math.pow(1 - t, 3);
+        var current = start + (target - start) * eased;
+        el.textContent = formatStat(current, el);
+        if (t < 1) {
+          window.requestAnimationFrame(tick);
+        } else {
+          el.textContent = formatStat(target, el);
+        }
+      }
+
+      el.textContent = formatStat(0, el);
+      window.requestAnimationFrame(tick);
+    }
+
+    var statObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
+            statObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35, rootMargin: '0px 0px -10% 0px' }
+    );
+
+    statEls.forEach(function (el) {
+      statObserver.observe(el);
+    });
+  }
 })();

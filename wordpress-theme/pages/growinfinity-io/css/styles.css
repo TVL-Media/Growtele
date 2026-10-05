@@ -349,6 +349,7 @@
 
 .value-prop__card--photo {
   position: relative;
+  overflow: hidden;
   border: 2px solid var(--color-border-light);
   border-radius: var(--radius-2xl);
   display: flex;
@@ -365,9 +366,17 @@
   min-height: 0;
   max-height: none;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 28%;
   border-radius: var(--radius-2xl);
   pointer-events: none;
+}
+
+@media (min-width: 1025px) {
+  .value-prop__video {
+    object-position: center 32%;
+    transform: scale(1.08);
+    transform-origin: center center;
+  }
 }
 
 /* ============================================================
@@ -1238,8 +1247,8 @@
 .reporting__list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px 48px;
-  max-width: 440px;
+  gap: 40px 40px;
+  max-width: 500px;
 }
 
 .reporting__item {
@@ -1247,16 +1256,26 @@
   align-items: flex-start;
   gap: 12px;
   text-align: left;
-  font-size: clamp(20px, 1.74vw, 25px);
-  font-weight: 600;
+  font-size: clamp(16px, 1.32vw, 19px);
+  font-weight: 400;
   color: var(--color-white);
   opacity: 1;
-  line-height: normal;
+  line-height: 1.2;
   cursor: default;
 }
 
+.reporting__item.reporting__item--center {
+  align-items: center;
+}
+
+.reporting__item > span {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.2;
+}
+
 .reporting__item.is-active {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .reporting__item img {
@@ -1325,12 +1344,9 @@
 }
 
 .security__item {
-  opacity: 0.4;
+  opacity: 1;
   cursor: pointer;
-  transition: opacity 0.2s;
 }
-
-.security__item.is-active { opacity: 1; }
 
 .security__icon {
   position: relative;

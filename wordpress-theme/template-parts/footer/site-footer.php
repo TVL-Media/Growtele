@@ -51,7 +51,6 @@ if ( empty( $social_links ) ) {
 
 $footer_columns = function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.columns', array() ) : array();
 $legal_links    = function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.legal', array() ) : array();
-$touch_img_url  = function_exists( 'growtele_get_content_media_url' ) ? growtele_get_content_media_url( 'footer.get_in_touch_image', 'icons/get-in-touch.png' ) : ( function_exists( 'growtele_get_image' ) ? growtele_get_image( 'icons/get-in-touch.png' ) : '' );
 ?>
 <footer id="colophon" class="gt-footer">
 	<div class="gt-footer__glow"></div>
@@ -61,9 +60,7 @@ $touch_img_url  = function_exists( 'growtele_get_content_media_url' ) ? growtele
 				<?php growtele_image( 'icons/logo.png', get_bloginfo( 'name' ), '', 163, 42 ); ?>
 			</a>
 			<p><?php echo esc_html( function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.brand_description', "Growtele's global network solutions enable every business sector to optimize their business across the globe." ) : "Growtele's global network solutions enable every business sector to optimize their business across the globe." ); ?></p>
-			<a href="mailto:<?php echo esc_attr( $email ); ?>" class="gt-footer__cta">
-				<img src="<?php echo esc_url( $touch_img_url ); ?>" alt="<?php esc_attr_e( 'Get In Touch', 'growtele' ); ?>" width="165" height="35" loading="lazy" />
-			</a>
+			<?php growtele_footer_get_in_touch_cta( $email ); ?>
 		</div>
 
 		<div class="gt-footer__nav">
@@ -124,8 +121,19 @@ $touch_img_url  = function_exists( 'growtele_get_content_media_url' ) ? growtele
 						if ( empty( $legal['label'] ) ) {
 							continue;
 						}
+						$legal_label = trim( (string) ( $legal['label'] ?? '' ) );
+						$label_map   = function_exists( 'growtele_content_link_label_slugs' )
+							? growtele_content_link_label_slugs()
+							: array();
+						if ( isset( $label_map[ $legal_label ] ) && function_exists( 'growtele_get_page_url' ) ) {
+							$legal_href = growtele_get_page_url( $label_map[ $legal_label ] );
+						} else {
+							$legal_href = function_exists( 'growtele_content_resolve_page_url' )
+								? growtele_content_resolve_page_url( $legal )
+								: ( $legal['url'] ?? '#' );
+						}
 						?>
-					<a href="<?php echo esc_url( function_exists( 'growtele_content_resolve_page_url' ) ? growtele_content_resolve_page_url( $legal ) : ( $legal['url'] ?? '#' ) ); ?>"><?php echo esc_html( $legal['label'] ); ?></a>
+					<a href="<?php echo esc_url( $legal_href ); ?>"><?php echo esc_html( $legal['label'] ); ?></a>
 						<?php if ( $i < $legal_count - 1 ) : ?>
 					<span>|</span>
 						<?php endif; ?>
@@ -133,13 +141,13 @@ $touch_img_url  = function_exists( 'growtele_get_content_media_url' ) ? growtele
 					endforeach;
 				else :
 					?>
-					<a href="#"><?php esc_html_e( 'Privacy Policy', 'growtele' ); ?></a>
+					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'privacy-policy' ) : home_url( '/privacy-policy/' ) ); ?>"><?php esc_html_e( 'Privacy Policy', 'growtele' ); ?></a>
 					<span>|</span>
-					<a href="#"><?php esc_html_e( 'Terms & Condition', 'growtele' ); ?></a>
+					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'terms-and-condition' ) : home_url( '/terms-and-condition/' ) ); ?>"><?php esc_html_e( 'Terms & Condition', 'growtele' ); ?></a>
 					<span>|</span>
-					<a href="#"><?php esc_html_e( 'Security', 'growtele' ); ?></a>
+					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'security' ) : home_url( '/security/' ) ); ?>"><?php esc_html_e( 'Security', 'growtele' ); ?></a>
 					<span>|</span>
-					<a href="#"><?php esc_html_e( 'Partners Term of Use', 'growtele' ); ?></a>
+					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'partners-term-of-use' ) : home_url( '/partners-term-of-use/' ) ); ?>"><?php esc_html_e( 'Partners Term of Use', 'growtele' ); ?></a>
 				<?php endif; ?>
 			</p>
 			<p class="gt-footer__copy"><?php echo esc_html( function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.copyright', 'Growtele © 2026. All rights reserved.' ) : 'Growtele © 2026. All rights reserved.' ); ?></p>

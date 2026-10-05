@@ -3,7 +3,7 @@
 
 	var PRODUCT_SLUGS = ['sms', 'whatsapp', 'email', 'rcs', 'cloud-telephony'];
 	var INDUSTRY_SLUGS = ['retail', 'health', 'healthcare', 'banking', 'travelling', 'ecommerce', 'education', 'logistic'];
-	var COMPANY_SLUGS = ['about-us', 'career', 'careers', 'contact', 'blogs', 'growtele-io', 'growinfinity'];
+	var COMPANY_SLUGS = ['about-us', 'career', 'careers', 'contact', 'blogs', 'growinfinity-io', 'growtele-io', 'growinfinity'];
 
 	function normalizePath(path) {
 		var normalized = (path || '/').replace(/\\/g, '/').toLowerCase();
