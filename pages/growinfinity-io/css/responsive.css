@@ -1387,3 +1387,26 @@
     object-position: 68% top;
   }
 }
+
+/* Desktop: security → integrations gap (max 150px incl. section padding) */
+@media (min-width: 1025px) {
+  .growtele-io-page .security__grid {
+    align-items: end;
+  }
+
+  .growtele-io-page .security__features .security__row:last-child {
+    margin-bottom: 0;
+  }
+
+  .growtele-io-page .security__visual-img {
+    margin-top: 0;
+  }
+
+  .growtele-io-page section.security {
+    padding-bottom: 48px;
+  }
+
+  .growtele-io-page .gt-integrations.gt-section {
+    padding-top: 48px;
+  }
+}

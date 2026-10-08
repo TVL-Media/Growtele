@@ -141,11 +141,23 @@
 	}
 
 	/* Counter Animation */
-	function formatCounterValue(value, decimals, suffix) {
-		if (decimals > 0) {
-			return value.toFixed(decimals) + suffix;
+	function normalizeCounterSuffix(suffix) {
+		if (!suffix || suffix.indexOf('%') === -1) {
+			return suffix;
 		}
-		return Math.round(value) + suffix;
+		try {
+			return decodeURIComponent(suffix);
+		} catch (err) {
+			return suffix.replace(/%2B/gi, '+');
+		}
+	}
+
+	function formatCounterValue(value, decimals, suffix) {
+		var safeSuffix = normalizeCounterSuffix(suffix);
+		if (decimals > 0) {
+			return value.toFixed(decimals) + safeSuffix;
+		}
+		return Math.round(value) + safeSuffix;
 	}
 
 	function animateCounter(el) {
@@ -218,7 +230,7 @@
 		const groups = new Map();
 
 		counters.forEach(function (el) {
-			const root = el.closest('.gt-enterprise, .gt-outcomes') || el;
+			const root = el.closest('.gt-enterprise, .gt-outcomes, .testimonial') || el;
 			if (!groups.has(root)) {
 				groups.set(root, []);
 			}

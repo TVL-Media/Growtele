@@ -96,7 +96,7 @@ return array(
 		'hero'    => array(
 			'title'    => 'Power Business<br>Communication Through<br>Enterprise SMS',
 			'subtitle' => 'Reach customers in seconds with reliable SMS communication built for OTPs, alerts, notifications, promotions.',
-			'cta_text' => 'Let?s Get Started',
+			'cta_text' => "Let's Get Started",
 			'cta_url'  => '',
 		),
 		'pills'   => array(
@@ -106,7 +106,7 @@ return array(
 		),
 		'journey' => array(
 			'title' => 'Reliable SMS for Every<br>Customer Journey',
-			'lead'  => 'Keep customers informed and engaged with instant OTPs, order updates, appointment reminders, promotional offers, and personalized notifications?all from one enterprise-grade messaging platform.',
+			'lead'  => 'Keep customers informed and engaged with instant OTPs, order updates, appointment reminders, promotional offers, and personalized notifications—all from one enterprise-grade messaging platform.',
 		),
 		'scale'   => array(
 			'title' => 'Built for Scale. <span>Designed for Reliability.</span>',
@@ -156,7 +156,7 @@ return array(
 	'whatsapp'          => array(
 		'hero'    => array(
 			'title'    => 'Power Business<br>Communication Through<br>WhatsApp Business',
-			'subtitle' => 'Deliver rich, interactive conversations with WhatsApp Business. Engage customers with product catalogs, order updates?all from one intelligent communication platform.',
+			'subtitle' => 'Deliver rich, interactive conversations with WhatsApp Business. Engage customers with product catalogs, order updates—all from one intelligent communication platform.',
 			'cta_text' => "Let's Get Started",
 			'cta_url'  => '',
 		),

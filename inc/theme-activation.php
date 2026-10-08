@@ -72,6 +72,11 @@ function growtele_get_static_page_definitions() {
 			'title'    => 'Blogs',
 			'template' => 'page-templates/page-blogs.php',
 		),
+		'top-5-advanced-features-scalable-sms' => array(
+			'title'    => 'Top 5 Advanced Features for Scalable SMS',
+			'template' => 'page-templates/page-top-5-advanced-features-scalable-sms.php',
+			'parent'   => 'blogs',
+		),
 		'career'          => array(
 			'title'    => 'Career',
 			'template' => 'page-templates/page-career.php',
@@ -116,10 +121,31 @@ function growtele_sync_static_page_posts() {
 	}
 
 	foreach ( growtele_get_static_page_definitions() as $slug => $page ) {
-		$existing = get_page_by_path( $slug );
+		$parent_path = '';
+		$parent_id   = 0;
+
+		if ( ! empty( $page['parent'] ) ) {
+			$parent_slug = (string) $page['parent'];
+			$parent      = get_page_by_path( $parent_slug );
+			if ( $parent instanceof WP_Post ) {
+				$parent_id   = (int) $parent->ID;
+				$parent_path = $parent_slug . '/';
+			}
+		}
+
+		$lookup_path = $parent_path . $slug;
+		$existing    = get_page_by_path( $lookup_path );
 
 		if ( $existing instanceof WP_Post ) {
 			update_post_meta( $existing->ID, '_wp_page_template', $page['template'] );
+			if ( $parent_id && (int) $existing->post_parent !== $parent_id ) {
+				wp_update_post(
+					array(
+						'ID'          => $existing->ID,
+						'post_parent' => $parent_id,
+					)
+				);
+			}
 			continue;
 		}
 
@@ -130,6 +156,7 @@ function growtele_sync_static_page_posts() {
 				'post_status'  => 'publish',
 				'post_type'    => 'page',
 				'post_content' => '',
+				'post_parent'  => $parent_id,
 			),
 			true
 		);

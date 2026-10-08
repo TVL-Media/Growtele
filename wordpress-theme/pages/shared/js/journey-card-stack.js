@@ -16,6 +16,7 @@
     var STEP = CARD_H + GAP;
     var maxProgress = cards.length - 1;
     var progress = 0;
+    var activePhoneIndex = 0;
 
     function clearCardStackStyles() {
       cards.forEach(function (card) {
@@ -37,7 +38,7 @@
     function applyStack(value) {
       progress = Math.min(maxProgress, Math.max(0, value));
       cards.forEach(function (card, index) {
-        var move = Math.round(Math.min(index, progress) * STEP);
+        var move = Math.min(index, progress) * STEP;
         card.style.transform = "translate3d(0," + (-move) + "px,0)";
         card.style.zIndex = String(index + 1);
       });
@@ -50,9 +51,12 @@
             phoneIndex = i;
           }
         }
-        phones.forEach(function (phone, i) {
-          phone.classList.toggle("is-active", i === phoneIndex);
-        });
+        if (phoneIndex !== activePhoneIndex) {
+          activePhoneIndex = phoneIndex;
+          phones.forEach(function (phone, i) {
+            phone.classList.toggle("is-active", i === phoneIndex);
+          });
+        }
       }
     }
 
@@ -75,9 +79,36 @@
       var inStackZonePrev = false;
       var lastScrollY = getScrollY();
       var stepLocked = false;
-      var STEP_MS = 340;
-      var GESTURE_THRESHOLD = 42;
+      var STEP_MS = 380;
+      var GESTURE_THRESHOLD = 32;
       var STEP_SCROLL_DELTA = 2;
+      var FAST_SCROLL_DELTA = 22;
+      var fastScrolling = false;
+      var fastScrollTimer = null;
+      var freezeRaf = 0;
+      var pendingFreezeY = null;
+      var stackGestureActive = false;
+      var scrollHandlerRaf = 0;
+      var stackSessionActive = false;
+
+      function noteFastScroll(delta) {
+        if (Math.abs(delta) < FAST_SCROLL_DELTA) {
+          return false;
+        }
+        if (stackSessionActive) {
+          return false;
+        }
+        fastScrolling = true;
+        releasePin();
+        stackLatched = false;
+        scrollIntentAccum = 0;
+        gestureAccum = 0;
+        window.clearTimeout(fastScrollTimer);
+        fastScrollTimer = window.setTimeout(function () {
+          fastScrolling = false;
+        }, 240);
+        return true;
+      }
 
       function getStickyTop() {
         var root = getComputedStyle(document.documentElement);
@@ -97,18 +128,73 @@
 
       function freezeAt(y) {
         pinScrollY = y;
-        var lenis = window.growteleLenis;
-        if (lenis && typeof lenis.scrollTo === "function") {
-          lenis.scrollTo(y, { immediate: true });
-        } else {
-          window.scrollTo(0, y);
+        pendingFreezeY = y;
+        if (freezeRaf) {
+          return;
         }
+        freezeRaf = window.requestAnimationFrame(function () {
+          freezeRaf = 0;
+          var targetY = pendingFreezeY;
+          pendingFreezeY = null;
+          if (targetY === null || fastScrolling) {
+            return;
+          }
+          var lenis = window.growteleLenis;
+          if (lenis && typeof lenis.scrollTo === "function") {
+            lenis.scrollTo(targetY, { immediate: true });
+          } else {
+            window.scrollTo(0, targetY);
+          }
+        });
       }
 
       function getPinScrollY() {
         var stickyTop = getStickyTop();
         var bodyRect = body.getBoundingClientRect();
         return Math.max(0, getScrollY() + (bodyRect.top - stickyTop));
+      }
+
+      /** Phone slot + card stack both in view — animation runs at this scroll position only */
+      function isNearStackFrame() {
+        var stickyTop = getStickyTop();
+        var bodyRect = body.getBoundingClientRect();
+        var wrapRect = wrap.getBoundingClientRect();
+        var viewH = window.innerHeight;
+        var bodyAligned =
+          bodyRect.top <= stickyTop + 36 && bodyRect.top >= stickyTop - 120;
+        var cardsVisible =
+          wrapRect.top < viewH * 0.94 && wrapRect.bottom > viewH * 0.22;
+        var phoneOk = true;
+        if (phones.length) {
+          var phoneEl = body.querySelector(".journey__phone--a") || phones[0];
+          var phoneRect = phoneEl.getBoundingClientRect();
+          phoneOk =
+            phoneRect.bottom > stickyTop + 24 &&
+            phoneRect.top < viewH * 0.78;
+        }
+        return sectionInView() && bodyAligned && cardsVisible && phoneOk;
+      }
+
+      function snapToStackFrame() {
+        if (stackSessionActive) {
+          freezeAt(pinScrollY);
+          return;
+        }
+        stackSessionActive = true;
+        stackLatched = true;
+        pinned = true;
+        pinScrollY = getPinScrollY();
+        freezeAt(pinScrollY);
+        killLenisMomentum();
+        lastScrollY = pinScrollY;
+      }
+
+      function releaseStackSession() {
+        stackSessionActive = false;
+        pinned = false;
+        gestureAccum = 0;
+        scrollIntentAccum = 0;
+        stackLatched = false;
       }
 
       function sectionInView() {
@@ -120,7 +206,10 @@
         if (!sectionInView()) return false;
         var viewH = window.innerHeight;
         var wrapRect = wrap.getBoundingClientRect();
-        return wrapRect.top < viewH * 0.84 && wrapRect.bottom > viewH * 0.16;
+        if (inStackZonePrev) {
+          return wrapRect.top < viewH * 0.88 && wrapRect.bottom > viewH * 0.12;
+        }
+        return wrapRect.top < viewH * 0.82 && wrapRect.bottom > viewH * 0.18;
       }
 
       function shouldPinStack() {
@@ -134,14 +223,18 @@
         return pinned || stepLocked || scrollIntentAccum < 0;
       }
 
+      function canRunStackSteps() {
+        return stackSessionActive || isInStackZone() || isNearStackFrame();
+      }
+
       function tryReverseStep() {
-        if (stepLocked || !isInStackZone() || progress <= 0) return false;
+        if (stepLocked || !canRunStackSteps() || progress <= 0) return false;
         stackLatched = true;
         return tryStep(-1);
       }
 
       function tryForwardStep() {
-        if (stepLocked || !isInStackZone() || progress >= maxProgress) return false;
+        if (stepLocked || !canRunStackSteps() || progress >= maxProgress) return false;
         stackLatched = true;
         return tryStep(1);
       }
@@ -175,15 +268,15 @@
       }
 
       function updateStackLatch(scrollDelta) {
-        if (!isInStackZone()) {
+        if (!stackSessionActive && !isNearStackFrame() && !isInStackZone()) {
           if (progress <= 0) {
             stackLatched = false;
             scrollIntentAccum = 0;
           }
           return;
         }
-        if (progress === 0) {
-          if (scrollDelta > 1.5) {
+        if (progress === 0 && !stackSessionActive) {
+          if (isNearStackFrame() && scrollDelta > 1.5) {
             stackLatched = true;
           } else if (scrollDelta < -1.5) {
             stackLatched = false;
@@ -204,35 +297,45 @@
       }
 
       function shouldHoldGesture() {
-        if (!isInStackZone()) return false;
-        if (isStackSessionActive()) return true;
-        if (shouldPinStack()) return true;
-        if (progress <= 0 && gestureAccum > 8) return true;
-        if (progress >= maxProgress && gestureAccum < -8) return true;
-        if (progress > 0 && gestureAccum < -8) return true;
+        if (stepLocked && pinned) {
+          return true;
+        }
+        if (!stackGestureActive || !isInStackZone()) {
+          return false;
+        }
+        if (progress > 0 && progress < maxProgress) {
+          return stackLatched;
+        }
         return false;
       }
 
+      function touchTargetInStack(event) {
+        if (!event.touches || !event.touches[0]) {
+          return false;
+        }
+        var touch = event.touches[0];
+        var el = document.elementFromPoint(touch.clientX, touch.clientY);
+        return !!(el && (body.contains(el) || wrap.contains(el)));
+      }
+
       function consumeScrollIntent() {
-        if (stepLocked || !stackLatched || !isInStackZone()) return;
+        if (stepLocked || !stackLatched) return;
+        if (!stackSessionActive && !canRunStackSteps()) return;
         if (progress >= maxProgress && scrollIntentAccum > 0) {
           scrollIntentAccum = 0;
-          stackLatched = false;
-          releasePin();
+          releaseStackSession();
           return;
         }
         while (Math.abs(scrollIntentAccum) >= GESTURE_THRESHOLD) {
           var dir = scrollIntentAccum > 0 ? 1 : -1;
           if (dir > 0 && progress >= maxProgress) {
             scrollIntentAccum = 0;
-            stackLatched = false;
-            releasePin();
+            releaseStackSession();
             break;
           }
           if (dir < 0 && progress <= 0) {
             scrollIntentAccum = 0;
-            stackLatched = false;
-            releasePin();
+            releaseStackSession();
             break;
           }
           scrollIntentAccum += dir > 0 ? -GESTURE_THRESHOLD : GESTURE_THRESHOLD;
@@ -254,9 +357,7 @@
       }
 
       function releasePin() {
-        pinned = false;
-        gestureAccum = 0;
-        scrollIntentAccum = 0;
+        releaseStackSession();
       }
 
       function resetIfOutOfView() {
@@ -268,47 +369,46 @@
         scrollIntentAccum = 0;
         stackLatched = false;
         stepLocked = false;
+        stackSessionActive = false;
+        pinned = false;
         applyStack(0);
       }
 
       function tryStep(dir) {
-        if (stepLocked) return false;
+        if (stepLocked || fastScrolling) return false;
         if (dir > 0 && progress >= maxProgress) {
-          stackLatched = false;
-          releasePin();
+          releaseStackSession();
           return false;
         }
         if (dir < 0 && progress <= 0) {
-          stackLatched = false;
-          releasePin();
+          releaseStackSession();
           return false;
         }
-        if (!isInStackZone()) return false;
+        if (!stackSessionActive) {
+          if (!isNearStackFrame() && !isInStackZone()) {
+            return false;
+          }
+          snapToStackFrame();
+        }
 
         var current = Math.round(progress);
         var next = current + dir;
         if (next < 0 || next > maxProgress || next === current) return false;
 
         stackLatched = true;
-        if (!pinned) {
-          engagePin(true);
-        } else {
-          freezeAt(pinScrollY);
-          killLenisMomentum();
-        }
-        applyStack(next);
         freezeAt(pinScrollY);
         killLenisMomentum();
+        applyStack(next);
 
         stepLocked = true;
         window.setTimeout(function () {
           stepLocked = false;
-          if (progress >= maxProgress && pinned) {
-            pinned = false;
-            gestureAccum = 0;
-          }
         }, STEP_MS);
         return true;
+      }
+
+      function shouldHoldViewport() {
+        return stepLocked;
       }
 
       function shouldBlockScroll() {
@@ -321,59 +421,61 @@
           return false;
         }
 
-        if (stepLocked && pinned) {
-          freezeAt(pinScrollY);
-          return true;
-        }
-
-        if (!isInStackZone()) {
-          releasePin();
+        if (noteFastScroll(deltaY)) {
           return false;
         }
 
-        if (progress <= 0 && deltaY < 0) {
-          stackLatched = false;
-          releasePin();
+        if (fastScrolling) {
+          return false;
+        }
+
+        if (
+          !stackSessionActive &&
+          progress <= 0 &&
+          !isInStackZone() &&
+          !isNearStackFrame()
+        ) {
+          return false;
+        }
+
+        if (stepLocked) {
+          return true;
+        }
+
+        if (stackSessionActive && progress <= 0 && deltaY < 0) {
+          releaseStackSession();
           gestureAccum = 0;
           return false;
         }
 
         gestureAccum += deltaY;
 
-        if (progress <= 0 && gestureAccum < -GESTURE_THRESHOLD) {
+        if (stackSessionActive && progress <= 0 && gestureAccum < -GESTURE_THRESHOLD) {
           gestureAccum = 0;
-          releasePin();
+          releaseStackSession();
           return false;
         }
         if (progress >= maxProgress && gestureAccum > GESTURE_THRESHOLD) {
           gestureAccum = 0;
-          stackLatched = false;
-          releasePin();
+          releaseStackSession();
           return false;
         }
 
-        if (progress > 0 && !stepLocked && Math.abs(deltaY) > STEP_SCROLL_DELTA) {
-          if (deltaY < -STEP_SCROLL_DELTA && tryReverseStep()) {
+        if (!stepLocked && Math.abs(deltaY) > STEP_SCROLL_DELTA && canRunStackSteps()) {
+          if (deltaY < -STEP_SCROLL_DELTA && progress > 0 && tryReverseStep()) {
             return true;
           }
-          if (deltaY > STEP_SCROLL_DELTA) {
-            if (progress < maxProgress && tryForwardStep()) {
-              return true;
-            }
-            if (progress >= maxProgress) {
-              stackLatched = false;
-              releasePin();
-              return false;
-            }
+          if (deltaY > STEP_SCROLL_DELTA && progress < maxProgress && tryForwardStep()) {
+            return true;
           }
-        }
-
-        if (shouldHoldGesture() && pinned) {
-          freezeAt(pinScrollY);
+          if (deltaY > STEP_SCROLL_DELTA && progress >= maxProgress) {
+            releaseStackSession();
+            return false;
+          }
         }
 
         if (Math.abs(gestureAccum) < GESTURE_THRESHOLD) {
-          return shouldHoldGesture();
+          return stepLocked;
         }
 
         var dir = gestureAccum > 0 ? 1 : -1;
@@ -381,12 +483,13 @@
         if (tryStep(dir)) {
           return true;
         }
-        return shouldHoldGesture();
+        return stepLocked;
       }
 
       function onWheel(event) {
         resetIfOutOfView();
-        if (processGestureDelta(event.deltaY)) {
+        var handled = processGestureDelta(event.deltaY);
+        if (handled || stepLocked) {
           event.preventDefault();
           event.stopPropagation();
         }
@@ -394,6 +497,7 @@
 
       function onTouchStart(event) {
         if (!event.touches || !event.touches[0]) return;
+        stackGestureActive = true;
         touchLastY = event.touches[0].clientY;
         gestureAccum = 0;
       }
@@ -409,7 +513,8 @@
         var delta = touchLastY - y;
         touchLastY = y;
         if (Math.abs(delta) < 0.5) return;
-        if (processGestureDelta(delta)) {
+        var handled = processGestureDelta(delta);
+        if (handled || stepLocked) {
           event.preventDefault();
           event.stopPropagation();
         }
@@ -417,74 +522,109 @@
 
       function onTouchEnd() {
         touchLastY = null;
+        stackGestureActive = false;
         if (!stepLocked) {
           gestureAccum = 0;
-          if (progress <= 0 && pinned && !isStackSessionActive() && !shouldPinStack()) {
+          if (progress <= 0 && pinned && !stackLatched) {
             releasePin();
           }
         }
       }
 
-      function onScrollStack() {
+      function onScrollStackCore() {
         resetIfOutOfView();
         var y = getScrollY();
         var scrollDelta = y - lastScrollY;
         lastScrollY = y;
 
+        if (noteFastScroll(scrollDelta) || fastScrolling) {
+          inStackZonePrev = isInStackZone();
+          return;
+        }
+
         updateStackLatch(scrollDelta);
 
-        if (progress <= 0 && scrollDelta < -2 && isInStackZone()) {
-          stackLatched = false;
-          releasePin();
-          inStackZonePrev = isInStackZone();
-          return;
-        }
+        var inZone = isInStackZone();
+        var atFrame = isNearStackFrame();
 
-        if (driveStackFromScroll(y, scrollDelta)) {
-          inStackZonePrev = isInStackZone();
-          return;
-        }
-
-        if (isStackSessionActive()) {
-          if (Math.abs(scrollDelta) > 0.5) {
-            scrollIntentAccum += scrollDelta;
-          }
-          if (pinned && Math.abs(y - pinScrollY) > 0.5) {
-            scrollIntentAccum += y - pinScrollY;
+        if (stepLocked || (stackSessionActive && pinned)) {
+          if (Math.abs(y - pinScrollY) > 0.5) {
             freezeAt(pinScrollY);
             killLenisMomentum();
           }
+        }
+
+        if (stepLocked) {
+          lastScrollY = pinScrollY;
+          inStackZonePrev = inZone;
+          return;
+        }
+
+        if (stackSessionActive && progress <= 0 && scrollDelta < -STEP_SCROLL_DELTA) {
+          releaseStackSession();
+          lastScrollY = y;
+          inStackZonePrev = inZone;
+          return;
+        }
+
+        if (stackSessionActive && pinned) {
+          if (progress >= maxProgress && scrollDelta > STEP_SCROLL_DELTA) {
+            releaseStackSession();
+            lastScrollY = y;
+            inStackZonePrev = inZone;
+            return;
+          }
+          lastScrollY = pinScrollY;
+          inStackZonePrev = inZone;
+          return;
+        }
+
+        if (
+          !stackSessionActive &&
+          !stepLocked &&
+          !fastScrolling &&
+          inZone &&
+          stackLatched
+        ) {
+          scrollIntentAccum += scrollDelta;
           consumeScrollIntent();
-          inStackZonePrev = isInStackZone();
-          return;
         }
 
-        if (shouldPinStack()) {
-          if (!pinned) {
-            engagePin(true);
+        if (!inZone && !atFrame) {
+          if (progress <= 0) {
+            releaseStackSession();
           }
-          if (Math.abs(y - pinScrollY) > 1) {
-            freezeAt(pinScrollY);
-            killLenisMomentum();
-          }
-          return;
         }
 
-        if (pinned && progress >= maxProgress && y > pinScrollY + 4) {
-          stackLatched = false;
-          releasePin();
-          return;
-        }
-
-        if (stepLocked && pinned) {
-          freezeAt(pinScrollY);
-          killLenisMomentum();
-        }
-
-        inStackZonePrev = isInStackZone();
+        lastScrollY = y;
+        inStackZonePrev = inZone;
       }
 
+      function onScrollStack() {
+        if (scrollHandlerRaf) {
+          return;
+        }
+        scrollHandlerRaf = window.requestAnimationFrame(function () {
+          scrollHandlerRaf = 0;
+          onScrollStackCore();
+        });
+      }
+
+      var mobileLayoutReady = false;
+      var cachedMobileCardH = 0;
+
       function measureMobileLayout() {
+        CARD_H = 172;
+        if (section.classList.contains("journey--scroll-stack") && mobileLayoutReady) {
+          cards.forEach(function (card) {
+            CARD_H = Math.max(CARD_H, card.offsetHeight || 0);
+          });
+          if (Math.abs(CARD_H - cachedMobileCardH) < 4) {
+            applyStack(progress);
+            return;
+          }
+        }
+
         cards.forEach(function (card) {
           card.style.position = "static";
           card.style.top = "";
@@ -497,6 +637,8 @@
         cards.forEach(function (card) {
           CARD_H = Math.max(CARD_H, card.offsetHeight || 0);
         });
+        cachedMobileCardH = CARD_H;
+        mobileLayoutReady = true;
         STEP = CARD_H + GAP;
         section.style.paddingBottom = "";
 
@@ -513,24 +655,29 @@
         wrap.style.overflow = "hidden";
         section.classList.add("journey--scroll-stack");
         applyStack(progress);
+        if (stackSessionActive) {
+          pinScrollY = getPinScrollY();
+          freezeAt(pinScrollY);
+        }
       }
 
       function teardownMobileStack() {
         clearCardStackStyles();
+        stackSessionActive = false;
         pinned = false;
         window.removeEventListener("wheel", onWheel, true);
-        window.removeEventListener("touchstart", onTouchStart, true);
-        window.removeEventListener("touchmove", onTouchMove, true);
-        window.removeEventListener("touchend", onTouchEnd, true);
+        section.removeEventListener("touchstart", onTouchStart, true);
+        section.removeEventListener("touchmove", onTouchMove, true);
+        section.removeEventListener("touchend", onTouchEnd, true);
         window.removeEventListener("scroll", onScrollStack);
         window.removeEventListener("growtele:scroll", onScrollStack);
       }
 
       registerLayoutRefresh(measureMobileLayout);
       window.addEventListener("wheel", onWheel, { passive: false, capture: true });
-      window.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
-      window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
-      window.addEventListener("touchend", onTouchEnd, { passive: true, capture: true });
+      section.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
+      section.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
+      section.addEventListener("touchend", onTouchEnd, { passive: true, capture: true });
       window.addEventListener("scroll", onScrollStack, { passive: true });
       window.addEventListener("growtele:scroll", onScrollStack, { passive: true });
 

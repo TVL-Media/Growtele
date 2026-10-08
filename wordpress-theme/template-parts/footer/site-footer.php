@@ -150,7 +150,16 @@ $legal_links    = function_exists( 'growtele_get_content' ) ? growtele_get_conte
 					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'partners-term-of-use' ) : home_url( '/partners-term-of-use/' ) ); ?>"><?php esc_html_e( 'Partners Term of Use', 'growtele' ); ?></a>
 				<?php endif; ?>
 			</p>
-			<p class="gt-footer__copy"><?php echo esc_html( function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.copyright', 'Growtele © 2026. All rights reserved.' ) : 'Growtele © 2026. All rights reserved.' ); ?></p>
+			<?php
+			$growtele_copyright = function_exists( 'growtele_get_content' )
+				? growtele_get_content( 'footer.copyright', 'Growtele © 2026. All rights reserved.' )
+				: 'Growtele © 2026. All rights reserved.';
+			if ( function_exists( 'growtele_footer_copyright_inner_html' ) ) {
+				echo '<p class="gt-footer__copy">' . growtele_footer_copyright_inner_html( $growtele_copyright ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- sanitized in helper.
+			} else {
+				echo '<p class="gt-footer__copy">' . esc_html( $growtele_copyright ) . '</p>';
+			}
+			?>
 		</div>
 	</div>
 </footer>

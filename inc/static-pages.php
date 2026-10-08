@@ -47,6 +47,18 @@ function growtele_static_page_map() {
 		'terms-and-condition' => 'terms-and-condition',
 		'security'          => 'security',
 		'partners-term-of-use' => 'partners-term-of-use',
+		'top-5-advanced-features-scalable-sms' => 'blogs/top-5-advanced-features-scalable-sms',
+	);
+}
+
+/**
+ * Nested URL paths (under a parent segment) mapped to a static page slug key.
+ *
+ * @return array<string, string> Request path (no leading/trailing slash) => slug key.
+ */
+function growtele_static_page_nested_paths() {
+	return array(
+		'blogs/top-5-advanced-features-scalable-sms' => 'top-5-advanced-features-scalable-sms',
 	);
 }
 
@@ -235,6 +247,44 @@ function growtele_rewrite_static_page_hrefs( $html ) {
 }
 
 /**
+ * Resolve a relative href from a static page folder (may contain slashes, e.g. blogs/my-post).
+ *
+ * @param string $url          Relative URL from HTML.
+ * @param string $page_folder  Folder under /pages/ from growtele_static_page_map().
+ * @return string Path relative to theme root (pages/... or assets/...).
+ */
+function growtele_resolve_path_from_page_folder( $url, $page_folder ) {
+	$url = str_replace( '\\', '/', (string) $url );
+	$parts = array_values(
+		array_filter(
+			explode( '/', (string) $page_folder ),
+			function ( $segment ) {
+				return '' !== $segment;
+			}
+		)
+	);
+
+	while ( 0 === strpos( $url, '../' ) ) {
+		$url = substr( $url, 3 );
+		if ( ! empty( $parts ) ) {
+			array_pop( $parts );
+		}
+	}
+
+	while ( 0 === strpos( $url, './' ) ) {
+		$url = substr( $url, 2 );
+	}
+
+	$url = ltrim( $url, '/' );
+
+	if ( ! empty( $parts ) ) {
+		return implode( '/', $parts ) . ( '' !== $url ? '/' . $url : '' );
+	}
+
+	return $url;
+}
+
+/**
  * Resolve a relative asset URL to an absolute theme URL.
  *
  * @param string $url  Relative URL from HTML.
@@ -253,27 +303,22 @@ function growtele_resolve_static_asset_url( $url, $slug ) {
 		return $page_href;
 	}
 
-	$page_dir    = trailingslashit( GROWTELE_URI ) . 'pages/' . $pages[ $slug ] . '/';
-	$pages_root  = trailingslashit( GROWTELE_URI ) . 'pages/';
-	$assets_root = trailingslashit( GROWTELE_URI ) . 'assets/';
-
-	if ( 0 === strpos( $url, '../../assets/' ) ) {
-		return $assets_root . substr( $url, 13 );
+	if ( growtele_is_absolute_url( $url ) || 0 === strpos( $url, 'data:' ) || 0 === strpos( $url, GROWTELE_URI ) ) {
+		return $url;
 	}
 
-	if ( 0 === strpos( $url, '../assets/' ) ) {
-		return $assets_root . substr( $url, 11 );
+	$page_folder = $pages[ $slug ];
+	$theme_root  = trailingslashit( GROWTELE_URI );
+
+	if ( false !== strpos( $url, '../' ) || 0 === strpos( $url, './' ) ) {
+		$relative = growtele_resolve_path_from_page_folder( $url, $page_folder );
+		if ( 0 === strpos( $relative, 'assets/' ) ) {
+			return $theme_root . $relative;
+		}
+		return $theme_root . 'pages/' . $relative;
 	}
 
-	if ( 0 === strpos( $url, '../shared/' ) ) {
-		return $pages_root . 'shared/' . substr( $url, 10 );
-	}
-
-	if ( preg_match( '#^\.\./([^/]+)/(.+)$#', $url, $matches ) ) {
-		return $pages_root . $matches[1] . '/' . $matches[2];
-	}
-
-	return $page_dir . ltrim( $url, './' );
+	return $theme_root . 'pages/' . $page_folder . '/' . ltrim( $url, '/' );
 }
 
 /**
@@ -283,10 +328,14 @@ function growtele_resolve_static_asset_url( $url, $slug ) {
  * @return string
  */
 function growtele_filter_static_html( $html ) {
-	$map = array(
-		'../../assets/'                               => trailingslashit( GROWTELE_URI ) . 'assets/',
-		'../assets/'                                  => trailingslashit( GROWTELE_URI ) . 'assets/',
-		'../sms/css/sms-nav.css'                      => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
+	$theme = trailingslashit( GROWTELE_URI );
+	$map   = array(
+		// Nested blog post (blogs/my-post/) uses one extra "../" — must run before shorter keys.
+		'../../../assets/'                            => $theme . 'assets/',
+		'../../sms/css/sms-nav.css'                   => $theme . 'pages/sms/css/sms-nav.css',
+		'../../assets/'                               => $theme . 'assets/',
+		'../assets/'                                  => $theme . 'assets/',
+		'../sms/css/sms-nav.css'                      => $theme . 'pages/sms/css/sms-nav.css',
 		'../SMS Grwtl/css/sms-nav.css'                => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
 		'../pages/sms/css/sms-nav.css'                => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
 		'SMS Grwtl/css/sms-nav.css'                   => trailingslashit( GROWTELE_URI ) . 'pages/sms/css/sms-nav.css',
@@ -324,13 +373,9 @@ function growtele_filter_static_html( $html ) {
  */
 function growtele_encode_static_asset_urls( $html ) {
 	return preg_replace_callback(
-		'/\b((?:src|href|data-[a-z0-9-]+)=["\'])([^"\']+)(["\'])/i',
+		'/\b((?:src|href|data-benefit-img)=["\'])([^"\']+)(["\'])/i',
 		function ( $matches ) {
 			$url = $matches[2];
-
-			if ( preg_match( '/\bdata-counter/i', $matches[1] ) ) {
-				return $matches[0];
-			}
 
 			if ( false !== growtele_convert_static_page_href( $url ) ) {
 				return $matches[0];
@@ -679,6 +724,11 @@ function growtele_request_static_page_slug() {
 	$path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
 	if ( '' === $path ) {
 		return '';
+	}
+
+	$nested = growtele_static_page_nested_paths();
+	if ( isset( $nested[ $path ] ) ) {
+		return $nested[ $path ];
 	}
 
 	$parts = explode( '/', $path );

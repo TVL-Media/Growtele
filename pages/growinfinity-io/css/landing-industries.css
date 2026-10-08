@@ -192,19 +192,19 @@
     transform-origin: bottom right !important;
   }
 
-  /* Card 4 — DLT Management (match Dashboard framing) */
+  /* Card 4 — DLT Management (dltt.png has extra canvas; scale + clip in shared visual slot) */
   .growtele-io-page .gt-industries__visual-img--education,
   .growtele-io-page .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__visual-img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img {
-    right: 0 !important;
-    bottom: 0 !important;
+    right: -48px !important;
+    bottom: -28px !important;
     width: auto !important;
-    height: 430px !important;
+    height: 560px !important;
     max-width: none !important;
-    max-height: 430px !important;
+    max-height: none !important;
     object-fit: contain !important;
-    object-position: bottom right !important;
+    object-position: 100% 100% !important;
     transform: none !important;
     transform-origin: bottom right !important;
   }
@@ -497,9 +497,9 @@
     z-index: 1;
     flex: 0 0 auto;
     width: 100% !important;
-    height: min(68vw, 280px) !important;
-    min-height: min(68vw, 280px) !important;
-    max-height: min(68vw, 280px) !important;
+    height: 280px !important;
+    min-height: 280px !important;
+    max-height: 280px !important;
     margin: 0;
     padding: 0 0 4px;
     overflow: hidden !important;

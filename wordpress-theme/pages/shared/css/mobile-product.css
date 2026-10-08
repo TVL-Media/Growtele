@@ -851,13 +851,31 @@
     font-size: var(--gt-text-base);
   }
 
+  .journey {
+    overflow-x: clip;
+  }
+
   .journey__body {
     display: flex;
     flex-direction: column;
     gap: 12px;
     min-height: 0 !important;
     height: auto !important;
-    overflow: visible !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+    position: relative;
+    contain: layout style;
+  }
+
+  /* Multi-phone journey: fixed slot — stable px height (vh shifts when mobile chrome moves) */
+  .journey__body:has(.journey__phone--a)::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: var(--journey-phone-slot-h, 480px);
+    min-height: var(--journey-phone-slot-h, 480px);
+    flex-shrink: 0;
+    pointer-events: none;
   }
 
   .journey__phone,
@@ -869,24 +887,30 @@
     left: auto !important;
     top: auto !important;
     right: auto !important;
-    width: min(360px, 94vw) !important;
-    max-width: none !important;
-    height: min(530px, 58vh) !important;
-    min-height: min(480px, 52vh) !important;
+    width: min(360px, 100%) !important;
+    max-width: 100% !important;
+    height: var(--journey-phone-slot-h, 480px) !important;
+    min-height: var(--journey-phone-slot-h, 480px) !important;
     margin: 0 auto;
     object-fit: contain;
     object-position: center top;
     pointer-events: none;
     transform: none !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
-  /* Multi-phone pages — match SMS single-phone sizing (no scale) */
-  .journey__phone--a.is-active,
-  .journey__phone--b.is-active,
-  .journey__phone--c.is-active,
-  .journey__phone--d.is-active {
+  /* Multi-phone pages — fixed mockup slot (stacked in one place) */
+  .journey__body:has(.journey__phone--a) .journey__phone--a,
+  .journey__body:has(.journey__phone--a) .journey__phone--b,
+  .journey__body:has(.journey__phone--a) .journey__phone--c,
+  .journey__body:has(.journey__phone--a) .journey__phone--d {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    margin-inline: auto !important;
     transform: none !important;
-    margin: 0 auto !important;
   }
 
   /* SMS uses a single phone image without is-active */
@@ -897,6 +921,23 @@
   }
 
   /* Multi-phone pages (Email, WhatsApp, RCS, Cloud Telephony) */
+  .journey__body:has(.journey__phone--a) .journey__phone--a:not(.is-active),
+  .journey__body:has(.journey__phone--a) .journey__phone--b:not(.is-active),
+  .journey__body:has(.journey__phone--a) .journey__phone--c:not(.is-active),
+  .journey__body:has(.journey__phone--a) .journey__phone--d:not(.is-active) {
+    display: block !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .journey__body:has(.journey__phone--a) .journey__phone.is-active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: none !important;
+  }
+
   .journey__phone--a:not(.is-active),
   .journey__phone--b:not(.is-active),
   .journey__phone--c:not(.is-active),
@@ -953,9 +994,19 @@
     display: flex !important;
     flex-direction: column !important;
     border-radius: 20px !important;
-    will-change: auto;
-    transition: none !important;
+    will-change: transform;
+    transition: transform 380ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     padding: 24px 20px 20px;
+    backface-visibility: hidden;
+  }
+
+  .journey.journey--scroll-stack .journey__phone {
+    backface-visibility: hidden;
+    transition: opacity 360ms ease, visibility 0s linear 360ms;
+  }
+
+  .journey.journey--scroll-stack .journey__phone.is-active {
+    transition: opacity 360ms ease, visibility 0s linear 0s;
   }
 
   .journey.journey--scroll-stack .journey-card h3 {
@@ -987,6 +1038,18 @@
 
   .journey.journey--scroll-stack {
     padding-bottom: var(--gt-space-section-y, 32px);
+  }
+
+  .journey.journey--scroll-stack .journey__body:has(.journey__phone--a) .journey__phone:not(.is-active) {
+    display: block !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .journey.journey--scroll-stack .journey__body:has(.journey__phone--a) .journey__phone.is-active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .journey.journey--scroll-stack .journey__phone:not(.is-active) {
@@ -2151,5 +2214,21 @@
   .faq__lead {
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* Desktop: split benefit titles — block lines only (hide br to avoid double gap) */
+@media (min-width: 1025px) {
+  .sms-page .benefits .benefit h3:has(.benefit-title__line) {
+    line-height: 1.12;
+  }
+
+  .sms-page .benefits .benefit h3:has(.benefit-title__line) .benefit-title__line {
+    display: block;
+    line-height: 1.12;
+  }
+
+  .sms-page .benefits .benefit h3:has(.benefit-title__line) br.gt-mobile-br {
+    display: none !important;
   }
 }

@@ -333,5 +333,17 @@
 		flex: 0 0 23px !important;
 		display: inline-flex !important;
 	}
+
+	br.gt-footer__copy-br {
+		display: block !important;
+		line-height: 0;
+		margin: 0;
+		padding: 0;
+		height: 0;
+	}
+}
+
+br.gt-footer__copy-br {
+	display: none;
 }
 

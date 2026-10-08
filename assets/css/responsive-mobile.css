@@ -462,8 +462,46 @@
     padding-bottom: 0;
   }
 
+  .gt-hero__bg {
+    background-color: #000;
+  }
+
+  /* Soft blend at the black / video seam (not a hard 50% cut) */
+  .gt-hero__bg::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    pointer-events: none;
+    bottom: calc(50svh - 48px);
+    max-height: none;
+    height: 96px;
+    background: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 6%,
+      rgba(0, 0, 0, 0.88) 22%,
+      rgba(0, 0, 0, 0.45) 48%,
+      transparent 100%
+    );
+  }
+
+  /* Video in bottom half; overlay + mask feather the top edge */
   .gt-hero__overlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 55%, rgba(0, 0, 0, 0.35) 100%);
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: calc(50svh + 20px);
+    max-height: calc(50dvh + 20px);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.52) 16%,
+      rgba(0, 0, 0, 0.22) 38%,
+      rgba(0, 0, 0, 0.06) 100%
+    );
   }
 
   .gt-hero__content {
@@ -518,11 +556,15 @@
   .gt-hero__trust-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 6px;
   }
 
   .gt-hero__trust-label::after {
     display: none;
+  }
+
+  .gt-hero__trust-label {
+    transform: translateY(18px);
   }
 
   .gt-outcomes {
@@ -530,7 +572,33 @@
   }
 
   .gt-hero__bg-video {
+    top: auto !important;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100% !important;
+    height: 50svh !important;
+    max-height: 50dvh;
+    min-height: 0;
+    object-fit: cover;
+    object-position: center center;
     transform: none !important;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.45) 5%,
+      rgba(0, 0, 0, 0.92) 16%,
+      #000 26%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.45) 5%,
+      rgba(0, 0, 0, 0.92) 16%,
+      #000 26%,
+      #000 100%
+    );
   }
 
   .gt-marquee {
@@ -540,7 +608,8 @@
 
   /* Seamless loop: -50% of track (duplicated logos), not JS pixel distance */
   .gt-marquee__track {
-    animation: gt-marquee-mobile var(--marquee-duration, 36s) linear infinite;
+    gap: 40px;
+    animation: gt-marquee-mobile 22s linear infinite;
   }
 
   @keyframes gt-marquee-mobile {
@@ -2054,7 +2123,7 @@
   }
 
   .gt-hero__trust-inner {
-    gap: 12px;
+    gap: 6px;
   }
 
   .gt-enterprise .gt-container {

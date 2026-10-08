@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GROWTELE_VERSION', '2.10.111' );
+define( 'GROWTELE_VERSION', '2.10.127' );
 define( 'GROWTELE_DIR', get_template_directory() );
 define( 'GROWTELE_URI', get_template_directory_uri() );
 

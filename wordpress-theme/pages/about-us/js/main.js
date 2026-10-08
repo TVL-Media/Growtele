@@ -158,11 +158,19 @@
   if (statEls.length && 'IntersectionObserver' in window) {
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function formatStat(value, el) {
-      var suffix = el.getAttribute('data-count-suffix') || '';
-      if (suffix.indexOf('B') !== -1) {
-        return Math.round(value) + suffix;
+    function normalizeCountSuffix(suffix) {
+      if (!suffix || suffix.indexOf('%') === -1) {
+        return suffix;
       }
+      try {
+        return decodeURIComponent(suffix);
+      } catch (err) {
+        return suffix.replace(/%2B/gi, '+');
+      }
+    }
+
+    function formatStat(value, el) {
+      var suffix = normalizeCountSuffix(el.getAttribute('data-count-suffix') || '');
       return Math.round(value) + suffix;
     }
 

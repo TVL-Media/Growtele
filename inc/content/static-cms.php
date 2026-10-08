@@ -10,6 +10,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Footer copyright HTML with mobile line break before "All rights reserved."
+ *
+ * @param string $plain Plain copyright line from CMS or defaults.
+ * @return string Safe HTML for .gt-footer__copy.
+ */
+function growtele_footer_copyright_inner_html( $plain ) {
+	$plain = trim( wp_strip_all_tags( (string) $plain ) );
+
+	if ( preg_match( '/^(.+?\.\s*)(All rights reserved\.?\s*)$/iu', $plain, $matches ) ) {
+		return esc_html( trim( $matches[1] ) ) . '<br class="gt-footer__copy-br" aria-hidden="true"> ' . esc_html( trim( $matches[2] ) );
+	}
+
+	return esc_html( $plain );
+}
+
+/**
  * Product page slugs managed under products.* CMS keys.
  *
  * @return string[]
@@ -826,8 +842,14 @@ function growtele_apply_shared_static_cms( $html ) {
 	}
 
 	if ( growtele_content_is_overridden( 'footer.copyright' ) ) {
-		$copy = growtele_get_content( 'footer.copyright', 'Growtele © 2026. All rights reserved.' );
-		$html = str_replace( 'Growtele &copy; 2026. All rights reserved.', esc_html( $copy ), $html );
+		$copy  = growtele_get_content( 'footer.copyright', 'Growtele © 2026. All rights reserved.' );
+		$inner = growtele_footer_copyright_inner_html( $copy );
+		$html  = preg_replace(
+			'#<p class="gt-footer__copy">.*?</p>#s',
+			'<p class="gt-footer__copy">' . $inner . '</p>',
+			$html,
+			1
+		);
 	}
 
 	$social = growtele_array_get( growtele_content_get_defaults(), 'footer.social', array() );

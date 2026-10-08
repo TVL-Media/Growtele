@@ -30,7 +30,7 @@ return array(
 		),
 		'connecting'  => array(
 			'title'        => 'Connecting Businesses Through Smarter Communication',
-			'description'  => 'Growtele is a cloud communication platform built to simplify customer engagement. We help businesses deliver meaningful conversations through messaging, voice, email, and automation?all from one powerful platform.',
+			'description'  => 'Growtele is a cloud communication platform built to simplify customer engagement. We help businesses deliver meaningful conversations through messaging, voice, email, and automation—all from one powerful platform.',
 			'stat_1'       => '36B+',
 			'stat_1_label' => 'Messages Delivered Globally',
 			'stat_2'       => '500+',

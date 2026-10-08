@@ -1162,8 +1162,8 @@ main {
   position: absolute;
   left: calc(var(--sms-inset) + 657px);
   top: 71px;
-  width: min(780px, calc(100vw - var(--sms-inset) - 657px - 24px));
-  max-width: 780px;
+  width: min(666px, calc(100vw - var(--sms-inset) - 657px - 24px));
+  max-width: 666px;
   font-family: var(--display);
   font-size: 22px;
   font-weight: 400;
@@ -1742,4 +1742,10 @@ main {
 .faq__title .gt-word,
 .faq__lead .gt-word {
   font-family: "Tomato Grotesk", sans-serif;
+}
+
+@media (min-width: 1025px) {
+  .benefits .benefit h3 {
+    margin-bottom: 12px;
+  }
 }
