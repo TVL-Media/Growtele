@@ -2,3 +2,4 @@
 wordpress-theme/
 dist/
 .tmp-*
+__pycache__/

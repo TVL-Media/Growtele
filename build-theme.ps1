@@ -24,7 +24,7 @@ if (Test-Path $out) {
     Remove-Item $out -Recurse -Force
 }
 
-$exclude = @(".git", "wordpress-theme", "node_modules", ".cursor")
+$exclude = @(".git", "wordpress-theme", "node_modules", ".cursor", "docs")
 Get-ChildItem $root -Force | Where-Object {
     $exclude -notcontains $_.Name
 } | Copy-Item -Destination $out -Recurse -Force

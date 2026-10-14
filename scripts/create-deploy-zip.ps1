@@ -9,7 +9,7 @@ $outZip = Join-Path $outDir "growtele-deploy-$stamp.zip"
 
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
-$excludeDirNames = @('.git', '.cursor', 'node_modules', 'dist', '.tmp-contact-loc', '.tmp-health-cards', '.tmp-loc-imgs')
+$excludeDirNames = @('.git', '.cursor', 'node_modules', 'dist', 'docs', '.tmp-contact-loc', '.tmp-health-cards', '.tmp-loc-imgs')
 $excludeFilePatterns = @('*.zip')
 
 $files = Get-ChildItem -Path $root -Recurse -File -ErrorAction SilentlyContinue | Where-Object {
