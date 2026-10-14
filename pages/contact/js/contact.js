@@ -139,13 +139,13 @@
   const form = document.getElementById('contactForm');
 
   var contactErrors = Object.assign({
-    first_name: 'First name is required',
-    last_name: 'Last name is required',
-    email: 'Email is required',
-    email_invalid: 'Please enter a valid email',
-    phone: 'Phone number is required',
-    phone_invalid: 'Please enter a valid 10-digit phone number',
-    terms: 'You must agree to the terms'
+    first_name: 'Enter your first name',
+    last_name: 'Enter your last name',
+    email: 'Enter your email',
+    email_invalid: 'Enter a valid work email',
+    phone: 'Enter your phone number',
+    phone_invalid: 'Enter a valid 10-digit Indian phone number',
+    terms: 'Accept the terms to proceed'
   }, window.GROWTELE_CMS_CONTACT_ERRORS || {});
 
   if (form) {

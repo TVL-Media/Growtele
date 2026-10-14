@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 return array(
 	'header' => array(
-		'cta_text' => "Let's Get Started",
+		'cta_text' => "Book a Demo",
 		'cta_url'  => '', // Resolved at runtime via growtele_get_page_url( 'contact' ) when empty.
 	),
 	'nav' => array(
@@ -22,28 +22,28 @@ return array(
 		'mega'      => array(
 			'sms'             => array(
 				'title' => 'SMS',
-				'desc'  => 'Powerful SMS solutions that connect businesses with customers',
+				'desc'  => 'Bulk SMS for OTPs, alerts, and promotions, all DLT-compliant',
 			),
 			'email'           => array(
-				'title' => 'E-Mail',
-				'desc'  => 'Engage customers with personalized, reliable emails that drive conversations',
+				'title' => 'Email',
+				'desc'  => 'Transactional and promotional emails delivered through Email API and SMTP',
 			),
 			'cloud-telephony' => array(
-				'title' => 'Cloud Telephony',
-				'desc'  => 'Connect, engage, and support customers with powerful cloud-based calling',
+				'title' => 'Voice',
+				'desc'  => 'IVR, number masking, missed call services, and outbound calling (OBD)',
 			),
 			'whatsapp'        => array(
 				'title' => 'WhatsApp',
-				'desc'  => 'Connect with customers on WhatsApp through engaging conversations',
+				'desc'  => 'WhatsApp Business Platform for alerts, sales, and live support',
 			),
 			'rcs'             => array(
 				'title' => 'RCS',
-				'desc'  => 'RCS is the next generation of business messaging that transforms.',
+				'desc'  => 'RCS Business Messaging with verified sender IDs and rich media',
 			),
 		),
 		'feature'   => array(
-			'title' => 'True Market Leaders for CPass',
-			'desc'  => 'True Market Leaders in CPaaS — empowering businesses with seamless, scalable, and intelligent customer communications.',
+			'title' => 'Every Channel. One Platform.',
+			'desc'  => 'Reach every customer on SMS, WhatsApp, RCS, Email, and Voice from one CPaaS platform built for enterprise traffic.',
 		),
 	),
 	'contact_email' => 'enquiry@growtele.com',

@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'brand_description' => "Growtele's global network solutions enable every business sector to optimize their business across the globe.",
+	'brand_description' => "Growtele helps businesses in every sector reach customers on SMS, WhatsApp, RCS, Email, and Voice worldwide.",
 	'get_in_touch_image' => array(
 		'attachment_id' => 0,
 		'url'           => '',
@@ -31,17 +31,17 @@ return array(
 					'slug'  => 'sms',
 				),
 				array(
-					'label' => 'E-Mail',
+					'label' => 'Email',
 					'url'   => '',
 					'slug'  => 'email',
 				),
 				array(
-					'label' => 'Cloud Telephony',
+					'label' => 'Voice',
 					'url'   => '',
 					'slug'  => 'cloud-telephony',
 				),
 				array(
-					'label' => 'Whatsapp',
+					'label' => 'WhatsApp',
 					'url'   => '',
 					'slug'  => 'whatsapp',
 				),
@@ -120,7 +120,7 @@ return array(
 			'slug'  => 'privacy-policy',
 		),
 		array(
-			'label' => 'Terms & Condition',
+			'label' => 'Terms &amp; Conditions',
 			'url'   => '',
 			'slug'  => 'terms-and-condition',
 		),
@@ -130,7 +130,7 @@ return array(
 			'slug'  => 'security',
 		),
 		array(
-			'label' => 'Partners Term of Use',
+			'label' => 'Partner Terms of Use',
 			'url'   => '',
 			'slug'  => 'partners-term-of-use',
 		),

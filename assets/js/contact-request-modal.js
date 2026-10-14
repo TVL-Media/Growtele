@@ -144,7 +144,7 @@
 
     root.innerHTML =
       '<div class="gt-contact-request-modal__backdrop" data-gt-contact-modal-close tabindex="-1"></div>' +
-      '<div class="gt-contact-request-modal__panel" role="dialog" aria-modal="true" aria-label="Talk to our experts">' +
+      '<div class="gt-contact-request-modal__panel" role="dialog" aria-modal="true" aria-label="Talk to an Expert">' +
       '<button type="button" class="gt-contact-request-modal__close" data-gt-contact-modal-close aria-label="Close">&times;</button>' +
       '<div class="contact-split contact-split--modal">' +
       '<div class="contact-split__inner">' +
@@ -174,7 +174,7 @@
       '<input type="text" id="gtContactModalCompany" name="company" placeholder="Enter Your Company Name">' +
       '</div>' +
       '<div class="contact-form__field">' +
-      '<label for="gtContactModalEmail">Business E-Mail*</label>' +
+      '<label for="gtContactModalEmail">Business Email*</label>' +
       '<input type="email" id="gtContactModalEmail" name="email" placeholder="Enter Your Email Address" required>' +
       '</div>' +
       '<div class="contact-form__field">' +
@@ -193,8 +193,8 @@
       '</div>' +
       '</div>' +
       '<div class="contact-form__field">' +
-      '<label for="gtContactModalQuery">About Your Query</label>' +
-      '<textarea id="gtContactModalQuery" name="query" rows="4" placeholder="Tell us about your communication needs - volumes, channels, goals ..."></textarea>' +
+      '<label for="gtContactModalQuery">Your Requirement</label>' +
+      '<textarea id="gtContactModalQuery" name="query" rows="4" placeholder="Tell us your use case, preferred channels, and expected volumes ..."></textarea>' +
       '</div>' +
       '<div class="contact-form__terms">' +
       '<input type="checkbox" id="gtContactModalTerms" name="terms" required>' +
@@ -209,7 +209,7 @@
       '">Privacy Policy</a>' +
       '</label>' +
       '</div>' +
-      '<button type="submit" class="contact-form__submit">Submit Request</button>' +
+      '<button type="submit" class="contact-form__submit">Contact Sales</button>' +
       '</form>' +
       '</div>' +
       '</div>' +

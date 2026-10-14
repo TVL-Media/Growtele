@@ -4,28 +4,28 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
+      title: 'Send admission updates, fee due reminders, attendance alerts, and exam results by SMS using DLT-approved templates and headers.',
+      desc: 'Admission updates, fee reminders, and exam alerts by SMS that reach any parent\'s phone.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/30703af0c6c8f61ff5799250e94770fc6686ce87.png'
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
+      title: 'Answer admission enquiries on WhatsApp, share course brochures and fee payment links, and book counselling sessions in-chat.',
+      desc: 'Admission enquiries, course brochures, fee links, and counselling in one WhatsApp chat.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/f4c9cd0dcc35e1e5cd9f4d985a110e8c0f156ca9.png'
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
+      title: 'Capture admission leads through missed call services, run IVR helplines, and call parents automatically about absences.',
+      desc: 'Missed call enquiries, IVR admission helplines, and automated absence alerts to parents by voice.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d2e40ce6abd087dea1e51d92704b5bab4466537c.png'
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
+      title: 'Promote courses in verified RCS carousels showing campus photos, fee structures, and one-tap buttons to apply or visit.',
+      desc: 'Verified RCS course carousels with one-tap buttons to apply or book a campus visit.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/6fc904acaee442868cb55b252ca0d29c4b7cd911.png'
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
+      title: 'Email offer letters, fee receipts, timetables, and report cards, plus monthly newsletters for students and their parents.',
+      desc: 'Offer letters, fee receipts, report cards, and newsletters delivered by Email to families.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-624-1.png'
     }
   };

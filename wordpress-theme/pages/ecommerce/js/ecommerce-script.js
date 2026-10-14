@@ -4,28 +4,28 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
+      title: 'Send COD confirmations, shipping updates, and delivery OTPs on DLT-compliant SMS that reaches every shopper, including basic phones.',
+      desc: 'Send COD confirmations, shipping alerts, and delivery OTPs on DLT-compliant bulk SMS.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/CT-SMS4.png'
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
+      title: 'Recover abandoned carts, share WhatsApp catalogs, accept in-chat UPI payments, and confirm COD orders through one-tap replies.',
+      desc: 'Recover abandoned carts, share product catalogs, and confirm COD orders inside WhatsApp.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/998e87f979d46805af961718f0555f9d4cf4fce9.png'
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
+      title: 'Confirm COD orders through automated calls, mask rider-customer phone numbers, and run IVR for order status enquiries.',
+      desc: 'Confirm COD orders by call, mask rider-customer numbers, and run IVR order support through Voice.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/347edeac97c95712bb12d845794d540a5a547d5d.png'
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
+      title: 'Send RCS product carousels and cart reminders featuring images and buy buttons from verified senders, plus SMS fallback.',
+      desc: 'Send product carousels and cart reminders with buy buttons from a verified RCS sender.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/b9a94c51b4f40c095c9ad131f2984f9b6efdd6c6.png'
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
+      title: 'Deliver order confirmations, GST invoices, and cart recovery emails that reach inboxes, including open and click analytics.',
+      desc: 'Send GST invoices, order updates, and abandoned cart reminders to your shoppers by Email.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/EMAIL.png'
     }
   };

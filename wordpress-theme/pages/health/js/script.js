@@ -4,28 +4,28 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver secure patient communication through SMS with appointment reminders, health alerts and two-way engagement.',
-      desc: 'Engage patients with appointment reminders, health updates, and real-time support on SMS.',
+      title: 'Send appointment reminders and lab report notifications on SMS, and let patients reply to confirm or reschedule.',
+      desc: 'Send appointment reminders, lab report notifications, and patient portal OTPs on SMS.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d9ab14e4c7628bbd2da58c881ea7cff7be5d697e.png'
     },
     whatsapp: {
-      title: 'Deliver personalized patient care through WhatsApp with appointment booking, prescription updates and instant assistance.',
-      desc: 'Engage patients with appointment confirmations, health tips, and real-time support on WhatsApp.',
+      title: 'Let patients book appointments, get prescription refills, and receive lab reports and invoices inside one WhatsApp chat.',
+      desc: 'Share appointment confirmations, lab reports, and prescription refill reminders on WhatsApp.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-688.png'
     },
     telephony: {
-      title: 'Deliver reliable healthcare communication through Cloud Telephony with voice reminders and automated patient support.',
-      desc: 'Engage patients with voice-assisted calls, follow-ups, and real-time support on Cloud Telephony.',
+      title: 'Run IVR for appointment booking, send automated voice reminders, and mask phone numbers on doctor-patient calls.',
+      desc: 'Use IVR appointment booking, voice reminders in local languages, and number masking on Voice.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-544.png'
     },
     rcs: {
-      title: 'Deliver rich healthcare communication through RCS with interactive appointment cards and personalized health updates.',
-      desc: 'Engage patients with rich media messages, reminders, and real-time support on RCS.',
+      title: 'Send RCS appointment cards with doctor details, clinic maps, and confirm or reschedule buttons from verified senders.',
+      desc: 'Send appointment cards with doctor details and confirm buttons to patients on RCS.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-543.png'
     },
     email: {
-      title: 'Deliver secure healthcare communication through E-mail with test results, care plans and personalized patient updates.',
-      desc: 'Engage patients with health reports, appointment details, and real-time support on E-mail.',
+      title: 'Email lab reports, discharge summaries, and invoices to patients, with SPF, DKIM, and DMARC protecting every message.',
+      desc: 'Send lab reports, visit summaries, care plans, and invoices securely to patients by Email.',
       image: 'assets/Health X EMAIL.png'
     }
   };

@@ -20,10 +20,10 @@ $gt_cta_h     = absint( $gt_cta_image['height'] ?? 351 );
 		</div>
 		<div class="gt-cta__content" data-animate="fade-up">
 			<h2>
-				<?php echo esc_html( growtele_get_content( 'shared.cta.heading_line_1', 'Power Smarter Customer' ) ); ?><br>
-				<?php echo esc_html( growtele_get_content( 'shared.cta.heading_line_2', 'Conversations at Scale' ) ); ?>
+				<?php echo esc_html( growtele_get_content( 'shared.cta.heading_line_1', 'Reach Every Customer' ) ); ?><br>
+				<?php echo esc_html( growtele_get_content( 'shared.cta.heading_line_2', 'on the Right Channel' ) ); ?>
 			</h2>
-			<p><?php echo esc_html( growtele_get_content( 'shared.cta.description', 'Engage customers across SMS, WhatsApp, RCS, Email, and Voice through one unified communication platform built for reliability, performance, and growth' ) ); ?></p>
+			<p><?php echo esc_html( growtele_get_content( 'shared.cta.description', 'Send OTPs, alerts, promotions, and support messages on SMS, WhatsApp, RCS, Email, and Voice from one dependable platform built for enterprise volumes' ) ); ?></p>
 			<a href="<?php echo esc_url( growtele_get_shared_cta_url() ); ?>" class="gt-btn gt-btn--navy">
 				<?php echo esc_html( growtele_get_content( 'shared.cta.button_text', 'Get Started' ) ); ?>
 			</a>

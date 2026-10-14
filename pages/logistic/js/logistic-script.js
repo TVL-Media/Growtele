@@ -4,28 +4,28 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
+      title: 'Send dispatch updates, out-for-delivery alerts, and delivery OTPs by SMS with DLT-approved templates that reach any mobile phone.',
+      desc: 'Shipment updates, delivery OTPs, and NDR alerts by SMS that reach any customer\'s phone.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/048f9c95d92484c5b83adf2cab1aab70c19a1bb9.png'
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
+      title: 'Share tracking links on WhatsApp, and let customers reschedule failed deliveries or update delivery addresses within the chat.',
+      desc: 'Tracking links, NDR reschedules, and address corrections in a single WhatsApp conversation.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/75dfa533b29fdf1be34332baa54751442a8ee9b7.png'
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
+      title: 'Connect riders with customers over masked calls, and confirm NDR reattempts and COD deliveries through automated IVR.',
+      desc: 'Number masking for rider calls, plus automated IVR for NDR reattempts and COD order confirmation.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/e1c09164fdad96522a0dbeb6c8054148660caacb.png'
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
+      title: 'Send branded RCS updates with live tracking, delivery slot pickers, and one-tap buttons to reschedule or redirect parcels.',
+      desc: 'Verified RCS updates with live tracking, slot pickers, and one-tap reschedule buttons.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/7326829650997d9f4748051752355347b07f16f6.png'
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
+      title: 'Email shipping confirmations, GST invoices, proof of delivery, and return labels to every customer and business account.',
+      desc: 'Shipping confirmations, invoices, proof of delivery, and return labels, all sent by Email.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-624.png'
     }
   };

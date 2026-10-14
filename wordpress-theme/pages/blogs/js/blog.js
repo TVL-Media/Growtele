@@ -15,7 +15,7 @@
       categoryClass: 'tag--sms',
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
-      excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
+      excerpt: 'Five SMS platform features that help you segment audiences, automate journeys, personalize messages, and measure results.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
     },
     {
@@ -25,17 +25,17 @@
       categoryClass: 'tag--sms',
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
-      excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
+      excerpt: 'Your existing customers are the most likely to buy again, yet many brands overlook them. Here\'s how business SMS keeps them coming back.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png',
     },
     {
       id: 3,
       page: 1,
-      category: 'Whatsapp API',
+      category: 'WhatsApp API',
       categoryClass: 'tag--whatsapp',
       date: '04th June 2026',
       title: 'The New Era of Customer Communication',
-      excerpt: 'Customers expect instant, personalized, and convenient communication. Traditional channels often struggle to deliver the speed......',
+      excerpt: 'Customers expect instant, personalized replies on WhatsApp and RCS. Here\'s why traditional channels are struggling to keep pace.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png',
       whatsapp: true
     },
@@ -46,7 +46,7 @@
       categoryClass: 'tag--sms',
       date: '22nd May 2026',
       title: 'How to: Get Started With SMS for Shipping + Delivery Notifications',
-      excerpt: "SMS provides incredible advantages if you're shipping and making deliveries. Here are only a few matters you can do with....",
+      excerpt: "Use SMS to confirm orders, share tracking links, collect delivery OTPs, and cut failed deliveries. Here's how to start.",
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png',
     },
     {
@@ -56,7 +56,7 @@
       categoryClass: 'tag--sms',
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
-      excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
+      excerpt: 'Five SMS platform features that help you segment audiences, automate journeys, personalize messages, and measure results.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
     },
     {
@@ -66,7 +66,7 @@
       categoryClass: 'tag--sms',
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
-      excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
+      excerpt: 'Your existing customers are the most likely to buy again, yet many brands overlook them. Here\'s how business SMS keeps them coming back.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png',
     },
     {
@@ -76,7 +76,7 @@
       categoryClass: 'tag--sms',
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
-      excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
+      excerpt: 'Five SMS platform features that help you segment audiences, automate journeys, personalize messages, and measure results.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
       badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
@@ -84,11 +84,11 @@
     {
       id: 8,
       page: 2,
-      category: 'Whatsapp API',
+      category: 'WhatsApp API',
       categoryClass: 'tag--whatsapp',
       date: '04th June 2026',
       title: 'The New Era of Customer Communication',
-      excerpt: 'Customers expect instant, personalized, and convenient communication. Traditional channels often struggle to deliver the speed......',
+      excerpt: 'Customers expect instant, personalized replies on WhatsApp and RCS. Here\'s why traditional channels are struggling to keep pace.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png',
       overlayClass: 'overlay--465',
       badge: { type: 'image69', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png' },
@@ -101,7 +101,7 @@
       categoryClass: 'tag--sms',
       date: '22nd May 2026',
       title: 'How to: Get Started With SMS for Shipping + Delivery Notifications',
-      excerpt: "SMS provides incredible advantages if you're shipping and making deliveries. Here are only a few matters you can do with....",
+      excerpt: "Use SMS to confirm orders, share tracking links, collect delivery OTPs, and cut failed deliveries. Here's how to start.",
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png',
       overlayClass: 'overlay--466',
       badge: { type: 'ewee6', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png' }
@@ -113,7 +113,7 @@
       categoryClass: 'tag--sms',
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
-      excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
+      excerpt: 'Your existing customers are the most likely to buy again, yet many brands overlook them. Here\'s how business SMS keeps them coming back.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png',
       overlayClass: 'overlay--464',
       badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png' }
@@ -125,7 +125,7 @@
       categoryClass: 'tag--sms',
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
-      excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
+      excerpt: 'Five SMS platform features that help you segment audiences, automate journeys, personalize messages, and measure results.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
       badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
@@ -137,7 +137,7 @@
       categoryClass: 'tag--sms',
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
-      excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
+      excerpt: 'Your existing customers are the most likely to buy again, yet many brands overlook them. Here\'s how business SMS keeps them coming back.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--471',
       badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
@@ -145,11 +145,11 @@
     {
       id: 13,
       page: 3,
-      category: 'Whatsapp API',
+      category: 'WhatsApp API',
       categoryClass: 'tag--whatsapp',
       date: '04th June 2026',
       title: 'The New Era of Customer Communication',
-      excerpt: 'Customers expect instant, personalized, and convenient communication. Traditional channels often struggle to deliver the speed......',
+      excerpt: 'Customers expect instant, personalized replies on WhatsApp and RCS. Here\'s why traditional channels are struggling to keep pace.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png',
       overlayClass: 'overlay--465',
       badge: { type: 'image69', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-599.png' },
@@ -162,7 +162,7 @@
       categoryClass: 'tag--sms',
       date: '22nd May 2026',
       title: 'How to: Get Started With SMS for Shipping + Delivery Notifications',
-      excerpt: "SMS provides incredible advantages if you're shipping and making deliveries. Here are only a few matters you can do with....",
+      excerpt: "Use SMS to confirm orders, share tracking links, collect delivery OTPs, and cut failed deliveries. Here's how to start.",
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png',
       overlayClass: 'overlay--466',
       badge: { type: 'ewee6', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-598.png' }
@@ -174,7 +174,7 @@
       categoryClass: 'tag--sms',
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
-      excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
+      excerpt: 'Five SMS platform features that help you segment audiences, automate journeys, personalize messages, and measure results.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
       badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
@@ -186,7 +186,7 @@
       categoryClass: 'tag--sms',
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
-      excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
+      excerpt: 'Your existing customers are the most likely to buy again, yet many brands overlook them. Here\'s how business SMS keeps them coming back.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png',
       overlayClass: 'overlay--464',
       badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-3.png' }
@@ -198,7 +198,7 @@
       categoryClass: 'tag--sms',
       date: '16th June 2026',
       title: 'Top 5 advanced features for scalable SMS',
-      excerpt: 'Scalable SMS service lets the business benefit from one of the innovative tools for engagement for consumers with the source.',
+      excerpt: 'Five SMS platform features that help you segment audiences, automate journeys, personalize messages, and measure results.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--409',
       badge: { type: 'ewee1', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }
@@ -210,7 +210,7 @@
       categoryClass: 'tag--sms',
       date: '11th June 2026',
       title: 'Using A2P Messaging to Retain Existing Customers',
-      excerpt: 'The facts are there staring businesses in the face year after year yet still so many ignore them: their existing customers are most likely....',
+      excerpt: 'Your existing customers are the most likely to buy again, yet many brands overlook them. Here\'s how business SMS keeps them coming back.',
       bgImage: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png',
       overlayClass: 'overlay--471',
       badge: { type: 'ewee4', src: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Blog-02-Short.png' }

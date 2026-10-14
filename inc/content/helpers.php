@@ -193,6 +193,8 @@ function growtele_content_link_label_slugs() {
 		'Terms and Condition'   => 'terms-and-condition',
 		'Security'              => 'security',
 		'Partners Term of Use'  => 'partners-term-of-use',
+		'Terms & Conditions'    => 'terms-and-condition',
+		'Partner Terms of Use'  => 'partners-term-of-use',
 		'API Documentation'     => 'api-documentation',
 		'Pricing'               => 'pricing',
 	);

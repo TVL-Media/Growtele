@@ -4,28 +4,28 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
+      title: 'Send OTPs, transaction alerts, and EMI reminders on DLT-compliant SMS that reaches every handset, even without mobile internet.',
+      desc: 'Send OTPs, debit and credit alerts, and EMI reminders on DLT-approved SMS templates.',
       image: 'assets/ReTail X SMS.png'
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
+      title: 'Collect KYC documents, send EMI reminders, and close overdue collections through UPI payments inside the WhatsApp conversation.',
+      desc: 'Send e-statements, EMI reminders, and UPI collection links customers can pay on WhatsApp.',
       image: 'assets/ReTail x Whatsapp.png'
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
+      title: 'Handle IVR balance enquiries, Voice OTPs, and masked collection calls, with recording, from one integrated Voice platform.',
+      desc: 'Run IVR banking, Voice OTP, missed call balance checks, and automated EMI reminder calls on Voice.',
       image: 'assets/ReTail X Cloud Tele.png'
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
+      title: 'Send RCS fraud notifications and credit card promotions from a verified, branded sender ID, with automatic SMS fallback.',
+      desc: 'Send verified, branded RCS credit card offers and fraud alerts with tap-to-act buttons.',
       image: 'assets/ReTail X RCS.png'
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
+      title: 'Deliver e-statements, loan agreements, and KYC requests by Email, authenticated through SPF, DKIM, DMARC for inbox placement.',
+      desc: 'Send monthly e-statements, loan documents, and KYC requests by Email that reach the inbox.',
       image: 'assets/ReTail X EMAIL.png'
     }
   };

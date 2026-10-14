@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $shared_industry_cta = array(
-	'heading'     => "              Power Smarter Customer<br>\n              Conversations at Scale",
-	'description' => 'Engage customers across SMS, WhatsApp, RCS, Email, and Voice through one unified communication platform built for reliability, performance, and growth',
+	'heading'     => "              Reach Every Customer<br>\n              on the Right Channel",
+	'description' => 'Send OTPs, alerts, promotions, and support messages on SMS, WhatsApp, RCS, Email, and Voice from one dependable platform built for enterprise volumes',
 	'button_text' => 'Get Started',
 	'button_url'  => '',
 );
@@ -24,7 +24,7 @@ $shared_hero_cta = array(
 
 $shared_faq_book = array(
 	'title'       => 'Book a 15 Min Call',
-	'description' => 'If you have any questions, just book a 15-min call with us before subscribing',
+	'description' => 'Got questions? Book a 15-min call and we\'ll walk you through the right setup.',
 	'button_text' => 'Book a Free Call',
 );
 
@@ -34,33 +34,33 @@ return array(
 			$shared_hero_cta,
 			array(
 				'title' => 'Transform Every Shopping Experience into Customer Loyalty',
-				'desc'  => 'Deliver personalized promotions, real-time order updates, loyalty campaigns, and post-purchase engagement across SMS, WhatsApp, RCS, Email, and Voice.',
+				'desc'  => 'Send festive offers, order updates, loyalty points, and back-in-stock alerts on SMS, WhatsApp, RCS, Email, and Voice, all from a single dashboard.',
 			)
 		),
 		'channels' => array(
-			'title'    => 'Retail Communication Across Every Channel',
-			'subtitle' => 'Deliver personalized shopping experiences through WhatsApp, SMS, RCS, Email, and Cloud Telephony.',
+			'title'    => 'Retail Conversations Across Each Channel',
+			'subtitle' => 'Deliver promotions and order updates where shoppers read: WhatsApp, SMS, RCS, Email, and Voice.',
 		),
 		'growth'    => array(
 			'title'    => 'Driving Measurable Growth for Modern Retail Brands',
-			'subtitle' => 'Empower every customer interaction with personalized communication, real-time engagement, and intelligent automation that drives higher conversions.',
+			'subtitle' => 'Run targeted campaigns, answer shopper questions instantly, and keep customers returning with loyalty points, member-only offers, and festive deals.',
 		),
 		'use_cases' => array(
-			'title' => 'Communication Use Cases for Every Retail Scenario',
+			'title' => 'Retail Use Cases That Bring Shoppers Back to Buy',
 		),
 		'faq'      => array(
 			'title' => 'Everything You Need to Know<br>About Retail Communication',
-			'intro' => 'Find answers to common questions about retail messaging, personalized campaigns, customer engagement, order updates, loyalty programs.',
+			'intro' => 'Get answers on cart recovery, COD confirmation, order updates, loyalty offers, store integrations, and the channels we support.',
 			'book'  => $shared_faq_book,
 			'items' => array(
 				array(
-					'question' => 'How can Growtele improve customer engagement for retailers?',
-					'answer'   => 'Growtele enables retailers to engage customers with personalized campaigns, product recommendations, real-time notifications, and interactive conversations across WhatsApp, SMS, RCS, Email, and Voice.',
+					'question' => 'How does Growtele help retail brands win more repeat sales?',
+					'answer'   => 'Retailers send targeted promotions, pickup notifications, cart reminders, and loyalty messages across WhatsApp, SMS, RCS, Email, and Voice with Growtele, and answer shopper questions from one inbox.',
 				),
 				array( 'question' => 'Which communication channels does Growtele support?' ),
 				array( 'question' => 'Can Growtele automate order and delivery updates?' ),
 				array( 'question' => 'Does Growtele help recover abandoned carts?' ),
-				array( 'question' => 'Is Growtele suitable for both online and offline retailers?' ),
+				array( 'question' => 'Does Growtele work for online stores and in-store retail?' ),
 			),
 		),
 		'cta'      => $shared_industry_cta,
@@ -70,29 +70,29 @@ return array(
 			$shared_hero_cta,
 			array(
 				'title' => 'Transform Every Patient Interaction into Better Care Experiences',
-				'desc'  => 'Deliver appointment reminders, OTP verification, prescription updates, lab reports, vaccination alerts, and patient engagement across WhatsApp, SMS, RCS, Email, and Voice.',
+				'desc'  => 'Send appointment reminders, lab reports, prescription refill alerts, vaccination due dates, and teleconsultation links to patients on WhatsApp, SMS, RCS, Email, and Voice.',
 			)
 		),
 		'channels' => array(
 			'title'    => '<span class="section-title__line">Healthcare Communication</span><span class="section-title__line">Across Every Channel</span>',
-			'subtitle' => 'Deliver secure patient communication through<br>WhatsApp, SMS, RCS, Email, and Cloud Telephony.',
+			'subtitle' => 'Share reminders and lab reports securely via<br>WhatsApp, SMS, RCS, Email, and IVR Voice calls.',
 		),
 		'growth'    => array(
 			'title'    => 'Driving Better Patient Engagement',
 			'subtitle' => 'Empower healthcare providers with secure communication, appointment reminders, automated updates, and personalized patient engagement.',
 		),
 		'use_cases' => array(
-			'title' => 'Communication Use Cases for Modern Healthcare',
+			'title' => 'Use Cases Across Every Step of Patient Care',
 		),
 		'faq'       => array(
-			'title' => 'Everything You Need to Know<br>About Banking Communication',
-			'intro' => 'Find answers about secure messaging, OTP authentication, transaction alerts, compliance, fraud prevention, and omnichannel banking.',
+			'title' => 'Everything You Need to Know<br>About Patient Communication',
+			'intro' => 'Find answers on appointment reminders, lab report delivery, prescription refills, patient data security, and supported channels.',
 			'book'  => $shared_faq_book,
 			'items' => array(
 				array( 'question' => 'How can Growtele improve patient communication?' ),
 				array( 'question' => 'Does Growtele support appointment reminders?' ),
 				array( 'question' => 'Can healthcare providers send lab reports securely?' ),
-				array( 'question' => 'Is patient data communication secure?' ),
+				array( 'question' => 'Is patient data secure with Growtele?' ),
 				array( 'question' => 'Which communication channels does Growtele support?' ),
 			),
 		),
@@ -102,31 +102,31 @@ return array(
 		'hero'     => array_merge(
 			$shared_hero_cta,
 			array(
-				'title' => 'Secure Every Banking Interaction with Intelligent Customer Communication',
-				'desc'  => 'Deliver secure OTPs, transaction alerts, loan updates, payment reminders, and personalized banking experiences through SMS, WhatsApp, RCS, Email, and Voice.',
+				'title' => 'Send OTPs, Transaction Alerts, and EMI Reminders Your Customers Trust',
+				'desc'  => 'Send OTPs, transaction alerts, EMI reminders, KYC updates, and fraud alerts on SMS, WhatsApp, RCS, Email, and Voice, with automatic fallback to SMS.',
 			)
 		),
 		'channels' => array(
 			'title'    => 'Banking Communication Across Every Channel',
-			'subtitle' => 'Deliver personalized shopping experiences through WhatsApp, SMS, RCS, Email, and Cloud Telephony.',
+			'subtitle' => 'Reach account holders on WhatsApp, SMS, RCS, Email, and Voice, with dependable SMS fallback.',
 		),
 		'growth'    => array(
-			'title'    => 'Driving Trust Through Smarter Banking Communication',
-			'subtitle' => 'Empower banks and financial institutions with secure customer communication, instant notifications, fraud alerts, and personalized engagement.',
+			'title'    => 'Bank Messages Your Account Holders Open and Trust',
+			'subtitle' => 'Banks, NBFCs, insurers, and fintechs rely on Growtele for OTPs, fraud alerts, EMI reminders, and account notifications customers trust.',
 		),
 		'use_cases' => array(
-			'title' => 'Communication Use Cases<br>for Modern Banking',
+			'title' => 'Everyday Use Cases for<br>Banks and Lenders',
 		),
 		'faq'      => array(
 			'title' => 'Everything You Need to Know<br>About Banking Communication',
-			'intro' => 'Find answers about secure messaging, OTP authentication, transaction alerts, compliance, fraud prevention, and omnichannel banking.',
+			'intro' => 'Find answers about OTP delivery, transaction alerts, DLT compliance, fraud notifications, data security, and supported channels.',
 			'book'  => $shared_faq_book,
 			'items' => array(
-				array( 'question' => 'How does Growtele improve customer communication for banks?' ),
-				array( 'question' => 'Does Growtele support secure OTP authentication?' ),
-				array( 'question' => 'Can Banks automate transaction notifications?' ),
-				array( 'question' => 'Does Growtele support regulatory and security requirements?' ),
-				array( 'question' => 'Which communication channels are available for banks?' ),
+				array( 'question' => 'How does Growtele help banks and lenders reach customers?' ),
+				array( 'question' => 'Can Growtele send OTPs for logins and payments?' ),
+				array( 'question' => 'Can banks automate debit and credit alerts?' ),
+				array( 'question' => 'Does Growtele meet DLT rules and banking security needs?' ),
+				array( 'question' => 'Which messaging channels can banks use with Growtele?' ),
 			),
 		),
 		'cta'      => $shared_industry_cta,
@@ -136,29 +136,29 @@ return array(
 			$shared_hero_cta,
 			array(
 				'title' => 'Transform Every Journey into Exceptional Travel Experiences',
-				'desc'  => 'Deliver booking confirmations, itinerary updates, check-in reminders, flight alerts, and personalized travel communication across WhatsApp, SMS, RCS, Email, and Voice.',
+				'desc'  => 'Send booking confirmations, PNR and flight status, check-in reminders, e-tickets, and refund status updates to travelers on WhatsApp, SMS, RCS, Email, and Voice.',
 			)
 		),
 		'channels' => array(
-			'title'    => 'Travel Communication Across Every Channel',
-			'subtitle' => 'Deliver timely travel updates and personalized experiences through WhatsApp, SMS, RCS, Email, and Cloud Telephony.',
+			'title'    => 'Travel Updates on Every Channel They Use',
+			'subtitle' => 'Reach travelers on whichever channel they check first: WhatsApp, SMS, RCS, Email, or automated Voice updates.',
 		),
 		'growth'    => array(
 			'title'    => 'Driving Seamless Travel Experiences',
-			'subtitle' => 'Keep travelers informed at every step with automated notifications, real-time updates, and personalized travel communication.',
+			'subtitle' => 'Automatic updates at each stage of the journey, from payment confirmation and web check-in to post-trip feedback surveys.',
 		),
 		'use_cases' => array(
-			'title' => 'Communication Use Cases<br>for Every Travel Journey',
+			'title' => 'Communication Use Cases<br>for Every Trip You Sell',
 		),
 		'faq'       => array(
 			'title' => 'Everything You Need to Know<br>About Travel Communication',
-			'intro' => 'Find answers about booking confirmations, travel alerts, itinerary updates, customer engagement, and omnichannel communication.',
+			'intro' => 'Answers to common questions about booking confirmations, flight alerts, check-in reminders, channels, and getting started.',
 			'book'  => $shared_faq_book,
 			'items' => array(
-				array( 'question' => 'How can Growtele improve travel communication?' ),
-				array( 'question' => 'Does Growtele support booking confirmations?' ),
-				array( 'question' => 'Can travelers receive real-time flight updates?' ),
-				array( 'question' => 'Which communication channels does Growtele support?' ),
+				array( 'question' => 'How does Growtele help travel brands and OTAs?' ),
+				array( 'question' => 'Can I send booking confirmations with PNR?' ),
+				array( 'question' => 'Can travelers get live flight status updates?' ),
+				array( 'question' => 'Which channels can Growtele send travel updates on?' ),
 			),
 		),
 		'cta'      => $shared_industry_cta,
@@ -167,24 +167,24 @@ return array(
 		'hero'     => array_merge(
 			$shared_hero_cta,
 			array(
-				'title' => 'Transform Every Shopping Journey Into Meaningful Customer Conversations',
-				'desc'  => 'Deliver personalized shopping experiences across WhatsApp, SMS, RCS, Email, and Cloud Telephony. Engage customers from product discovery to post-purchase support with intelligent, omnichannel communication.',
+				'title' => 'Recover Abandoned Carts, Confirm COD Orders, and Bring Shoppers Back',
+				'desc'  => 'Send abandoned cart reminders, COD confirmations, order tracking updates, and return alerts on WhatsApp, SMS, RCS, Email, and Voice. Reach shoppers from product discovery to post-purchase support.',
 			)
 		),
 		'channels' => array(
-			'title'    => 'Trusted by Growing<br>E-Commerce Brands',
-			'subtitle' => 'Helping online businesses increase engagement, recover abandoned carts, automate customer support, and boost repeat purchases through intelligent communication.',
+			'title'    => 'Channels Built for<br>E-commerce Brands',
+			'subtitle' => 'Recover abandoned carts, confirm COD orders, resolve support queries, and drive repeat purchases across WhatsApp, SMS, RCS, Email, and Voice automatically.',
 		),
 		'growth'    => array(
-			'title'    => 'Driving Measurable Growth for<br>Modern E-Commerce Brands',
-			'subtitle' => 'Turn every visitor into a loyal customer with personalized messaging, automated customer journeys, and real-time engagement.',
+			'title'    => 'Repeat Sales and Bigger Carts<br>for Online Retail Brands',
+			'subtitle' => 'Turn first-time visitors into repeat buyers with cart reminders, product suggestions, order updates, and loyalty offers.',
 		),
 		'use_cases' => array(
-			'title' => 'Communication Use Cases for<br>Every E-Commerce Journey',
+			'title' => 'Communication Use Cases for<br>Every Step of the Order',
 		),
 		'faq'       => array(
-			'title' => 'Everything You Need to Know About<br>E-Commerce Communication',
-			'intro' => 'Find answers to common questions about retail messaging, personalized campaigns, customer engagement, order updates, loyalty programs.',
+			'title' => 'Everything You Need to Know About<br>E-commerce Communication',
+			'intro' => 'Find answers on cart recovery, COD confirmation, order tracking, loyalty offers, store integrations, and the channels we support.',
 			'book'  => $shared_faq_book,
 			'items' => array(
 				array( 'question' => 'How does Growtele recover abandoned carts?' ),
@@ -200,31 +200,31 @@ return array(
 		'hero'     => array_merge(
 			$shared_hero_cta,
 			array(
-				'title' => 'Transform Every Learning Journey Into Meaningful Student Experiences',
-				'desc'  => 'Empower educational institutions with intelligent communication across WhatsApp, SMS, RCS, Email, and Cloud Telephony. Simplify admissions, engage students, automate notifications, and strengthen parent communication through one unified platform.',
+				'title' => 'Keep Students and Parents Informed, From Admission to Exam Results',
+				'desc'  => 'Answer admission enquiries, send fee reminders with payment links, share examination results, and alert parents about absences on WhatsApp, SMS, RCS, Email, and Voice, all from one dashboard built for schools, universities, and EdTech.',
 			)
 		),
 		'channels' => array(
-			'title'    => 'Trusted by Leading Educational Institutions',
-			'subtitle' => 'Helping schools, colleges, universities, and EdTech platforms improve student engagement, streamline academic communication, and deliver seamless learning experiences.',
+			'title'    => 'For Schools, Colleges, Coaching, and EdTech',
+			'subtitle' => 'Schools, colleges, universities, coaching centres, and EdTech platforms use Growtele to answer admission enquiries faster and keep students and parents updated.',
 		),
 		'growth'    => array(
-			'title'    => 'Deliver Smarter<br>Education Experiences',
-			'subtitle' => 'From student enrollment to alumni engagement, Growtele helps educational institutions automate communication, improve collaboration, and enhance learning outcomes.',
+			'title'    => 'From Admission<br>to Alumni Engagement',
+			'subtitle' => 'From the first admission enquiry to alumni newsletters, Growtele helps schools, colleges, and EdTech platforms automate messages students and parents rely on.',
 		),
 		'use_cases' => array(
 			'title' => 'Communication Use Cases for Every Student Journey',
 		),
 		'faq'       => array(
 			'title' => 'Everything You Need to Know<br>About Education Communication',
-			'intro' => 'Find answers to common questions about admissions, student engagement, academic notifications, parent communication, and education automation',
+			'intro' => 'Find answers to common questions about admissions, fee reminders, exam results, attendance alerts, SIS integration, and supported channels',
 			'book'  => $shared_faq_book,
 			'items' => array(
-				array( 'question' => 'How does Growtele improve student communication?' ),
-				array( 'question' => 'Can parents receive attendance and academic updates?' ),
-				array( 'question' => 'Does Growtele support admission automation?' ),
+				array( 'question' => 'How does Growtele help schools and universities?' ),
+				array( 'question' => 'Can parents get attendance and exam result updates?' ),
+				array( 'question' => 'Can I automate admission enquiry replies?' ),
 				array( 'question' => 'Can Growtele integrate with Student Information Systems (SIS)?' ),
-				array( 'question' => 'Which communication channels are supported?' ),
+				array( 'question' => 'Which messaging channels can schools use?' ),
 			),
 		),
 		'cta'      => $shared_industry_cta,
@@ -233,30 +233,30 @@ return array(
 		'hero'     => array_merge(
 			$shared_hero_cta,
 			array(
-				'title' => 'Transform Every Delivery Journey Into Exceptional Customer Experiences',
-				'desc'  => 'Deliver real-time shipment updates, pickup notifications, delivery alerts, OTP verification, driver communication, and customer support across WhatsApp, SMS, RCS, Email, and Cloud Telephony.',
+				'title' => 'Live Shipment Updates That Keep Every Customer Informed Till Delivery',
+				'desc'  => 'Send shipment updates, delivery OTPs, and NDR alerts, and connect riders with customers on masked calls across WhatsApp, SMS, RCS, Email, and Voice, cutting failed deliveries and RTO.',
 			)
 		),
 		'channels' => array(
-			'title'    => 'Trusted by Leading Logistics<br>& Transportation Companies',
-			'subtitle' => 'Helping logistics providers streamline operations, improve delivery visibility, reduce support calls, and deliver exceptional customer experiences through intelligent communication.',
+			'title'    => 'Alerts on Every Channel for<br>Couriers and Fleet Teams',
+			'subtitle' => 'Courier companies, fleet operators, and last-mile delivery businesses use Growtele to cut failed deliveries, reduce RTO, and receive fewer where-is-my-order calls to support.',
 		),
 		'growth'    => array(
-			'title'    => 'Deliver Reliable Logistics Communication at Every Step',
-			'subtitle' => 'Turn every visitor into a loyal customer with personalized messaging, automated customer journeys, and real-time engagement.',
+			'title'    => 'Keep Customers Informed About Delivery at Every Step',
+			'subtitle' => 'Track every shipment, coordinate riders, and confirm each handover with an OTP, without making manual follow-up calls.',
 		),
 		'use_cases' => array(
 			'title' => 'Communication Use Cases for<br>Every Logistics Journey',
 		),
 		'faq'       => array(
 			'title' => 'Everything You Need to Know<br>About Logistics Communication',
-			'intro' => 'Find answers to common questions about shipment notifications, delivery tracking, driver communication, customer engagement, and logistics automation.',
+			'intro' => 'Find answers to common questions about delivery OTPs, live tracking updates, NDR handling, number masking, TMS integration, and supported channels.',
 			'book'  => $shared_faq_book,
 			'items' => array(
-				array( 'question' => 'How does Growtele improve shipment tracking communication?' ),
-				array( 'question' => 'Does Growtele support OTP verification for deliveries?' ),
-				array( 'question' => 'Can Growtele integrate with logistics management systems?' ),
-				array( 'question' => 'Which communication channels are supported?' ),
+				array( 'question' => 'How does Growtele help couriers and logistics companies?' ),
+				array( 'question' => 'Can I send delivery OTPs to confirm every handover?' ),
+				array( 'question' => 'Does Growtele integrate with our TMS and WMS platforms?' ),
+				array( 'question' => 'Which messaging channels can couriers use?' ),
 				array( 'question' => 'Can customers receive delivery updates on WhatsApp?' ),
 			),
 		),

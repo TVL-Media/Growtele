@@ -6,8 +6,8 @@
  */
 
 $cta_text = function_exists( 'growtele_get_content_with_theme_mod' )
-	? growtele_get_content_with_theme_mod( 'global.header.cta_text', 'growtele_cta_text', __( "Let's Get Started", 'growtele' ) )
-	: __( "Let's Get Started", 'growtele' );
+	? growtele_get_content_with_theme_mod( 'global.header.cta_text', 'growtele_cta_text', __( "Book a Demo", 'growtele' ) )
+	: __( "Book a Demo", 'growtele' );
 $cta_url  = function_exists( 'growtele_get_header_cta_url' ) ? growtele_get_header_cta_url() : home_url( '/contact/' );
 ?>
 <header id="masthead" class="gt-header" data-header>

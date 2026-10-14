@@ -701,7 +701,7 @@ function growtele_cms_append_css_url( &$css, $path, $var, $fallback = '' ) {
  */
 function growtele_apply_shared_static_cms( $html ) {
 	if ( growtele_content_is_overridden( 'global.header.cta_text' ) ) {
-		$text = growtele_static_cms_format_value( (string) growtele_get_content( 'global.header.cta_text', "Let's Get Started" ), 'text' );
+		$text = growtele_static_cms_format_value( (string) growtele_get_content( 'global.header.cta_text', "Book a Demo" ), 'text' );
 		$html = preg_replace(
 			'/(<a\s[^>]*class="[^"]*(?:btn-cta--header|header__cta)[^"]*"[^>]*>\s*<span>)(.*?)(<\/span>)/is',
 			'$1' . $text . '$3',
@@ -729,7 +729,7 @@ function growtele_apply_shared_static_cms( $html ) {
 	$needles = array();
 	$pairs   = array(
 		'footer.brand_description' => array(
-			'needle' => "Growtele's global network solutions enable every business sector to optimize their business across the globe.",
+			'needle' => "Growtele helps businesses in every sector reach customers on SMS, WhatsApp, RCS, Email, and Voice worldwide.",
 			'format' => 'text',
 		),
 		'footer.copyright'         => array(

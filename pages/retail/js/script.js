@@ -4,28 +4,28 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
+      title: 'Send sale announcements, order confirmations, and loyalty point updates on DLT-compliant SMS, with short links and click tracking.',
+      desc: 'Send sale alerts, order updates, and in-store offers by DLT-compliant SMS to any phone.',
       image: 'assets/retail-x-sms.png'
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
+      title: 'Share WhatsApp catalogs, answer product questions, and send order updates from a green-tick verified WhatsApp Business account.',
+      desc: 'Share product catalogs, festive offers, and order updates with your shoppers on WhatsApp.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-695.png'
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
+      title: 'Run missed call campaigns, multilingual IVR for store and order enquiries, and outbound calls announcing festive sales.',
+      desc: 'Run missed call offers, IVR for store queries, and outbound sale announcement calls through Voice.',
       image: 'assets/retail-x-cloud-tele.png'
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
+      title: 'Send RCS carousels featuring product images, prices, and buy buttons from verified senders, with automatic SMS fallback.',
+      desc: 'Send product carousels and festive offers with buy buttons from a verified RCS sender.',
       image: 'assets/retail-x-rcs.png'
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
+      title: 'Send new-arrival newsletters, digital receipts, and monthly loyalty statements by Email, authenticated for inbox placement.',
+      desc: 'Send new-arrival newsletters, e-receipts, and loyalty point updates to shoppers by Email.',
       image: 'assets/retail-x-email.png'
     }
   };

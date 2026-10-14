@@ -4,28 +4,28 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
+      title: 'Send booking confirmations, PNR status, gate changes, and check-in reminders over SMS from DLT-approved headers to any mobile.',
+      desc: 'Booking confirmations and flight alerts by SMS that reach any phone, even when offline.',
       image: 'assets/ReTail X SMS.png'
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
+      title: 'Send e-tickets and boarding passes on WhatsApp, while chatbots handle rebooking requests, baggage allowance, and refund questions.',
+      desc: 'Share e-tickets, boarding passes, itineraries, and live trip support in one WhatsApp chat.',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-691.png'
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
+      title: 'Answer booking queries on IVR and call travelers about cancellations and reschedules with automated outbound voice alerts.',
+      desc: 'IVR helplines, outbound calls, and number masking for cab drivers, tour guides, and travelers.',
       image: 'assets/ReTail X Cloud Tele.png'
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
+      title: 'Show flight details, seat upgrade offers, and hotel carousels in branded RCS cards with one-tap web check-in buttons.',
+      desc: 'Verified RCS cards with hotel carousels, seat upgrades, and one-tap check-in buttons.',
       image: 'assets/ReTail X RCS.png'
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
+      title: 'Email e-tickets, invoices, and full itineraries, plus holiday offers and post-trip feedback requests to your past travelers.',
+      desc: 'E-tickets, invoices, itineraries, holiday offers, and feedback requests sent by Email.',
       image: 'assets/ReTail X EMAIL.png'
     }
   };

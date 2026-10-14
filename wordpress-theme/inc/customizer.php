@@ -27,7 +27,7 @@ function growtele_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'growtele_cta_text',
 		array(
-			'default'           => esc_html__( "Let's Get Started", 'growtele' ),
+			'default'           => esc_html__( "Book a Demo", 'growtele' ),
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
