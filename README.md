@@ -55,6 +55,8 @@ Then re-upload or redeploy the theme.
 
 ## Notes
 
+- Theme images are WebP and the install zip is about 46 MB. Run `python3 scripts/convert-images-webp.py` after adding PNG/JPEG images (see DEPLOYMENT.md → *Keeping it small*).
+
 - HTML/CSS source files are **not modified** — PHP injects `<base href>` and rewrites `../` links at runtime.
 - Homepage uses `front-page.php` with section template parts.
 - Elementor override supported on front page via `growtele_is_elementor_page()`.
