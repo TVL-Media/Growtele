@@ -90,10 +90,35 @@ function growtele_content_get_overrides() {
 
 	unset( $stored['schema_version'] );
 
-	$overrides = $stored;
+	$overrides = growtele_content_webp_paths( $stored );
 	$cache_gen   = $gen;
 
 	return $overrides;
+}
+
+/**
+ * Point saved local theme image paths at the WebP files the theme now ships.
+ *
+ * Only relative paths (e.g. "assets/email-acquica.png") are touched; media
+ * library and other absolute URLs are left as saved.
+ *
+ * @param mixed $value Stored override value.
+ * @return mixed
+ */
+function growtele_content_webp_paths( $value ) {
+	if ( is_array( $value ) ) {
+		return array_map( 'growtele_content_webp_paths', $value );
+	}
+
+	if ( ! is_string( $value ) || strlen( $value ) > 300 ) {
+		return $value;
+	}
+
+	if ( ! preg_match( '#^(?!//)[^<>"\':]+\.(?:png|jpe?g)$#i', $value ) || 'screenshot.png' === basename( $value ) ) {
+		return $value;
+	}
+
+	return preg_replace( '/\.(?:png|jpe?g)$/i', '.webp', $value );
 }
 
 /**

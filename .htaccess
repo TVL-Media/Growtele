@@ -1,0 +1,15 @@
+# Growtele theme: images ship as WebP.
+# Serve name.webp for legacy name.png / name.jpg requests (cached pages, saved
+# content, external links) when the old file no longer exists.
+
+<IfModule mod_mime.c>
+	AddType image/webp .webp
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} ^(.+)\.(?:png|jpe?g)$ [NC]
+	RewriteCond %1.webp -f
+	RewriteRule ^(.+)\.(?:png|jpe?g)$ $1.webp [NC,L,T=image/webp]
+</IfModule>

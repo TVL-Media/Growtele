@@ -206,6 +206,42 @@
     document.querySelectorAll('video[poster]').forEach(function (el) {
       repairMediaAttribute(el, 'poster');
     });
+
+    // Images that already failed before this (deferred) script ran.
+    document.querySelectorAll('img[src]').forEach(function (img) {
+      if (img.complete && img.naturalWidth === 0) {
+        retryAsWebp(img, 'src', img.getAttribute('src'));
+      }
+    });
+  }
+
+  var LEGACY_RASTER = /\.(png|jpe?g)(?=([?#].*)?$)/i;
+
+  function isOwnAsset(url, hintEl) {
+    try {
+      var parsed = new URL(url, documentBase(hintEl));
+      return parsed.origin === window.location.origin || isThemeAssetBase(parsed.pathname);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Theme images ship as WebP; stale .png/.jpg references (cached JS, saved
+  // CMS values) are retried once as .webp.
+  function retryAsWebp(target, attribute, raw) {
+    if (!raw || !LEGACY_RASTER.test(raw) || !isOwnAsset(raw, target)) {
+      return false;
+    }
+
+    // No loop guard needed: a failing .webp never matches LEGACY_RASTER, and tab or
+    // slider code that swaps the same <img> back to a .png must be retried again.
+    target.setAttribute(attribute, raw.replace(LEGACY_RASTER, '.webp'));
+
+    if (target.tagName === 'SOURCE' && target.parentNode && typeof target.parentNode.load === 'function') {
+      target.parentNode.load();
+    }
+
+    return true;
   }
 
   function handleMediaError(event) {
@@ -219,6 +255,10 @@
       ? 'poster'
       : 'src';
     var raw = target.getAttribute(attribute) || '';
+
+    if (retryAsWebp(target, attribute, raw)) {
+      return;
+    }
 
     if (!raw || isAbsoluteUrl(raw)) {
       return;

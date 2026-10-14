@@ -99,7 +99,9 @@
       img.loading = 'eager';
       img.fetchPriority = 'high';
       markLoaded(img);
-      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('load', function () {
+        markLoaded(img);
+      }, { once: true });
       img.addEventListener('error', function () {
         img.classList.remove('gt-img-loading');
       }, { once: true });

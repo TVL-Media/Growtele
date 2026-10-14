@@ -35,6 +35,10 @@ IMAGE_DIRS = ["assets", "pages"]
 SRC_EXT = {".png", ".jpg", ".jpeg"}
 # WordPress requires the theme thumbnail to stay screenshot.png.
 SKIP_BASENAMES = {"screenshot.png"}
+# Industry tab icons are turned into CSS masks with a hard luminance threshold
+# (assets/js/industries-scroll.js); lossy noise would speckle the mask.
+FORCE_LOSSLESS = {"bankic.png", "commic.png", "educationic.png", "healthcareic.png",
+                  "logisticic.png", "retailic.png", "travelic.png"}
 TEXT_DIRS = ["", "inc", "template-parts", "page-templates", "pages", "assets", "scripts"]
 TEXT_EXT = {".html", ".css", ".js", ".php", ".json"}
 SKIP_DIRS = {".git", "node_modules", "wordpress-theme", "dist"}
@@ -85,7 +89,7 @@ def encode(path: Path) -> tuple[bytes, dict]:
 
     extra = {"icc_profile": icc} if icc else {}
     lossless = save_webp(im, lossless=True, quality=100, method=4, exact=alpha, **extra)
-    if im.width * im.height <= SMALL_PIXELS:
+    if im.width * im.height <= SMALL_PIXELS or path.name in FORCE_LOSSLESS:
         return lossless, {"mode": "lossless", "resized": resized, "psnr": None}
 
     # Quality ladder: first lossy setting that is visually transparent wins.
