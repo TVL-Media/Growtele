@@ -16,7 +16,18 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function growtele_get_asset( $path ) {
-	$parts = explode( '/', str_replace( '\\', '/', ltrim( $path, '/' ) ) );
+	$path = str_replace( '\\', '/', ltrim( $path, '/' ) );
+
+	// Theme images ship as WebP; map legacy .png/.jpg paths (e.g. saved CMS fallbacks).
+	if ( preg_match( '/\.(png|jpe?g)$/i', $path ) ) {
+		$webp = preg_replace( '/\.(png|jpe?g)$/i', '.webp', $path );
+		$file = GROWTELE_DIR . '/assets/' . rawurldecode( $path );
+		if ( ! file_exists( $file ) && file_exists( GROWTELE_DIR . '/assets/' . rawurldecode( $webp ) ) ) {
+			$path = $webp;
+		}
+	}
+
+	$parts = explode( '/', $path );
 	$parts = array_map(
 		function ( $part ) {
 			return rawurlencode( rawurldecode( $part ) );
