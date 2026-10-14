@@ -26,7 +26,7 @@
     email: {
       title: 'Deliver secure healthcare communication through E-mail with test results, care plans and personalized patient updates.',
       desc: 'Engage patients with health reports, appointment details, and real-time support on E-mail.',
-      image: 'assets/Health X EMAIL.png'
+      image: 'assets/Health X EMAIL.webp'
     }
   };
 

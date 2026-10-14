@@ -6,7 +6,7 @@
     sms: {
       title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
       desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
-      image: 'assets/retail-x-sms.png'
+      image: 'assets/retail-x-sms.webp'
     },
     whatsapp: {
       title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
@@ -16,17 +16,17 @@
     telephony: {
       title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
       desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
-      image: 'assets/retail-x-cloud-tele.png'
+      image: 'assets/retail-x-cloud-tele.webp'
     },
     rcs: {
       title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
       desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
-      image: 'assets/retail-x-rcs.png'
+      image: 'assets/retail-x-rcs.webp'
     },
     email: {
       title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
       desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
-      image: 'assets/retail-x-email.png'
+      image: 'assets/retail-x-email.webp'
     }
   };
 

@@ -65,7 +65,7 @@ $hero_brands   = $hero['trust_brands'] ?? array();
 
 	<div class="gt-container gt-hero__content">
 		<div class="gt-hero__badge" data-animate="fade-up">
-			<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.hero.badge_icon', 'icons/sparkle.png' ) ); ?>" alt="" width="18" height="18" loading="eager" />
+			<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.hero.badge_icon', 'icons/sparkle.webp' ) ); ?>" alt="" width="18" height="18" loading="eager" />
 			<span><?php echo esc_html( $hero['badge_text'] ?? '' ); ?> <strong><?php echo esc_html( $hero['badge_strong'] ?? '' ); ?></strong></span>
 		</div>
 
@@ -100,7 +100,7 @@ $hero_brands   = $hero['trust_brands'] ?? array();
 	<div class="gt-hero__trust">
 		<div class="gt-container gt-hero__trust-inner">
 			<div class="gt-hero__trust-label">
-				<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.hero.trust_icon', 'icons/shield.png' ) ); ?>" alt="" width="45" height="46" loading="lazy" />
+				<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.hero.trust_icon', 'icons/shield.webp' ) ); ?>" alt="" width="45" height="46" loading="lazy" />
 				<span><?php echo esc_html( $hero['trust_label'] ?? '' ); ?></span>
 			</div>
 			<div class="gt-marquee" data-marquee>

@@ -535,7 +535,7 @@ main {
   width: 645px;
   height: 172px;
   background-color: var(--navy-card);
-  background-image: var(--gt-cms-product-journey-card-bg, url("../assets/whatsapp-Group%20450.png"));
+  background-image: var(--gt-cms-product-journey-card-bg, url("../assets/whatsapp-Group%20450.webp"));
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -869,7 +869,7 @@ main {
   z-index: 3;
   color: #fff;
   overflow: hidden;
-  background: var(--gt-cms-product-benefits-bg, url("../assets/whatsapp-Group%20591.png")) no-repeat left top / 100% 100%;
+  background: var(--gt-cms-product-benefits-bg, url("../assets/whatsapp-Group%20591.webp")) no-repeat left top / 100% 100%;
 }
 
 .benefits__title {
@@ -985,7 +985,7 @@ main {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-image: var(--gt-cms-product-benefits-visual, url("../assets/whatsapp-Card%20Image.png"));
+  background-image: var(--gt-cms-product-benefits-visual, url("../assets/whatsapp-Card%20Image.webp"));
 }
 
 /* ---------- Why SMS ---------- */

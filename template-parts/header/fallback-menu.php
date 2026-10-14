@@ -23,7 +23,7 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 			aria-haspopup="true"
 		>
 			<?php esc_html_e( 'Products', 'growtele' ); ?>
-			<img src="<?php echo esc_url( growtele_get_image( 'icons/down-arrow.png' ) ); ?>" alt="" class="gt-menu-arrow" width="12" height="12" loading="lazy" />
+			<img src="<?php echo esc_url( growtele_get_image( 'icons/down-arrow.webp' ) ); ?>" alt="" class="gt-menu-arrow" width="12" height="12" loading="lazy" />
 		</a>
 		<div class="gt-mega-menu" id="gt-mega-products" data-mega-menu hidden>
 			<div class="gt-mega-menu__panel">
@@ -76,7 +76,7 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 				<aside class="gt-mega-menu__feature">
 					<img
 						class="gt-mega-menu__feature-img"
-						src="<?php echo esc_url( growtele_get_asset( 'navpr.png' ) ); ?>"
+						src="<?php echo esc_url( growtele_get_asset( 'navpr.webp' ) ); ?>"
 						alt="<?php esc_attr_e( 'Team collaborating on customer communications', 'growtele' ); ?>"
 						width="320"
 						height="180"
@@ -98,7 +98,7 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 			aria-haspopup="true"
 		>
 			<?php esc_html_e( 'Industry Solution', 'growtele' ); ?>
-			<img src="<?php echo esc_url( growtele_get_image( 'icons/down-arrow.png' ) ); ?>" alt="" class="gt-menu-arrow" width="12" height="12" loading="lazy" />
+			<img src="<?php echo esc_url( growtele_get_image( 'icons/down-arrow.webp' ) ); ?>" alt="" class="gt-menu-arrow" width="12" height="12" loading="lazy" />
 		</a>
 		<div class="industry-solutions-dropdown" id="industry-solutions-dropdown" data-industry-solutions-dropdown hidden>
 			<div class="industry-solutions-dropdown-panel">
@@ -169,7 +169,7 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 				<aside class="industry-solutions-dropdown-feature">
 					<img
 						class="industry-solutions-dropdown-feature-img"
-						src="<?php echo esc_url( growtele_get_asset( 'navpr.png' ) ); ?>"
+						src="<?php echo esc_url( growtele_get_asset( 'navpr.webp' ) ); ?>"
 						alt="<?php esc_attr_e( 'Team collaborating on customer communications', 'growtele' ); ?>"
 						width="320"
 						height="180"
@@ -191,7 +191,7 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 			aria-haspopup="true"
 		>
 			<?php esc_html_e( 'Company', 'growtele' ); ?>
-			<img src="<?php echo esc_url( growtele_get_image( 'icons/down-arrow.png' ) ); ?>" alt="" class="gt-menu-arrow" width="12" height="12" loading="lazy" />
+			<img src="<?php echo esc_url( growtele_get_image( 'icons/down-arrow.webp' ) ); ?>" alt="" class="gt-menu-arrow" width="12" height="12" loading="lazy" />
 		</a>
 		<div class="company-dropdown" id="company-dropdown" data-company-dropdown hidden>
 			<div class="company-dropdown-panel">
@@ -245,7 +245,7 @@ $gt_feature = is_array( $gt_nav['feature'] ?? null ) ? $gt_nav['feature'] : arra
 				<aside class="company-dropdown-feature">
 					<img
 						class="company-dropdown-feature-img"
-						src="<?php echo esc_url( growtele_get_asset( 'navpr.png' ) ); ?>"
+						src="<?php echo esc_url( growtele_get_asset( 'navpr.webp' ) ); ?>"
 						alt="<?php esc_attr_e( 'Team collaborating on customer communications', 'growtele' ); ?>"
 						width="320"
 						height="180"

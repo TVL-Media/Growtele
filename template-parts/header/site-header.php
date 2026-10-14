@@ -20,7 +20,7 @@ $cta_url  = function_exists( 'growtele_get_header_cta_url' ) ? growtele_get_head
 						the_custom_logo();
 					} else {
 						growtele_image(
-							'icons/logo.png',
+							'icons/logo.webp',
 							get_bloginfo( 'name' ),
 							'gt-header__logo-img',
 							196,

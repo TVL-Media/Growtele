@@ -62,7 +62,7 @@ $cycle_ms      = $section['cycle_ms'] ?? '5000';
 							<div class="gt-case-studies__card-visual">
 								<span class="gt-case-studies__card-visual-bg" aria-hidden="true"></span>
 								<?php
-								$card_image = ! empty( $study['image'] ) ? $study['image'] : 'sections/case-study-person.png';
+								$card_image = ! empty( $study['image'] ) ? $study['image'] : 'sections/case-study-person.webp';
 								$card_image_src = ( 0 === strpos( $card_image, 'http' ) ) ? $card_image : growtele_get_image( $card_image );
 								?>
 								<img src="<?php echo esc_url( $card_image_src ); ?>" alt="<?php echo esc_attr( $study['name'] ); ?>" loading="lazy" />

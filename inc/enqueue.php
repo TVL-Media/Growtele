@@ -277,7 +277,7 @@ function growtele_preload_lcp_logo() {
 	}
 
 	if ( ! $logo_url && function_exists( 'growtele_get_image' ) ) {
-		$logo_url = growtele_get_image( 'icons/logo.png' );
+		$logo_url = growtele_get_image( 'icons/logo.webp' );
 	}
 
 	if ( ! $logo_url ) {

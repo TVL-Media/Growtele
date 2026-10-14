@@ -14,12 +14,12 @@ return array(
 	'get_in_touch_image' => array(
 		'attachment_id' => 0,
 		'url'           => '',
-		'fallback'      => 'icons/get-in-touch.png',
+		'fallback'      => 'icons/get-in-touch.webp',
 	),
 	'logo'               => array(
 		'attachment_id' => 0,
 		'url'           => '',
-		'fallback'      => 'icons/logo.png',
+		'fallback'      => 'icons/logo.webp',
 	),
 	'columns'            => array(
 		'products' => array(

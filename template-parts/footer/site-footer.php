@@ -57,7 +57,7 @@ $legal_links    = function_exists( 'growtele_get_content' ) ? growtele_get_conte
 	<div class="gt-container gt-footer__inner">
 		<div class="gt-footer__brand">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="gt-footer__logo">
-				<?php growtele_image( 'icons/logo.png', get_bloginfo( 'name' ), '', 163, 42 ); ?>
+				<?php growtele_image( 'icons/logo.webp', get_bloginfo( 'name' ), '', 163, 42 ); ?>
 			</a>
 			<p><?php echo esc_html( function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.brand_description', "Growtele's global network solutions enable every business sector to optimize their business across the globe." ) : "Growtele's global network solutions enable every business sector to optimize their business across the globe." ); ?></p>
 			<?php growtele_footer_get_in_touch_cta( $email ); ?>

@@ -48,45 +48,45 @@ $funnel_whatsapp = array(
 
 $funnel_email = array(
 	'acquisition' => array(
-		'src' => 'assets/email-acquica.png',
+		'src' => 'assets/email-acquica.webp',
 		'alt' => 'Acquisition campaign flow',
 	),
 	'engagement'  => array(
-		'src' => 'assets/email-Enagement Card.png',
+		'src' => 'assets/email-Enagement Card.webp',
 		'alt' => 'Engagement campaign flow',
 	),
 	'retention'   => array(
-		'src' => 'assets/email-retim.png',
+		'src' => 'assets/email-retim.webp',
 		'alt' => 'Retention campaign flow',
 	),
 );
 
 $funnel_rcs = array(
 	'acquisition' => array(
-		'src' => 'assets/rcs-acquica.png',
+		'src' => 'assets/rcs-acquica.webp',
 		'alt' => 'Acquisition campaign flow',
 	),
 	'engagement'  => array(
-		'src' => 'assets/rcs-Enagement Card.png',
+		'src' => 'assets/rcs-Enagement Card.webp',
 		'alt' => 'Engagement campaign flow',
 	),
 	'retention'   => array(
-		'src' => 'assets/rcs-retim.png',
+		'src' => 'assets/rcs-retim.webp',
 		'alt' => 'Retention campaign flow',
 	),
 );
 
 $funnel_cloud = array(
 	'acquisition' => array(
-		'src' => 'assets/cloud-telephony-acquica.png',
+		'src' => 'assets/cloud-telephony-acquica.webp',
 		'alt' => 'Acquisition campaign flow',
 	),
 	'engagement'  => array(
-		'src' => 'assets/cloud-telephony-Enagement Card.png',
+		'src' => 'assets/cloud-telephony-Enagement Card.webp',
 		'alt' => 'Engagement campaign flow',
 	),
 	'retention'   => array(
-		'src' => 'assets/cloud-telephony-retim.png',
+		'src' => 'assets/cloud-telephony-retim.webp',
 		'alt' => 'Retention campaign flow',
 	),
 );

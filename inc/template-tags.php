@@ -125,7 +125,7 @@ function growtele_cta_button( $text, $url = '#', $class = 'gt-btn gt-btn--gradie
 	$is_header_cta = false !== strpos( $class, 'btn-cta' );
 
 	if ( $is_header_cta ) {
-		$arrow_url = trailingslashit( GROWTELE_URI ) . 'pages/sms/assets/arrow-cta.png';
+		$arrow_url = trailingslashit( GROWTELE_URI ) . 'pages/sms/assets/arrow-cta.webp';
 		?>
 		<a href="<?php echo esc_url( $url ); ?>" class="<?php echo esc_attr( $class ); ?>">
 			<span><?php echo esc_html( $text ); ?></span>
@@ -141,7 +141,7 @@ function growtele_cta_button( $text, $url = '#', $class = 'gt-btn gt-btn--gradie
 	<a href="<?php echo esc_url( $url ); ?>" class="<?php echo esc_attr( $class ); ?>">
 		<span class="gt-btn__text"><?php echo esc_html( $text ); ?></span>
 		<span class="gt-btn__icon">
-			<img src="<?php echo esc_url( growtele_get_image( 'icons/arrow-up-right-dark.png' ) ); ?>" alt="" width="19" height="19" loading="lazy" />
+			<img src="<?php echo esc_url( growtele_get_image( 'icons/arrow-up-right-dark.webp' ) ); ?>" alt="" width="19" height="19" loading="lazy" />
 		</span>
 	</a>
 	<?php
