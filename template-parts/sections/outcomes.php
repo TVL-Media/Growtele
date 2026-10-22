@@ -24,12 +24,31 @@ $stat_2   = $outcomes['stat_2'] ?? array();
 			</h2>
 			<p class="gt-section-heading__desc" data-animate="fade-up" data-animate-delay="100">
 				<?php
-				echo wp_kses(
-					$outcomes['heading_desc'] ?? '',
-					array(
-						'br' => array(),
-					)
-				);
+				$gt_outcomes_desc_mobile = trim( (string) ( $outcomes['heading_desc_mobile'] ?? '' ) );
+				if ( '' !== $gt_outcomes_desc_mobile ) :
+					?>
+					<span class="gt-outcomes__section-desc-desktop"><?php echo wp_kses( $outcomes['heading_desc'] ?? '', array( 'br' => array() ) ); ?></span>
+					<span class="gt-outcomes__section-desc-mobile">
+						<?php
+						$gt_outcomes_mobile_lines = preg_split( '/<br\s*\/?>/i', $gt_outcomes_desc_mobile );
+						foreach ( $gt_outcomes_mobile_lines as $gt_i => $gt_line ) {
+							printf(
+								'<span class="gt-outcomes__section-desc-m-line%d">%s</span>',
+								(int) $gt_i + 1,
+								esc_html( trim( $gt_line ) )
+							);
+						}
+						?>
+					</span>
+					<?php
+				else :
+					echo wp_kses(
+						$outcomes['heading_desc'] ?? '',
+						array(
+							'br' => array(),
+						)
+					);
+				endif;
 				?>
 			</p>
 		</div>

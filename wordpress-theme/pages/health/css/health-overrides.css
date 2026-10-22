@@ -95,7 +95,7 @@ br.gt-mobile-br {
 
   .health-page .growth__header .section-title {
     line-height: 1.22 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 0 !important;
   }
 
   .health-page .growth__header .section-title .growth-title__line {
@@ -153,5 +153,16 @@ br.gt-mobile-br {
     left: 4px;
     right: auto;
     max-width: 58%;
+  }
+}
+
+/* Desktop: growth heading widths */
+@media (min-width: 1025px) {
+  .growth__header .section-title {
+    max-width: 446px;
+  }
+
+  .growth__subtitle {
+    max-width: 446px;
   }
 }

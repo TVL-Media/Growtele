@@ -197,10 +197,10 @@
   .growtele-io-page .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__visual-img,
   .growtele-io-page .gt-industries--scroll-stack .gt-industries__panel[data-tab-panel="education"] .gt-industries__panel-visual img {
-    right: -48px !important;
-    bottom: -28px !important;
+    right: -4px !important;
+    bottom: 29px !important;
     width: auto !important;
-    height: 560px !important;
+    height: 348px !important;
     max-width: none !important;
     max-height: none !important;
     object-fit: contain !important;

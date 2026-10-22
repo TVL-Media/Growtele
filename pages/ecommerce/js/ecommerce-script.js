@@ -4,29 +4,54 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/CT-SMS4.png'
+      title: 'Send COD confirmations, shipping updates, and delivery OTPs on DLT-compliant SMS that reaches every shopper, including basic phones.',
+      desc: 'Send COD confirmations, shipping alerts, and delivery OTPs on DLT-compliant  SMS.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/CT-SMS4.png',
+      features: [
+        { title: 'Recover Lost Carts', text: 'Remind shoppers about items still in their cart on WhatsApp or SMS, with a quick link to check out and a small discount.' },
+        { title: 'Confirm COD Orders', text: 'Ask buyers to confirm cash-on-delivery orders by WhatsApp reply or IVR call before dispatch, so fewer orders come back as RTO.' },
+        { title: 'Live Order Tracking', text: 'Send shipped, out-for-delivery, and delivered updates with a tracking link, so shoppers stop calling support to ask about their order.' }
+      ]
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/998e87f979d46805af961718f0555f9d4cf4fce9.png'
+      title: 'Sell on WhatsApp with product catalogs, cart recovery messages, COD confirmations, and live order tracking inside the chat.',
+      desc: 'Share catalogs, recover carts, confirm COD orders, and track deliveries with shoppers on WhatsApp.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/998e87f979d46805af961718f0555f9d4cf4fce9.png',
+      features: [
+        { title: 'In-Chat Catalog', text: 'Let shoppers browse products, pick a size or colour, and add items to their cart without leaving the WhatsApp chat.' },
+        { title: 'Cart Recovery Nudges', text: 'Send a friendly WhatsApp reminder with the product image and a checkout link when shoppers leave items in their cart.' },
+        { title: 'Order Support', text: 'Answer where-is-my-order, return, and refund questions instantly with a chatbot, and pass tricky cases to your support team.' }
+      ]
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/347edeac97c95712bb12d845794d540a5a547d5d.png'
+      title: 'Confirm COD orders through automated calls, mask rider-customer phone numbers, and run IVR for order status enquiries.',
+      desc: 'Confirm COD orders by call, mask rider-customer numbers, and run IVR order support through Voice.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/347edeac97c95712bb12d845794d540a5a547d5d.png',
+      features: [
+        { title: 'COD Confirmation Calls', text: 'An automated call asks buyers to press 1 to confirm their cash-on-delivery order, so fake orders never get shipped.' },
+        { title: 'Masked Rider Calls', text: 'Riders and customers can call each other about a delivery without either side ever seeing the other\'s phone number.' },
+        { title: 'IVR Order Status', text: 'Shoppers call in, enter their order ID, and hear the latest status without waiting to speak to an agent.' }
+      ]
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/b9a94c51b4f40c095c9ad131f2984f9b6efdd6c6.png'
+      title: 'Send RCS product carousels and cart reminders featuring images and buy buttons from verified senders, plus SMS fallback.',
+      desc: 'Send product carousels and cart reminders with buy buttons from a verified RCS sender.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/b9a94c51b4f40c095c9ad131f2984f9b6efdd6c6.png',
+      features: [
+        { title: 'Product Carousels', text: 'Show new arrivals and best sellers in a swipeable carousel with images, prices, and a Buy Now button on every card.' },
+        { title: 'Cart Reminder Cards', text: 'Remind shoppers about their cart with a rich card showing the product, the price, and a one-tap checkout button.' },
+        { title: 'Sale Announcements', text: 'Promote sale events from your verified brand profile, with automatic SMS fallback for phones that don\'t support RCS.' }
+      ]
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/EMAIL.png'
+      title: 'Deliver order confirmations, GST invoices, and cart recovery emails that reach inboxes, including open and click analytics.',
+      desc: 'Send GST invoices, order updates, and abandoned cart reminders to your shoppers by Email.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/EMAIL.png',
+      features: [
+        { title: 'GST Invoices', text: 'Email a GST-compliant invoice with every order, so buyers and businesses have a proper record for their accounts.' },
+        { title: 'Abandoned Cart Emails', text: 'Send a reminder email with the items left behind, a checkout link, and an optional discount to win the sale back.' },
+        { title: 'Order &amp; Return Updates', text: 'Keep shoppers informed with order confirmations, shipping notices, and return or refund updates in their inbox.' }
+      ]
     }
   };
 

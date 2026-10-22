@@ -19,8 +19,8 @@
   --color-border-card: rgba(0, 0, 0, 0.25);
 
   /* Typography */
-  --font-roboto: 'Roboto', sans-serif;
-  --font-tomato: 'Tomato Grotesk', sans-serif;
+  --font-roboto: 'Roboto', Arial, sans-serif;
+  --font-tomato: 'Tomato Grotesk', Arial, sans-serif;
 
   /* Layout — responsive containers, capped at design max-width */
   --page-max: 1440px;

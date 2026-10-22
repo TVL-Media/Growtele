@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 return array(
 	'cta' => array(
-		'heading_line_1' => 'Power Smarter Customer',
-		'heading_line_2' => 'Conversations at Scale',
-		'description'    => 'Engage customers across SMS, WhatsApp, RCS, Email, and Voice through one unified communication platform built for reliability, performance, and growth',
+		'heading_line_1' => 'Reach Every Customer',
+		'heading_line_2' => 'on the Right Channel',
+		'description'    => 'Send OTPs, alerts, promotions, and support messages on SMS, WhatsApp, RCS, Email, and Voice from one dependable platform built for enterprise volumes',
 		'button_text'    => 'Get Started',
 		'button_url'     => '',
 		'image'          => array(

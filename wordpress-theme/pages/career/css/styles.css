@@ -22,8 +22,8 @@
   --read-more: #0004d8;
   --container: 1440px;
   --pad-x: 120px;
-  --font-body: 'Roboto', sans-serif;
-  --font-heading: 'Plus Jakarta Sans', 'Roboto', sans-serif;
+  --font-body: 'Roboto', Arial, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Roboto', Arial, sans-serif;
 }
 
 html {
@@ -1615,4 +1615,11 @@ main {
 /* Word reveal — inherit parent text alignment */
 .career-page .gt-words {
   text-align: inherit;
+}
+
+/* Desktop: "Explore Open Roles" description aligned to the cards' right edge */
+@media (min-width: 1025px) {
+  .jobs .section-desc {
+    text-align: right;
+  }
 }

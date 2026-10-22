@@ -14,8 +14,8 @@
   --cream-stat: #fff5e7;
   --white: #ffffff;
   --border-light: rgba(0, 0, 0, 0.15);
-  --font-body: 'Roboto', sans-serif;
-  --font-heading: 'Roboto', sans-serif;
+  --font-body: 'Roboto', Arial, sans-serif;
+  --font-heading: 'Roboto', Arial, sans-serif;
   --page-width: 1440px;
   --container-padding: 120px;
 }
@@ -602,7 +602,7 @@ a { text-decoration: none; color: inherit; }
   width: 22px;
   height: 22px;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 5px;
 }
 
 .channels__bullet-icon {
@@ -1406,13 +1406,13 @@ body .growth-card:nth-child(3) .growth-card__visual:not(:has(.growth-card__img))
 }
 
 .faq-item--open .faq-item__answer {
-  max-height: 120px;
+  max-height: 200px;
   width: 83%;
   padding-bottom: 8px;
 }
 
 .faq-item__answer p {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.4;
   color: var(--navy);
@@ -1634,5 +1634,38 @@ body .growth-card:nth-child(3) .growth-card__visual:not(:has(.growth-card__img))
 .section-title.faq__title .gt-word,
 .faq__intro,
 .faq__intro .gt-word {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+/* Desktop: section heading widths and growth cards */
+@media (min-width: 1025px) {
+  .channels__subtitle {
+    max-width: 588px;
+  }
+
+  .growth__header .section-title {
+    max-width: 375px;
+  }
+
+  .growth__subtitle {
+    max-width: 428px;
+  }
+
+  .growth-card__body {
+    padding: 24px 22px 20px;
+  }
+
+  /* .growth-card parent: outranks the shared min-height: 227px !important */
+  .growth-card .growth-card__body {
+    min-height: 160px !important;
+  }
+
+  .usecases__subtitle {
+    max-width: 322px;
+  }
+
+  .faq__intro {
+    max-width: 432px;
+    margin-left: 62%;
+  }
 }

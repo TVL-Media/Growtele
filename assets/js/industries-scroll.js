@@ -902,7 +902,10 @@
 			if (!scrollTriggerInstance) return 0;
 			var start = scrollTriggerInstance.start;
 			var end = scrollTriggerInstance.end;
-			return start + (end - start) * progressForIndex(index);
+			var y = start + (end - start) * progressForIndex(index);
+			/* Stay just inside the pin: at exactly start/end ScrollTrigger is inactive,
+			   so the onEnter/onEnterBack snap would re-fire on every wheel and trap the page. */
+			return Math.min(end - 2, Math.max(start + 2, y));
 		}
 
 		var pageSafetyTimer = null;

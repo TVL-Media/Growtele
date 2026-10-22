@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $shared_cta = array(
-	'heading'     => "              Power Smarter Customer<br>\n              Conversations at Scale",
-	'description' => 'Engage customers across SMS, WhatsApp, RCS, Email, and Voice through one unified communication platform built for reliability, performance, and growth',
+	'heading'     => "              Reach Every Customer<br>\n              on the Right Channel",
+	'description' => 'Send OTPs, alerts, promotions, and support messages on SMS, WhatsApp, RCS, Email, and Voice from one dependable platform built for enterprise volumes',
 	'button_text' => 'Get Started',
 	'button_url'  => '',
 );
@@ -23,7 +23,7 @@ $funnel_sms = array(
 	),
 	'engagement'  => array(
 		'src' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-679-1.png',
-		'alt' => 'Engagement campaign flow',
+		'alt' => 'SMS engagement campaign',
 	),
 	'retention'   => array(
 		'src' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-690.png',
@@ -38,7 +38,7 @@ $funnel_whatsapp = array(
 	),
 	'engagement'  => array(
 		'src' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/fece317fe37c9cccd3c628247abf71ef36eaca5f.png',
-		'alt' => 'Engagement campaign flow',
+		'alt' => 'WhatsApp engagement flow',
 	),
 	'retention'   => array(
 		'src' => 'https://listings.selectvia.com/wp-content/uploads/2026/09/da2baeb8533e6edb03764ddc3aa3e02b8386dce4-1.png',
@@ -68,7 +68,7 @@ $funnel_rcs = array(
 	),
 	'engagement'  => array(
 		'src' => 'assets/rcs-Enagement Card.png',
-		'alt' => 'Engagement campaign flow',
+		'alt' => 'RCS engagement campaign',
 	),
 	'retention'   => array(
 		'src' => 'assets/rcs-retim.png',
@@ -78,15 +78,15 @@ $funnel_rcs = array(
 
 $funnel_cloud = array(
 	'acquisition' => array(
-		'src' => 'assets/cloud-telephony-acquica.png',
+		'src' => 'https://listings.selectvia.com/wp-content/uploads/2026/10/52f4d20d63be4bb3cc39a2f8d69dd56826f48de9.png',
 		'alt' => 'Acquisition campaign flow',
 	),
 	'engagement'  => array(
-		'src' => 'assets/cloud-telephony-Enagement Card.png',
+		'src' => 'https://listings.selectvia.com/wp-content/uploads/2026/10/7de953a47463ef06e535efbdcd02e4dc8d50e570.png',
 		'alt' => 'Engagement campaign flow',
 	),
 	'retention'   => array(
-		'src' => 'assets/cloud-telephony-retim.png',
+		'src' => 'https://listings.selectvia.com/wp-content/uploads/2026/10/d796b4e36ec731801877aa1fdb3c53b2ba6037cc.png',
 		'alt' => 'Retention campaign flow',
 	),
 );
@@ -94,59 +94,59 @@ $funnel_cloud = array(
 return array(
 	'sms'               => array(
 		'hero'    => array(
-			'title'    => 'Power Business<br>Communication Through<br>Enterprise SMS',
-			'subtitle' => 'Reach customers in seconds with reliable SMS communication built for OTPs, alerts, notifications, promotions.',
-			'cta_text' => "Let's Get Started",
+			'title'    => 'Reach Everyone<br>on Any Mobile Phone<br>With  SMS',
+			'subtitle' => 'Send OTPs, payment alerts, and festive offers that reach any mobile in seconds, without internet or apps.',
+			'cta_text' => "Book a Demo",
 			'cta_url'  => '',
 		),
 		'pills'   => array(
-			'Instant OTP Delivery',
-			'Global SMS Coverage',
-			'Seamless Experience',
+			'OTPs Within Seconds',
+			'DLT-Ready Templates',
+			'Real-Time Reports',
 		),
 		'journey' => array(
-			'title' => 'Reliable SMS for Every<br>Customer Journey',
-			'lead'  => 'Keep customers informed and engaged with instant OTPs, order updates, appointment reminders, promotional offers, and personalized notifications—all from one enterprise-grade messaging platform.',
+			'title' => 'The Right  SMS for<br>Every Touchpoint',
+			'lead'  => 'Send login OTPs, order and shipping updates, appointment reminders, and festive promotions, then answer whenever customers text back, all from one Growtele dashboard built for volume.',
 		),
 		'scale'   => array(
 			'title' => 'Built for Scale. <span>Designed for Reliability.</span>',
-			'lead'  => 'Helping businesses connect, engage, and grow through reliable communication solutions tailored to their needs.',
+			'lead'  => 'Send millions of SMS daily with intelligent routing, DLT-ready templates, and delivery reports for each one.',
 		),
 		'benefits' => array(
-			'title' => 'Benefits That Drive<br>Your Business Forward.',
+			'title' => 'What You Gain With<br>the Growtele SMS API.',
 			'lead'  => 'Growtele SMS helps you deliver critical messages at the<br>right time with highest reliability and complete visibility.',
 		),
 		'why'     => array(
-			'title' => 'Why SMS Remains the<br>Most Trusted Channel',
-			'lead'  => 'From authentication and transaction alerts to promotions and customer engagement, SMS delivers unmatched reach',
+			'title' => 'Why SMS Stays the<br>Most Trusted Channel',
+			'lead'  => 'SMS reaches every handset without apps or internet, so banks and retailers depend on it for authentication.',
 		),
 		'funnel_heading' => array(
-			'title' => 'Power every stage of<br>your marketing funnel',
+			'title' => ' SMS for every<br>stage of your funnel',
 			'lead'  => 'From attracting new customers to retaining your best ones,<br>Growtele SMS API helps you engage, convert and retain every step.',
 		),
 		'faq'     => array(
 			'title' => 'Everything You Need to Know<br>About Growtele SMS',
-			'lead'  => 'Find answers to common questions about SMS delivery, OTP authentication, integrations, analytics, security, and platform capabilities.',
+			'lead'  => 'Quick answers about SMS delivery speed, OTP authentication, delivery reports, enterprise volumes, DLT rules, and  campaigns.',
 			'items' => array(
 				array(
-					'question' => 'How quickly are SMS messages delivered?',
-					'answer'   => "SMS messages are typically delivered within seconds. Our optimized<br>routing and strong carrier network ensure fast and reliable delivery<br>across 190+ countries.",
+					'question' => 'How fast do SMS messages get delivered?',
+					'answer'   => "Growtele delivers OTPs, alerts, and  SMS campaigns in seconds,<br>with live delivery reports for each message, to phones in India and<br>across 190+ countries.",
 				),
 				array(
 					'question' => 'Does Growtele support OTP authentication?',
-					'answer'   => "SMS messages are typically delivered within seconds. Our optimized<br>routing and strong carrier network ensure fast and reliable delivery<br>across 190+ countries.",
+					'answer'   => "Yes. Our OTP API sends login, sign-up, and payment codes over priority transactional routes, so they reach customers within seconds, and you can track the delivery status of every code.",
 				),
 				array(
 					'question' => 'Do you provide delivery reports and analytics?',
-					'answer'   => "SMS messages are typically delivered within seconds. Our optimized<br>routing and strong carrier network ensure fast and reliable delivery<br>across 190+ countries.",
+					'answer'   => "Yes. Every message comes with a live delivery report showing whether it was delivered, pending, or failed, and the dashboard rolls it all up into campaign analytics you can review anytime.",
 				),
 				array(
-					'question' => 'Is Growtele SMS suitable for enterprise businesses?',
-					'answer'   => "SMS messages are typically delivered within seconds. Our optimized<br>routing and strong carrier network ensure fast and reliable delivery<br>across 190+ countries.",
+					'question' => 'Is Growtele SMS built for enterprise-scale volumes?',
+					'answer'   => "Yes. You can send millions of SMS a day with intelligent routing across operators, DLT-ready templates, and reliable delivery to phones in India and 190+ countries.",
 				),
 				array(
-					'question' => 'Can I send bulk SMS campaigns?',
-					'answer'   => "SMS messages are typically delivered within seconds. Our optimized<br>routing and strong carrier network ensure fast and reliable delivery<br>across 190+ countries.",
+					'question' => 'Can I run  SMS campaigns?',
+					'answer'   => "Yes. Upload your contact list, pick a DLT-approved template, personalize it with names or offers, and schedule it for the right time. Then track deliveries for the whole campaign from your dashboard.",
 				),
 			),
 		),
@@ -155,44 +155,44 @@ return array(
 	),
 	'whatsapp'          => array(
 		'hero'    => array(
-			'title'    => 'Power Business<br>Communication Through<br>WhatsApp Business',
-			'subtitle' => 'Deliver rich, interactive conversations with WhatsApp Business. Engage customers with product catalogs, order updates—all from one intelligent communication platform.',
-			'cta_text' => "Let's Get Started",
+			'title'    => '<span class="hero__title-dl">Sell, Support, <br>and</span> <span class="hero__title-dl">Grow on WhatsApp</span><br><span class="hero__title-dl">Business Platform</span>',
+			'subtitle' => 'Send order updates, share product catalogs, collect payments, and answer support questions on WhatsApp, the messaging app your customers already check constantly.',
+			'cta_text' => "Book a Demo",
 			'cta_url'  => '',
 		),
 		'pills'   => array(
-			"Instant Whatsapp<br>Delivery",
-			"Global<br>Coverage",
-			"Seamless<br>Experience",
+			"Product Catalogs<br>&amp; Carts",
+			"Secure<br>Payments",
+			"Shared<br>Team Inbox",
 		),
 		'journey' => array(
 			'title' => 'Everything You Need to Power<br>WhatsApp Conversations',
-			'lead'  => 'Keep customers engaged with interactive messaging, rich media, product catalogs, automated replies, and personalized conversations that drive better customer experiences',
+			'lead'  => 'Send utility alerts, marketing offers, and service replies, with rich media, product catalogs, quick-reply buttons, and chatbots that answer customers at any hour.',
 		),
 		'scale'   => array(
-			'title' => 'Built for Scale. Designed for<br>Meaningful Conversations.</span>',
-			'lead'  => 'Empower businesses to engage customers through personalized messaging WhatsApp Business solutions.',
+			'title' => 'Built for Scale. Designed<br>for Two-way Customer Chats.</span>',
+			'lead'  => 'Share photographs, explainer videos, product catalogs, and reply buttons customers tap to buy.',
 		),
 		'benefits' => array(
-			'title' => 'Benefits That Grow Customer Engagement',
-			'lead'  => 'Boost customer engagement with personalized WhatsApp conversations, rich media messaging and real-time support.',
+			'title' => 'Why Brands Use WhatsApp Business API',
+			'lead'  => 'Reach customers inside the messaging app they open daily, with rich media, instant answers, live support.',
 		),
 		'why'     => array(
-			'title' => 'Power Every Customer<br>Journey Through WhatsApp',
-			'lead'  => 'Deliver personalized conversations that engage customers before, during, and after every purchase.',
+			'title' => 'Before, During, and<br>After Every Online Order',
+			'lead'  => 'Greet new shoppers, suggest products, confirm orders, and recover abandoned carts on WhatsApp.',
 		),
 		'funnel_heading' => array(
 			'title' => 'Power Every Stage of<br>WhatsApp Customer Journey',
-			'lead'  => 'Guide customers from discovery to loyalty with personalized WhatsApp conversations and intelligent automation.',
+			'lead'  => 'Win buyers with Click-to-WhatsApp ads, sell through product catalogs, and keep them coming back with rewards.',
 		),
 		'faq'     => array(
 			'title' => 'Everything You Need to Know<br>About WhatsApp Business',
-			'lead'  => 'Find answers to common questions about WhatsApp Business messaging, automation, verification, customer engagement, security, and platform capabilities.',
+			'lead'  => 'Answers about the WhatsApp Business Platform, chatbots, product catalogs, green tick verification, customer support, encryption, and CRM integration.',
 			'items' => array(
 				array( 'question' => 'What is the WhatsApp Business Platform?' ),
 				array( 'question' => 'Can Growtele automate WhatsApp conversations?' ),
-				array( 'question' => 'Can I send product catalogs through WhatsApp?' ),
-				array( 'question' => 'Is WhatsApp suitable for customer support?' ),
+				array( 'question' => 'Can I share my product catalog on WhatsApp?' ),
+				array( 'question' => 'Does WhatsApp work for customer support?' ),
 				array( 'question' => 'Can I integrate WhatsApp with my CRM?' ),
 			),
 		),
@@ -201,39 +201,39 @@ return array(
 	),
 	'email'             => array(
 		'hero'    => array(
-			'title'    => 'Power Business<br>Communication<br>Through Enterprise Email',
-			'subtitle' => 'Reach customers with secure, personalized, and high-performing email campaigns, transactional notifications, newsletters, and automated customer journeys.',
-			'cta_text' => "Let's Get Started",
+			'title'    => ' <span class="hero__title-dl">Email &amp; <br>SMTP</span> <span class="hero__title-dl">Delivery <br>Straight</span> <span class="hero__title-dl">to the Inbox.</span>',
+			'subtitle' => 'Deliver transactional notifications, OTPs, invoices, and promotional newsletters through our Email API or SMTP relay, authenticated for inbox placement.',
+			'cta_text' => "Book a Demo",
 			'cta_url'  => '',
 		),
 		'pills'   => array(
-			'High Inbox Delivery',
-			'Global Coverage',
-			'Advanced Analytics',
+			'Strong Inbox Rates',
+			'Email API, SMTP',
+			'Live Email Reports',
 		),
 		'journey' => array(
-			'title' => 'Reliable Email for Every<br>Customer Journey',
-			'lead'  => 'Keep customers engaged with transactional emails, promotional campaigns, newsletters, and automated lifecycle communication.',
+			'title' => '<span class="journey__title-dl">Transactional, OTP</span> <span class="journey__title-dl">and <br>Marketing Email</span>',
+			'lead'  => 'Send OTPs, order confirmations, and promotional newsletters from one account, then track deliveries, opens, and clicks.',
 		),
 		'scale'   => array(
 			'title' => 'Built for Scale. <span>Designed for Deliverability.</span>',
-			'lead'  => 'Power business communication with enterprise-grade email infrastructure built for high inbox placement and reliable delivery.',
+			'lead'  => 'Send high volumes on infrastructure tuned for inbox placement, with SPF, DKIM, and DMARC authentication configured for you.',
 		),
 		'benefits' => array(
-			'title' => 'Benefits That Drive<br>Business Growth.',
-			'lead'  => 'Grow your business with personalized email campaigns, intelligent automation, and powerful performance insights.',
+			'title' => 'Why Brands Choose<br>Growtele Email.',
+			'lead'  => 'Land in the inbox, automate follow-ups and reminders, and measure which campaigns drive opens and purchases.',
 		),
 		'why'     => array(
 			'title' => 'Why Email Remains the Most<br>Powerful Business Channel',
-			'lead'  => 'Growtele Email helps businesses deliver meaningful customer experiences.',
+			'lead'  => 'Customers check their inbox daily, so transactional emails get noticed.',
 		),
 		'funnel_heading' => array(
-			'title' => 'Power every stage of<br>Customer Email Journey',
-			'lead'  => 'Guide customers from first contact to long-term loyalty with personalized, automated email communication.',
+			'title' => 'From First Sign-Up<br>to the Repeat Purchase',
+			'lead'  => 'Welcome new subscribers, recover abandoned carts, and reward your loyal customers with automated emails.',
 		),
 		'faq'     => array(
 			'title' => 'Everything You Need to Know<br>About Growtele Email',
-			'lead'  => 'Find answers to common questions about email delivery, automation, analytics, security, templates, and campaign management.',
+			'lead'  => 'Answers on deliverability, SMTP setup, automation, personalization, analytics, security, templates, and campaign reporting.',
 			'items' => array(),
 		),
 		'funnel'  => $funnel_email,
@@ -241,39 +241,39 @@ return array(
 	),
 	'rcs'               => array(
 		'hero'    => array(
-			'title'    => 'Power Interactive<br>Customer Engagement<br>Through RCS',
-			'subtitle' => 'Deliver branded, interactive, and media-rich messaging experiences with verified sender profiles, rich cards, carousels, suggested replies, and real-time customer engagement.',
-			'cta_text' => "Let's Get Started",
+			'title'    => 'Engage Customers<br>With RCS Business<br>Messaging',
+			'subtitle' => 'Send branded messages featuring your logo, verified sender ID, rich media, product carousels, and smart replies, directly inside the handset\'s default messaging app.',
+			'cta_text' => "Book a Demo",
 			'cta_url'  => '',
 		),
 		'pills'   => array(
-			'High Inbox Delivery',
-			'Global Coverage',
-			'Real-Time Analytics',
+			'Verified Sender ID',
+			'Fallback <br class="hero__pill-br">to SMS',
+			'Live Read Receipts',
 		),
 		'journey' => array(
-			'title' => 'Reliable RCS for Every<br>Customer Journey',
-			'lead'  => 'Deliver engaging customer experiences with branded messages, rich media, interactive cards, product carousels, and actionable conversations.',
+			'title' => 'Branded RCS for Every<br>Customer Journey',
+			'lead'  => 'Display your verified logo, send images and product carousels, and let customers book appointments, pay invoices, or reply instantly.',
 		),
 		'scale'   => array(
 			'title' => 'Built for Scale. <span>Designed for Engagement.</span>',
-			'lead'  => 'Deliver visually rich conversations that increase customer engagement and improve conversion rates.',
+			'lead'  => 'Rich cards and one-tap buttons turn simple messages into bookings, purchases, and UPI payments.',
 		),
 		'benefits' => array(
-			'title' => 'Benefits That Drive<br>Customer Engagement',
-			'lead'  => 'Create meaningful conversations with interactive messaging, personalized content, and real-time customer interactions.',
+			'title' => 'What Brands Achieve<br>With RCS Business',
+			'lead'  => 'Turn plain texts into tappable conversations featuring buttons, images, product carousels, and suggested replies.',
 		),
 		'why'     => array(
-			'title' => 'Why RCS is the Future of<br>Business Messaging',
-			'lead'  => 'Deliver app-like messaging experiences that combine branding, multimedia, and interactivity within the native messaging app.',
+			'title' => 'Why Brands Upgrade<br>From Plain SMS to RCS',
+			'lead'  => 'RCS puts your branding, multimedia, and buttons inside the phone\'s built-in messaging app, so customers need no download.',
 		),
 		'funnel_heading' => array(
-			'title' => 'Power Every Stage of the<br>Customer RCS Journey',
-			'lead'  => 'Guide customers from discovery to conversion through personalized RCS conversations.',
+			'title' => 'RCS for Every Stage of<br>the Customer Journey',
+			'lead'  => 'Attract, engage, and retain customers through branded, interactive RCS messaging.',
 		),
 		'faq'     => array(
 			'title' => 'Everything You Need to Know<br>About Growtele RCS',
-			'lead'  => 'Find answers to common questions about verified messaging, rich media, interactive features, analytics, and enterprise communication.',
+			'lead'  => 'Answers about RCS Business Messaging, rich media, product carousels, verified sender ID, smart replies, and campaign analytics.',
 			'items' => array(),
 		),
 		'funnel'  => $funnel_rcs,
@@ -281,39 +281,39 @@ return array(
 	),
 	'cloud-telephony'   => array(
 		'hero'    => array(
-			'title'    => 'Power Business<br>Communication Through<br>Cloud Telephony',
-			'subtitle' => 'Manage inbound and outbound calls, IVR, call routing, virtual numbers, and real-time customer conversations from a single cloud-based platform.',
-			'cta_text' => "Let's Get Started",
+			'title'    => '<span class="hero__title-dl">Answer Faster <br>via</span> <span class="hero__title-dl">Cloud Telephony</span><br><span class="hero__title-dl">&amp; Voice</span>',
+			'subtitle' => 'Run IVR, outbound calls, missed call campaigns, voice OTP, and number masking from one cloud platform, without installing any PBX hardware.',
+			'cta_text' => "Book a Demo",
 			'cta_url'  => '',
 		),
 		'pills'   => array(
 			'Smart Call Routing',
 			"Multi-<br>Level IVR",
-			'Real-Time Analytics',
+			'Live Call Analytics',
 		),
 		'journey' => array(
-			'title' => 'Reliable Cloud Telephony<br>for Every Customer Journey',
-			'lead'  => 'Handle every customer call with intelligent routing, automated IVR, call tracking, and enterprise-grade voice infrastructure.',
+			'title' => 'One Voice Platform for<br>Inbound &amp; Outbound Calls',
+			'lead'  => 'Answer inbound calls with IVR, run outbound campaigns, and capture leads automatically from every missed call you receive.',
 		),
 		'scale'   => array(
-			'title' => 'Built for Scale. Designed<br>for Reliable Conversations.</span>',
-			'lead'  => 'Power customer communication with cloud-based voice infrastructure built for speed, reliability, and business continuity.',
+			'title' => 'Complete Voice Services<br>All From a Single Provider.</span>',
+			'lead'  => 'Get virtual numbers, call management, and cloud calling in one account, without purchasing or maintaining PBX hardware.',
 		),
 		'benefits' => array(
-			'title' => 'Benefits That Drive Better<br>Customer Communication',
-			'lead'  => 'Deliver seamless voice experiences with intelligent call management, automation, and actionable insights',
+			'title' => 'Benefits That Help Agents<br>Resolve Calls Faster',
+			'lead'  => 'Route callers to the right agent, automate frequent questions through IVR, and track conversations.',
 		),
 		'why'     => array(
 			'title' => 'Why Cloud Telephony Powers<br>Modern Customer Support',
-			'lead'  => 'Deliver seamless voice communication with automated call handling, intelligent routing, and cloud-based reliability.',
+			'lead'  => 'Some problems need a real conversation. Voice connects customers to the right person without frustrating queues.',
 		),
 		'funnel_heading' => array(
-			'title' => 'Power Every Stage of the<br>Customer Call Journey',
-			'lead'  => 'Deliver seamless voice experiences from the first call to post-support follow-ups with intelligent cloud telephony.',
+			'title' => 'Use Voice at Every Stage<br>of the Buyer Journey',
+			'lead'  => 'Capture leads with missed calls, follow up through outbound campaigns, and retain buyers with feedback calls.',
 		),
 		'faq'     => array(
 			'title' => 'Everything You Need to Know<br>About Growtele Cloud Telephony',
-			'lead'  => 'Find answers about IVR, call routing, virtual numbers, call recording, analytics, and enterprise voice solutions.',
+			'lead'  => 'Answers on IVR, call routing, virtual numbers, call recording, CRM integration, and enterprise-scale deployments.',
 			'items' => array(),
 		),
 		'funnel'  => $funnel_cloud,

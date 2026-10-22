@@ -30,7 +30,6 @@ br.gt-mobile-br {
     display: block !important;
   }
   .sms-page .journey:not(.journey--scroll-stack) .journey-card,
-  .sms-page .journey.journey--scroll-stack .journey-card,
   .scale-card,
   .scale-card.is-active,
   .scale-card__media,

@@ -1049,13 +1049,25 @@
 
 		function syncStackHeight() {
 			if (!stackEl) return;
+			var caseCards = Array.prototype.slice.call(stackEl.querySelectorAll('.gt-case-studies__card'));
+			caseCards.forEach(function (card) {
+				card.style.removeProperty('min-height');
+			});
 			if (isCaseMobileLayout()) {
 				stackEl.style.minHeight = 'auto';
 				stackEl.style.height = 'auto';
 				return;
 			}
-			stackEl.style.minHeight = '470px';
-			stackEl.style.height = '470px';
+			/* Desktop: every card takes the tallest card's height so all four match */
+			var tallest = 470;
+			caseCards.forEach(function (card) {
+				tallest = Math.max(tallest, Math.ceil(card.offsetHeight));
+			});
+			caseCards.forEach(function (card) {
+				card.style.minHeight = tallest + 'px';
+			});
+			stackEl.style.minHeight = tallest + 'px';
+			stackEl.style.height = tallest + 'px';
 		}
 
 		function renderStack(target, animate) {
@@ -1267,6 +1279,11 @@
 			updateCaseProgressPosition(caseContainer.querySelector('.gt-case-studies__tab.is-active'));
 		}, { passive: true });
 		syncStackHeight();
+		/* Re-measure once fonts and images settle, so card heights match exactly */
+		window.addEventListener('load', syncStackHeight);
+		if (document.fonts && document.fonts.ready) {
+			document.fonts.ready.then(syncStackHeight);
+		}
 	}
 
 	/* Button Ripple Effect */

@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $shared_cta = array(
-	'heading'     => "              Power Smarter Customer<br>\n              Conversations at Scale",
-	'description' => 'Engage customers across SMS, WhatsApp, RCS, Email, and Voice through one unified communication platform built for reliability, performance, and growth',
+	'heading'     => "              Reach Every Customer<br>\n              on the Right Channel",
+	'description' => 'Send OTPs, alerts, promotions, and support messages on SMS, WhatsApp, RCS, Email, and Voice from one dependable platform built for enterprise volumes',
 	'button_text' => 'Get Started',
 	'button_url'  => '',
 );
@@ -19,34 +19,34 @@ $shared_cta = array(
 $shared_address = 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309';
 $shared_phone   = '+91 9999-564-564';
 $shared_email1  = 'info@growtele.com';
-$shared_email2  = 'support@growtele.com';
+$shared_email2  = 'enquiry@growtele.com';
 
 return array(
 	'about-us'    => array(
 		'hero'        => array(
 			'badge' => 'About Growtele',
-			'title' => 'Building the Future of Business Communication',
-			'desc'  => 'Empowering businesses with intelligent, secure, and scalable communication solutions that connect brands with customers across every touchpoint.',
+			'title' => 'One Platform. Billions of Customer Messages.',
+			'desc'  => 'Banks, retailers, and logistics companies send OTPs, transaction alerts, and promotions on SMS, WhatsApp, RCS, Email, and Voice with Growtele.',
 		),
 		'connecting'  => array(
-			'title'        => 'Connecting Businesses Through Smarter Communication',
-			'description'  => 'Growtele is a cloud communication platform built to simplify customer engagement. We help businesses deliver meaningful conversations through messaging, voice, email, and automation—all from one powerful platform.',
+			'title'        => 'Simple Customer Messaging for Growing Businesses',
+			'description'  => 'Growtele is a CPaaS platform for customer messaging. Send and automate OTPs, alerts, offers, and support replies on SMS, WhatsApp, RCS, Email, and Voice, with delivery reports and DLT compliance built in.',
 			'stat_1'       => '36B+',
 			'stat_1_label' => 'Messages Delivered Globally',
 			'stat_2'       => '500+',
 			'stat_2_label' => 'Enterprise Clients Served',
 		),
 		'core_values' => array(
-			'title' => 'The Core Values<br>That Power Every Customer Interaction',
-			'desc'  => 'At Growtele, our values shape every product, every innovation, and every customer interaction. We are committed to building secure, scalable, and intelligent communication solutions that empower businesses to connect with customers more effectively. By combining reliability, innovation, and a customer-first approach, we help organizations create meaningful conversations',
+			'title' => 'Our Core Values<br>That Shape Every Message We Deliver',
+			'desc'  => 'Our values shape how we build our product and treat every customer. We build infrastructure you can rely on, so your OTPs, transaction alerts, and promotional campaigns reach customers on time. We put customers first, respond promptly when something breaks, improve the product continuously, and stay focused on the commercial outcomes that matter to you.',
 		),
 		'driven'      => array(
 			'title'    => 'Driven by People.<br>Powered by Purpose.',
-			'subtitle' => 'Every innovation at Growtele begins with people who are passionate about building better communication experiences.',
+			'subtitle' => 'Every idea at Growtele starts with people who care about getting your OTPs, payment alerts, and campaigns right.',
 		),
 		'locations'   => array(
-			'title'    => "We're Here to Help Your Business Grow",
-			'subtitle' => 'Have questions or need expert guidance? Reach out to Growtele and discover how our communication solutions can help your business grow.',
+			'title'    => "Find Our Offices or Talk to Our Team",
+			'subtitle' => 'Questions about pricing, DLT setup, or a use case? Write or call us, or visit our offices in Delhi NCR, Kolkata, Bengaluru, or Mumbai.',
 		),
 		'offices'     => array(
 			'kolkata'   => array(
@@ -78,7 +78,7 @@ return array(
 			),
 			'mumbai'    => array(
 				'city'    => 'Mumbai',
-				'address' => $shared_address,
+				'address' => '903, Platinum Techno Park, Sector 30, Vashi, Navi Mumbai, Maharashtra - 400703',
 				'phone'   => $shared_phone,
 				'email1'  => $shared_email1,
 				'email2'  => $shared_email2,
@@ -90,48 +90,48 @@ return array(
 	),
 	'blogs'       => array(
 		'hero' => array(
-			'title'              => 'Blogs &amp; Articles',
-			'subtitle'           => 'Stay updated with the latest trends, industry insights, product updates, and communication strategies that help businesses engage customers and drive meaningful growth',
-			'search_placeholder' => 'Search your featured blogs....',
+			'title'              => 'Blog &amp; Insights',
+			'subtitle'           => 'Practical guides, product updates, and channel trends for marketing and product teams using SMS, WhatsApp, RCS, Email, and Voice to reach customers and grow revenue.',
+			'search_placeholder' => 'Search articles and guides...',
 			'search_button'      => 'Search',
 		),
 		'cta'  => $shared_cta,
 	),
 	'career'      => array(
 		'hero'    => array(
-			'title'    => "Join the Team That's Redefining<br>Business Communication",
-			'subtitle' => "Join a passionate team that's redefining business communication through innovative messaging, cloud telephony, AI-powered engagement, and enterprise communication solution",
+			'title'    => "Join Us and Build the Future of<br>Customer Conversations",
+			'subtitle' => "Build the platform banks, retailers, and logistics businesses depend upon for OTPs, transaction alerts, and promotions across SMS, WhatsApp, RCS, Email, and Voice.",
 		),
 		'culture' => array(
-			'title' => 'A Workplace Where Fun Meet Growth',
-			'desc'  => "It's a dynamic and engaging environment where creativity thrives,<br>collaboration is encouraged, and every achievement is celebrated.",
+			'title' => 'Where Great Work Meets Good Fun',
+			'desc'  => "Teammates try bold ideas, ship features quickly, help each other,<br>and celebrate product launches and customer wins, big or small.",
 		),
 		'values'  => array(
 			'title' => 'Build the Future With People Who Inspire You',
-			'desc'  => "Build meaningful solutions, take ownership, and grow alongside a team that's shaping the future of customer communication.",
+			'desc'  => "Take ownership of your work from day one, solve real customer problems, and grow alongside teammates who have your back.",
 		),
 		'perks'   => array(
 			'title' => 'Perks and Benefits That<br>Help You Learn, Grow',
 		),
 		'jobs'    => array(
-			'title' => "Find the Opportunity<br>That's Right for You",
-			'desc'  => 'Join a passionate team where your ideas matter, your growth is supported,<br>and every role contributes to shaping the future of customer communication',
+			'title' => "Explore Open Roles<br>That Fit Your Skills",
+			'desc'  => 'Your ideas count here, your growth gets full support from your manager,<br>and every role helps banks, retailers, and schools reach their customers.',
 		),
 		'cta'     => $shared_cta,
 	),
 	'contact'     => array(
 		'hero'      => array(
-			'title'    => 'Talk to Our Experts',
-			'subtitle' => 'Have questions or planning your next communication strategy? Our specialists are ready to help you choose the right solution and build a communication experience tailored to your business.',
+			'title'    => 'Talk to an Expert',
+			'subtitle' => 'Tell us what you\'re building. Share your use case, the channels you need, and expected monthly volumes, and our team will help you pick the right setup, templates, and pricing plan.',
 		),
 		'form'      => array(
 			'first_name' => 'First Name*',
 			'last_name'  => 'Last Name*',
 			'company'    => 'Company Name',
-			'email'      => 'Business E-Mail*',
+			'email'      => 'Your Work Email*',
 			'phone'      => 'Phone Number*',
-			'query'      => 'About Your Query',
-			'submit'     => 'Submit Request',
+			'query'      => 'Your Requirement',
+			'submit'     => 'Contact Sales',
 			'submitted'  => 'Submitted!',
 			'errors'     => array(
 				'first_name'    => 'First name is required',
@@ -144,9 +144,9 @@ return array(
 			),
 		),
 		'locations' => array(
-			'title'   => "We're Here to Help Your Business Grow",
-			'desc'    => 'Have questions or need expert guidance? Reach out to Growtele and discover how our communication solutions can help your business grow.',
-			'support' => 'Get support from our team',
+			'title'   => "Find Our Offices or Talk to Our Team",
+			'desc'    => 'Questions about pricing, DLT setup, or a use case? Write or call us, or visit our offices in Delhi NCR, Kolkata, Bengaluru, or Mumbai.',
+			'support' => 'Write to our support team',
 		),
 		'offices'   => array(
 			'kolkata'   => array(
@@ -184,7 +184,7 @@ return array(
 			),
 			'mumbai'    => array(
 				'city'    => 'Mumbai',
-				'address' => $shared_address,
+				'address' => '903, Platinum Techno Park, Sector 30, Vashi, Navi Mumbai, Maharashtra - 400703',
 				'phone'   => $shared_phone,
 				'email1'  => $shared_email1,
 				'email2'  => $shared_email2,
@@ -198,15 +198,15 @@ return array(
 	),
 	'growtele-io' => array(
 		'hero' => array(
-			'title' => 'One Intelligent Platform.<span class="hero__title-rest"> Unlimited Possibilities.</span>',
-			'desc'  => 'The all-in-one communication platform to connect,<br>engage and grow with your customers across<br>WhatsApp. SMS, Email, RCS and Voice.',
+			'title' => 'One Engagement Platform<span class="hero__title-rest"> for Every Conversation.</span>',
+			'desc'  => 'Run campaigns, chatbots and a shared team inbox,<br>from one login and reach your customers on<br>WhatsApp, SMS, Email, RCS and Voice.',
 		),
 		'faq'  => array(
 			'title' => 'Everything You Need to Know<br>About Growinfinity.io',
-			'intro' => 'Find answers to the most common questions about Growinfinity.io — from platform capabilities and integrations to security, scalability, and implementation.',
+			'intro' => 'Quick answers about Growinfinity.io, from supported channels and CRM integrations to data security, enterprise scale, and how to get your team started.',
 			'items' => array(
 				array( 'question' => 'What is Growinfinity.io?' ),
-				array( 'question' => 'Which communication channels does Growinfinity support?' ),
+				array( 'question' => 'Which messaging channels can I use with Growinfinity?' ),
 				array( 'question' => 'Can Growinfinity integrate with our existing systems?' ),
 				array( 'question' => 'Is Growinfinity suitable for enterprise-scale businesses?' ),
 				array( 'question' => 'How secure is the Growinfinity platform?' ),

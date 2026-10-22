@@ -869,7 +869,7 @@
   font-weight: 500;
   color: var(--color-white);
   padding: clamp(8px, 1.5vh, 14px) 0;
-  opacity: 0.3;
+  opacity: 1;
   cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -881,7 +881,14 @@
   height: 40px;
   flex-shrink: 0;
   object-fit: contain;
+  padding: 9px;
+  box-sizing: border-box;
+  clip-path: circle(50%);
 }
+
+.apis__list-item:nth-child(1) .apis__list-icon { background: #E4FFFB; }
+.apis__list-item:nth-child(2) .apis__list-icon { background: #EED8FF; }
+.apis__list-item:nth-child(3) .apis__list-icon { background: #FFDCCF; }
 
 /* ============================================================
    MID-PAGE CTA

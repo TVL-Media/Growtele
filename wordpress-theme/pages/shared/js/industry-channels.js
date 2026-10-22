@@ -38,6 +38,7 @@
 
     var channelTitle = document.getElementById('channel-title');
     var channelTabDesc = document.getElementById('channel-tab-desc');
+    var channelFeatures = document.getElementById('channel-features');
     var channelPhoneImg = document.getElementById('channel-phone-img');
     var channelPhoneImgNext = document.getElementById('channel-phone-img-next');
     var tabsContainer = document.querySelector('.channels__tabs');
@@ -148,6 +149,16 @@
       if (data) {
         if (channelTitle) channelTitle.textContent = data.title;
         if (channelTabDesc) channelTabDesc.textContent = data.desc;
+        if (channelFeatures && data.features) {
+          channelFeatures.querySelectorAll('li').forEach(function (li, i) {
+            var feature = data.features[i];
+            if (!feature) return;
+            var strong = li.querySelector('strong');
+            var text = li.querySelector('p');
+            if (strong) strong.innerHTML = feature.title;
+            if (text) text.innerHTML = feature.text;
+          });
+        }
         var shouldAnimateImage = options.animateImage === true && !options.force;
         showChannelImage(key, options.direction || 0, shouldAnimateImage);
       }

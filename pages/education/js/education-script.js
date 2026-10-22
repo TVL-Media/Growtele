@@ -4,29 +4,54 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/30703af0c6c8f61ff5799250e94770fc6686ce87.png'
+      title: 'Send admission updates, fee due reminders, attendance alerts, and exam results by SMS using DLT-approved templates and headers.',
+      desc: 'Admission updates, fee reminders, and exam alerts by SMS that reach any parent\'s phone.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/30703af0c6c8f61ff5799250e94770fc6686ce87.png',
+      features: [
+        { title: 'Fee Due Reminders', text: 'Send fee due reminders to parents on SMS and WhatsApp with a secure payment link, and follow up until the fee is paid.' },
+        { title: 'Admission Enquiries', text: 'Reply to every admission enquiry within minutes and route serious leads to the right counsellor by phone call, WhatsApp, or chat.' },
+        { title: 'Alerts for Parents', text: 'Tell parents about absences, exam dates, results, PTMs, and holidays by SMS, WhatsApp, or Voice in their preferred regional language.' }
+      ]
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/f4c9cd0dcc35e1e5cd9f4d985a110e8c0f156ca9.png'
+      title: 'Stay in touch with students and parents on WhatsApp through admission chatbots, fee reminders, class updates, and quick replies.',
+      desc: 'Answer admission queries, share fee reminders, and send class updates to parents on WhatsApp.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/f4c9cd0dcc35e1e5cd9f4d985a110e8c0f156ca9.png',
+      features: [
+        { title: 'Admission Chatbot', text: 'Answer questions about courses, fees, and eligibility at any hour, then pass serious applicants to your admissions team.' },
+        { title: 'Fee Payment Links', text: 'Send fee reminders with a secure payment link on WhatsApp, followed by an instant receipt once the payment is made.' },
+        { title: 'Class &amp; Event Updates', text: 'Share timetables, holiday notices, and event updates with parents in one message instead of paper circulars.' }
+      ]
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d2e40ce6abd087dea1e51d92704b5bab4466537c.png'
+      title: 'Capture admission leads through missed call services, run IVR helplines, and call parents automatically about absences.',
+      desc: 'Missed call enquiries, IVR admission helplines, and automated absence alerts to parents by voice.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d2e40ce6abd087dea1e51d92704b5bab4466537c.png',
+      features: [
+        { title: 'Missed Call Enquiries', text: 'Students give a missed call to your number and get an automatic callback with course and admission details.' },
+        { title: 'IVR Admission Helpline', text: 'Route callers through a simple IVR menu to admissions, fees, or transport, so every query reaches the right desk.' },
+        { title: 'Absence Alert Calls', text: 'Call parents automatically when a student is marked absent, in their preferred language, so nothing slips through.' }
+      ]
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/6fc904acaee442868cb55b252ca0d29c4b7cd911.png'
+      title: 'Promote courses in verified RCS carousels showing campus photos, fee structures, and one-tap buttons to apply or visit.',
+      desc: 'Verified RCS course carousels with one-tap buttons to apply or book a campus visit.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/6fc904acaee442868cb55b252ca0d29c4b7cd911.png',
+      features: [
+        { title: 'Course Carousels', text: 'Showcase courses in a swipeable carousel with campus photos, duration, and fees, plus an Apply Now button on each card.' },
+        { title: 'Campus Visit Booking', text: 'Let prospective students pick a date and book a campus visit with one tap, right inside their messaging app.' },
+        { title: 'Result Announcements', text: 'Share results and scholarship news from your verified institute profile, with SMS fallback for older phones.' }
+      ]
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-624-1.png'
+      title: 'Email offer letters, fee receipts, timetables, and report cards, plus monthly newsletters for students and their parents.',
+      desc: 'Offer letters, fee receipts, report cards, and newsletters delivered by Email to families.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-624-1.png',
+      features: [
+        { title: 'Offer Letters', text: 'Email admission offer letters with joining instructions and fee details, so new students know exactly what to do next.' },
+        { title: 'Fee Receipts', text: 'Send a receipt by email the moment a fee payment is made, giving parents a clear record for every term.' },
+        { title: 'Report Cards &amp; Newsletters', text: 'Share report cards, monthly newsletters, and important notices with parents directly in their inbox.' }
+      ]
     }
   };
 

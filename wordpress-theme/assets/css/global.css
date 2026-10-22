@@ -27,8 +27,8 @@
 	--gt-glass-blur: 20px;
 
 	/* Typography — Tomato Grotesk (headings) + Helvetica (body) only */
-	--gt-font-body: 'Helvetica', sans-serif;
-	--gt-font-heading: 'Tomato Grotesk', sans-serif;
+	--gt-font-body: Arial, 'Helvetica', sans-serif;
+	--gt-font-heading: 'Tomato Grotesk', Arial, sans-serif;
 
 	/* Layout */
 	--gt-container-max: 1480px;
@@ -435,4 +435,22 @@ img.gt-img-loaded {
 .sms-nav-menu > .menu-item > a:hover,
 .sms-nav-menu > .menu-item > a[aria-expanded="true"] {
 	font-weight: 700;
+}
+
+/* Desktop: "Book a Demo" buttons size to their label (fixed widths were set for the longer "Let's Get Started") */
+@media (min-width: 1025px) {
+  .btn-cta.btn-cta--header,
+  .btn-cta.btn-cta--hero {
+    width: auto !important;
+    min-width: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .btn-cta.btn-cta--header {
+    gap: 10px !important;
+  }
+
+  .btn-cta.btn-cta--hero {
+    gap: 12px !important;
+  }
 }

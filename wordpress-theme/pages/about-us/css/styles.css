@@ -24,9 +24,9 @@
   --side-padding: clamp(20px, 8.33vw, 120px);
 
   /* Typography */
-  --font-roboto: 'Roboto', sans-serif;
-  --font-tomato: 'Tomato Grotesk', sans-serif;
-  --font-heading: 'Tomato Grotesk', sans-serif;
+  --font-roboto: 'Roboto', Arial, sans-serif;
+  --font-tomato: 'Tomato Grotesk', Arial, sans-serif;
+  --font-heading: 'Tomato Grotesk', Arial, sans-serif;
 
   /* Border radius */
   --radius-sm: 20px;
@@ -1533,4 +1533,19 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* Word reveal — inherit parent text alignment */
 .about-us-page .gt-words {
   text-align: inherit;
+}
+
+/* Desktop: locations heading widths */
+@media (min-width: 1025px) {
+  .locations__title {
+    max-width: 398px;
+  }
+
+  .locations__subtitle {
+    max-width: 598px;
+  }
+
+  .connecting__title {
+    max-width: 599px;
+  }
 }

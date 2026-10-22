@@ -54,6 +54,8 @@
   html,
   body {
     overflow-x: hidden;
+    /* clip (not hidden) so the journey section can use position: sticky */
+    overflow-x: clip;
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -66,12 +68,14 @@
 
   body.sms-page {
     background: var(--product-hero-bg);
+    overflow-x: clip;
   }
 
   .page {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    overflow-x: clip;
     overflow-y: visible;
     margin: 0;
     padding: 0;
@@ -855,7 +859,7 @@
     overflow-x: clip;
   }
 
-  .journey__body {
+  .journey:not(.journey--scroll-stack) .journey__body {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -867,8 +871,12 @@
     contain: layout style;
   }
 
+  .journey.journey--scroll-stack .journey__body::before {
+    display: none !important;
+  }
+
   /* Multi-phone journey: fixed slot — stable px height (vh shifts when mobile chrome moves) */
-  .journey__body:has(.journey__phone--a)::before {
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a)::before {
     content: "";
     display: block;
     width: 100%;
@@ -878,11 +886,11 @@
     pointer-events: none;
   }
 
-  .journey__phone,
-  .journey__phone--a,
-  .journey__phone--b,
-  .journey__phone--c,
-  .journey__phone--d {
+  .journey:not(.journey--scroll-stack) .journey__phone,
+  .journey:not(.journey--scroll-stack) .journey__phone--a,
+  .journey:not(.journey--scroll-stack) .journey__phone--b,
+  .journey:not(.journey--scroll-stack) .journey__phone--c,
+  .journey:not(.journey--scroll-stack) .journey__phone--d {
     position: relative !important;
     left: auto !important;
     top: auto !important;
@@ -901,10 +909,10 @@
   }
 
   /* Multi-phone pages — fixed mockup slot (stacked in one place) */
-  .journey__body:has(.journey__phone--a) .journey__phone--a,
-  .journey__body:has(.journey__phone--a) .journey__phone--b,
-  .journey__body:has(.journey__phone--a) .journey__phone--c,
-  .journey__body:has(.journey__phone--a) .journey__phone--d {
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--a,
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--b,
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--c,
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--d {
     position: absolute !important;
     left: 0 !important;
     right: 0 !important;
@@ -921,31 +929,31 @@
   }
 
   /* Multi-phone pages (Email, WhatsApp, RCS, Cloud Telephony) */
-  .journey__body:has(.journey__phone--a) .journey__phone--a:not(.is-active),
-  .journey__body:has(.journey__phone--a) .journey__phone--b:not(.is-active),
-  .journey__body:has(.journey__phone--a) .journey__phone--c:not(.is-active),
-  .journey__body:has(.journey__phone--a) .journey__phone--d:not(.is-active) {
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--a:not(.is-active),
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--b:not(.is-active),
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--c:not(.is-active),
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone--d:not(.is-active) {
     display: block !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
   }
 
-  .journey__body:has(.journey__phone--a) .journey__phone.is-active {
+  .journey:not(.journey--scroll-stack) .journey__body:has(.journey__phone--a) .journey__phone.is-active {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: none !important;
   }
 
-  .journey__phone--a:not(.is-active),
-  .journey__phone--b:not(.is-active),
-  .journey__phone--c:not(.is-active),
-  .journey__phone--d:not(.is-active) {
+  .journey:not(.journey--scroll-stack) .journey__phone--a:not(.is-active),
+  .journey:not(.journey--scroll-stack) .journey__phone--b:not(.is-active),
+  .journey:not(.journey--scroll-stack) .journey__phone--c:not(.is-active),
+  .journey:not(.journey--scroll-stack) .journey__phone--d:not(.is-active) {
     display: none !important;
   }
 
-  .journey__phone.is-active {
+  .journey:not(.journey--scroll-stack) .journey__phone.is-active {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -968,36 +976,279 @@
     transform: none !important;
   }
 
-  .journey.journey--scroll-stack .journey__body {
-    position: relative;
-    z-index: 3;
+  .journey.journey--scroll-stack {
+    overflow: visible;
+    isolation: isolate;
+    z-index: 2;
+    overflow-anchor: none;
   }
 
-  .journey.journey--scroll-stack .journey__cards {
+  .journey.journey--scroll-stack.journey--mob-pinned {
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Held at one spot (inline top) while the runway scrolls past */
+  .journey.journey--scroll-stack.journey--mob-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey__body::before {
+    content: "";
+    display: block !important;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: var(--journey-mob-phone-h, 280px);
+    min-height: var(--journey-mob-phone-h, 280px);
+    pointer-events: none;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle.journey--mob-runway-reserved {
+    overflow-anchor: none;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey__body {
+    position: relative;
+    z-index: 3;
+    display: grid !important;
+    grid-template-columns: 38% 60%;
+    column-gap: 2%;
+    align-items: start;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: var(--journey-mob-shell-h, var(--journey-mob-phone-h, 280px)) !important;
+    overflow: visible !important;
+    contain: none;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey__phone,
+  .journey.journey--scroll-stack.journey--stack-idle .journey__phone--a,
+  .journey.journey--scroll-stack.journey--stack-idle .journey__phone--b,
+  .journey.journey--scroll-stack.journey--stack-idle .journey__phone--c,
+  .journey.journey--scroll-stack.journey--stack-idle .journey__phone--d {
+    position: absolute !important;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    left: 0 !important;
+    right: auto !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: left top !important;
+    transform: none !important;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    pointer-events: none;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey__cards {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0;
+    isolation: auto;
+    transform: none !important;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    transform: none !important;
+    will-change: auto;
+    transition: none !important;
+    padding: 10px 10px 8px;
+    box-sizing: border-box;
+    border-radius: 14px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 0 8px !important;
+    overflow: hidden;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey-card__icon-wrap {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    background: #ff9300 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey-card__icon-wrap img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey-card h3 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    white-space: normal !important;
+    font-weight: 600 !important;
+  }
+
+  .journey.journey--scroll-stack.journey--stack-idle .journey-card p {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    margin: 4px 0 0 !important;
+    -webkit-line-clamp: 2;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden;
+    white-space: normal !important;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__body {
+    position: relative;
+    z-index: 3;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: var(--journey-mob-shell-h, var(--journey-mob-phone-h, 280px)) !important;
+    overflow: visible !important;
+    contain: none;
+  }
+
+  .sms-page .scale {
+    margin-top: 0 !important;
+    z-index: 1;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__body:has(.journey__phone--a) .journey__phone--a,
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__body:has(.journey__phone--a) .journey__phone--b,
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__body:has(.journey__phone--a) .journey__phone--c,
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__body:has(.journey__phone--a) .journey__phone--d {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 40% !important;
+    max-width: 40% !important;
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: left top !important;
+    transform: none !important;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__phone,
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__phone--a,
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__phone--b,
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__phone--c,
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__phone--d {
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__cards {
+    position: absolute !important;
+    left: var(--journey-mob-cards-left, 40%) !important;
+    top: 0 !important;
+    right: auto !important;
+    width: var(--journey-mob-cards-w, 60%) !important;
+    max-width: var(--journey-mob-cards-w, 60%) !important;
     display: block !important;
     flex-direction: unset !important;
     gap: 0 !important;
     min-height: 0 !important;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 14px;
     isolation: isolate;
   }
 
-  .journey.journey--scroll-stack .journey-card {
+  .journey.journey--scroll-stack:not(.journey--stack-idle).journey--mob-chain-scrub .journey-card {
+    transition: none !important;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey-card {
     position: absolute !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: var(--journey-mob-card-h, auto) !important;
+    min-height: var(--journey-mob-card-h, auto) !important;
+    max-height: var(--journey-mob-card-h, auto) !important;
     box-sizing: border-box;
     overflow: hidden;
     display: flex !important;
-    flex-direction: column !important;
-    border-radius: 20px !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 0 8px !important;
+    border-radius: 14px !important;
     will-change: transform;
-    transition: transform 380ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-    padding: 24px 20px 20px;
+    transition: none !important;
+    padding: 10px 10px 8px;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  .journey.journey--scroll-stack.journey--mob-pinned .journey-card,
+  .journey.journey--scroll-stack.journey--mob-chain-scrub .journey-card {
+    will-change: transform;
+  }
+
+  .journey.journey--scroll-stack.journey--mob-pinned .journey__body,
+  .journey.journey--scroll-stack.journey--mob-chain-scrub .journey__body {
+    contain: layout style;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 
   .journey.journey--scroll-stack .journey__phone {
@@ -1009,31 +1260,75 @@
     transition: opacity 360ms ease, visibility 0s linear 0s;
   }
 
-  .journey.journey--scroll-stack .journey-card h3 {
-    position: static !important;
+  .journey.journey--scroll-stack.journey--mob-pinned [class*="journey__phone"],
+  .journey.journey--scroll-stack.journey--mob-chain-scrub [class*="journey__phone"],
+  .journey.journey--scroll-stack.journey--mob-android-stack [class*="journey__phone"] {
+    transition: none !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey-card__icon-wrap {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    background: #ff9300 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey-card__icon-wrap img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+  }
+
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey-card h3 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
     display: block;
     max-width: 100%;
-    margin: 8px 0 4px !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.25 !important;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  .journey.journey--scroll-stack .journey-card p {
-    position: static !important;
+  .journey.journey--scroll-stack:not(.journey--stack-idle) .journey-card p {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 1 1 100% !important;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     overflow: hidden;
     max-width: 100% !important;
     width: 100% !important;
-    margin: 0 !important;
-    line-height: 1.45;
+    margin: 4px 0 0 !important;
+    font-size: 11px !important;
+    line-height: 1.35;
   }
 
-  .journey.journey--scroll-stack .journey-card__icon-wrap {
-    position: static !important;
-    margin-bottom: 4px;
+  .sms-page .journey.journey--scroll-stack .journey-card__icon-wrap,
+  .sms-page .journey.journey--scroll-stack .journey-card h3,
+  .sms-page .journey.journey--scroll-stack .journey-card p {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
   }
 
   .journey.journey--scroll-stack {
@@ -1227,6 +1522,7 @@
     width: 44px;
     height: 44px;
     margin-bottom: 10px;
+    padding: 11px;
   }
 
   .benefit h3,
@@ -1877,11 +2173,11 @@
     min-height: 0 !important;
   }
 
-  .sms-page .journey__phone,
-  .sms-page .journey__phone--a,
-  .sms-page .journey__phone--b,
-  .sms-page .journey__phone--c,
-  .sms-page .journey__phone--d {
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone,
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--a,
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--b,
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--c,
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--d {
     width: min(360px, 96vw) !important;
     max-width: none !important;
     height: min(530px, 62vh) !important;
@@ -1889,10 +2185,25 @@
     margin: 0 auto 4px;
   }
 
-  .sms-page .journey__phone--a.is-active,
-  .sms-page .journey__phone--b.is-active,
-  .sms-page .journey__phone--c.is-active,
-  .sms-page .journey__phone--d.is-active {
+  .sms-page .journey.journey--scroll-stack .journey__phone,
+  .sms-page .journey.journey--scroll-stack .journey__phone--a,
+  .sms-page .journey.journey--scroll-stack .journey__phone--b,
+  .sms-page .journey.journey--scroll-stack .journey__phone--c,
+  .sms-page .journey.journey--scroll-stack .journey__phone--d {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: left top !important;
+  }
+
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--a.is-active,
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--b.is-active,
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--c.is-active,
+  .sms-page .journey:not(.journey--scroll-stack) .journey__phone--d.is-active {
     transform: none !important;
     margin: 0 auto 4px !important;
   }

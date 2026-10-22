@@ -18,8 +18,8 @@
   --page-width: 1440px;
   --content-max: 100%;
   --content-padding: 120px;
-  --font-roboto: 'Roboto', sans-serif;
-  --font-manrope: 'Manrope', sans-serif;
+  --font-roboto: 'Roboto', Arial, sans-serif;
+  --font-manrope: 'Manrope', Arial, sans-serif;
   --font-display: 'Space Grotesk', var(--font-roboto);
 }
 
@@ -1196,4 +1196,15 @@ ul {
 /* Word reveal — inherit parent text alignment */
 .contact-page .gt-words {
   text-align: inherit;
+}
+
+/* Desktop: lead widths */
+@media (min-width: 1025px) {
+  .locations__desc {
+    max-width: 664px;
+  }
+
+  .success__desc {
+    max-width: 700px;
+  }
 }

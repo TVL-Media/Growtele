@@ -20,7 +20,7 @@
 .growth__header .gt-word,
 .channels__header .gt-word,
 .usecases__header .gt-word {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Roboto', Arial, sans-serif !important;
   color: #121348 !important;
   -webkit-text-fill-color: #121348 !important;
   opacity: 1 !important;
@@ -116,7 +116,7 @@
   .trust,
   .faq
 ) {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 .page .channels__tab,
@@ -130,7 +130,7 @@
 .page .testimonial__quote,
 .page .faq-item__question,
 .page .faq-item__answer {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 /* Growth cards — composite art only (no overlay img): zoom to fill top/side inset like retail */
@@ -202,4 +202,29 @@
   .page .gt-cta.gt-section {
     backface-visibility: hidden;
   }
+}
+
+/* WhatsApp & RCS tabs (light card): navy icon circles with white icons */
+.channels__content--box-bg .channels__bullet {
+  background: #121348;
+  border-radius: 50%;
+}
+
+.channels__content--box-bg .channels__bullet > img:first-child {
+  visibility: hidden;
+}
+
+.channels__content--box-bg .channels__bullet-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Testimonial stat cards: stat title + short supporting line */
+.testimonial-stat__title {
+  font-weight: 500;
+}
+
+.testimonial-stat__desc {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.8em;
 }

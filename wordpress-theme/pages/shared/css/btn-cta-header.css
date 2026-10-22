@@ -10,7 +10,7 @@
   text-decoration: none;
   border: none;
   cursor: pointer;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
 .header .btn-cta--header,

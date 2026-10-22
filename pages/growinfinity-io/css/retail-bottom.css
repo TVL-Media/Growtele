@@ -7,7 +7,7 @@
   --gradient-trust: linear-gradient(-55.4deg, #ffffff 1.85%, #fff6e9 66.53%);
   --white: #ffffff;
   --border-light: rgba(0, 0, 0, 0.15);
-  --font-body: "Roboto", sans-serif;
+  --font-body: "Roboto", Arial, sans-serif;
   --retail-container-pad: 120px;
 }
 
@@ -63,7 +63,7 @@
 
 .growtele-io-page .faq .section-title,
 .growtele-io-page .section-title.faq__title {
-  font-family: "Tomato Grotesk", sans-serif;
+  font-family: "Tomato Grotesk", Arial, sans-serif;
   font-size: 40px;
   font-weight: 600;
   line-height: 1.2;
@@ -75,7 +75,7 @@
 }
 
 .growtele-io-page .faq__intro {
-  font-family: "Tomato Grotesk", sans-serif;
+  font-family: "Tomato Grotesk", Arial, sans-serif;
   font-size: 22px;
   font-weight: 400;
   line-height: 1.3;
@@ -223,16 +223,35 @@
 }
 
 .growtele-io-page .faq-item--open .faq-item__answer {
-  max-height: 120px;
+  max-height: 280px;
   width: 83%;
   padding-bottom: 8px;
 }
 
 .growtele-io-page .faq-item__answer p {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.4;
   color: var(--navy);
+}
+
+/* Animate answers to their real height with a symmetric curve so the
+   list height stays steady while one item closes and another opens. */
+.growtele-io-page .faq-item__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  max-height: none;
+  transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.growtele-io-page .faq-item--open .faq-item__answer {
+  grid-template-rows: 1fr;
+  max-height: none;
+}
+
+.growtele-io-page .faq-item__answer p {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .growtele-io-page .trust {
@@ -425,7 +444,7 @@
 
   .growtele-io-page .faq-item--open .faq-item__answer {
     width: 100%;
-    max-height: 200px;
+    max-height: 280px;
   }
 
   .growtele-io-page .faq__list {
@@ -554,5 +573,17 @@
   .growtele-io-page .gt-cta.gt-section,
   .growtele-io-page .gt-footer {
     backface-visibility: hidden;
+  }
+}
+
+/* FAQ accordion (below desktop) — no max-height animation, so opening/closing
+   never shifts the CTA card and footer under the finger (matches industry pages) */
+@media (max-width: 1024px) {
+  .growtele-io-page section.faq {
+    overflow-anchor: none;
+  }
+
+  .growtele-io-page .faq-item__answer {
+    transition: none !important;
   }
 }

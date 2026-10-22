@@ -7,8 +7,8 @@
   --text-muted: #aaaaaa;
   --input-bg: rgba(245, 244, 240, 0.2);
   --input-border: rgba(0, 0, 0, 0.1);
-  --font-roboto: 'Roboto', sans-serif;
-  --font-manrope: 'Manrope', sans-serif;
+  --font-roboto: 'Roboto', Arial, sans-serif;
+  --font-manrope: 'Manrope', Arial, sans-serif;
   position: fixed;
   inset: 0;
   z-index: 10050;

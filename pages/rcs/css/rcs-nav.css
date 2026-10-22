@@ -25,7 +25,7 @@
   align-items: center;
   gap: 4px;
   padding: 4px 6px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: normal;
@@ -111,7 +111,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px 28px;
   align-content: start;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
 .sms-dropdown__item {
@@ -159,7 +159,7 @@
 }
 
 .sms-dropdown__title {
-  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-family: "Tomato Grotesk", "Roboto", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
@@ -167,7 +167,7 @@
 }
 
 .sms-dropdown__desc {
-  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-family: "Tomato Grotesk", "Roboto", Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.45;
@@ -178,7 +178,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-family: "Tomato Grotesk", "Roboto", Arial, sans-serif;
 }
 
 .sms-dropdown__feature-img {
@@ -255,7 +255,7 @@
 .sms-dropdown .gt-mega-menu__title,
 .sms-dropdown .industry-solutions-dropdown-title,
 .sms-dropdown .company-dropdown-title {
-  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-family: "Tomato Grotesk", "Roboto", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
@@ -274,7 +274,7 @@
 .sms-dropdown .gt-mega-menu__desc,
 .sms-dropdown .industry-solutions-dropdown-desc,
 .sms-dropdown .company-dropdown-desc {
-  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-family: "Tomato Grotesk", "Roboto", Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.45;
@@ -294,7 +294,7 @@
 .sms-dropdown .industry-solutions-dropdown-feature-title,
 .sms-dropdown .company-dropdown-feature-title {
   margin: 20px 0 0;
-  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-family: "Tomato Grotesk", "Roboto", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.25;
@@ -305,7 +305,7 @@
 .sms-dropdown .industry-solutions-dropdown-feature-desc,
 .sms-dropdown .company-dropdown-feature-desc {
   margin: 4px 0 0;
-  font-family: "Tomato Grotesk", "Roboto", sans-serif;
+  font-family: "Tomato Grotesk", "Roboto", Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;

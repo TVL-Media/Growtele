@@ -124,7 +124,7 @@ br.gt-mobile-br {
     object-position: center center !important;
   }
 
-  .journey-card,
+  .journey:not(.journey--scroll-stack) .journey-card,
   .scale-card,
   .scale-card.is-active,
   .scale-card__media,
@@ -232,31 +232,115 @@ br.gt-mobile-br {
   }
 
   /*
-   * Journey stack — same layout slot as card 1 (--c); cards 2/3 PNGs draw smaller
-   * phone art, so widen slightly (no transform — transform overflowed the cards).
+   * Email journey phones (mobile only) — edit each card’s phone block below.
+   * HTML: Card 1 OTP = .journey__phone--c | Card 2 Transactional = .journey__phone--a | Card 3 Marketing = .journey__phone--b
+   * idle = list layout before pin; stack = pinned stack animation (.is-active = visible phone).
    */
-  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--c.is-active,
-  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--a.is-active,
-  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--b.is-active {
-    height: min(530px, 62vh) !important;
-    min-height: min(480px, 56vh) !important;
-    max-height: min(530px, 62vh) !important;
+  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--a,
+  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--b,
+  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--c {
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
     transform: none !important;
-    margin: 0 auto 4px !important;
+    transform-origin: left top !important;
     object-fit: contain !important;
-    object-position: center top !important;
+    object-position: left top !important;
   }
 
-  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--c.is-active {
-    width: min(360px, 96vw) !important;
+  /* --- Card 1: OTP Authentication (.journey__phone--c) --- */
+  .email-page.sms-page
+    .journey.journey--scroll-stack.journey--stack-idle:not(.journey--mob-runway-reserved)
+    .journey__phone--c.is-active {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+    min-height: var(--journey-mob-phone-h, 280px) !important;
+    top: 0 !important;
+    left: 0 !important;
   }
 
-  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--a.is-active {
-    width: min(404px, 99vw) !important;
+  .email-page.sms-page
+    .journey.journey--scroll-stack.journey--stack-idle.journey--mob-runway-reserved
+    .journey__phone--c.is-active,
+  .email-page.sms-page .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__phone--c.is-active {
+    width: 40% !important;
+    max-width: 40% !important;
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+    min-height: var(--journey-mob-phone-h, 280px) !important;
+    top: 0 !important;
+    left: 0 !important;
   }
 
-  .email-page.sms-page .journey.journey--scroll-stack .journey__phone--b.is-active {
-    width: min(386px, 97.5vw) !important;
+  /* --- Card 2: Transactional Email (.journey__phone--a) --- */
+  .email-page.sms-page
+    .journey.journey--scroll-stack.journey--stack-idle:not(.journey--mob-runway-reserved)
+    .journey__phone--a.is-active {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+    min-height: var(--journey-mob-phone-h, 280px) !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  /* Stack: beats mobile-product :has() + @768 .sms-page max-height caps on img */
+  .email-page.sms-page
+    .journey.journey--scroll-stack.journey--stack-idle.journey--mob-runway-reserved
+    .journey__body:has(.journey__phone--a) .journey__phone--a.is-active,
+  .email-page.sms-page .journey.journey--scroll-stack:not(.journey--stack-idle)
+    .journey__body:has(.journey__phone--a) .journey__phone--a.is-active {
+    width: 94% !important;
+    max-width: 59% !important;
+    height: calc(var(--journey-mob-phone-h, 280px) + 60px) !important;
+    max-height: calc(var(--journey-mob-phone-h, 280px) + 60px) !important;
+    min-height: calc(var(--journey-mob-phone-h, 280px) + 60px) !important;
+    top: -28px !important;
+    left: -38px !important;
+  }
+
+  /* --- Card 3: Marketing Email (.journey__phone--b) --- */
+  .email-page.sms-page
+    .journey.journey--scroll-stack.journey--stack-idle:not(.journey--mob-runway-reserved)
+    .journey__phone--b.is-active {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: var(--journey-mob-phone-h, 280px) !important;
+    max-height: var(--journey-mob-phone-h, 280px) !important;
+    min-height: var(--journey-mob-phone-h, 280px) !important;
+    top: 0 !important;
+    left: 0 !important;
+    object-position: -21px 22px !important;
+  }
+
+  .email-page.sms-page
+    .journey.journey--scroll-stack.journey--stack-idle.journey--mob-runway-reserved
+    .journey__body:has(.journey__phone--b) .journey__phone--b.is-active,
+  .email-page.sms-page .journey.journey--scroll-stack:not(.journey--stack-idle)
+    .journey__body:has(.journey__phone--b) .journey__phone--b.is-active {
+    width: 52% !important;
+    max-width: 52% !important;
+    height: calc(var(--journey-mob-phone-h, 280px) + 56px) !important;
+    max-height: calc(var(--journey-mob-phone-h, 280px) + 56px) !important;
+    min-height: calc(var(--journey-mob-phone-h, 280px) + 56px) !important;
+    top: -28px !important;
+    left: -4px !important;
+    object-position: -21px 22px !important;
+  }
+
+  .email-page.sms-page
+    .journey.journey--scroll-stack.journey--stack-idle.journey--mob-runway-reserved
+    .journey__body,
+  .email-page.sms-page .journey.journey--scroll-stack:not(.journey--stack-idle) .journey__body {
+    min-height: max(
+      var(--journey-mob-shell-h, var(--journey-mob-phone-h, 280px)),
+      calc(var(--journey-mob-phone-h, 280px) + 60px)
+    ) !important;
+    overflow: visible !important;
   }
 
   .email-page .benefit:nth-child(2) h3 br.gt-mobile-br,

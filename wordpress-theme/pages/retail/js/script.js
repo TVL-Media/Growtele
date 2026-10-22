@@ -4,29 +4,54 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
-      image: 'assets/retail-x-sms.png'
+      title: 'Send sale announcements, order confirmations, and loyalty point updates on DLT-compliant SMS, with short links and click tracking.',
+      desc: 'Send sale alerts, order updates, and in-store offers by DLT-compliant SMS to any phone.',
+      image: 'assets/retail-x-sms.png',
+      features: [
+        { title: 'Flash Sale Alerts', text: 'Announce flash sales on SMS, WhatsApp, and RCS with a countdown and a direct link, so shoppers buy before stock runs out.' },
+        { title: 'Order Status Updates', text: 'Confirm every order, share shipping and delivery status, and send store pickup-ready alerts so shoppers stop calling your store.' },
+        { title: 'Loyalty &amp; Rewards', text: 'Tell members their points balance, remind them before points expire, and send birthday and anniversary offers that bring them back.' }
+      ]
     },
     whatsapp: {
       title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
       desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-695.png'
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-695.png',
+      features: [
+        { title: 'Product Catalogs', text: 'Shoppers browse your catalog, check prices, and add items to their cart without ever leaving WhatsApp.' },
+        { title: 'Exclusive Offers', text: 'Send members-only deals and early sale access to opted-in shoppers, with a link straight to the product.' },
+        { title: 'Instant Store Support', text: 'Answer questions about stock, store timings, and returns in seconds with a chatbot and a shared team inbox.' }
+      ]
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
-      image: 'assets/retail-x-cloud-tele.png'
+      title: 'Run missed call campaigns, multilingual IVR for store and order enquiries, and outbound calls announcing festive sales.',
+      desc: 'Run missed call offers, IVR for store queries, and outbound sale announcement calls through Voice.',
+      image: 'assets/retail-x-cloud-tele.png',
+      features: [
+        { title: 'Missed Call Offers', text: 'Shoppers give a missed call to your number and instantly receive a coupon code or festive offer by SMS.' },
+        { title: 'IVR Store Enquiries', text: 'Callers check store timings, the nearest outlet, or order status through a multilingual IVR menu, with no waiting.' },
+        { title: 'Sale Announcement Calls', text: 'Announce festive sales and new store openings to your customer list with a short recorded voice call.' }
+      ]
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
-      image: 'assets/retail-x-rcs.png'
+      title: 'Send RCS carousels featuring product images, prices, and buy buttons from verified senders, with automatic SMS fallback.',
+      desc: 'Send product carousels and festive offers with buy buttons from a verified RCS sender.',
+      image: 'assets/retail-x-rcs.png',
+      features: [
+        { title: 'Product Carousels', text: 'Show products in a swipeable carousel with images, prices, and Buy Now buttons, sent from your verified brand.' },
+        { title: 'Festive Offer Cards', text: 'Promote festive sales with rich cards and coupon codes that shoppers can redeem in a single tap.' },
+        { title: 'Automatic SMS Fallback', text: 'If a phone doesn\'t support RCS, the message goes out automatically as SMS, so every shopper still gets it.' }
+      ]
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
-      image: 'assets/retail-x-email.png'
+      title: 'Send new-arrival newsletters, digital receipts, and monthly loyalty statements by Email, authenticated for inbox placement.',
+      desc: 'Send new-arrival newsletters, e-receipts, and loyalty point updates to shoppers by Email.',
+      image: 'assets/retail-x-email.png',
+      features: [
+        { title: 'New Arrival Newsletters', text: 'Email new collections and trending products with large images and a direct link to shop each one.' },
+        { title: 'Digital Receipts', text: 'Send an e-receipt after every purchase, online or in store, so shoppers can handle returns easily.' },
+        { title: 'Loyalty Statements', text: 'Email a monthly summary of points earned, rewards available, and offers waiting for each member.' }
+      ]
     }
   };
 

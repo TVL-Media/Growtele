@@ -32,8 +32,8 @@
   --featured-card-gap: 18px;
   --featured-block-h: 645px;
   --featured-content-gap: 35px;
-  --font-roboto: 'Roboto', sans-serif;
-  --font-manrope: 'Manrope', sans-serif;
+  --font-roboto: 'Roboto', Arial, sans-serif;
+  --font-manrope: 'Manrope', Arial, sans-serif;
 }
 
 *,
@@ -864,7 +864,7 @@ button {
 }
 
 .most-read__desc {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 22px;
   font-weight: 400;
   line-height: normal;

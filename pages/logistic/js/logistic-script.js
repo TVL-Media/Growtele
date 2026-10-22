@@ -4,29 +4,54 @@
   /* Channel tabs */
   var channelData = {
     sms: {
-      title: 'Deliver personalized shopping experiences through SMS with instant notifications, promotional alerts and two-way customer engagement.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on SMS.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/048f9c95d92484c5b83adf2cab1aab70c19a1bb9.png'
+      title: 'Send dispatch updates, out-for-delivery alerts, and delivery OTPs by SMS with DLT-approved templates that reach any mobile phone.',
+      desc: 'Shipment updates, delivery OTPs, and NDR alerts by SMS that reach any customer\'s phone.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/048f9c95d92484c5b83adf2cab1aab70c19a1bb9.png',
+      features: [
+        { title: 'Delivery OTP Codes', text: 'Send a delivery OTP to the buyer on SMS or WhatsApp, so riders hand over parcels only to the right person at the door.' },
+        { title: 'NDR Follow-up Calls', text: 'Reach customers right after a failed attempt by IVR call or WhatsApp message, book a new delivery slot, and reduce RTO losses.' },
+        { title: 'Rider Coordination', text: 'Send pickup assignments, route changes, and shift updates to riders, and let them reach dispatch or the customer in a single tap.' }
+      ]
     },
     whatsapp: {
-      title: 'Deliver personalized shopping experiences through WhatsApp with product catalogs, exclusive offers and instant customer assistance.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on WhatsApp.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/75dfa533b29fdf1be34332baa54751442a8ee9b7.png'
+      title: 'Keep customers updated on WhatsApp with live tracking links, delivery rescheduling, NDR follow-ups, and quick answers to shipment queries.',
+      desc: 'Share live tracking, reschedule failed deliveries, and answer shipment queries on WhatsApp.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/75dfa533b29fdf1be34332baa54751442a8ee9b7.png',
+      features: [
+        { title: 'Live Tracking Links', text: 'Share dispatch, out-for-delivery, and delivered updates on WhatsApp, each with a live tracking link for the parcel.' },
+        { title: 'Reschedule Deliveries', text: 'After a failed attempt, let customers pick a new slot or update their address right inside the WhatsApp chat.' },
+        { title: 'Shipment Queries', text: 'A chatbot answers where-is-my-parcel questions instantly and hands complex cases over to your support team.' }
+      ]
     },
     telephony: {
-      title: 'Deliver personalized shopping experiences through Cloud Telephony with voice-assisted calls and automated customer support.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on Cloud Telephony.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/e1c09164fdad96522a0dbeb6c8054148660caacb.png'
+      title: 'Connect riders with customers over masked calls, and confirm NDR reattempts and COD deliveries through automated IVR.',
+      desc: 'Number masking for rider calls, plus automated IVR for NDR reattempts and COD order confirmation.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/e1c09164fdad96522a0dbeb6c8054148660caacb.png',
+      features: [
+        { title: 'Masked Rider Calls', text: 'Riders and customers talk through a masked number, so nobody\'s personal phone number is ever shared.' },
+        { title: 'NDR Reattempt IVR', text: 'An automated call reaches customers after a missed delivery and lets them confirm a reattempt with a keypress.' },
+        { title: 'COD Confirmation Calls', text: 'Confirm cash-on-delivery orders with an automated call before dispatch, cutting down on refused parcels.' }
+      ]
     },
     rcs: {
-      title: 'Deliver personalized shopping experiences through RCS with rich media messages, carousels and interactive retail campaigns.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on RCS.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/7326829650997d9f4748051752355347b07f16f6.png'
+      title: 'Send branded RCS updates with live tracking, delivery slot pickers, and one-tap buttons to reschedule or redirect parcels.',
+      desc: 'Verified RCS updates with live tracking, slot pickers, and one-tap reschedule buttons.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/7326829650997d9f4748051752355347b07f16f6.png',
+      features: [
+        { title: 'Branded Tracking Cards', text: 'Send verified tracking updates with your logo, the parcel status, and a button to view live tracking.' },
+        { title: 'Delivery Slot Picker', text: 'Let customers choose a convenient delivery slot with one tap from a list of suggested times in the message.' },
+        { title: 'Reschedule or Redirect', text: 'Give customers one-tap buttons to reschedule a delivery or send the parcel to a different address.' }
+      ]
     },
     email: {
-      title: 'Deliver personalized shopping experiences through E-mail with targeted campaigns, product recommendations and loyalty updates.',
-      desc: 'Engage customers with personalized offers, order updates, and real-time support on E-mail.',
-      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-624.png'
+      title: 'Email shipping confirmations, GST invoices, proof of delivery, and return labels to every customer and business account.',
+      desc: 'Shipping confirmations, invoices, proof of delivery, and return labels, all sent by Email.',
+      image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-624.png',
+      features: [
+        { title: 'Shipping Confirmations', text: 'Email a shipping confirmation with the tracking number, courier details, and expected delivery date.' },
+        { title: 'Proof of Delivery', text: 'Send proof of delivery with the time, place, and recipient details, which helps settle disputes quickly.' },
+        { title: 'Invoices &amp; Return Labels', text: 'Email GST invoices to business accounts and printable return labels to customers who request a return.' }
+      ]
     }
   };
 

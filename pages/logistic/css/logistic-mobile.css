@@ -52,7 +52,7 @@
 
   .growth__header .section-title {
     line-height: 1.22 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 0 !important;
   }
 
   .growth__header .section-title .growth-title__line {

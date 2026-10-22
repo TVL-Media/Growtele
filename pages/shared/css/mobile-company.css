@@ -259,14 +259,6 @@
     line-height: 1.6;
   }
 
-  .gt-footer__nav {
-    display: flex !important;
-    flex-direction: column !important;
-    grid-template-columns: unset !important;
-    column-gap: 0;
-    row-gap: 24px;
-    width: 100%;
-  }
 
   .gt-footer__col {
     width: 100%;
@@ -306,17 +298,12 @@
     align-items: flex-start;
     gap: 4px;
     text-align: left;
-    font-size: 12px;
-    line-height: 1.5;
   }
 
   .gt-footer__legal span {
     display: none;
   }
 
-  .gt-footer__copy {
-    font-size: 12px;
-  }
 
   /* Contact — CTA + footer stacked (tablet/mobile) */
   .contact-page .gt-cta.gt-section {
@@ -1312,60 +1299,29 @@
     line-height: 1.6;
   }
 
-  .about-us-page .gt-footer__nav {
-    display: flex !important;
-    flex-direction: column !important;
-    grid-template-columns: unset !important;
-    column-gap: 0;
-    row-gap: 24px;
-    width: 100%;
-  }
 
   .about-us-page .gt-footer__col {
     width: 100%;
   }
 
-  .about-us-page .gt-footer__col h4 {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
 
   .about-us-page .gt-footer__col ul li {
     margin-bottom: 10px;
   }
 
-  .about-us-page .gt-footer__col a {
-    font-size: 14px;
-  }
 
-  .about-us-page .gt-footer__col--social .gt-footer__contact-heading {
-    margin-top: 20px;
-  }
 
-  .about-us-page .gt-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-top: 32px;
-    padding-top: 20px;
-    grid-column: 1 / -1;
-  }
 
   .about-us-page .gt-footer__legal {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-    font-size: 12px;
-    line-height: 1.5;
   }
 
   .about-us-page .gt-footer__legal span {
     display: none;
   }
 
-  .about-us-page .gt-footer__copy {
-    font-size: 12px;
-  }
 
   /* Blogs — featured: text first, then equal 2-col image grid */
   .blogs-page .featured {
@@ -2021,57 +1977,29 @@
     line-height: 1.6;
   }
 
-  .contact-page .gt-footer__nav {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-  }
 
   .contact-page .gt-footer__col {
     width: 100%;
   }
 
-  .contact-page .gt-footer__col h4 {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
 
   .contact-page .gt-footer__col ul li {
     margin-bottom: 10px;
   }
 
-  .contact-page .gt-footer__col a {
-    font-size: 14px;
-  }
 
-  .contact-page .gt-footer__col--social .gt-footer__contact-heading {
-    margin-top: 20px;
-  }
 
-  .contact-page .gt-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-top: 32px;
-    padding-top: 20px;
-  }
 
   .contact-page .gt-footer__legal {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-    font-size: 12px;
-    line-height: 1.5;
   }
 
   .contact-page .gt-footer__legal span {
     display: none;
   }
 
-  .contact-page .gt-footer__copy {
-    font-size: 12px;
-  }
 
   /* Career — hero text full width + photo collage */
   .career-page .hero {
@@ -2595,57 +2523,29 @@
     line-height: 1.6;
   }
 
-  .career-page .gt-footer__nav {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-  }
 
   .career-page .gt-footer__col {
     width: 100%;
   }
 
-  .career-page .gt-footer__col h4 {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
 
   .career-page .gt-footer__col ul li {
     margin-bottom: 10px;
   }
 
-  .career-page .gt-footer__col a {
-    font-size: 14px;
-  }
 
-  .career-page .gt-footer__col--social .gt-footer__contact-heading {
-    margin-top: 20px;
-  }
 
-  .career-page .gt-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-top: 32px;
-    padding-top: 20px;
-  }
 
   .career-page .gt-footer__legal {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-    font-size: 12px;
-    line-height: 1.5;
   }
 
   .career-page .gt-footer__legal span {
     display: none;
   }
 
-  .career-page .gt-footer__copy {
-    font-size: 12px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -2754,5 +2654,16 @@
   .career-page .jobs .section-title,
   .career-page .jobs .section-desc {
     text-align: center;
+  }
+}
+
+/* Mobile: heading → subtitle spacing */
+@media (max-width: 768px) {
+  .about-us-page .locations__title {
+    margin-bottom: 0;
+  }
+
+  .blogs-page .hero__title {
+    margin-bottom: 12px;
   }
 }

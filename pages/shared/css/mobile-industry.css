@@ -544,6 +544,10 @@
     margin-bottom: 4px;
   }
 
+  .channels__bullet {
+    margin-top: 2px;
+  }
+
   .channels__features p {
     font-size: 12px;
     line-height: 1.35;
@@ -826,6 +830,10 @@
 
   .channels__features strong {
     font-size: 15px;
+  }
+
+  .channels__bullet {
+    margin-top: 1px;
   }
 
   .hero__actions {
@@ -1208,11 +1216,11 @@
 
   .faq-item--open .faq-item__answer {
     width: 100%;
-    max-height: 200px;
+    max-height: 280px;
   }
 
   .faq-item__answer p {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.4;
   }
 
@@ -1385,7 +1393,7 @@
 .channels__header .gt-word,
 .growth__header .gt-word,
 .growth-card__body .gt-word {
-  font-family: var(--font-body, 'Roboto', sans-serif) !important;
+  font-family: var(--font-body, 'Roboto', Arial, sans-serif) !important;
   color: var(--navy, #121348) !important;
   -webkit-text-fill-color: currentColor !important;
   opacity: 1 !important;
@@ -1466,5 +1474,27 @@
     height: calc(100% + 14px) !important;
     transform: none !important;
     object-position: center top !important;
+  }
+}
+
+/* Mobile: heading → subtitle spacing (same values as Banking's use-cases header) */
+@media (max-width: 1024px) {
+  .usecases__header,
+  .growth__header {
+    gap: 8px;
+  }
+
+  .usecases__header .section-title,
+  .growth__header .section-title {
+    margin-bottom: 0;
+  }
+
+  .usecases__header .usecases__subtitle,
+  .growth__header .growth__subtitle {
+    padding-top: 0;
+  }
+
+  .hero__title {
+    margin-bottom: 12px;
   }
 }

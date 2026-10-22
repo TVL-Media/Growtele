@@ -75,7 +75,7 @@
 }
 
 .gt-footer__brand p {
-	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-family: var(--gt-font-body, 'Roboto', Arial, sans-serif);
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.7;
@@ -121,7 +121,7 @@
 }
 
 .gt-footer__col h4 {
-	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-family: var(--gt-font-body, 'Roboto', Arial, sans-serif);
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 1.2;
@@ -145,7 +145,7 @@
 
 .gt-footer__col a {
 	display: inline-block;
-	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-family: var(--gt-font-body, 'Roboto', Arial, sans-serif);
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.4;
@@ -198,7 +198,7 @@
 
 .gt-footer__email {
 	display: inline-block;
-	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-family: var(--gt-font-body, 'Roboto', Arial, sans-serif);
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.4;
@@ -223,7 +223,7 @@
 }
 
 .gt-footer__legal {
-	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-family: var(--gt-font-body, 'Roboto', Arial, sans-serif);
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.4;
@@ -249,7 +249,7 @@
 }
 
 .gt-footer__copy {
-	font-family: var(--gt-font-body, 'Roboto', sans-serif);
+	font-family: var(--gt-font-body, 'Roboto', Arial, sans-serif);
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.4;

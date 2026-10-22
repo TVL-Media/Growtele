@@ -19,8 +19,8 @@
   --hero-v-shift: calc(max(0px, 100svh - var(--hero-design-h)) / 2);
   --benefits-design-h: 700px;
   --benefits-v-shift: calc(max(0px, 100svh - var(--benefits-design-h)) / 2);
-  --font: "Roboto", sans-serif;
-  --display: "Tomato Grotesk", "Roboto", sans-serif;
+  --font: "Roboto", Arial, sans-serif;
+  --display: "Tomato Grotesk", "Roboto", Arial, sans-serif;
 }
 
 *,
@@ -901,6 +901,17 @@ main {
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
+/* Benefit tab icons: bare glyphs on a coloured circle (clip-path keeps the glyph uncut) */
+.benefit img {
+  padding: 14px;
+  box-sizing: border-box;
+  clip-path: circle(50%);
+}
+.benefit:nth-child(1) img { background: #E8FAE6; }
+.benefit:nth-child(2) img { background: #D0EBFD; }
+.benefit:nth-child(3) img { background: #DEE1FF; }
+.benefit:nth-child(4) img { background: #FFF2DF; }
+
 .benefit h3 {
   font-size: 25px;
   font-weight: 500;
@@ -1371,7 +1382,8 @@ main {
   object-fit: contain;
   flex-shrink: 0;
   background: #EBE7FE;
-  border-radius: 50%;
+  /* clip-path keeps the circle without cropping the icon to the padding-inset radius */
+  clip-path: circle(50%);
 }
 
 .funnel__list h3 {
@@ -1539,7 +1551,7 @@ main + .gt-cta.gt-section {
 }
 
 .faq-item__body p {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 300;
   line-height: normal;
   color: var(--navy);
@@ -1815,5 +1827,52 @@ main + .gt-cta.gt-section {
 .funnel__lead .gt-word,
 .faq__title .gt-word,
 .faq__lead .gt-word {
-  font-family: "Tomato Grotesk", sans-serif;
+  font-family: "Tomato Grotesk", Arial, sans-serif;
+}
+
+/* Desktop: heading/lead layout tweaks */
+@media (min-width: 1025px) {
+  .hero__title br {
+    display: none;
+  }
+
+  .hero__title-dl {
+    display: block;
+  }
+
+  .journey__title br {
+    display: none;
+  }
+
+  .journey__title-dl {
+    display: block;
+  }
+
+  .journey__lead {
+    left: calc(var(--sms-inset) + 683px);
+    width: 635px;
+  }
+
+  .scale__title > span {
+    display: block;
+  }
+
+  .scale__lead {
+    left: calc(var(--sms-inset) + 902px);
+    width: 438px;
+  }
+
+  .why__lead {
+    left: calc(var(--sms-inset) + 991px);
+    width: 420px;
+  }
+
+  .faq__title {
+    width: 556px;
+  }
+
+  .faq__lead {
+    left: calc(var(--sms-inset) + 901px);
+    width: 459px;
+  }
 }

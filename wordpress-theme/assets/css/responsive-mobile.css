@@ -1687,10 +1687,75 @@
   }
 
   .gt-footer__nav {
-    grid-template-columns: 1fr;
-    column-gap: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(16px, 5vw, 32px);
     row-gap: 24px;
     width: 100%;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(4) {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .gt-footer__col--social {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(16px, 5vw, 32px);
+    row-gap: 12px;
+    align-items: start;
+  }
+
+  .gt-footer__col--social > h4:first-of-type {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+
+  .gt-footer__col--social > .gt-footer__socials {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .gt-footer__col--social > .gt-footer__contact-heading {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .gt-footer__col--social > .gt-footer__email {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: clamp(12px, 3.5vw, 16px);
+    word-break: break-all;
+  }
+
+  br.gt-footer__copy-br {
+    display: none !important;
+  }
+
+  .gt-footer__copy {
+    white-space: nowrap;
+    font-size: clamp(12px, 3.2vw, 15px);
   }
 
   .gt-footer__col h4 {
@@ -1704,10 +1769,6 @@
 
   .gt-footer__col a {
     font-size: 14px;
-  }
-
-  .gt-footer__col--social .gt-footer__contact-heading {
-    margin-top: 20px;
   }
 
   .gt-footer__bottom {
@@ -1989,10 +2050,10 @@
   .gt-case-studies__card-quote blockquote {
     flex: 1 1 auto;
     min-height: calc(16px * 1.45 * 8);
-    max-height: calc(16px * 1.45 * 8);
+    max-height: calc(16px * 1.45 * 12);
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 12;
     overflow: hidden;
   }
 
@@ -2163,7 +2224,8 @@
   }
 
   .gt-outcomes__section-desc-m-line1,
-  .gt-outcomes__section-desc-m-line2 {
+  .gt-outcomes__section-desc-m-line2,
+  .gt-outcomes__section-desc-m-line3 {
     display: block;
     line-height: 1.45;
   }
@@ -2202,7 +2264,7 @@
   }
 
   .gt-industries--mobile-stack .gt-section-heading {
-    gap: 16px;
+    gap: var(--gt-space-heading-gap);
     margin-bottom: 16px;
   }
 
@@ -2514,7 +2576,7 @@
   }
 
   .gt-footer__nav {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
@@ -2567,7 +2629,8 @@
   }
 
   .gt-outcomes__section-desc-m-line1,
-  .gt-outcomes__section-desc-m-line2 {
+  .gt-outcomes__section-desc-m-line2,
+  .gt-outcomes__section-desc-m-line3 {
     display: block;
     text-align: center;
   }
@@ -2652,5 +2715,14 @@
 
   .gt-industries__tab-label {
     font-size: var(--gt-text-xs);
+  }
+}
+
+/* Mobile: case studies heading on two lines — "Trusted by Brands." / "Measured by Results." (em scales with the 6.8vw font) */
+@media (max-width: 768px) {
+  .gt-case-studies .gt-section-heading__title {
+    max-width: 11em;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

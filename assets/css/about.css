@@ -521,3 +521,14 @@
 	transform: translateY(-4px);
 	box-shadow: 0 12px 28px rgba(18, 19, 72, 0.28);
 }
+
+/* Desktop: home section heading widths */
+@media (min-width: 1025px) {
+	.gt-enterprise .gt-section-heading__title {
+		max-width: 490px;
+	}
+
+	.gt-enterprise .gt-section-heading__desc {
+		max-width: 553px;
+	}
+}

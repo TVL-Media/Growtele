@@ -30,3 +30,10 @@
     text-align: center;
   }
 }
+
+/* Mobile: hero heading → subtitle spacing */
+@media (max-width: 768px) {
+  .hero__title {
+    margin-bottom: 12px;
+  }
+}

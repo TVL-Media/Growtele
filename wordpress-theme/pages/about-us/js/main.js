@@ -9,7 +9,7 @@
       address: '3, Ismail Madan Lane, Zakaria Street,\nKolkata 700073, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
-      email2: 'support@growtele.com',
+      email2: 'enquiry@growtele.com',
       icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/526d7a71d22dd2b2008ce00a1bd539b77309d3e1.png',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-3.png'
     },
@@ -18,7 +18,7 @@
       address: 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
-      email2: 'support@growtele.com',
+      email2: 'enquiry@growtele.com',
       icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/d3821cf9de4106d1d740854567464a4bf8a43b16-1.png',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Group-462.png'
     },
@@ -27,16 +27,16 @@
       address: 'MG road, Raheja Towers, 7th floor, East Wing, Bengaluru, Karnataka 560061, IN',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
-      email2: 'support@growtele.com',
+      email2: 'enquiry@growtele.com',
       icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/bb8667e3c10c1ec42abfb1e27f4c0a753d6d38c4.png',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-1.png'
     },
     mumbai: {
       city: 'Mumbai',
-      address: 'Unit No 303-3rd Floor, Majestic Signia, Plot No. A-27, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
+      address: '903, Platinum Techno Park, Sector 30, Vashi, Navi Mumbai, Maharashtra - 400703',
       phone: '+91 9999-564-564',
       email1: 'info@growtele.com',
-      email2: 'support@growtele.com',
+      email2: 'enquiry@growtele.com',
       icon: 'https://listings.selectvia.com/wp-content/uploads/2026/09/954a1aa36af01ba5f2647ec2b95abd204c1942d5.png',
       image: 'https://listings.selectvia.com/wp-content/uploads/2026/09/Mask-group-2.png'
     }

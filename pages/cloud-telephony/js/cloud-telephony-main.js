@@ -4,9 +4,9 @@
   var funnelVisual = document.getElementById("funnelVisual");
 
   var funnelImages = {
-    acquisition: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Eng-1-1.png", alt: "Acquisition campaign flow" },
-    engagement: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/cttt.png", alt: "Engagement campaign flow" },
-    retention: { src: "https://listings.selectvia.com/wp-content/uploads/2026/09/Eng-1-2.png", alt: "Retention campaign flow" }
+    acquisition: { src: "https://listings.selectvia.com/wp-content/uploads/2026/10/52f4d20d63be4bb3cc39a2f8d69dd56826f48de9.png", alt: "Acquisition campaign flow" },
+    engagement: { src: "https://listings.selectvia.com/wp-content/uploads/2026/10/7de953a47463ef06e535efbdcd02e4dc8d50e570.png", alt: "Engagement campaign flow" },
+    retention: { src: "https://listings.selectvia.com/wp-content/uploads/2026/10/d796b4e36ec731801877aa1fdb3c53b2ba6037cc.png", alt: "Retention campaign flow" }
   };
   if (window.GROWTELE_CMS_FUNNEL) {
     Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {

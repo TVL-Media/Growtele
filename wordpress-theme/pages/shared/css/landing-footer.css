@@ -87,7 +87,7 @@
 }
 
 .gt-cta__content h2 {
-  font-family: var(--gt-font-heading, 'Tomato Grotesk', sans-serif);
+  font-family: var(--gt-font-heading, 'Tomato Grotesk', Arial, sans-serif);
   font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 700;
   color: var(--gt-navy, #121348);
@@ -104,7 +104,7 @@
 }
 
 .gt-cta__content p {
-  font-family: var(--gt-font-body, 'Roboto', sans-serif);
+  font-family: var(--gt-font-body, 'Roboto', Arial, sans-serif);
   font-size: 18px;
   font-weight: 400;
   color: #64748b;
@@ -324,10 +324,75 @@ body.contact-page .page {
   }
 
   .gt-footer__nav {
-    grid-template-columns: 1fr;
-    column-gap: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(16px, 5vw, 32px);
     row-gap: 24px;
     width: 100%;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  .gt-footer__nav > .gt-footer__col:nth-child(4) {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .gt-footer__col--social {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(16px, 5vw, 32px);
+    row-gap: 12px;
+    align-items: start;
+  }
+
+  .gt-footer__col--social > h4:first-of-type {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+
+  .gt-footer__col--social > .gt-footer__socials {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .gt-footer__col--social > .gt-footer__contact-heading {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .gt-footer__col--social > .gt-footer__email {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: clamp(12px, 3.5vw, 16px);
+    word-break: break-all;
+  }
+
+  br.gt-footer__copy-br {
+    display: none !important;
+  }
+
+  .gt-footer__copy {
+    white-space: nowrap;
+    font-size: clamp(12px, 3.2vw, 15px);
   }
 
   .gt-footer__col h4 {
@@ -341,10 +406,6 @@ body.contact-page .page {
 
   .gt-footer__col a {
     font-size: 14px;
-  }
-
-  .gt-footer__col--social .gt-footer__contact-heading {
-    margin-top: 20px;
   }
 
   .gt-footer__bottom {

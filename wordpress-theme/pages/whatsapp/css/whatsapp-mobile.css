@@ -39,7 +39,7 @@ br.gt-mobile-br {
   }
 
   /* Desktop accordion/carousel leftovers can cause repaint jank while scrolling */
-  .journey-card,
+  .journey:not(.journey--scroll-stack) .journey-card,
   .scale-card,
   .scale-card.is-active,
   .scale-card__media,
@@ -397,5 +397,15 @@ br.gt-mobile-br {
     display: block !important;
     white-space: nowrap !important;
     line-height: 1.22 !important;
+  }
+
+  /* Card 3 — AI Chatbot & Live Support (.journey__phone--c), stacked pin only */
+  .whatsapp-page.sms-page .journey.journey--scroll-stack:not(.journey--stack-idle)
+    .journey__body:has(.journey__phone--a) .journey__phone--c.is-active {
+    --journey-mob-phone-h: 244px;
+    height: var(--journey-mob-phone-h, 244px) !important;
+    max-height: var(--journey-mob-phone-h, 244px) !important;
+    min-height: var(--journey-mob-phone-h, 244px) !important;
+    top: -19px !important;
   }
 }

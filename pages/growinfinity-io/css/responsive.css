@@ -1410,3 +1410,35 @@
     padding-top: 48px;
   }
 }
+
+/* Desktop: "All Your Tools," / "One Login" headings */
+@media (min-width: 1025px) {
+  .gi-title-dl br {
+    display: none;
+  }
+
+  .gi-title-dl {
+    display: block;
+  }
+}
+
+/* Mobile: footer line spacing matches the home page footer (home body line-height 1.6) */
+@media (max-width: 1024px) {
+  .growtele-io-page .gt-footer {
+    line-height: 1.6;
+  }
+}
+
+/* Mobile: "Simple APIs" heading → text spacing matches the other sections */
+@media (max-width: 768px) {
+  .growtele-io-page .apis__title {
+    margin-bottom: 10px;
+  }
+}
+
+/* Desktop: text beside "All Your Tools, One Login" ends on the heading's bottom line */
+@media (min-width: 1025px) {
+  .growtele-io-page .capabilities__subtitle {
+    margin-bottom: 0;
+  }
+}

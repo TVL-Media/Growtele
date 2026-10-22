@@ -74,7 +74,7 @@ br.gt-mobile-br {
   }
 
   /* Desktop accordion/carousel leftovers can cause repaint jank while scrolling */
-  .journey-card,
+  .journey:not(.journey--scroll-stack) .journey-card,
   .scale-card,
   .scale-card.is-active,
   .scale-card__media,

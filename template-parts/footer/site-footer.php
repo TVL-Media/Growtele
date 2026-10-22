@@ -59,7 +59,7 @@ $legal_links    = function_exists( 'growtele_get_content' ) ? growtele_get_conte
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="gt-footer__logo">
 				<?php growtele_image( 'icons/logo.png', get_bloginfo( 'name' ), '', 163, 42 ); ?>
 			</a>
-			<p><?php echo esc_html( function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.brand_description', "Growtele's global network solutions enable every business sector to optimize their business across the globe." ) : "Growtele's global network solutions enable every business sector to optimize their business across the globe." ); ?></p>
+			<p><?php echo esc_html( function_exists( 'growtele_get_content' ) ? growtele_get_content( 'footer.brand_description', "Growtele helps businesses in every sector reach customers on SMS, WhatsApp, RCS, Email, and Voice worldwide." ) : "Growtele helps businesses in every sector reach customers on SMS, WhatsApp, RCS, Email, and Voice worldwide." ); ?></p>
 			<?php growtele_footer_get_in_touch_cta( $email ); ?>
 		</div>
 
@@ -143,11 +143,11 @@ $legal_links    = function_exists( 'growtele_get_content' ) ? growtele_get_conte
 					?>
 					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'privacy-policy' ) : home_url( '/privacy-policy/' ) ); ?>"><?php esc_html_e( 'Privacy Policy', 'growtele' ); ?></a>
 					<span>|</span>
-					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'terms-and-condition' ) : home_url( '/terms-and-condition/' ) ); ?>"><?php esc_html_e( 'Terms & Condition', 'growtele' ); ?></a>
+					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'terms-and-condition' ) : home_url( '/terms-and-condition/' ) ); ?>"><?php esc_html_e( 'Terms & Conditions', 'growtele' ); ?></a>
 					<span>|</span>
 					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'security' ) : home_url( '/security/' ) ); ?>"><?php esc_html_e( 'Security', 'growtele' ); ?></a>
 					<span>|</span>
-					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'partners-term-of-use' ) : home_url( '/partners-term-of-use/' ) ); ?>"><?php esc_html_e( 'Partners Term of Use', 'growtele' ); ?></a>
+					<a href="<?php echo esc_url( function_exists( 'growtele_get_page_url' ) ? growtele_get_page_url( 'partners-term-of-use' ) : home_url( '/partners-term-of-use/' ) ); ?>"><?php esc_html_e( 'Partner Terms of Use', 'growtele' ); ?></a>
 				<?php endif; ?>
 			</p>
 			<?php
