@@ -19,7 +19,7 @@ return array(
 		'image'          => array(
 			'attachment_id' => 0,
 			'url'           => '',
-			'fallback'      => 'sections/group-525.png',
+			'fallback'      => 'sections/group-525.webp',
 			'alt'           => 'WhatsApp interface',
 			'width'         => 438,
 			'height'        => 351,

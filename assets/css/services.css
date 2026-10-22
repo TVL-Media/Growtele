@@ -498,13 +498,13 @@
 }
 
 .gt-industries__panel-inner1 {
-	background: url('../images/industries/biox-card.png') center / 100% 100% no-repeat;
+	background: url('../images/industries/biox-card.webp') center / 100% 100% no-repeat;
 }
 
 .gt-industries__panel-inner2 {
 	/* Soft fill only — PNG edge is cropped so it doesn't double with CSS border */
 	background-color: #fff;
-	background-image: url('../rectangle-254-1.png');
+	background-image: url('../rectangle-254-1.webp');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: calc(100% + 8px) calc(100% + 8px);

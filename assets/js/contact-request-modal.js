@@ -182,11 +182,11 @@
       '<div class="contact-form__phone">' +
       '<span class="contact-form__phone-prefix">' +
       '<img src="' +
-      contactAsset('assets/figma/flag-india.png') +
+      contactAsset('assets/figma/flag-india.webp') +
       '" alt="" width="26" height="14">' +
       '<span class="contact-form__phone-code">+91</span>' +
       '<img src="' +
-      contactAsset('assets/figma/flag-dropdown.png') +
+      contactAsset('assets/figma/flag-dropdown.webp') +
       '" alt="" class="contact-form__phone-caret" width="9" height="7">' +
       '</span>' +
       '<input type="tel" id="gtContactModalPhone" name="phone" placeholder="Enter Your Phone Number" required>' +

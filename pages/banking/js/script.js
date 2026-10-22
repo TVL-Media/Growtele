@@ -6,7 +6,7 @@
     sms: {
       title: 'Send OTPs, transaction alerts, and EMI reminders on DLT-compliant SMS that reaches every handset, even without mobile internet.',
       desc: 'Send OTPs, debit and credit alerts, and EMI reminders on DLT-approved SMS templates.',
-      image: 'assets/ReTail X SMS.png',
+      image: 'assets/ReTail X SMS.webp',
       features: [
         { title: 'Card Fraud Alerts', text: 'Flag unusual card spends in seconds on SMS and WhatsApp, so customers can confirm the spend or block the card in one tap.' },
         { title: 'KYC and Onboarding', text: 'Collect KYC documents in chat, verify details, and nudge customers who drop off midway through a loan, card, or account application.' },
@@ -16,7 +16,7 @@
     whatsapp: {
       title: 'Give customers instant answers on WhatsApp with balance checks, statement downloads, loan updates, and secure in-chat support from your bank.',
       desc: 'Share balance checks, mini statements, loan updates, and quick support with customers on WhatsApp.',
-      image: 'assets/ReTail x Whatsapp.png',
+      image: 'assets/ReTail x Whatsapp.webp',
       features: [
         { title: 'Balance &amp; Statements', text: 'Let customers check their balance or download a mini statement on WhatsApp anytime, without visiting a branch or calling support.' },
         { title: 'Loan Application Updates', text: 'Keep applicants posted at every step, from documents received to approval and disbursal, so they never have to chase your team.' },
@@ -26,7 +26,7 @@
     telephony: {
       title: 'Handle IVR balance enquiries, Voice OTPs, and masked collection calls, with recording, from one integrated Voice platform.',
       desc: 'Run IVR banking, Voice OTP, missed call balance checks, and automated EMI reminder calls on Voice.',
-      image: 'assets/ReTail X Cloud Tele.png',
+      image: 'assets/ReTail X Cloud Tele.webp',
       features: [
         { title: 'IVR Balance Enquiry', text: 'Customers call one number, verify themselves, and hear their account balance or last few transactions in their own language.' },
         { title: 'Voice OTP Backup', text: 'Read out the OTP on an automated call when an SMS is delayed, so logins and payments go through without a hitch.' },
@@ -36,7 +36,7 @@
     rcs: {
       title: 'Send RCS fraud notifications and credit card promotions from a verified, branded sender ID, with automatic SMS fallback.',
       desc: 'Send verified, branded RCS credit card offers and fraud alerts with tap-to-act buttons.',
-      image: 'assets/ReTail X RCS.png',
+      image: 'assets/ReTail X RCS.webp',
       features: [
         { title: 'Branded Fraud Alerts', text: 'Show a suspicious transaction in a verified, branded card with buttons to confirm it was you or block the card instantly.' },
         { title: 'Credit Card Offers', text: 'Showcase card upgrades, cashback deals, and pre-approved offers in rich cards customers can apply for with one tap.' },
@@ -46,7 +46,7 @@
     email: {
       title: 'Deliver e-statements, loan agreements, and KYC requests by Email, authenticated through SPF, DKIM, DMARC for inbox placement.',
       desc: 'Send monthly e-statements, loan documents, and KYC requests by Email that reach the inbox.',
-      image: 'assets/ReTail X EMAIL.png',
+      image: 'assets/ReTail X EMAIL.webp',
       features: [
         { title: 'Monthly e-Statements', text: 'Email password-protected account and card statements every month, authenticated so they land in the inbox, not spam.' },
         { title: 'Loan Documents', text: 'Share sanction letters, loan agreements, and repayment schedules by email, so customers have every document in one place.' },

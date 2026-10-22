@@ -9,7 +9,7 @@ $integrations = growtele_home_get_section( 'integrations' );
 ?>
 <section class="gt-integrations gt-section" id="integrations">
 	<div class="gt-integrations__bg" aria-hidden="true">
-		<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.integrations.bg_image', 'integrations/integrations-bg.png' ) ); ?>" alt="" loading="lazy" />
+		<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.integrations.bg_image', 'integrations/integrations-bg.webp' ) ); ?>" alt="" loading="lazy" />
 	</div>
 
 	<div class="gt-container gt-integrations__inner">
@@ -34,20 +34,20 @@ $integrations = growtele_home_get_section( 'integrations' );
 			<img src="<?php echo esc_url( growtele_get_image( 'integrations/integrations-orbit-1.svg' ) ); ?>" alt="" class="gt-orbit-diagram__ring gt-orbit-diagram__ring--inner" aria-hidden="true" />
 
 			<div class="gt-orbit-diagram__center" aria-hidden="true">
-				<img src="<?php echo esc_url( growtele_get_asset( 'growtele-logo-2-png-icon.png' ) ); ?>" alt="" loading="lazy" />
+				<img src="<?php echo esc_url( growtele_get_asset( 'growtele-logo-2-png-icon.webp' ) ); ?>" alt="" loading="lazy" />
 			</div>
 
 			<div class="gt-orbit-diagram__track gt-orbit-diagram__track--outer">
-				<div class="gt-orbit-diagram__item" style="--angle: 0deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'webengage.png' ) ); ?>" alt="WebEngage" loading="lazy" /></span></span></span></div>
-				<div class="gt-orbit-diagram__item" style="--angle: 58deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'shopyfy.png' ) ); ?>" alt="Shopify" loading="lazy" /></span></span></span></div>
-				<div class="gt-orbit-diagram__item" style="--angle: 142deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'sale-force.png' ) ); ?>" alt="Salesforce" loading="lazy" /></span></span></span></div>
-				<div class="gt-orbit-diagram__item" style="--angle: 238deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'moenageg.png' ) ); ?>" alt="MoEngage" loading="lazy" /></span></span></span></div>
+				<div class="gt-orbit-diagram__item" style="--angle: 0deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'webengage.webp' ) ); ?>" alt="WebEngage" loading="lazy" /></span></span></span></div>
+				<div class="gt-orbit-diagram__item" style="--angle: 58deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'shopyfy.webp' ) ); ?>" alt="Shopify" loading="lazy" /></span></span></span></div>
+				<div class="gt-orbit-diagram__item" style="--angle: 142deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'sale-force.webp' ) ); ?>" alt="Salesforce" loading="lazy" /></span></span></span></div>
+				<div class="gt-orbit-diagram__item" style="--angle: 238deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'moenageg.webp' ) ); ?>" alt="MoEngage" loading="lazy" /></span></span></span></div>
 			</div>
 
 			<div class="gt-orbit-diagram__track gt-orbit-diagram__track--middle">
-				<div class="gt-orbit-diagram__item" style="--angle: -90deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'clevertap.png' ) ); ?>" alt="CleverTap" loading="lazy" /></span></span></span></div>
-				<div class="gt-orbit-diagram__item" style="--angle: 30deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'lead-squared.png' ) ); ?>" alt="LeadSquared" loading="lazy" /></span></span></span></div>
-				<div class="gt-orbit-diagram__item" style="--angle: 150deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'zoho.png' ) ); ?>" alt="Zoho CRM" loading="lazy" /></span></span></span></div>
+				<div class="gt-orbit-diagram__item" style="--angle: -90deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'clevertap.webp' ) ); ?>" alt="CleverTap" loading="lazy" /></span></span></span></div>
+				<div class="gt-orbit-diagram__item" style="--angle: 30deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'lead-squared.webp' ) ); ?>" alt="LeadSquared" loading="lazy" /></span></span></span></div>
+				<div class="gt-orbit-diagram__item" style="--angle: 150deg;"><span class="gt-orbit-diagram__icon-slot"><span class="gt-orbit-diagram__icon-upright"><span class="gt-orbit-diagram__icon-counter"><img src="<?php echo esc_url( growtele_get_asset( 'zoho.webp' ) ); ?>" alt="Zoho CRM" loading="lazy" /></span></span></span></div>
 			</div>
 		</div>
 	</div>

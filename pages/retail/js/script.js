@@ -6,7 +6,7 @@
     sms: {
       title: 'Send sale announcements, order confirmations, and loyalty point updates on DLT-compliant SMS, with short links and click tracking.',
       desc: 'Send sale alerts, order updates, and in-store offers by DLT-compliant SMS to any phone.',
-      image: 'assets/retail-x-sms.png',
+      image: 'assets/retail-x-sms.webp',
       features: [
         { title: 'Flash Sale Alerts', text: 'Announce flash sales on SMS, WhatsApp, and RCS with a countdown and a direct link, so shoppers buy before stock runs out.' },
         { title: 'Order Status Updates', text: 'Confirm every order, share shipping and delivery status, and send store pickup-ready alerts so shoppers stop calling your store.' },
@@ -26,7 +26,7 @@
     telephony: {
       title: 'Run missed call campaigns, multilingual IVR for store and order enquiries, and outbound calls announcing festive sales.',
       desc: 'Run missed call offers, IVR for store queries, and outbound sale announcement calls through Voice.',
-      image: 'assets/retail-x-cloud-tele.png',
+      image: 'assets/retail-x-cloud-tele.webp',
       features: [
         { title: 'Missed Call Offers', text: 'Shoppers give a missed call to your number and instantly receive a coupon code or festive offer by SMS.' },
         { title: 'IVR Store Enquiries', text: 'Callers check store timings, the nearest outlet, or order status through a multilingual IVR menu, with no waiting.' },
@@ -36,7 +36,7 @@
     rcs: {
       title: 'Send RCS carousels featuring product images, prices, and buy buttons from verified senders, with automatic SMS fallback.',
       desc: 'Send product carousels and festive offers with buy buttons from a verified RCS sender.',
-      image: 'assets/retail-x-rcs.png',
+      image: 'assets/retail-x-rcs.webp',
       features: [
         { title: 'Product Carousels', text: 'Show products in a swipeable carousel with images, prices, and Buy Now buttons, sent from your verified brand.' },
         { title: 'Festive Offer Cards', text: 'Promote festive sales with rich cards and coupon codes that shoppers can redeem in a single tap.' },
@@ -46,7 +46,7 @@
     email: {
       title: 'Send new-arrival newsletters, digital receipts, and monthly loyalty statements by Email, authenticated for inbox placement.',
       desc: 'Send new-arrival newsletters, e-receipts, and loyalty point updates to shoppers by Email.',
-      image: 'assets/retail-x-email.png',
+      image: 'assets/retail-x-email.webp',
       features: [
         { title: 'New Arrival Newsletters', text: 'Email new collections and trending products with large images and a direct link to shop each one.' },
         { title: 'Digital Receipts', text: 'Send an e-receipt after every purchase, online or in store, so shoppers can handle returns easily.' },

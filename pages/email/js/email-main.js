@@ -4,9 +4,9 @@
   var funnelVisual = document.getElementById("funnelVisual");
 
   var funnelImages = {
-    acquisition: { src: "assets/email-acquica.png", alt: "Acquisition campaign flow" },
-    engagement: { src: "assets/email-Enagement Card.png", alt: "Engagement campaign flow" },
-    retention: { src: "assets/email-retim.png", alt: "Retention campaign flow" }
+    acquisition: { src: "assets/email-acquica.webp", alt: "Acquisition campaign flow" },
+    engagement: { src: "assets/email-Enagement Card.webp", alt: "Engagement campaign flow" },
+    retention: { src: "assets/email-retim.webp", alt: "Retention campaign flow" }
   };
   if (window.GROWTELE_CMS_FUNNEL) {
     Object.keys(window.GROWTELE_CMS_FUNNEL).forEach(function (key) {

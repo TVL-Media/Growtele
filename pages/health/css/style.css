@@ -537,7 +537,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .channels__content.channels__content--box-bg {
-  background: var(--gt-cms-industry-box-bg, url('../../retail/assets/BOX%20(2).png')) no-repeat center center;
+  background: var(--gt-cms-industry-box-bg, url('../../retail/assets/BOX%20(2).webp')) no-repeat center center;
   background-size: 100% 100%;
 }
 

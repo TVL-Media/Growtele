@@ -15,7 +15,7 @@ $gt_cta_h     = absint( $gt_cta_image['height'] ?? 351 );
 	<div class="gt-container gt-cta__inner">
 		<div class="gt-cta__visual" data-animate="fade-right">
 			<div class="gt-cta__visual-media">
-				<img src="<?php echo esc_url( growtele_get_content_media_url( 'shared.cta.image', 'sections/group-525.png' ) ); ?>" alt="<?php echo esc_attr( growtele_get_content( 'shared.cta.image.alt', __( 'WhatsApp interface', 'growtele' ) ) ); ?>" class="gt-cta__visual-img" loading="eager" decoding="async" width="<?php echo esc_attr( $gt_cta_w ); ?>" height="<?php echo esc_attr( $gt_cta_h ); ?>" />
+				<img src="<?php echo esc_url( growtele_get_content_media_url( 'shared.cta.image', 'sections/group-525.webp' ) ); ?>" alt="<?php echo esc_attr( growtele_get_content( 'shared.cta.image.alt', __( 'WhatsApp interface', 'growtele' ) ) ); ?>" class="gt-cta__visual-img" loading="eager" decoding="async" width="<?php echo esc_attr( $gt_cta_w ); ?>" height="<?php echo esc_attr( $gt_cta_h ); ?>" />
 			</div>
 		</div>
 		<div class="gt-cta__content" data-animate="fade-up">

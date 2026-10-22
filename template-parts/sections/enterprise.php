@@ -35,7 +35,7 @@ $support = $cards['support'] ?? array();
 				</article>
 
 				<article class="gt-enterprise__card gt-enterprise__card--image gt-enterprise__card--tall" data-animate="fade-up" data-animate-delay="100">
-					<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.enterprise.image_tall_1', 'sections/enterprise-card-2.png' ) ); ?>" alt="<?php echo esc_attr( growtele_get_content( 'home.enterprise.image_tall_1.alt', 'Enterprise meeting' ) ); ?>" loading="lazy" />
+					<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.enterprise.image_tall_1', 'sections/enterprise-card-2.webp' ) ); ?>" alt="<?php echo esc_attr( growtele_get_content( 'home.enterprise.image_tall_1.alt', 'Enterprise meeting' ) ); ?>" loading="lazy" />
 				</article>
 			</div>
 
@@ -55,7 +55,7 @@ $support = $cards['support'] ?? array();
 
 			<div class="gt-enterprise__column">
 				<article class="gt-enterprise__card gt-enterprise__card--image gt-enterprise__card--tall" data-animate="fade-up" data-animate-delay="250">
-					<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.enterprise.image_tall_2', 'sections/enterprise-card-1.png' ) ); ?>" alt="<?php echo esc_attr( growtele_get_content( 'home.enterprise.image_tall_2.alt', 'Customer support' ) ); ?>" loading="lazy" />
+					<img src="<?php echo esc_url( growtele_get_content_media_url( 'home.enterprise.image_tall_2', 'sections/enterprise-card-1.webp' ) ); ?>" alt="<?php echo esc_attr( growtele_get_content( 'home.enterprise.image_tall_2.alt', 'Customer support' ) ); ?>" loading="lazy" />
 				</article>
 
 				<article class="gt-enterprise__card gt-enterprise__card--compact" data-animate="fade-up" data-animate-delay="300">

@@ -46,7 +46,7 @@
     email: {
       title: 'Email lab reports, discharge summaries, and invoices to patients, with SPF, DKIM, and DMARC protecting every message.',
       desc: 'Send lab reports, visit summaries, care plans, and invoices securely to patients by Email.',
-      image: 'assets/Health X EMAIL.png',
+      image: 'assets/Health X EMAIL.webp',
       features: [
         { title: 'Lab Reports by Email', text: 'Email lab and radiology reports as secure attachments, so patients can easily share them with their doctor.' },
         { title: 'Discharge Summaries', text: 'Send discharge summaries and care instructions by email, so patients and families have everything in writing.' },

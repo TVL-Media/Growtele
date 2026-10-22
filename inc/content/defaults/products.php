@@ -48,30 +48,30 @@ $funnel_whatsapp = array(
 
 $funnel_email = array(
 	'acquisition' => array(
-		'src' => 'assets/email-acquica.png',
+		'src' => 'assets/email-acquica.webp',
 		'alt' => 'Acquisition campaign flow',
 	),
 	'engagement'  => array(
-		'src' => 'assets/email-Enagement Card.png',
+		'src' => 'assets/email-Enagement Card.webp',
 		'alt' => 'Engagement campaign flow',
 	),
 	'retention'   => array(
-		'src' => 'assets/email-retim.png',
+		'src' => 'assets/email-retim.webp',
 		'alt' => 'Retention campaign flow',
 	),
 );
 
 $funnel_rcs = array(
 	'acquisition' => array(
-		'src' => 'assets/rcs-acquica.png',
+		'src' => 'assets/rcs-acquica.webp',
 		'alt' => 'Acquisition campaign flow',
 	),
 	'engagement'  => array(
-		'src' => 'assets/rcs-Enagement Card.png',
+		'src' => 'assets/rcs-Enagement Card.webp',
 		'alt' => 'RCS engagement campaign',
 	),
 	'retention'   => array(
-		'src' => 'assets/rcs-retim.png',
+		'src' => 'assets/rcs-retim.webp',
 		'alt' => 'Retention campaign flow',
 	),
 );

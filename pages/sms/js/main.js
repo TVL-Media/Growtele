@@ -194,7 +194,7 @@
       cards.forEach(function (item) {
         item.classList.toggle("is-active", item === card);
       });
-      var imgSrc = card.getAttribute("data-benefit-img") || "assets/Card Image.png";
+      var imgSrc = card.getAttribute("data-benefit-img") || "assets/Card Image.webp";
       if (window.growteleResolveAssetUrl) {
         imgSrc = window.growteleResolveAssetUrl(imgSrc, visual);
       }

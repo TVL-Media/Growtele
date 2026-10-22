@@ -6,7 +6,7 @@
     sms: {
       title: 'Send booking confirmations, PNR status, gate changes, and check-in reminders over SMS from DLT-approved headers to any mobile.',
       desc: 'Booking confirmations and flight alerts by SMS that reach any phone, even when offline.',
-      image: 'assets/ReTail X SMS.png',
+      image: 'assets/ReTail X SMS.webp',
       features: [
         { title: 'Booking Confirmations', text: 'Confirm flight, hotel, and holiday bookings instantly with the PNR, dates, and full trip details.' },
         { title: 'Flight Status', text: 'Alert travelers to delays, gate changes, cancellations, and web check-in windows before they leave.' },
@@ -26,7 +26,7 @@
     telephony: {
       title: 'Answer booking queries on IVR and call travelers about cancellations and reschedules with automated outbound voice alerts.',
       desc: 'IVR helplines, outbound calls, and number masking for cab drivers, tour guides, and travelers.',
-      image: 'assets/ReTail X Cloud Tele.png',
+      image: 'assets/ReTail X Cloud Tele.webp',
       features: [
         { title: 'IVR Booking Helpline', text: 'Travelers call one number and get routed to bookings, cancellations, or refunds through a simple IVR menu.' },
         { title: 'Disruption Alert Calls', text: 'Call travelers automatically about cancellations or reschedules, so the news reaches them even when offline.' },
@@ -36,7 +36,7 @@
     rcs: {
       title: 'Show flight details, seat upgrade offers, and hotel carousels in branded RCS cards with one-tap web check-in buttons.',
       desc: 'Verified RCS cards with hotel carousels, seat upgrades, and one-tap check-in buttons.',
-      image: 'assets/ReTail X RCS.png',
+      image: 'assets/ReTail X RCS.webp',
       features: [
         { title: 'Flight Detail Cards', text: 'Show the flight number, gate, and boarding time in a branded card with a one-tap web check-in button.' },
         { title: 'Hotel Carousels', text: 'Show hotels at the destination in a swipeable carousel with photos, prices, and a Book Now button.' },
@@ -46,7 +46,7 @@
     email: {
       title: 'Email e-tickets, invoices, and full itineraries, plus holiday offers and post-trip feedback requests to your past travelers.',
       desc: 'E-tickets, invoices, itineraries, holiday offers, and feedback requests sent by Email.',
-      image: 'assets/ReTail X EMAIL.png',
+      image: 'assets/ReTail X EMAIL.webp',
       features: [
         { title: 'E-Tickets &amp; Invoices', text: 'Email e-tickets and invoices right after booking, so travelers have a clean record for work or personal use.' },
         { title: 'Full Itineraries', text: 'Send a complete trip itinerary with flights, hotels, transfers, and contact numbers, all in one email.' },
