@@ -280,7 +280,7 @@
           loop
           playsinline
           preload="auto">
-          <source src="https://listings.selectvia.com/wp-content/uploads/2026/09/WhatsApp_Video_2026-07-27_at_12.04.11_PM-1.mp4" type="video/mp4">
+          <source src="https://listings.selectvia.com/wp-content/uploads/2026/10/Adobe-Express-WhatsApp_Video_2026-07-27_at_12.04.11_PM.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-shell__gradient" aria-hidden="true"></div>
@@ -331,13 +331,23 @@
           <div class="value-prop__card value-prop__card--photo">
             <video
               class="value-prop__video"
-              autoplay
               muted
               loop
               playsinline
-              preload="auto">
-              <source src="https://listings.selectvia.com/wp-content/uploads/2026/09/0_Businessman_Using_1080x1920.mp4" type="video/mp4">
+              preload="none"
+              data-gt-lazy-video>
+              <source src="https://growtele.com/wp-content/uploads/2026/10/Adobe-Express-0_Businessman_Using_1080x1920-1.mp4" type="video/mp4">
             </video>
+              <script>
+              (function () {
+                var v = document.querySelector('.value-prop__video[data-gt-lazy-video]');
+                if (!v) return;
+                if (!('IntersectionObserver' in window)) { v.play().catch(function () {}); return; }
+                new IntersectionObserver(function (entries, obs) {
+                  if (entries[0].isIntersecting) { v.play().catch(function () {}); obs.disconnect(); }
+                }, { rootMargin: '300px 0px' }).observe(v);
+              })();
+              </script>
           </div>
         </div>
       </section>

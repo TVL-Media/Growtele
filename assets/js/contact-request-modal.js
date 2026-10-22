@@ -92,7 +92,7 @@
     }
   }
   var VIDEO_SRC =
-    'https://listings.selectvia.com/wp-content/uploads/2026/09/0_Conversation_Call_1080x1920-1.mp4';
+    'https://growtele.com/wp-content/uploads/2026/10/Adobe-Express-0_Conversation_Call_1080x1920-1.mp4';
 
   function themePagesBase() {
     if (window.GROWTELE_THEME_URI) {
